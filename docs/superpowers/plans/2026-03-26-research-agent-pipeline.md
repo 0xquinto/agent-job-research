@@ -87,17 +87,15 @@ claude mcp add jobspy --scope project -- python -m jobspy_mcp_server
 
 This registers JobSpy so subagents can access its tools via the `tools` field.
 
-- [ ] **Step 5: Verify Exa MCP is configured**
+- [ ] **Step 5: Verify Exa and Chrome MCP are available**
+
+Exa is already configured globally — no action needed. Verify with:
 
 ```bash
 claude mcp list 2>/dev/null || echo "Check MCP servers interactively with /mcp"
 ```
 
-If Exa is not listed:
-
-```bash
-claude mcp add exa --scope user
-```
+Expected: `exa` appears in the list.
 
 Chrome MCP auto-connects when the Chrome extension is active — no action needed.
 

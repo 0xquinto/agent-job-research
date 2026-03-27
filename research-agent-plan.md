@@ -438,7 +438,7 @@ MCP servers configured at **project/user level** via `claude mcp add`. Subagents
 **Setup commands (run once):**
 ```bash
 claude mcp add jobspy --scope project -- python -m jobspy_mcp_server
-claude mcp add exa --scope user
+# Exa is already configured globally — no action needed
 ```
 
 **Tool access per agent:**
