@@ -4,9 +4,9 @@
 
 **Goal:** Build a 4-phase job research pipeline (scrape, filter, find contacts, generate pitch) orchestrated by a Claude Code lead agent that spawns specialized subagents.
 
-**Architecture:** A lead agent runs as main thread via `claude --agent lead-0` and sequentially orchestrates 4 phases. Phases 1-2 run foreground (blocking). Phases 3-4 fan out N parallel background workers per top company. All subagents write verbose output to files and return only summaries. MCP servers configured at project level; subagents access them via tools field inheritance.
+**Architecture:** A lead agent runs as main thread via `claude --agent lead-0` and sequentially orchestrates 4 phases. Phases 1-2 run foreground (blocking). Phases 3-4 fan out N parallel background workers per top company. All subagents write verbose output to files and return only summaries.
 
-**Tech Stack:** Claude Code subagents (markdown + YAML frontmatter), JobSpy MCP Server (python-jobspy), Exa MCP (people/company search), Claude in Chrome (browser automation), WebSearch/WebFetch (fallback).
+**Tech Stack:** Claude Code subagents (markdown + YAML frontmatter), python-jobspy via Bash (job scraping), Exa MCP (people/company search), Claude in Chrome (browser automation), WebSearch/WebFetch (fallback).
 
 **Spec:** `research-agent-plan.md` in project root.
 
@@ -43,9 +43,7 @@ Write to `.claude/settings.local.json`:
       "WebSearch",
       "WebFetch",
       "Bash(mkdir *)",
-      "Bash(pip install *)",
-      "Bash(python *)",
-      "mcp__jobspy__*",
+      "Bash(python3 *)",
       "mcp__exa__*",
       "mcp__claude-in-chrome__*"
     ]
@@ -61,33 +59,17 @@ python3 -c "import json; json.load(open('.claude/settings.local.json')); print('
 
 Expected: `Valid JSON`
 
-- [ ] **Step 3: Install python-jobspy and MCP server**
+- [ ] **Step 3: Verify python-jobspy is installed**
 
 ```bash
-pip install python-jobspy
-```
-
-```bash
-python -c "import jobspy; print('jobspy available')"
+python3 -c "import jobspy; print('jobspy available')"
 ```
 
 Expected: `jobspy available`
 
-If `jobspy_mcp_server` is a separate package:
+If not installed: `uv pip install --system --break-system-packages python-jobspy`
 
-```bash
-pip install jobspy-mcp-server 2>/dev/null || pip install git+https://github.com/chinpeerapat/jobspy-mcp-server.git
-```
-
-- [ ] **Step 4: Add JobSpy MCP server at project scope**
-
-```bash
-claude mcp add jobspy --scope project -- python -m jobspy_mcp_server
-```
-
-This registers JobSpy so subagents can access its tools via the `tools` field.
-
-- [ ] **Step 5: Verify Exa and Chrome MCP are available**
+- [ ] **Step 4: Verify Exa and Chrome MCP are available**
 
 Exa is already configured globally — no action needed. Verify with:
 
@@ -126,8 +108,8 @@ Write to `.claude/agents/scout-1.md`:
 ```markdown
 ---
 name: scout-1
-description: Scrapes job postings with salary data from multiple boards using JobSpy MCP and Chrome. Use for Phase 1 of the research pipeline.
-tools: Read, Write, Bash, WebSearch, WebFetch, mcp__jobspy__scrape_jobs_tool, mcp__jobspy__get_supported_sites, mcp__jobspy__get_supported_countries, mcp__jobspy__get_job_search_tips, mcp__claude-in-chrome__navigate, mcp__claude-in-chrome__get_page_text, mcp__claude-in-chrome__read_page, mcp__claude-in-chrome__tabs_create_mcp, mcp__claude-in-chrome__tabs_context_mcp
+description: Scrapes job postings with salary data from multiple boards using python-jobspy via Bash and Chrome. Use for Phase 1 of the research pipeline.
+tools: Read, Write, Bash, WebSearch, WebFetch, mcp__claude-in-chrome__navigate, mcp__claude-in-chrome__get_page_text, mcp__claude-in-chrome__read_page, mcp__claude-in-chrome__tabs_create_mcp, mcp__claude-in-chrome__tabs_context_mcp
 model: sonnet
 ---
 
@@ -137,8 +119,24 @@ You are a job scraping specialist. Your job is to collect job postings with sala
 
 When invoked, you receive a list of search queries and target job boards. For each query:
 
-1. Call `scrape_jobs_tool` with the query across all supported boards (indeed, linkedin, glassdoor, google, zip_recruiter)
-2. Use parameters: `results_wanted: 50`, `hours_old: 720` (30 days), `is_remote: true`, `linkedin_fetch_description: true`
+1. Call python-jobspy via Bash to scrape all supported boards:
+```bash
+python3 -c "
+from jobspy import scrape_jobs
+jobs = scrape_jobs(
+    site_name=['indeed', 'linkedin', 'glassdoor', 'google', 'zip_recruiter'],
+    search_term='YOUR_QUERY_HERE',
+    location='Remote',
+    results_wanted=50,
+    hours_old=720,
+    is_remote=True,
+    linkedin_fetch_description=True,
+    country_indeed='USA'
+)
+print(jobs[['title','company','location','min_amount','max_amount','job_url','date_posted','job_type','is_remote','description']].to_csv(index=False))
+"
+```
+2. Parse the CSV output and format each posting as markdown key:value
 3. For boards JobSpy doesn't cover (Wellfound, RemoteOK), use Chrome to browse and extract postings
 4. Write results directly to `research/phase-1-scrape/all-postings.md` — append as you go, do NOT accumulate in context
 
@@ -184,7 +182,7 @@ NEVER return the full posting data in your response. It goes in the file.
 head -5 .claude/agents/scout-1.md
 ```
 
-Expected: `name`, `description`, `tools` (with MCP tool names listed), `model`. No `mcpServers` field.
+Expected: `name`, `description`, `tools` (with Bash and Chrome tools, no jobspy MCP tools), `model`. No `mcpServers` field.
 
 - [ ] **Step 4: Commit**
 
@@ -752,25 +750,25 @@ done
 
 Expected per agent: only `name`, `description`, `tools`, `model`. No `mcpServers`, `initialPrompt`, `permissionMode`, `background`, or other fields.
 
-- [ ] **Step 3: Verify MCP tool names in tools fields**
+- [ ] **Step 3: Verify tool assignments per agent**
 
 ```bash
-grep "^tools:" .claude/agents/scout-1.md | tr ',' '\n' | grep "mcp__"
+grep "^tools:" .claude/agents/scout-1.md | tr ',' '\n' | grep -E "mcp__|Bash"
 ```
 
-Expected: `mcp__jobspy__scrape_jobs_tool`, `mcp__jobspy__get_supported_sites`, etc.
+Expected: `Bash` present, `mcp__claude-in-chrome__*` tools present, NO `mcp__jobspy__*` tools.
 
 ```bash
 grep "^tools:" .claude/agents/recon-3.md | tr ',' '\n' | grep "mcp__"
 ```
 
-Expected: `mcp__exa__people_search_exa`, `mcp__exa__company_research_exa`, etc.
+Expected: `mcp__exa__people_search_exa`, `mcp__exa__company_research_exa`, `mcp__claude-in-chrome__*` tools.
 
 ```bash
-grep "mcp__" .claude/agents/ranker-7.md .claude/agents/composer-4.md
+grep "mcp__\|Bash" .claude/agents/ranker-7.md .claude/agents/composer-4.md
 ```
 
-Expected: No matches (these agents don't use MCP tools).
+Expected: No matches (these agents use Read/Write only).
 
 - [ ] **Step 4: Verify lead-0 Agent() references match new names**
 

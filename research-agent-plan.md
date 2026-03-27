@@ -52,10 +52,10 @@ Based on [Anthropic's multi-agent research system](https://www.anthropic.com/eng
 - Indeed has **no rate limiting**; up to 1,000 results per search
 - Free and open source — no credit costs
 
-**Setup:** `claude mcp add jobspy --scope project -- python -m jobspy_mcp_server`. Requires: `pip install python-jobspy` and `pip install jobspy-mcp-server`
+**Setup:** `uv pip install --system --break-system-packages python-jobspy` (no MCP server needed — called via Bash)
 
 ### Subagent: `scout-1`
-**Tools:** JobSpy MCP (`scrape_jobs_tool`), Claude in Chrome (supplement), WebSearch (fallback)
+**Tools:** Bash (calls `python3 -c "from jobspy import scrape_jobs; ..."`), Claude in Chrome (supplement), WebSearch (fallback)
 **Model:** Sonnet (fast, high-volume)
 
 **JobSpy scrapes these boards concurrently:**
@@ -243,13 +243,13 @@ Would love to connect if you're open to it.
 
 ## Tools Integration
 
-### Phase 1: JobSpy MCP (Primary Scraper)
-- `scrape_jobs_tool` — scrapes Indeed, LinkedIn, Glassdoor, Google, ZipRecruiter concurrently
-- `get_supported_countries` — list available markets
-- `get_supported_sites` — list available job boards
-- Returns structured data: title, company, salary (min/max/currency), location, remote, description
-- **Free, open source, runs locally** — no API credits needed
-- Setup: [chinpeerapat/jobspy-mcp-server](https://github.com/chinpeerapat/jobspy-mcp-server)
+### Phase 1: python-jobspy via Bash (Primary Scraper)
+- Called via `Bash`: `python3 -c "from jobspy import scrape_jobs; ..."`
+- Scrapes Indeed, LinkedIn, Glassdoor, Google, ZipRecruiter concurrently
+- Returns structured pandas DataFrame: title, company, salary (min/max), location, remote, description
+- **Free, open source, runs locally** — no API credits, no MCP server needed
+- Setup: `uv pip install --system --break-system-packages python-jobspy`
+- [JobSpy GitHub](https://github.com/speedyapply/JobSpy)
 
 ### Phase 3: Exa MCP (Contact Research)
 - `people_search_exa` — find hiring managers, team leads, recruiters (specialized people index)
@@ -417,10 +417,7 @@ When running in background, subagents can't prompt for permission. Fix:
     "allow": [
       "Read", "Write", "Edit", "Glob", "Grep",
       "WebSearch", "WebFetch",
-      "Bash(pip install python-jobspy)",
-      "mcp__jobspy__scrape_jobs_tool",
-      "mcp__jobspy__get_supported_countries",
-      "mcp__jobspy__get_supported_sites",
+      "Bash(python3 *)",
       "mcp__exa__people_search_exa",
       "mcp__exa__company_research_exa",
       "mcp__exa__web_search_exa",
@@ -431,20 +428,20 @@ When running in background, subagents can't prompt for permission. Fix:
 }
 ```
 
-### MCP Server Configuration
+### MCP & Tool Configuration
 
-MCP servers configured at **project/user level** via `claude mcp add`. Subagents access MCP tools through the `tools` field — listing specific `mcp__servername__toolname` entries. The `mcpServers` frontmatter field is NOT supported in agent markdown files; only `name`, `description`, `tools`, and `model` are valid.
+**JobSpy:** No MCP server — called via Bash (`python3 -c "from jobspy import scrape_jobs; ..."`). Requires `python-jobspy` pip package installed system-wide.
 
-**Setup commands (run once):**
-```bash
-claude mcp add jobspy --scope project -- python -m jobspy_mcp_server
-# Exa is already configured globally — no action needed
-```
+**Exa:** Configured globally (already available). Subagents access via `tools` field listing `mcp__exa__*` tool names.
+
+**Chrome:** Auto-connects when extension is active. Subagents access via `tools` field listing `mcp__claude-in-chrome__*` tool names.
+
+Only `name`, `description`, `tools`, and `model` are valid frontmatter fields for agent markdown files.
 
 **Tool access per agent:**
-- `scout-1`: lists `mcp__jobspy__scrape_jobs_tool`, `mcp__jobspy__get_supported_sites`, Chrome tools
-- `recon-3`: lists `mcp__exa__people_search_exa`, `mcp__exa__company_research_exa`, Chrome tools
-- `ranker-7` and `composer-4`: no MCP tools (Read/Write only)
+- `scout-1`: Bash (python-jobspy), Chrome tools, WebSearch
+- `recon-3`: Exa MCP tools, Chrome tools, WebSearch
+- `ranker-7` and `composer-4`: Read/Write only (no MCP, no Bash)
 
 ### Agent Naming Convention
 
