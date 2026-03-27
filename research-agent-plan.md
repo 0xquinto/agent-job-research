@@ -273,7 +273,7 @@ Would love to connect if you're open to it.
 
 ## File Structure
 
-Phase-based directories with clear data handoff between stages. Markdown `key: value` format for LLM processing ([60.7% accuracy vs 44.3% for CSV](https://www.anup.io/data-in-csv-format-isnt-always-the-best-for-llms/)). JSON backup for programmatic deduplication. 3-4 levels max depth.
+Phase-based directories with clear data handoff between stages. Markdown `key: value` format chosen for human readability and natural Claude output — [format does not significantly affect accuracy on frontier models (p=0.484, 9,649 experiments)](https://arxiv.org/abs/2602.05447). 3-4 levels max depth.
 
 ```
 hireboost-ops-ai-manager/
@@ -323,10 +323,10 @@ hireboost-ops-ai-manager/
 
 | Phase | Format | Why |
 |-------|--------|-----|
-| Phase 1 | Single markdown key:value file | LLM processing (60.7% accuracy vs 44.3% CSV); agent deduplicates in-memory |
-| Phase 2 | Markdown with score metadata | Human-reviewable tiers; lead agent reads to select top N |
-| Phase 3 | Markdown per company | Contact profiles + company context co-located |
-| Phase 4 | Markdown per company | Video scripts + DM drafts ready to use; status tracking |
+| Phase 1 | Single markdown key:value file | Human-readable; Claude writes it naturally; format-independent accuracy on frontier models ([McMillan 2026](https://arxiv.org/abs/2602.05447)) |
+| Phase 2 | Markdown with score metadata | Diego reviews this directly — readability is the bottleneck, not format accuracy |
+| Phase 3 | Markdown per company | Contact profiles + company context co-located; human review before outreach |
+| Phase 4 | Markdown per company | Prose content (scripts, DMs) — markdown is the natural choice |
 
 ### Data Handoff Between Phases
 
@@ -492,8 +492,9 @@ This protects the lead agent's context window from bloat when running many paral
 - [JobSpy MCP Server (FastMCP)](https://github.com/chinpeerapat/jobspy-mcp-server)
 - [Exa vs Linkup — job scraping limitations](https://www.linkup.so/blog/exa-vs-linkup)
 - [Why scraping beats search APIs for data](https://scrapegraphai.com/blog/why-scraping-is-more-important-than-search)
-- [Markdown vs CSV for LLM prompts](https://webcrawlerapi.com/blog/markdown-vs-csv-choosing-the-right-format-for-llm-prompts) — format choice for agent data
-- [CSV isn't always best for LLMs](https://www.anup.io/data-in-csv-format-isnt-always-the-best-for-llms/) — 60.7% vs 44.3% accuracy benchmarks
+- [McMillan 2026: Structured Context Engineering (arXiv:2602.05447)](https://arxiv.org/abs/2602.05447) — 9,649 experiments: format does not significantly affect accuracy on frontier models (p=0.484); model capability is the dominant factor
+- [Schmidt et al. 2025: Prompt Engineering for Structured Data](https://www.eurekalert.org/news-releases/1107970) — Claude achieves 85% accuracy, excels with hierarchical formats (JSON/YAML)
+- [ShShell 2026: JSON vs YAML vs Markdown Token Benchmarks](https://shshell.com/blog/token-efficiency-module-13-lesson-2-format-comparison) — YAML 30% cheaper than JSON; markdown tables 40% more expensive
 - [How agent handoffs work in multi-agent systems](https://towardsdatascience.com/how-agent-handoffs-work-in-multi-agent-systems/) — structured context transfer
 - [Claude Code production structure guide](https://dev.to/lizechengnet/how-to-structure-claude-code-for-production-mcp-servers-subagents-and-claudemd-2026-guide-4gjn)
 - [Research project folder structure best practices](https://libguides.graduateinstitute.ch/rdm/folders) — 3-4 levels max
