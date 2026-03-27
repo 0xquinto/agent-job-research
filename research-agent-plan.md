@@ -23,7 +23,7 @@ Based on [Anthropic's multi-agent research system](https://www.anthropic.com/eng
                        │          │           │              │
                        ▼          ▼           ▼              ▼
                 ┌────────────┐ ┌─────────┐ ┌──────────┐ ┌──────────┐
-                │ job-scraper│ │fit-scorer│ │ contact- │ │  pitch-  │
+                │  scout-1   │ │ranker-7  │ │ recon-3  │ │composer-4│
                 │ (fg)       │ │(fg)      │ │ finder   │ │generator │
                 │            │ │          │ │ ×N (bg)  │ │ ×N (bg)  │
                 └────────────┘ └─────────┘ └──────────┘ └──────────┘
@@ -52,9 +52,9 @@ Based on [Anthropic's multi-agent research system](https://www.anthropic.com/eng
 - Indeed has **no rate limiting**; up to 1,000 results per search
 - Free and open source — no credit costs
 
-**Setup:** Defined inline in job-scraper subagent's `mcpServers` frontmatter (not global config). Requires: `pip install python-jobspy` and `pip install jobspy-mcp-server`
+**Setup:** `claude mcp add jobspy --scope project -- python -m jobspy_mcp_server`. Requires: `pip install python-jobspy` and `pip install jobspy-mcp-server`
 
-### Subagent: `job-scraper`
+### Subagent: `scout-1`
 **Tools:** JobSpy MCP (`scrape_jobs_tool`), Claude in Chrome (supplement), WebSearch (fallback)
 **Model:** Sonnet (fast, high-volume)
 
@@ -115,7 +115,7 @@ scrape_jobs(
 
 **Goal:** Score each posting against `skills-inventory.md` and rank by salary × fit.
 
-### Subagent: `fit-scorer`
+### Subagent: `ranker-7`
 **Tools:** Read, Write, Grep, Glob
 **Model:** Sonnet (scoring is pattern matching against skills checklist, not deep reasoning)
 
@@ -157,7 +157,7 @@ scrape_jobs(
 
 **Goal:** For each top opportunity, identify the right person to DM — hiring manager, team lead, or recruiter.
 
-### Subagent: `contact-finder`
+### Subagent: `recon-3`
 **Tools:** Exa people search, Claude in Chrome (LinkedIn + X), WebSearch
 **Model:** Sonnet
 
@@ -188,7 +188,7 @@ scrape_jobs(
 
 **Goal:** For each top opportunity, generate a tailored video pitch script + DM draft following Nader's advice.
 
-### Subagent: `pitch-generator`
+### Subagent: `composer-4`
 **Tools:** Read, Write
 **Model:** Opus (needs Diego's authentic voice)
 
@@ -281,12 +281,12 @@ hireboost-ops-ai-manager/
 ├── .claude/
 │   ├── CLAUDE.md                          # Project rules: pipeline flow, conventions, forbidden patterns
 │   ├── settings.local.json                # Permissions config (pre-approved for background agents)
-│   └── agents/                            # Project-scoped subagents
-│       ├── research-lead.md               # Main thread orchestrator (spawns all workers)
-│       ├── job-scraper.md                 # Phase 1: fg, sonnet, JobSpy MCP + Chrome (inline)
-│       ├── fit-scorer.md                  # Phase 2: fg, sonnet, Read only (no MCP)
-│       ├── contact-finder.md              # Phase 3: bg ×N, sonnet, Exa + Chrome (inline)
-│       └── pitch-generator.md             # Phase 4: bg ×N, opus, Read + Write (no MCP)
+│   └── agents/                            # Project-scoped subagents (non-descriptive names)
+│       ├── lead-0.md                      # Orchestrator (spawns all workers)
+│       ├── scout-1.md                     # Phase 1: fg, sonnet, JobSpy MCP + Chrome
+│       ├── ranker-7.md                    # Phase 2: fg, sonnet, Read only
+│       ├── recon-3.md                     # Phase 3: bg ×N, sonnet, Exa + Chrome
+│       └── composer-4.md                  # Phase 4: bg ×N, opus, Read + Write
 │
 ├── research/                              # Created at runtime by agents (not pre-created)
 │   ├── phase-1-scrape/
@@ -331,9 +331,9 @@ hireboost-ops-ai-manager/
 ### Data Handoff Between Phases
 
 Each phase reads the previous phase's output directory:
-1. **Phase 1 → Phase 2:** `fit-scorer` reads `research/phase-1-scrape/all-postings.md`
-2. **Phase 2 → Phase 3:** `contact-finder` reads `research/phase-2-rank/ranked-opportunities.md` (A+B tier only)
-3. **Phase 3 → Phase 4:** `pitch-generator` reads `research/phase-3-contacts/[company]/` + Phase 2 data
+1. **Phase 1 → Phase 2:** `ranker-7` reads `research/phase-1-scrape/all-postings.md`
+2. **Phase 2 → Phase 3:** `recon-3` reads `research/phase-2-rank/ranked-opportunities.md` (A+B tier only)
+3. **Phase 3 → Phase 4:** `composer-4` reads `research/phase-3-contacts/[company]/` + Phase 2 data
 4. **Lead agent** writes `research/pipeline-summary.md` linking all outputs
 
 ---
@@ -341,15 +341,14 @@ Each phase reads the previous phase's output directory:
 ## Execution Flow (Single Command)
 
 ```
-claude --agent research-lead
-> "Run the full pipeline"
+claude --agent lead-0
 ```
 
 ### What happens:
 
 1. **Research Lead** reads `skills-inventory.md` and `resume-diego-gomez-ops-ai.md` to understand Diego's profile
 
-2. **Phase 1** — Lead spawns `job-scraper` in **foreground** (blocking)
+2. **Phase 1** — Lead spawns `scout-1` in **foreground** (blocking)
    - Foreground because Chrome may need permission prompts for login-gated boards
    - Calls JobSpy MCP `scrape_jobs_tool` for each search query (7 queries × 5 boards)
    - Supplements with Chrome for boards JobSpy doesn't cover (Wellfound, RemoteOK)
@@ -358,22 +357,22 @@ claude --agent research-lead
      - Deduplicates in-memory after all queries complete, rewrites the master file
    - **Returns to lead:** summary only ("Found 312 unique postings across 7 boards")
 
-3. **Phase 2** — Lead spawns `fit-scorer` in **foreground** (blocking)
+3. **Phase 2** — Lead spawns `ranker-7` in **foreground** (blocking)
    - Reads `research/phase-1-scrape/all-postings.md` (the file, not the Phase 1 context)
    - Scores each posting against `skills-inventory.md`
    - Ranks by salary × fit score
    - Writes `research/phase-2-rank/ranked-opportunities.md`
    - **Returns to lead:** top N company names + scores ("5 A-tier, 3 B-tier opportunities")
 
-4. **Phase 3** — Lead reads `ranked-opportunities.md`, then spawns N `contact-finder` workers in **background** (parallel)
-   - Lead directly spawns one `contact-finder` per top company (subagents can't spawn subagents)
+4. **Phase 3** — Lead reads `ranked-opportunities.md`, then spawns N `recon-3` workers in **background** (parallel)
+   - Lead directly spawns one `recon-3` per top company (subagents can't spawn subagents)
    - Each runs independently with company name + role as input
    - Each writes to `research/phase-3-contacts/[company-slug]/contacts.md` + `company-context.md`
    - **Each returns to lead:** summary only ("Found hiring manager Jane Doe, VP Engineering at Acme")
    - Lead waits for all N to complete before proceeding
 
-5. **Phase 4** — Lead spawns N `pitch-generator` workers in **background** (parallel)
-   - Lead directly spawns one `pitch-generator` per top company
+5. **Phase 4** — Lead spawns N `composer-4` workers in **background** (parallel)
+   - Lead directly spawns one `composer-4` per top company
    - Each reads contact data from Phase 3 + opportunity data from Phase 2
    - Each writes to `research/phase-4-pitch/[company-slug]/`
    - **Each returns to lead:** summary only ("Generated video script + DM draft for Acme")
@@ -401,8 +400,8 @@ claude --agent research-lead
 ### Constraint: Subagents cannot spawn subagents
 
 The lead agent (main thread via `--agent`) must directly spawn every worker. No intermediate orchestrators. This means:
-- Phase 3: Lead spawns N `contact-finder` instances, not one "Phase 3 coordinator"
-- Phase 4: Lead spawns N `pitch-generator` instances, not one "Phase 4 coordinator"
+- Phase 3: Lead spawns N `recon-3` instances, not one "Phase 3 coordinator"
+- Phase 4: Lead spawns N `composer-4` instances, not one "Phase 4 coordinator"
 - Workers are leaf nodes — they do their job and return a summary
 
 ### Constraint: Background subagents auto-deny unprompted permissions
@@ -434,28 +433,30 @@ When running in background, subagents can't prompt for permission. Fix:
 
 ### MCP Server Configuration
 
-Scope MCP servers to the subagents that need them via **inline `mcpServers` in frontmatter** (not global `.claude/mcp.json`). This avoids loading unused tool descriptions into agents that don't need them, saving context tokens.
+MCP servers configured at **project/user level** via `claude mcp add`. Subagents access MCP tools through the `tools` field — listing specific `mcp__servername__toolname` entries. The `mcpServers` frontmatter field is NOT supported in agent markdown files; only `name`, `description`, `tools`, and `model` are valid.
 
-**job-scraper.md frontmatter:**
-```yaml
-mcpServers:
-  - jobspy:
-      type: stdio
-      command: python
-      args: ["-m", "jobspy_mcp_server"]
-  - claude-in-chrome
+**Setup commands (run once):**
+```bash
+claude mcp add jobspy --scope project -- python -m jobspy_mcp_server
+claude mcp add exa --scope user
 ```
 
-**contact-finder.md frontmatter:**
-```yaml
-mcpServers:
-  - exa
-  - claude-in-chrome
-```
+**Tool access per agent:**
+- `scout-1`: lists `mcp__jobspy__scrape_jobs_tool`, `mcp__jobspy__get_supported_sites`, Chrome tools
+- `recon-3`: lists `mcp__exa__people_search_exa`, `mcp__exa__company_research_exa`, Chrome tools
+- `ranker-7` and `composer-4`: no MCP tools (Read/Write only)
 
-**fit-scorer.md** and **pitch-generator.md**: no MCP servers needed (Read/Write only).
+### Agent Naming Convention
 
-**Exa** must be configured session-level (via `claude mcp add exa` or existing config) so `contact-finder` can reference it by name.
+Non-descriptive names to prevent Claude from inferring default behaviors that override custom prompts ([source](https://codewithseb.com/blog/claude-code-sub-agents-multi-agent-systems-guide)). Descriptive names like `code-reviewer` cause Claude to apply built-in review behaviors silently.
+
+| Agent | Name | Why non-descriptive |
+|-------|------|-------------------|
+| Orchestrator | `lead-0` | Avoids "orchestrator"/"coordinator" inference |
+| Phase 1 Scraper | `scout-1` | Avoids "scraper"/"crawler" inference |
+| Phase 2 Scorer | `ranker-7` | Avoids "scorer"/"analyzer" inference |
+| Phase 3 Contact Finder | `recon-3` | Avoids "finder"/"researcher" inference |
+| Phase 4 Pitch Generator | `composer-4` | Avoids "generator"/"writer" inference |
 
 ### Subagent Output Contract
 

@@ -4,15 +4,25 @@
 
 **Goal:** Build a 4-phase job research pipeline (scrape, filter, find contacts, generate pitch) orchestrated by a Claude Code lead agent that spawns specialized subagents.
 
-**Architecture:** A lead agent runs as main thread via `claude --agent research-lead` and sequentially orchestrates 4 phases. Phases 1-2 run foreground (blocking). Phases 3-4 fan out N parallel background workers per top company. All subagents write verbose output to files and return only summaries. MCP servers (JobSpy, Exa) scoped inline per subagent.
+**Architecture:** A lead agent runs as main thread via `claude --agent lead-0` and sequentially orchestrates 4 phases. Phases 1-2 run foreground (blocking). Phases 3-4 fan out N parallel background workers per top company. All subagents write verbose output to files and return only summaries. MCP servers configured at project level; subagents access them via tools field inheritance.
 
 **Tech Stack:** Claude Code subagents (markdown + YAML frontmatter), JobSpy MCP Server (python-jobspy), Exa MCP (people/company search), Claude in Chrome (browser automation), WebSearch/WebFetch (fallback).
 
 **Spec:** `research-agent-plan.md` in project root.
 
+**Agent naming convention:** Non-descriptive names to prevent Claude from inferring default behaviors that override custom prompts ([source](https://codewithseb.com/blog/claude-code-sub-agents-multi-agent-systems-guide)).
+
+| Phase | Agent Name | Role |
+|-------|-----------|------|
+| Orchestrator | `lead-0` | Pipeline orchestrator |
+| Phase 1: Scrape | `scout-1` | Job board scraping |
+| Phase 2: Filter | `ranker-7` | Fit scoring + ranking |
+| Phase 3: Find | `recon-3` | Contact research |
+| Phase 4: Pitch | `composer-4` | Pitch material generation |
+
 ---
 
-### Task 1: Update settings.local.json and install dependencies
+### Task 1: Configure MCP servers and install dependencies
 
 **Files:**
 - Modify: `.claude/settings.local.json`
@@ -57,8 +67,6 @@ Expected: `Valid JSON`
 pip install python-jobspy
 ```
 
-Then check if the MCP server module is available:
-
 ```bash
 python -c "import jobspy; print('jobspy available')"
 ```
@@ -71,31 +79,41 @@ If `jobspy_mcp_server` is a separate package:
 pip install jobspy-mcp-server 2>/dev/null || pip install git+https://github.com/chinpeerapat/jobspy-mcp-server.git
 ```
 
-- [ ] **Step 4: Verify Exa and Chrome MCP are available**
+- [ ] **Step 4: Add JobSpy MCP server at project scope**
 
-Exa must be configured at session/user level so `contact-finder` can reference it by name. Check with:
+```bash
+claude mcp add jobspy --scope project -- python -m jobspy_mcp_server
+```
+
+This registers JobSpy so subagents can access its tools via the `tools` field.
+
+- [ ] **Step 5: Verify Exa MCP is configured**
 
 ```bash
 claude mcp list 2>/dev/null || echo "Check MCP servers interactively with /mcp"
 ```
 
-If Exa is not listed: `claude mcp add exa --scope user`
+If Exa is not listed:
+
+```bash
+claude mcp add exa --scope user
+```
 
 Chrome MCP auto-connects when the Chrome extension is active — no action needed.
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 6: Commit**
 
 ```bash
 git add .claude/settings.local.json
-git commit -m "feat: configure permissions for research pipeline"
+git commit -m "feat: configure permissions and MCP servers for research pipeline"
 ```
 
 ---
 
-### Task 2: Create the job-scraper subagent
+### Task 2: Create scout-1 (Phase 1: job scraper)
 
 **Files:**
-- Create: `.claude/agents/job-scraper.md`
+- Create: `.claude/agents/scout-1.md`
 
 - [ ] **Step 1: Create agents directory**
 
@@ -103,22 +121,16 @@ git commit -m "feat: configure permissions for research pipeline"
 mkdir -p .claude/agents
 ```
 
-- [ ] **Step 2: Write job-scraper agent definition**
+- [ ] **Step 2: Write scout-1 agent definition**
 
-Write to `.claude/agents/job-scraper.md`:
+Write to `.claude/agents/scout-1.md`:
 
 ```markdown
 ---
-name: job-scraper
-description: Scrapes job postings from multiple job boards using JobSpy MCP and Chrome. Use for Phase 1 of the research pipeline to collect postings with salary data.
-tools: Read, Write, Bash, WebSearch, WebFetch
+name: scout-1
+description: Scrapes job postings with salary data from multiple boards using JobSpy MCP and Chrome. Use for Phase 1 of the research pipeline.
+tools: Read, Write, Bash, WebSearch, WebFetch, mcp__jobspy__scrape_jobs_tool, mcp__jobspy__get_supported_sites, mcp__jobspy__get_supported_countries, mcp__jobspy__get_job_search_tips, mcp__claude-in-chrome__navigate, mcp__claude-in-chrome__get_page_text, mcp__claude-in-chrome__read_page, mcp__claude-in-chrome__tabs_create_mcp, mcp__claude-in-chrome__tabs_context_mcp
 model: sonnet
-mcpServers:
-  - jobspy:
-      type: stdio
-      command: python
-      args: ["-m", "jobspy_mcp_server"]
-  - claude-in-chrome
 ---
 
 You are a job scraping specialist. Your job is to collect job postings with salary data from multiple boards.
@@ -168,35 +180,35 @@ Example: "Found 312 postings across 5 boards + 2 Chrome sources, 247 unique afte
 NEVER return the full posting data in your response. It goes in the file.
 ```
 
-- [ ] **Step 3: Verify frontmatter**
+- [ ] **Step 3: Verify frontmatter — 4 fields only, no mcpServers**
 
 ```bash
-head -10 .claude/agents/job-scraper.md
+head -5 .claude/agents/scout-1.md
 ```
 
-Expected: YAML frontmatter with name, description, tools, model, mcpServers.
+Expected: `name`, `description`, `tools` (with MCP tool names listed), `model`. No `mcpServers` field.
 
 - [ ] **Step 4: Commit**
 
 ```bash
-git add .claude/agents/job-scraper.md
-git commit -m "feat: add job-scraper subagent for Phase 1"
+git add .claude/agents/scout-1.md
+git commit -m "feat: add scout-1 subagent for Phase 1 scraping"
 ```
 
 ---
 
-### Task 3: Create the fit-scorer subagent
+### Task 3: Create ranker-7 (Phase 2: fit scorer)
 
 **Files:**
-- Create: `.claude/agents/fit-scorer.md`
+- Create: `.claude/agents/ranker-7.md`
 
-- [ ] **Step 1: Write fit-scorer agent definition**
+- [ ] **Step 1: Write ranker-7 agent definition**
 
-Write to `.claude/agents/fit-scorer.md`:
+Write to `.claude/agents/ranker-7.md`:
 
 ```markdown
 ---
-name: fit-scorer
+name: ranker-7
 description: Scores and ranks job postings against Diego's skills inventory. Use for Phase 2 of the research pipeline to filter best-fit opportunities.
 tools: Read, Write, Grep, Glob
 model: sonnet
@@ -267,41 +279,38 @@ Example: "Scored 247 postings: 5 A-tier, 8 B-tier, 34 C-tier, 200 D-tier. Top: A
 NEVER return full scoring details in your response. It goes in the file.
 ```
 
-- [ ] **Step 2: Verify frontmatter has no mcpServers**
+- [ ] **Step 2: Verify — no MCP tools, no mcpServers**
 
 ```bash
-head -7 .claude/agents/fit-scorer.md
+head -6 .claude/agents/ranker-7.md
 ```
 
-Expected: Frontmatter ends at `model: sonnet` — no mcpServers field.
+Expected: `tools: Read, Write, Grep, Glob` — no MCP tools needed for this agent.
 
 - [ ] **Step 3: Commit**
 
 ```bash
-git add .claude/agents/fit-scorer.md
-git commit -m "feat: add fit-scorer subagent for Phase 2"
+git add .claude/agents/ranker-7.md
+git commit -m "feat: add ranker-7 subagent for Phase 2 scoring"
 ```
 
 ---
 
-### Task 4: Create the contact-finder subagent
+### Task 4: Create recon-3 (Phase 3: contact finder)
 
 **Files:**
-- Create: `.claude/agents/contact-finder.md`
+- Create: `.claude/agents/recon-3.md`
 
-- [ ] **Step 1: Write contact-finder agent definition**
+- [ ] **Step 1: Write recon-3 agent definition**
 
-Write to `.claude/agents/contact-finder.md`:
+Write to `.claude/agents/recon-3.md`:
 
 ```markdown
 ---
-name: contact-finder
+name: recon-3
 description: Finds hiring managers and team leads on LinkedIn and X for a specific company and role. Use for Phase 3 of the research pipeline.
-tools: Read, Write, WebSearch, WebFetch
+tools: Read, Write, WebSearch, WebFetch, mcp__exa__people_search_exa, mcp__exa__company_research_exa, mcp__exa__web_search_exa, mcp__exa__crawling_exa, mcp__claude-in-chrome__navigate, mcp__claude-in-chrome__get_page_text, mcp__claude-in-chrome__read_page, mcp__claude-in-chrome__tabs_create_mcp, mcp__claude-in-chrome__tabs_context_mcp, mcp__claude-in-chrome__find
 model: sonnet
-mcpServers:
-  - exa
-  - claude-in-chrome
 ---
 
 You are a contact research specialist. Your job is to find the right person to DM at a specific company for a specific role.
@@ -380,35 +389,35 @@ Example: "Found Jane Doe, VP Engineering at Acme Corp. Recommended: LinkedIn DM.
 NEVER return full contact profiles or company context in your response.
 ```
 
-- [ ] **Step 2: Verify mcpServers references exa and chrome**
+- [ ] **Step 2: Verify tools include Exa and Chrome MCP tools**
 
 ```bash
-grep -A2 "mcpServers:" .claude/agents/contact-finder.md
+grep "^tools:" .claude/agents/recon-3.md
 ```
 
-Expected: `- exa` and `- claude-in-chrome`
+Expected: Comma-separated list including `mcp__exa__people_search_exa` and `mcp__claude-in-chrome__*` tools. No `mcpServers` field anywhere.
 
 - [ ] **Step 3: Commit**
 
 ```bash
-git add .claude/agents/contact-finder.md
-git commit -m "feat: add contact-finder subagent for Phase 3"
+git add .claude/agents/recon-3.md
+git commit -m "feat: add recon-3 subagent for Phase 3 contact research"
 ```
 
 ---
 
-### Task 5: Create the pitch-generator subagent
+### Task 5: Create composer-4 (Phase 4: pitch generator)
 
 **Files:**
-- Create: `.claude/agents/pitch-generator.md`
+- Create: `.claude/agents/composer-4.md`
 
-- [ ] **Step 1: Write pitch-generator agent definition**
+- [ ] **Step 1: Write composer-4 agent definition**
 
-Write to `.claude/agents/pitch-generator.md`:
+Write to `.claude/agents/composer-4.md`:
 
 ```markdown
 ---
-name: pitch-generator
+name: composer-4
 description: Generates tailored video pitch scripts and DM drafts for a specific company and role. Use for Phase 4 of the research pipeline.
 tools: Read, Write, Glob
 model: opus
@@ -505,42 +514,43 @@ Example: "Generated video script (95 words) + DM draft + status tracker for Acme
 NEVER return the full script or DM in your response.
 ```
 
-- [ ] **Step 2: Verify frontmatter has no mcpServers**
+- [ ] **Step 2: Verify — no MCP tools, no mcpServers**
 
 ```bash
-head -7 .claude/agents/pitch-generator.md
+head -6 .claude/agents/composer-4.md
 ```
 
-Expected: Frontmatter ends at `model: opus` — no mcpServers field.
+Expected: `tools: Read, Write, Glob` — no MCP tools needed for this agent.
 
 - [ ] **Step 3: Commit**
 
 ```bash
-git add .claude/agents/pitch-generator.md
-git commit -m "feat: add pitch-generator subagent for Phase 4"
+git add .claude/agents/composer-4.md
+git commit -m "feat: add composer-4 subagent for Phase 4 pitch generation"
 ```
 
 ---
 
-### Task 6: Create the research-lead agent
+### Task 6: Create lead-0 (orchestrator)
 
 **Files:**
-- Create: `.claude/agents/research-lead.md`
+- Create: `.claude/agents/lead-0.md`
 
-- [ ] **Step 1: Write research-lead agent definition**
+- [ ] **Step 1: Write lead-0 agent definition**
 
-Write to `.claude/agents/research-lead.md`:
+Write to `.claude/agents/lead-0.md`:
 
 ```markdown
 ---
-name: research-lead
-description: Orchestrates the 4-phase job research pipeline. Run as main thread with claude --agent research-lead.
-tools: Agent(job-scraper, fit-scorer, contact-finder, pitch-generator), Read, Write, Glob, Grep
+name: lead-0
+description: Orchestrates the 4-phase job research pipeline. Run as main thread with claude --agent lead-0.
+tools: Agent(scout-1, ranker-7, recon-3, composer-4), Read, Write, Glob, Grep
 model: opus
-initialPrompt: "Read skills-inventory.md and resume-diego-gomez-ops-ai.md, then ask what search queries and job boards to target."
 ---
 
 You are the research pipeline orchestrator. You run 4 phases sequentially, spawning specialized subagents for each.
+
+When you start, read `skills-inventory.md` and `resume-diego-gomez-ops-ai.md` to understand Diego's profile. Then ask the user to confirm or customize the search queries before starting Phase 1.
 
 ## CRITICAL CONSTRAINTS
 
@@ -551,7 +561,7 @@ You are the research pipeline orchestrator. You run 4 phases sequentially, spawn
 
 ## Phase 1: Scrape
 
-Spawn `job-scraper` in **foreground** with:
+Spawn `scout-1` in **foreground** with:
 - The list of search queries (confirm with user or use defaults below)
 - Target boards: indeed, linkedin, glassdoor, google, zip_recruiter + Chrome for wellfound, remoteok
 
@@ -559,7 +569,7 @@ Wait for completion. Read the summary (posting count, board breakdown).
 
 ## Phase 2: Filter & Rank
 
-Spawn `fit-scorer` in **foreground** with:
+Spawn `ranker-7` in **foreground** with:
 - Instruction to read `research/phase-1-scrape/all-postings.md`
 - Instruction to score against `skills-inventory.md`
 
@@ -568,7 +578,7 @@ Then read `research/phase-2-rank/ranked-opportunities.md` to extract the A-tier 
 
 ## Phase 3: Find Contacts
 
-For EACH top company (A-tier + top B-tier), spawn a `contact-finder` in **background** with:
+For EACH top company (A-tier + top B-tier), spawn a `recon-3` in **background** with:
 - Company name
 - Role title
 - Job URL
@@ -577,7 +587,7 @@ Spawn all in parallel. Wait for all to complete.
 
 ## Phase 4: Generate Pitches
 
-For EACH top company, spawn a `pitch-generator` in **background** with:
+For EACH top company, spawn a `composer-4` in **background** with:
 - Company name
 - Role title
 - Fit score
@@ -607,19 +617,27 @@ If the user doesn't specify, use these:
 7. "Developer Relations"
 ```
 
-- [ ] **Step 2: Verify agent can spawn the right subagents**
+- [ ] **Step 2: Verify Agent() references use new names**
 
 ```bash
-grep "^tools:" .claude/agents/research-lead.md
+grep "^tools:" .claude/agents/lead-0.md
 ```
 
-Expected: `tools: Agent(job-scraper, fit-scorer, contact-finder, pitch-generator), Read, Write, Glob, Grep`
+Expected: `tools: Agent(scout-1, ranker-7, recon-3, composer-4), Read, Write, Glob, Grep`
 
-- [ ] **Step 3: Commit**
+- [ ] **Step 3: Verify no initialPrompt field**
 
 ```bash
-git add .claude/agents/research-lead.md
-git commit -m "feat: add research-lead orchestrator agent"
+grep "initialPrompt" .claude/agents/lead-0.md
+```
+
+Expected: No matches. The startup instructions are in the system prompt body instead.
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add .claude/agents/lead-0.md
+git commit -m "feat: add lead-0 orchestrator agent"
 ```
 
 ---
@@ -643,15 +661,24 @@ A 4-phase job research pipeline that scrapes job postings, scores them against D
 ## Running the pipeline
 
 ```
-claude --agent research-lead
+claude --agent lead-0
 ```
+
+## Agent names
+
+Non-descriptive names to prevent Claude from inferring default behaviors:
+- `lead-0` — pipeline orchestrator
+- `scout-1` — Phase 1: job board scraping (JobSpy MCP + Chrome)
+- `ranker-7` — Phase 2: fit scoring against skills-inventory.md
+- `recon-3` — Phase 3: contact research (Exa + Chrome)
+- `composer-4` — Phase 4: pitch material generation
 
 ## Directory conventions
 
-- `research/phase-1-scrape/` — Scraped postings (created at runtime)
-- `research/phase-2-rank/` — Scored and tiered opportunities
-- `research/phase-3-contacts/[company-slug]/` — Contact profiles + company context
-- `research/phase-4-pitch/[company-slug]/` — Video scripts + DM drafts + outreach status
+- `research/phase-1-scrape/` — Scraped postings (created at runtime by scout-1)
+- `research/phase-2-rank/` — Scored and tiered opportunities (created by ranker-7)
+- `research/phase-3-contacts/[company-slug]/` — Contact profiles + company context (created by recon-3)
+- `research/phase-4-pitch/[company-slug]/` — Video scripts + DM drafts + outreach status (created by composer-4)
 
 ## Key input files
 
@@ -666,12 +693,15 @@ ALL subagents MUST:
 2. Return ONLY 1-2 sentence summaries to the lead agent
 3. NEVER return raw data in responses
 
+This constraint survives context compaction because it is in CLAUDE.md.
+
 ## Forbidden patterns
 
 - Never mass-apply or auto-submit applications
 - Never send DMs automatically (human-in-the-loop always)
 - Never fabricate skills or experience in pitch materials
 - Never accumulate large data in agent context (write to files)
+- Never edit the same file from multiple parallel agents
 ```
 
 - [ ] **Step 2: Verify file**
@@ -696,52 +726,85 @@ git commit -m "feat: add CLAUDE.md project instructions"
 **Files:**
 - No files created (validation only)
 
-- [ ] **Step 1: Verify all agent files exist and parse**
+- [ ] **Step 1: Verify all agent files exist with correct names**
 
 ```bash
-for f in .claude/agents/*.md; do echo "=== $(basename $f) ==="; head -3 "$f"; echo; done
-```
-
-Expected: 5 files (contact-finder.md, fit-scorer.md, job-scraper.md, pitch-generator.md, research-lead.md), each starting with `---` and `name:`.
-
-- [ ] **Step 2: Cross-check agent tool access and MCP scoping**
-
-```bash
-for f in .claude/agents/*.md; do echo "=== $(basename $f) ==="; grep -E "^(tools|model|mcpServers):" "$f" || echo "(no match)"; echo; done
+ls -1 .claude/agents/
 ```
 
 Expected:
-| Agent | tools | model | mcpServers |
-|-------|-------|-------|------------|
-| job-scraper | Read, Write, Bash, WebSearch, WebFetch | sonnet | jobspy (inline) + chrome |
-| fit-scorer | Read, Write, Grep, Glob | sonnet | (none) |
-| contact-finder | Read, Write, WebSearch, WebFetch | sonnet | exa + chrome |
-| pitch-generator | Read, Write, Glob | opus | (none) |
-| research-lead | Agent(...), Read, Write, Glob, Grep | opus | (none) |
+```
+composer-4.md
+lead-0.md
+ranker-7.md
+recon-3.md
+scout-1.md
+```
 
-- [ ] **Step 3: Verify data handoff paths are consistent**
+- [ ] **Step 2: Verify frontmatter uses only valid fields (name, description, tools, model)**
+
+```bash
+for f in .claude/agents/*.md; do
+  echo "=== $(basename $f) ==="
+  # Extract frontmatter and check for invalid fields
+  sed -n '/^---$/,/^---$/p' "$f" | grep -v "^---$" | grep -E "^[a-zA-Z]" | awk -F: '{print $1}'
+  echo
+done
+```
+
+Expected per agent: only `name`, `description`, `tools`, `model`. No `mcpServers`, `initialPrompt`, `permissionMode`, `background`, or other fields.
+
+- [ ] **Step 3: Verify MCP tool names in tools fields**
+
+```bash
+grep "^tools:" .claude/agents/scout-1.md | tr ',' '\n' | grep "mcp__"
+```
+
+Expected: `mcp__jobspy__scrape_jobs_tool`, `mcp__jobspy__get_supported_sites`, etc.
+
+```bash
+grep "^tools:" .claude/agents/recon-3.md | tr ',' '\n' | grep "mcp__"
+```
+
+Expected: `mcp__exa__people_search_exa`, `mcp__exa__company_research_exa`, etc.
+
+```bash
+grep "mcp__" .claude/agents/ranker-7.md .claude/agents/composer-4.md
+```
+
+Expected: No matches (these agents don't use MCP tools).
+
+- [ ] **Step 4: Verify lead-0 Agent() references match new names**
+
+```bash
+grep "Agent(" .claude/agents/lead-0.md
+```
+
+Expected: `Agent(scout-1, ranker-7, recon-3, composer-4)`
+
+- [ ] **Step 5: Verify data handoff paths are consistent**
 
 ```bash
 grep -n "all-postings.md\|ranked-opportunities.md\|phase-3-contacts\|phase-4-pitch" .claude/agents/*.md
 ```
 
-Check:
-- job-scraper writes `research/phase-1-scrape/all-postings.md`
-- fit-scorer reads `research/phase-1-scrape/all-postings.md` (match)
-- fit-scorer writes `research/phase-2-rank/ranked-opportunities.md`
-- lead reads `research/phase-2-rank/ranked-opportunities.md` to extract top companies (match)
-- contact-finder writes `research/phase-3-contacts/[company-slug]/`
-- pitch-generator reads `research/phase-3-contacts/[company-slug]/` (match)
+Check chain:
+- scout-1 writes `research/phase-1-scrape/all-postings.md`
+- ranker-7 reads `research/phase-1-scrape/all-postings.md` (match)
+- ranker-7 writes `research/phase-2-rank/ranked-opportunities.md`
+- lead-0 reads `research/phase-2-rank/ranked-opportunities.md` (match)
+- recon-3 writes `research/phase-3-contacts/[company-slug]/`
+- composer-4 reads `research/phase-3-contacts/[company-slug]/` (match)
 
-- [ ] **Step 4: Test launching research-lead**
+- [ ] **Step 6: Test launching lead-0**
 
 ```bash
-echo "List your 4 worker subagents and confirm you can read skills-inventory.md" | claude --agent research-lead --max-turns 3 2>&1 | head -20
+echo "List your 4 worker subagents and confirm you can read skills-inventory.md" | claude --agent lead-0 --max-turns 3 2>&1 | head -20
 ```
 
-Expected: Mentions job-scraper, fit-scorer, contact-finder, pitch-generator. Confirms skills-inventory.md is readable.
+Expected: Mentions scout-1, ranker-7, recon-3, composer-4. Confirms skills-inventory.md is readable.
 
-- [ ] **Step 5: Commit any fixes**
+- [ ] **Step 7: Commit any fixes**
 
 ```bash
 git diff --stat
@@ -761,15 +824,15 @@ git commit -m "fix: correct agent definitions after validation"
 Run the pipeline:
 
 ```bash
-claude --agent research-lead
+claude --agent lead-0
 ```
 
 The lead agent will:
-1. Ask to confirm search queries
-2. Scrape all boards (Phase 1)
-3. Score and rank (Phase 2)
-4. Find contacts for top companies (Phase 3, parallel)
-5. Generate pitch materials (Phase 4, parallel)
+1. Read Diego's profile, ask to confirm search queries
+2. Scrape all boards (Phase 1 — scout-1, foreground)
+3. Score and rank (Phase 2 — ranker-7, foreground)
+4. Find contacts for top companies (Phase 3 — recon-3 ×N, background parallel)
+5. Generate pitch materials (Phase 4 — composer-4 ×N, background parallel)
 6. Present summary
 
 Diego reviews, edits for authenticity, records videos, sends DMs personally.
