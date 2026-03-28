@@ -55,6 +55,7 @@ def main(query, output_dir, scraper, remote_only, list_scrapers):
     import hireboost_scraper.scrapers.crypto_jobs  # noqa: F401
     import hireboost_scraper.scrapers.web3career  # noqa: F401
     import hireboost_scraper.scrapers.cryptocurrencyjobs  # noqa: F401
+    import hireboost_scraper.scrapers.remoteok  # noqa: F401
 
     from hireboost_scraper.scrapers import SCRAPER_REGISTRY
 

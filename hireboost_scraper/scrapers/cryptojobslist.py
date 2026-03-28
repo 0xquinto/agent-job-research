@@ -67,8 +67,8 @@ class CryptoJobsListScraper(BaseScraper):
                     seo_slug = item.get("seoSlug", "")
                     job_url = f"{BASE_URL}/{seo_slug}-{job_id}" if seo_slug else ""
 
-                    # Remote detection uses the boolean `remote` field
-                    is_job_remote = item.get("remote", False)
+                    # Remote detection: `remote` field can be True, False, or None
+                    is_job_remote = bool(item.get("remote"))
 
                     # Date from publishedAt ISO8601
                     published_at = item.get("publishedAt", "")

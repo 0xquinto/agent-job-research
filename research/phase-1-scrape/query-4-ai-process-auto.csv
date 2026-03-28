@@ -1,0 +1,1903 @@
+id,site,job_url,job_url_direct,title,company,location,date_posted,job_type,salary_source,interval,min_amount,max_amount,currency,is_remote,job_level,job_function,listing_type,emails,description,company_industry,company_url,company_logo,company_url_direct,company_addresses,company_num_employees,company_revenue,company_description,skills,experience_range,company_rating,company_reviews_count,vacancy_count,work_from_home_type
+in-253b1eeee9b25fb2,indeed,https://www.indeed.com/viewjob?jk=253b1eeee9b25fb2,https://onedigital.wd5.myworkdayjobs.com/en-US/OneDigital/job/Remote/AI-Builder---Remote_R8643-1,AI Builder - Remote,OneDigital,"Remote, US",2026-03-27,fulltime,direct_data,yearly,90000.0,115000.0,USD,True,,,,,"No other company in our industry is supercharging the way they work and serve their clients like OneDigital. Fresh thinking has always been the core of OneDigital’s vision and growth strategy. It’s how we stand out in our industry, it’s how we stay competitive and resilient in a changing world. Most importantly, our innovative approach is helping more people do their best work and live their best lives. Innovation fuels our employee experience by making it easier to do your best work anytime, anywhere and from any device. And our tech\-based products for clients are a game changer in our industry. If you thrive on change and innovation, OneDigital is the career choice for you.**Our Newest Opportunity:**
+OneDigital is seeking a highly capable **AI Builder** (Harness Engineer) to join our embedded product management ecosystem. This role is responsible for transforming AI ideas, prototypes, and early\-stage builds—often initiated by Product Managers—into scalable, secure, and production\-ready applications.  
+
+You will partner closely with Product Managers across the organization who are increasingly hands\-on in building AI\-driven prototypes. Your role is to **take these concepts to the next level**, refining, scaling, and operationalizing them into high\-quality solutions that can be deployed across OneDigital’s internal and external business lines.  
+
+This is a hands\-on role for someone who thrives at the intersection of **AI engineering, product thinking, and rapid experimentation**. **Essential Duties and Responsibilities:*** Partner with embedded Product Managers to **interpret business needs, prototypes, and early\-stage AI builds**
+* Take Product Manager\-created concepts or prototypes and **evolve them into production\-ready AI applications**
+* Design, build, and deploy **end\-to\-end AI solutions**, from refinement through launch
+* Develop applications using modern AI tooling, including:
+* Front\-end builders (e.g., Replit, cloud\-based development environments)
+* Hosting and deployment platforms (e.g., **Vercel**)
+* Internal AI platforms and services
+* LLM APIs and orchestration frameworks
+* Manage code and collaboration workflows using **GitHub** (version control, branching, pull requests, CI/CD practices)
+* Evaluate and implement the most appropriate **LLM****models and****architectures** based on use case
+* Enhance and scale **AI “co\-workers” and workflow automation tools** across business functions
+* Collaborate across internal teams (Marketing, Finance, HR) and external business lines (Employee Benefits, Wealth \& Retirement, Financial Services)
+* Ensure solutions meet **enterprise standards for scalability, security, and performance**
+* Continuously improve existing AI solutions through iteration, optimization, and feedback
+* Stay current on emerging AI technologies and **introduce new tools and capabilities** into the ecosystem
+* Product Managers at OneDigital are **actively building and prototyping AI solutions**—you will partner with them to elevate these into enterprise\-grade applications
+* You will work across a wide range of use cases, from **internal productivity tools to client\-facing AI solutions**
+* You will help define how AI is built, scaled, and deployed across the organization
+* This is not just an architect role—it is a **builder role with real impact across the business**
+ **Qualifications,****Skills****and Requirements:**
+What you’ll bring* Experience building and deploying **AI\-powered applications or prototypes**
+* Strong familiarity with modern **LLM ecosystems**, including:
+* Prompt engineering and model behavior
+* Model selection and tradeoffs (e.g., GPT, Claude, open\-source models)
+* Architectures such as RAG, agents, and workflow orchestration
+* Experience working across a **full\-stack AI toolchain**, including front\-end, backend, and deployment
+* Hands\-on experience with **Vercel****(or similar platforms) for hosting and deployment**
+* Proficiency with **GitHub** for version control and collaborative development workflows
+* Ability to **take loosely defined or partially built solutions and turn them into scalable applications**
+* Strong problem\-solving skills and comfort working with ambiguity
+* Proven ability to **learn new tools and technologies quickly** in a rapidly evolving space
+ **Education, Training and Experience:**
+Preferred* Bachelor’s degree \- familiarity with software engineering concepts
+* Exposure to or experience with **product management concepts**, including working with requirements and user needs
+* Experience working with APIs, cloud services, and modern development environments
+* Familiarity with enterprise application development and deployment
+* Understanding of **AI governance, data privacy, and security considerations**
+  
+
+The typical base pay range for this role nationwide is $90,000 to $115,000 per year.
+Your base pay is dependent upon your skills, education, qualifications, professional experience, and location. In addition to base pay, some roles are eligible for variable compensation, commission, and/or annual bonus based on your individual performance and/or the company’s performance. We also offer eligible employees health, wellbeing, retirement, and other financial benefits, paid time off, overtime pay for non\-exempt employees, and robust learning and development programs. You will receive reimbursement of job\-related expenses per the company policy and may receive employee perks and discounts.
+To learn more, visit: www.onedigital.com/careers
+OneDigital is an equal opportunity employer. Not only as a matter of standard, but to honor and celebrate our differences. We believe that the power of ONE starts with you. We are committed to cultivating and preserving a culture that celebrates diversity, insists on equity and inclusion, and connects us. Ensuring our people feel **seen, valued, respected, and supported** is fundamental to our core values and business goals.
+OneDigital provides equal employment opportunities to all employees and applicants for employment regardless of their: veteran status, uniformed servicemember status, race, color, religion, sex, sexual orientation, gender identity, age (40 and over), pregnancy (including childbirth, lactation and related medical conditions), national origin or ancestry, citizenship or immigration status, physical or mental disability, genetic information (including testing and characteristics) or any other category protected by federal, state or local law (collectively, “protected characteristics”). A copy of the Federal EEO poster is linked here.
+Pursuant to local Fair Chance Ordinances, we will consider qualified applications with arrest or conviction records for employment. For applicable candidates, the following ordinances are linked here to inform you of your rights as an applicant:
+City and County of San Francsico
+City of Los Angeles
+County of Los Angeles
+Employment decisions shall comply with all other applicable federal, state and city/county laws prohibiting discrimination in employment. OneDigital complies with all criminal history inquiry \[or ‘ban the box’] laws in California, Connecticut, Colorado, Hawaii, Illinois, Maine, Maryland, Massachusetts, Minnesota, New Jersey, New Mexico, Oregon, Rhode Island, Vermont and Washington.*In short, we believe in hiring the most qualified applicant for the position, regardless of background.*
+If you have questions about our hiring policies and practices, we would be happy to discuss upon receiving your application. We hope to welcome you to OneDigital and look forward to hearing from you.  
+
+OneDigital understands the immense responsibility and opportunities provided by Artificial Intelligence. We utilize advanced Artificial Intelligence \[AI] technologies to enhance our recruitment process. This includes using AI to filter candidates based on their qualifications and to rediscover potential candidates from our existing applicant pool. Our AI systems help us efficiently identify the best fit for our open positions, ensuring a streamlined and effective hiring experience. However, AI does not replace the humans in our process. If you have concerns about our use of AI, you may opt out where laws allow.
+Thank you for your interest in joining the OneDigital team!",,https://www.indeed.com/cmp/Onedigital-6bf6d24e,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/05085118e0f10c794ab913b0ab92833d,http://www.onedigital.com,"Atlanta, GA","1,001 to 5,000",Decline to state,"OneDigital’s advisory teams for counsel in employee benefits, wellbeing, human resources, pharmacy consulting, property and casualty solutions, as well as the retirement and wealth management. ",,,,,,
+in-85e42035381b930d,indeed,https://www.indeed.com/viewjob?jk=85e42035381b930d,https://onedigital.wd5.myworkdayjobs.com/en-US/OneDigital/job/Remote/AI-Builder---Remote_R8644-1,AI Builder - Remote,OneDigital,"Remote, US",2026-03-27,fulltime,direct_data,yearly,90000.0,115000.0,USD,True,,,,,"No other company in our industry is supercharging the way they work and serve their clients like OneDigital. Fresh thinking has always been the core of OneDigital’s vision and growth strategy. It’s how we stand out in our industry, it’s how we stay competitive and resilient in a changing world. Most importantly, our innovative approach is helping more people do their best work and live their best lives. Innovation fuels our employee experience by making it easier to do your best work anytime, anywhere and from any device. And our tech\-based products for clients are a game changer in our industry. If you thrive on change and innovation, OneDigital is the career choice for you.**Our Newest Opportunity:**
+OneDigital is seeking a highly capable **AI Builder** (Harness Engineer) to join our embedded product management ecosystem. This role is responsible for transforming AI ideas, prototypes, and early\-stage builds—often initiated by Product Managers—into scalable, secure, and production\-ready applications.  
+
+You will partner closely with Product Managers across the organization who are increasingly hands\-on in building AI\-driven prototypes. Your role is to **take these concepts to the next level**, refining, scaling, and operationalizing them into high\-quality solutions that can be deployed across OneDigital’s internal and external business lines.  
+
+This is a hands\-on role for someone who thrives at the intersection of **AI engineering, product thinking, and rapid experimentation**. **Essential Duties and Responsibilities:*** Partner with embedded Product Managers to **interpret business needs, prototypes, and early\-stage AI builds**
+* Take Product Manager\-created concepts or prototypes and **evolve them into production\-ready AI applications**
+* Design, build, and deploy **end\-to\-end AI solutions**, from refinement through launch
+* Develop applications using modern AI tooling, including:
+* Front\-end builders (e.g., Replit, cloud\-based development environments)
+* Hosting and deployment platforms (e.g., **Vercel**)
+* Internal AI platforms and services
+* LLM APIs and orchestration frameworks
+* Manage code and collaboration workflows using **GitHub** (version control, branching, pull requests, CI/CD practices)
+* Evaluate and implement the most appropriate **LLM****models and****architectures** based on use case
+* Enhance and scale **AI “co\-workers” and workflow automation tools** across business functions
+* Collaborate across internal teams (Marketing, Finance, HR) and external business lines (Employee Benefits, Wealth \& Retirement, Financial Services)
+* Ensure solutions meet **enterprise standards for scalability, security, and performance**
+* Continuously improve existing AI solutions through iteration, optimization, and feedback
+* Stay current on emerging AI technologies and **introduce new tools and capabilities** into the ecosystem
+* Product Managers at OneDigital are **actively building and prototyping AI solutions**—you will partner with them to elevate these into enterprise\-grade applications
+* You will work across a wide range of use cases, from **internal productivity tools to client\-facing AI solutions**
+* You will help define how AI is built, scaled, and deployed across the organization
+* This is not just an architect role—it is a **builder role with real impact across the business**
+ **Qualifications,****Skills****and Requirements:**
+What you’ll bring* Experience building and deploying **AI\-powered applications or prototypes**
+* Strong familiarity with modern **LLM ecosystems**, including:
+* Prompt engineering and model behavior
+* Model selection and tradeoffs (e.g., GPT, Claude, open\-source models)
+* Architectures such as RAG, agents, and workflow orchestration
+* Experience working across a **full\-stack AI toolchain**, including front\-end, backend, and deployment
+* Hands\-on experience with **Vercel****(or similar platforms) for hosting and deployment**
+* Proficiency with **GitHub** for version control and collaborative development workflows
+* Ability to **take loosely defined or partially built solutions and turn them into scalable applications**
+* Strong problem\-solving skills and comfort working with ambiguity
+* Proven ability to **learn new tools and technologies quickly** in a rapidly evolving space
+ **Education, Training and Experience:**
+Preferred* Bachelor’s degree \- familiarity with software engineering concepts
+* Exposure to or experience with **product management concepts**, including working with requirements and user needs
+* Experience working with APIs, cloud services, and modern development environments
+* Familiarity with enterprise application development and deployment
+* Understanding of **AI governance, data privacy, and security considerations**
+  
+
+The typical base pay range for this role nationwide is $90,000 to $115,000 per year.
+Your base pay is dependent upon your skills, education, qualifications, professional experience, and location. In addition to base pay, some roles are eligible for variable compensation, commission, and/or annual bonus based on your individual performance and/or the company’s performance. We also offer eligible employees health, wellbeing, retirement, and other financial benefits, paid time off, overtime pay for non\-exempt employees, and robust learning and development programs. You will receive reimbursement of job\-related expenses per the company policy and may receive employee perks and discounts.
+To learn more, visit: www.onedigital.com/careers
+OneDigital is an equal opportunity employer. Not only as a matter of standard, but to honor and celebrate our differences. We believe that the power of ONE starts with you. We are committed to cultivating and preserving a culture that celebrates diversity, insists on equity and inclusion, and connects us. Ensuring our people feel **seen, valued, respected, and supported** is fundamental to our core values and business goals.
+OneDigital provides equal employment opportunities to all employees and applicants for employment regardless of their: veteran status, uniformed servicemember status, race, color, religion, sex, sexual orientation, gender identity, age (40 and over), pregnancy (including childbirth, lactation and related medical conditions), national origin or ancestry, citizenship or immigration status, physical or mental disability, genetic information (including testing and characteristics) or any other category protected by federal, state or local law (collectively, “protected characteristics”). A copy of the Federal EEO poster is linked here.
+Pursuant to local Fair Chance Ordinances, we will consider qualified applications with arrest or conviction records for employment. For applicable candidates, the following ordinances are linked here to inform you of your rights as an applicant:
+City and County of San Francsico
+City of Los Angeles
+County of Los Angeles
+Employment decisions shall comply with all other applicable federal, state and city/county laws prohibiting discrimination in employment. OneDigital complies with all criminal history inquiry \[or ‘ban the box’] laws in California, Connecticut, Colorado, Hawaii, Illinois, Maine, Maryland, Massachusetts, Minnesota, New Jersey, New Mexico, Oregon, Rhode Island, Vermont and Washington.*In short, we believe in hiring the most qualified applicant for the position, regardless of background.*
+If you have questions about our hiring policies and practices, we would be happy to discuss upon receiving your application. We hope to welcome you to OneDigital and look forward to hearing from you.  
+
+OneDigital understands the immense responsibility and opportunities provided by Artificial Intelligence. We utilize advanced Artificial Intelligence \[AI] technologies to enhance our recruitment process. This includes using AI to filter candidates based on their qualifications and to rediscover potential candidates from our existing applicant pool. Our AI systems help us efficiently identify the best fit for our open positions, ensuring a streamlined and effective hiring experience. However, AI does not replace the humans in our process. If you have concerns about our use of AI, you may opt out where laws allow.
+Thank you for your interest in joining the OneDigital team!",,https://www.indeed.com/cmp/Onedigital-6bf6d24e,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/05085118e0f10c794ab913b0ab92833d,http://www.onedigital.com,"Atlanta, GA","1,001 to 5,000",Decline to state,"OneDigital’s advisory teams for counsel in employee benefits, wellbeing, human resources, pharmacy consulting, property and casualty solutions, as well as the retirement and wealth management. ",,,,,,
+in-0f02db67c20e427f,indeed,https://www.indeed.com/viewjob?jk=0f02db67c20e427f,https://bonterra.wd1.myworkdayjobs.com/en-US/bonterratech/job/Remote-United-States/Senior-Product-Manager_R2026-0128,Senior Product Manager,Bonterra,"Remote, US",2026-03-27,fulltime,direct_data,yearly,110000.0,135000.0,USD,True,,,,,"US Based Salary Range: $110,000 \- $135,000 *DOE***About Us**
+Bonterra exists to propel every doer of good to their peak impact. We measure that impact against our vision to increase the giving rate as a percentage of GDP from 2% to 3% by 2033\. We know that this goal is lofty, but we are confident that the right technology and expertise will strengthen trust in the sector, allowing the social good industry to accelerate growth and reach peak impact. Bonterra's differentiated, end\-to\-end solutions collectively support a unique network of over 20,000 customers, including over 16,000 nonprofit organizations and over 50 percent of Fortune 100 companies. Learn more at bonterratech.com.**About the Role****About Bonterra**
+Bonterra exists to propel every doer of good to their peak impact. Our vision: increase the giving rate as a percentage of GDP from 2% to 3% by 2033\. We know this is bold, but we believe technology, innovation, and expertise will unlock new levels of trust, efficiency, and growth across the entire social good sector.
+With an unmatched network of over 20,000 customers, including 180,000\+ nonprofit organizations and more than 50% of Fortune 100 companies, Bonterra is the market leader in innovation for social good technology. Today, that leadership is accelerating as we pioneer the application of generative AI to transform how social good organizations fundraise, manage, and deliver impact.**Position Overview**
+Bonterra's Case \& Impact Management category equips social\-good organizations with the systems they need to manage programs, measure outcomes, and communicate their results. Apricot, our leading case management platform, is used by nonprofits and public agencies to coordinate services, track outcomes, and translate operational data into evidence of impact.
+We are seeking a Senior Product Manager to do something genuinely hard and important: unlock the impact story living inside real nonprofit program data and turn that understanding into products that transform how organizations manage their programs, communicate their results, and compel the donors and funders who make their work possible.
+This role sits at a uniquely high\-leverage intersection. You will work shoulder\-to\-shoulder with Bonterra's platform and AI teams to develop deep fluency in how diverse nonprofit programs are structured and operated, and use that fluency to build the next generation of case management agents and define the industry's first impact data product: a structured, trustworthy data layer that captures what happened, relative to goals, over time, across the full spectrum of health and human services programs.
+You will take that impact data and make it useful everywhere it matters across the Bonterra ecosystem. Surfaced inside donor communications in EveryAction, embedded in volunteer and CSR workflows in Deed, powering automated grant reports and impact statements that used to take weeks to write by hand.
+This is a role for someone who is energized by ambiguity, comfortable with complexity, and deeply motivated by the idea that better data infrastructure can change how the social sector understands and communicates its own value.**In this role, you will:*** Own the product vision and outcomes for Bonterra's impact data product and AI\-powered case management capabilities, with end\-to\-end accountability from discovery through delivery, adoption, and measurable business impact.
+* Partner deeply with platform and AI agent teams to develop shared understanding of how social good organizations structure and operate their programs, turning that knowledge into smarter systems and automated workflows.
+* Define and build the impact data product: a structured, extensible data layer that captures what happened, relative to goals, over time, and makes that data usable for grant reporting, fundraising, and cross\-product integration.
+* Lead the development of AI\-powered case agents that reduce manual burden for direct service staff, surface the right information at the right moment, and make complex program workflows feel effortless.
+* Drive integrations between the impact data product and other Bonterra products, enabling use cases like surfacing real\-time impact context inside donor emails, volunteer engagement flows, and CSR program reporting.
+* Set and execute product strategy for your portfolio, balancing customer value, platform scalability, and Bonterra's growth objectives.
+
+**Responsibilities***Product Strategy \& Vision** Define and own the long\-term product vision for Bonterra's impact data product and case management AI capabilities, grounded in real customer problems and aligned with Bonterra's mission and business objectives.
+* Apply an AI\-native mindset to product strategy, designing AI\-powered experiences that create meaningful customer value and identifying where automation can fundamentally change how nonprofits manage cases and communicate impact.
+* Build conviction around a product direction and evangelize it across the organization, gaining alignment from engineering, commercial, and customer success partners, and adapting when necessary but never defaulting to what is easy.
+
+*Extracting Signal from Rich Program Data** Develop deep fluency in how Apricot clients structure and run their programs, building systematic approaches to surfacing meaning from a broad and diverse customer base.
+* Partner with platform and AI agent teams to translate program data understanding into training data, model inputs, and product decisions that improve over time.
+* Identify the most meaningful and generalizable data points across diverse HHS programs and evolve them into a structured, extensible impact data layer.
+
+*Agentic Product Development** Collaborate closely with Bonterra's AI agent teams to define, prioritize, and ship case management agents that meaningfully reduce manual work for direct service staff and program leaders.
+* In partnership with other Case PMs, define what ""good"" looks like for AI\-assisted casework, where automation creates trust and efficiency, and where human judgment must remain in the loop.
+* Ensure agent capabilities are grounded in real user workflows, validated with customers, and measured against outcomes that matter.
+
+*Cross\-Product Integration** Own the integration roadmap connecting impact data to Bonterra's broader product suite, including EveryAction, Deed, and beyond.
+* Enable seamless cross\-product workflows: automated impact inserts in donor communications, real\-time program results surfaced in fundraising and CSR tools, and grant reporting that assembles itself from structured impact data.
+* Partner with product peers across Bonterra to align on data standards, integration patterns, and the shared infrastructure that makes cross\-product experiences possible.
+
+**Qualifications*** **A signal extractor.** You are energized by complexity. You can develop fluency in how diverse organizations structure their work and find the patterns that unlock better defaults, smarter automation, and cleaner product design.
+* **An agentic product thinker.** You understand how AI agents work, where they create genuine value, and how to design human\-AI workflows that earn user trust over time.
+* **Customer\-problem obsessed.** You measure your success by the problems you eliminate and the outcomes customers achieve, not by feature counts.
+* **Technically fluent.** You can engage deeply with engineers and AI/platform teams on architecture, tradeoffs, and long\-term scalability, even if you don't write production code.
+* **A systems thinker.** You think beyond individual screens to platforms, workflows, and ecosystems, including how data created in one product creates value in another.
+* **Mission\-driven but pragmatic.** You want to change the world, and you understand that durable impact requires focus, discipline, and strong execution.
+
+*Experience that stands out:** 5\+ years of product management experience in PE\-backed SaaS, with experience owning complex, data\-oriented or platform\-oriented products.
+* Experience working with or alongside AI/platform engineering teams, with a thoughtful approach to where AI creates real value.
+* Direct experience with reporting, analytics, or data products, ideally in environments serving diverse customer segments with varying needs.
+* Experience in health and human services, nonprofit technology, CSR, ESG, or adjacent enterprise domains is a strong plus.
+
+*You've successfully:** Led a multi\-quarter product initiative that materially improved customer adoption, retention, revenue, or operational efficiency.
+* Made and stood behind difficult product tradeoffs, balancing near\-term delivery with long\-term platform health.
+* Shipped foundational capabilities, including data layers, integrations, or AI\-assisted workflows, that enabled multiple downstream teams, products, or use cases.
+
+**Culture**
+Our team is made up of industry experts and advocates who are 100% committed to supporting the doers of social good. We are currently undergoing an effort to create the vision and values that embody our collective organization and embrace the individuals who make up our community.*Our comprehensive and competitive benefits include:** Generous Flexible Time Off (FTO) Policy
+* Equity for ALL regular, full\-time employees from individual contributors to management, share in our success!
+* Up to 15 paid company holidays including some commemorating social justice events and self\-care
+* Paid volunteer time
+* Resources for savings and investments
+* Paid parental leave
+* Paid sick leave
+* Health, vision, dental, and life insurance with additional access to health and wellness programs
+* Opportunities to learn, develop, network, and connect
+
+
+We are committed to being an equal opportunity employer and evaluate qualified applicants without regard to race, color, religion, sex, pregnancy (including childbirth, lactation and related medical conditions), national origin, age, physical and mental disability, marital status, sexual orientation, gender identity, gender expression, genetic information (including characteristics and testing), military and veteran status, diversity of thought and any other characteristic protected by applicable law.
+If you're a product leader who finds meaning in hard problems, who sees the richness of a diverse customer base as an opportunity rather than an obstacle, and who wants to build the infrastructure that helps the social sector understand and share its own impact, we want to meet you.*At Bonterra, we’re building AI\-powered tools to solve real human challenges—and we want teammates who share that enthusiasm. We value people who will champion AI and bring diverse perspectives from different industries, backgrounds, and cultures. Together, we create AI that breaks down barriers, empowers communities, and delivers better outcomes**At this time, we are unable to consider candidates who require current or future sponsorship for employment authorization.*
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_**Our Culture**
+At Bonterra, we’re innovating with a higher purpose: to increase giving to 3% of US GDP by 2033, creating $573 billion more in global impact every year. At Bonterra, we foster an inclusive, equitable culture where every team member belongs and contributes to meaningful impact. Read more about our values and culture here.**Compensation \& Benefits**
+We offer a comprehensive benefits package that supports your health, well\-being and growth \- explore full details here.*Compensation and benefits for this role apply to full\-time employees in the United States and may vary based on local standards, laws and norms. Pay is determined by location, skills, experience, and education, and is one part of Bonterra’s total rewards package, which may also include bonuses, incentives, equity, and a comprehensive benefits program.*
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_**Equal Opportunity \& Accommodations**
+At Bonterra, we are proud to be an Equal Opportunity Employer. We celebrate diversity and are committed to creating an inclusive environment for all employees. We provide equal employment opportunities without regard to race, color, religion, sex (including pregnancy, sexual orientation, or gender identity), national origin, age, disability, veteran status, or any other characteristic protected by law.
+If you require a reasonable accommodation during the application process, please submit a request.",,https://www.indeed.com/cmp/Bonterra-1,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/c4355a1307e7bbc57feb3fd8864dc26b,https://www.bonterratech.com/,"Austin, TX","1,001 to 5,000",Decline to state,Our purpose is to power those who power social impact. ,,,,,,
+in-46a32b00c780775c,indeed,https://www.indeed.com/viewjob?jk=46a32b00c780775c,https://ats.rippling.com/hearth-careers/jobs/4b22f178-cde5-428b-896c-af8cc074bca8?jobSite=Indeed,Talent Acquisition Specialist,Hearth,"Remote, US",2026-03-27,fulltime,direct_data,yearly,65000.0,75000.0,USD,True,,,,,"**About Hearth:**
+
+  
+
+Hearth exists because 50\-80% of small businesses in the trades (Roofers, Plumbers, etc.) fail within their first five years. Our mission is to change that forever, and empower small business contractors to build and grow successful companies.
+
+  
+
+In the last few years, we’ve built an all\-in\-one platform that helps SMBs grow sales, protect profits, and save time. With over 10,000 customers, Hearth is a vertical SaaS platform powered by a financial services layer that is currently powering billions in home improvement projects. We are growing, profitable in our base case, and are working to disrupt a fragmented, underserved, $600B market.
+
+  
+
+Backed by the same investors as SpaceX, Stripe, Palantir, Airbnb, Rippling, Affirm, Brex, and OpenAI (Founders Fund, 8VC, Human Capital), we aim to protect small business entrepreneurship in America, redefine what is possible in running a trades business in today’s rapidly changing world, and bring forth a future where every small business owner in the trades can succeed, despite not having a fancy pedigree, special connections, or access to deep pockets.
+
+ **The Opportunity**
+
+
+As a General Talent Acquisition Specialist at Hearth, you will be the primary engine behind our headcount growth across Engineering, Product, and Operations. This role will directly influence our technical bar and organizational culture by hunting for high\-impact talent in a competitive B2B fintech landscape.
+
+  
+
+If you thrive on the variety of closing a Senior Software Engineer one day and a Marketing Lead the next, this role offers the autonomy to own the full recruiting lifecycle and the visibility to partner directly with our executive leadership.
+
+ **What you’ll do:**
+
+**Full\-Cycle Recruiting \& Strategy**
+
+* Manage end\-to\-end recruitment for a diverse req load, focusing heavily on Software Engineering, Product, and Business Operations.
+* Partner with hiring managers to define success profiles, build interview loops, and set a high bar for talent.
+* Act as a talent advisor, providing market insights and data\-driven recommendations to leadership to refine hiring strategies.
+
+**Technical Sourcing \& Pipeline Building**
+
+* Proactively hunt for passive talent using LinkedIn Recruiter, Github, and modern AI\-sourcing tools.
+* Build ""warm"" talent communities for recurring technical and operational needs to ensure we stay ahead of our growth milestones.
+
+**Candidate Experience \& Closing**
+
+* Own the candidate journey from the initial ""hook"" through to complex offer negotiations and closing.
+* Act as a brand ambassador, articulating Hearth’s vision and technical challenges to senior\-level candidates.
+
+**Process Optimization**
+
+* Implement AI and automation tools to streamline top\-of\-funnel sourcing and reduce administrative friction.
+* Maintain impeccable ATS data integrity to track metrics like time\-to\-hire, pass\-through rates, and sourcing channel effectiveness.
+
+ **What We're Looking For:**
+
+* 2\+ years of full\-cycle recruiting experience. You must have a proven track record in technical recruiting (Eng/Product) combined with experience in business or ops roles.
+* You don’t rely on inbound applications. You have a ""hunter"" mentality and take pride in your ability to find and engage ""ungettable"" passive talent.
+* You understand the pace, ambiguity, and high stakes of a fast\-growing SaaS or Fintech environment.
+* You use recruiting metrics to tell a story and adjust your strategy when a search gets tough.
+* You can speak the language of engineers and the language of executives with equal fluency.
+
+ **Our Core Values**
+
+* **Truth.** We value honesty and data. We seek to understand what is reality, so we can effectively respond to it.
+* **Slope.** Rate of change over time. We hire and reward based on a team member’s potential, capacity, and growth\-mindset, rather than a fancy resume.
+* **Mutual Benefit.** The best outcomes happen when everyone wins \- customers, team members, and the company. We seek to understand each other’s aspirations and create alignment to get there.
+* **Competitive Greatness.** We desire an opportunity and environment from which to pull the greatest versions of ourselves out into the world, rather than just a “job”.
+
+ **Benefits**
+
+* Mission\-driven, values\-based culture.
+* Competitive pay.
+* Unmatched opportunities to learn and develop; front\-row seat at a fast\-growing tech startup
+* Unlimited PTO, plus paid company holidays.
+* Meaningful equity
+* Medical, dental, and vision options.
+* 401(k)
+* Free Employee Assistance Program
+* Parental Leave Program
+* Pet Insurance
+
+ **More About Us**
+
+
+Hearth embraces diversity. We are proud to be an equal opportunity workplace and do not discriminate on the basis of sex, race, color, age, sexual orientation, gender identity, religion, national origin, citizenship, marital status, veteran status, or disability status. We consider employment for qualified applicants with arrest and conviction records.
+
+ **The pay range for this role is:**  
+
+65,000 \- 75,000 USD per year(Remote (United States))",,https://www.indeed.com/cmp/Hearth-95fddac4,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/ed3ee9400bf1ebf48b85dcc0a10f6d3c,https://www.gethearth.com,"Austin, TX",,,,,,,,,
+in-027b849af341880c,indeed,https://www.indeed.com/viewjob?jk=027b849af341880c,https://ats.rippling.com/reserv/jobs/cd3d1718-9250-4bf2-9cca-bef68589ad5b?jobSite=Indeed,Claims Team Lead - Transportation (BI),Reserv,"Remote, US",2026-03-27,fulltime,,yearly,,,USD,True,,,,,"**About Reserv**
+
+
+Reserv is an insurtech creating and incubating cutting\-edge AI and automation technology to bring efficiency and simplicity to claims. Founded by insurtech veterans with deep experience in SaaS and digital claims, Reserv is venture\-backed by Bain Capital and Altai Ventures and began operations in May 2022\. We are focused on automating highly manual tasks to tackle long\-standing problems in claims and set a new standard for TPAs, insurance technology providers, and adjusters alike.
+
+
+We have ambitious (but attainable!) goals and need people who can work in an evolving environment. If building a leading TPA and the prospect of tackling the long\-standing challenges of the claims role sounds exciting, we can’t wait to meet you.
+
+### **About the role**
+
+
+As a Bodily Injury/Property Damage Liability Team Lead at Reserv, you will be a working leader providing support to a claims manager with leadership and claim technical responsibilities. Leadership responsibilities will include overseeing work done within the Commercial Transportation Claims adjusting staff. We want your background and experience to deliver operational effectiveness, particularly in leveraging technology and analytics to drive better efficiencies and performance. You will serve a critical role with the team, the customers, and the client. This role will balance management responsibilities and individual contributor responsibilities when volume dictates the need for assistance with a claim.
+
+### 
+
+### **Who you are**
+
+* Highly motivated and growth\-oriented, impactful and influential
+* Claims professional \- you are knowledgeable and have a track record of success in commercial transportation claims adjudication.
+* Strong leader \- through formal management experience or a proven track record of peer and project leadership, you have demonstrated the ability to motivate, support, and teach a team to help them excel in their roles.
+* Tech\-oriented \- You are excited by the prospect of building a tech\-driven claims organization while delivering an excellent service and have proven results leveraging technology and analytics.
+* Passionate \- Claims professional who cares about their team, the customer, and their experience
+* Empathetic leader \- You exercise empathy and patience towards everyone you interact with
+* Sense of urgency \- at all times. That does not mean working at all hours
+* Creative \- You challenge existing assumptions and find ways of leveraging technology and the talents of your team to address problems
+* Curious \- You want to know the whole story so you can make the right decisions early and be decisive when it counts.
+* Problem solver \- You have the ability to take a ‘deep dive’ into the details of the business while staying focused on the big picture.
+* Anti\-status quo \- You don’t just wish things were done differently; you act on it
+* Communicative \- You are comfortable with and understand the importance of phone communications throughout the claims process.
+* And did we mention a sense of humor? Claims are hard enough as it is!
+
+### 
+
+### **What we need**
+
+
+We need you to do all the things typical to the role:
+
+* Flexibility \- you will need to be able to switch from claims handling to coaching and feedback
+* Agility\- you must have an agile mindset and the ability to pivot from focus to focus in a moment’s notice
+* Be consistently dependable in achieving or exceeding goals and overcoming obstacles
+* Implement and maintain best practices for claims handling, including claim intake, investigation, evaluation, settlement, and recovery
+* Align team with client and customer expectations of the claims process
+* Serve as a resource for escalated claims
+* Foster a positive work environment, promote teamwork, and encourage professional growth and development
+* Attract, hire, retain, and provide a high level of training with the support of the rest of the leadership team
+* Prepare and present comprehensive claims reports, metrics, and analyses to clients and customers; advise clients on claim trends and loss mitigation
+
+
+Job Duties:
+
+* Serve as backup/ leader when the Manager/Director is out of office
+* Responsible for initial onboarding tasks/ access and new hire cultural immersion
+* SME for first\-line questions, escalations, roundtable discussions
+* Increased reserve and payment authority with the ability to assist with moderate reviews
+* Identify topics and trends to discuss in team Huddles and Elevated Claims Experience Workshops lead/ co\-lead by Team Leads, Managers, and other Reserv employees
+* Customer Obsession Champions\- Active advocates who help leadership cultivate a customer\-centric mindset
+
+**Requirements**
+----------------
+
+* 5\+ years of insurance claims experience in multiple lines of business with bodily injury and property damage experience
+* Active adjuster license required: resident state license if available, otherwise a Designated Home State (DHS) license
+* 3\+ years of leadership experience with a preference for experience managing in a remote environment
+* Comfortable with technology and the ability to evolve the claims systems and processes to drive better efficiencies and outcomes
+* Demonstrated commitment to quality, accuracy, and attention to detail
+* Integrity, ethics, and a strong sense of accountability in handling confidential and sensitive information
+
+**Benefits**
+------------
+
+* Generous health\-insurance package with nationwide coverage, vision, \& dental
+* 401(k) retirement plan with employer matching
+* Competitive PTO policy – we want our employees fresh, healthy, happy, and energized!
+* Generous family leave policy
+* Work from anywhere to facilitate your work life balance
+* Apple laptop, large second monitor, and other quality\-of\-life equipment you may want. Technology is something that should make your life easier, not harder!
+
+ **Additionally, we will**
+
+* Listen to your feedback to enhance and improve upon the long\-standing challenges of an adjuster and the claims role
+* Work toward reducing and eliminating all the administrative work from an adjuster role
+* Foster a culture of empathy, transparency, and empowerment in a remote\-first environment
+
+  
+
+At Reserv, we value diversity and believe that a variety of perspectives leads to innovation and success. We are actively seeking candidates who will bring unique perspectives and experiences to our team. We welcome applicants from all backgrounds and encourage those from underrepresented groups to apply. If you believe you are a good fit for this role, we would love to hear from you!",,https://www.indeed.com/cmp/Reserv-1,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/9b535567e566e602246982010f7534ea,https://www.reserv.com/,,,,,,,,,,
+in-915ddeded4a5e5fd,indeed,https://www.indeed.com/viewjob?jk=915ddeded4a5e5fd,https://jobs.lever.co/applydigital/c6a39c4e-8c98-42b4-ad74-9df73e23b0fc?lever-source=Indeed,Engagement Manager - Technical,Apply Digital,"Remote, US",2026-03-27,fulltime,,,,,,True,,,,careers@applydigital.com,"**ABOUT APPLY DIGITAL**  
+
+Apply Digital is a global experience transformation partner. We drive AI\-powered change and measurable impact across complex, multi\-brand ecosystems. Leveraging expertise that spans across the customer experience lifecycle from strategy, design to engineering and beyond, we enable our clients to modernize their organizations and maximize value for their business and customers.  
+
+Our 750\+ team members have helped transform global companies like Kraft Heinz, NFL, Moderna, Lululemon, Dropbox, Atlassian, A\+E Networks, and The Very Group.  
+
+Apply Digital was founded in 2016 in Vancouver, Canada. In the past nine years, we have grown to ten cities across North America, South America, the UK, Europe, and India.  
+
+At Apply Digital, we believe in the “One Team” approach, where we operate within a ‘pod’ structure. Each pod brings together senior leadership, subject matter experts, and cross\-functional skill sets, all working within a common tech and delivery framework. This structure is underpinned by well\-oiled scrum and sprint cadences, keeping teams in step to release often and retrospectives to ensure we progress toward the desired outcomes.  
+
+Wherever we work in the world, we envision Apply Digital as a safe, empowered, respectful and fun community for people, every single day. Together, we work to embody our SHAPE (smart, humble, active, positive, and excellent) values and make Apply Digital a space for our team to connect, grow, and support each other to make a difference.  
+
+Visit our Careers page to learn how we can unlock your potential. **Role**: We’re looking to bring on an **Engagement Manager** to join our growing Marketing Services team. In this role, you will manage a mix of strategic marketing programs and technically complex projects—including MarTech implementations, data audits, CDP integrations, mobile SDK setups, and data architecture work—partnering closely with cross\-functional teams to deliver high\-quality outcomes on time and within scope.  
+
+
+
+Acting as the primary liaison between clients and internal teams, you’ll translate client goals into actionable deliverables while ensuring strong alignment across strategy, execution, and performance. You will work at the intersection of marketing strategy and technical delivery, bridging the gap between our Marketing Services team and our Solutions Architect team when projects require deeper technical engagement.
+
+
+
+This role is ideal for a technically\-minded project manager or CSM who can navigate both strategic marketing programs and hands\-on technical implementations—someone equally comfortable discussing lifecycle marketing strategy and scoping a CDP integration or mobile SDK deployment alongside a Solutions Architect.
+
+
+
+### **Responsibilities:**
+
+
+* Serve as the primary point of contact for clients, ensuring all deliverables are aligned to business goals, KPIs, and executed on time and at high quality.
+* Translate client goals into actionable marketing objectives, roadmaps, and measurable deliverables.
+* Lead cross\-functional teams (developers, strategists, designers, and QA) to deliver integrated MarTech programs that drive measurable impact.
+* Oversee project execution across multiple workstreams, ensuring clarity in scope, timelines, priorities, and dependencies.
+* Track all work in project management tools, and partner with internal teams to ensure appropriate resourcing, balanced workloads, and on\-time delivery of assets.
+* Maintain visibility into team capacity and allocation, partnering with Engagement Coordinators to ensure work is assigned based on availability, skillset, and priority.
+* Identify risks or roadblocks that may impact delivery, timelines, or quality, and proactively drive resolution plans with internal teams.
+* Monitor account health, ensuring work aligns with scope, timelines, and overall delivery expectations.
+* Support budget awareness and efficient delivery by aligning work to agreed scope and flagging potential over\-servicing or misaligned effort.
+* Partner with clients and internal teams to continuously improve campaign performance through testing, insights, and optimization.
+* Manage technically complex engagements such as CDP implementations (e.g., Segment, Hightouch), mobile SDK setups (e.g., Braze), and MarTech data architecture projects, coordinating closely with Solutions Architects and engineers to ensure successful delivery.
+* Partner with Solutions Architects and the Technical Consulting team on projects that require deeper technical expertise, ensuring seamless coordination, clear scoping, and consistent client communication across both teams.
+* Translate technical requirements and implementation details into clear client\-facing documentation, timelines, and status communications.
+### **Minimum requirements to be considered:**
+
+
+* 3–5 years of experience in a client management, account management, or project management role within a marketing, agency, or digital environment.
+* Experience managing client accounts or programs, with exposure to multi\-channel or complex marketing initiatives.
+* Strong project management skills, with experience managing multiple projects or workstreams simultaneously.
+* Working knowledge of Marketing Automation platforms such as Iterable, Braze, or Salesforce Marketing Cloud, as well as familiarity with CDP or data integration tools such as Segment, Hightouch, or mParticle.
+* Understanding of audience segmentation, personalization, A/B testing, and campaign performance analysis.
+* Strong communication and client\-facing skills, with the ability to build relationships and contribute to strategic discussions
+* Highly organized, adaptable, and proactive, with the ability to thrive in a fast\-paced environment.
+* Demonstrated ability to manage technically complex projects, including MarTech implementations, integrations, or data architecture work, with a working understanding of how data flows across the MarTech stack.
+* Comfort engaging in technical conversations with engineers and Solutions Architects, and ability to translate technical concepts clearly to non\-technical client stakeholders.
+### **The ideal candidate:**
+
+
+* Has superior written skills, strong organization, and excellent communication and email etiquette.
+* Is a strong collaborator and relationship builder who thrives in a team environment.
+* Has excellent attention to detail and can synthesize information, break it down into clear tasks, and ensure nothing falls through the cracks.
+* Has experience working in project management tools (Asana, Monday, Jira, Trello).
+* Has experience working cross\-functionally across multiple teams and stakeholders.
+* Is able to balance multiple priorities while maintaining quality and meeting deadlines.
+* Understands how to manage competing priorities across client expectations, team capacity, and delivery timelines.
+* Has hands\-on familiarity with MarTech tools and a genuine curiosity about how technology powers marketing—comfortable enough to engage in technical discovery sessions, read integration specs, and ask the right questions alongside a Solutions Architect.
+* Has a background that spans both marketing strategy and technical project delivery—perhaps having previously worked as a Technical PM, marketing operations lead, or in a similar hybrid role.
+**LIFE AT APPLY DIGITAL**  
+
+At Apply Digital, people are at the core of everything we do. We value your time, safety, and health, and strive to build a work community that can help you thrive and grow. Here are a few benefits we offer to support you: **Great projects:** Broaden your skills on a range of engaging projects with international brands that have a global impact.**An inclusive and safe environment:** We’re truly committed to building a culture where you are celebrated and everyone feels welcome and safe.**Learning opportunities:** We offer generous training budgets, including partner tech certifications, custom learning plans, workshops, mentorship, and peer support.**Generous vacation policy:** Work\-life balance is key to our team’s success, so we offer ample time away from work to promote overall well\-being.**Customizable benefits:** Tailor your extended health and dental plan to your needs, priorities, and preferences.**Flexible work arrangements:** We work in a variety of ways, from remote, to in\-office, to a blend of both.  
+
+Apply Digital is committed to building a culture where differences are celebrated and everyone feels welcome. That’s why we value equal opportunity and nurture an inclusive workplace where our individual differences are recognized and valued.  
+
+For more information, visit the Diversity, Equity, and Inclusion (DEI) section of our website. If you have accommodation needs at this stage of the recruitment process, please inform us as soon as possible by emailing us at careers@applydigital.com.  
+
+We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us.",,https://www.indeed.com/cmp/Apply-Digital,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/c622827ad30ff7cf1b64893dac76a1f3,https://www.applydigital.co,Vancouver,11 to 50,,,,,,,,
+in-03c7bf9f2227d2ef,indeed,https://www.indeed.com/viewjob?jk=03c7bf9f2227d2ef,https://ats.rippling.com/dlb-associates/jobs/5dd0ae44-213e-4b56-b94c-f21269bf1231?jobSite=Indeed,Lead ICT Engineer,DLB Associates,"Remote, US",2026-03-27,fulltime,direct_data,yearly,126788.0,162107.0,USD,True,,,,,"DLB Associates is a premier engineering and consulting firm specializing in innovative, mission\-critical solutions across hyperscale data centers, advanced infrastructure, and high\-performance building systems. With over four decades of expertise, we partner with some of the world’s most influential companies to design and optimize environments that demand precision, scalability, and resilience.
+
+ **Join us and be part of a team where your voice matters, your work makes an impact, and your growth is a shared priority.**
+
+ **Position Title:** Lead ICT Engineer
+
+**Position Location**: Remote \- work virtually from anywhere in the United States
+
+ **JOB SUMMARY**
+
+
+The Lead ICT Engineer will collaborate with design and Design staff and oversee full cycle ICT design activities for mission critical hyperscale and colocation data center and smart building / city projects. This person will interact closely with organizational leadership to develop and edit project specifications and lead design development efforts.
+
+  
+
+The Lead ICT Engineer will be self\-directed on day\-to\-day work and receive high level instruction on new projects or assignments. Will lead project teams and projects of complex scope and help develop / manage broader programs. May coordinate activities of other personnel.
+
+  
+
+This person will communicate and operate in line with organizational goals and values, as well as departmental objectives.
+
+ **ESSENTIAL FUNCTIONS**
+
+**Lead ICT Engineering Design Activities (40%)**
+
+* Independently perform advanced engineering work
+* Perform advanced Information Communication Technology (ICT) design tasks
+* Perform advanced computation analysis and design tasks for complex projects, components and systems
+* Independently develop scalable fiber optic and copper plant design
+* Independently determine physical layer route and utilization
+* Utilize Revit software to prepare drawings and visual aids
+* Review and / or prepare book or sheet specifications
+* Timely and effective management of project design team including resource forecasting and coordination
+* Identify potential project scope changes and aid in development of strategies to minimize impact and control deviations from estimated costs and project deadlines
+* Perform QAQC peer reviews for projects where he or she is not the lead design engineer
+
+**Lead Construction Activities (20%)**
+
+* Survey existing building conditions and prepares technical reports of findings
+* Collect data and other information for construction documents
+* Prepare project design, specification and construction documents
+* Lead the engineering team and interact closely with the project management team
+* Review shop drawings and submittals
+* Review and respond to RFIs
+* Review and complete punch lists and project closeout documents
+* Review and approve change order requests
+
+**Business Development and Stakeholder Relations (20%)**
+
+* Develop proposals including project scope, schedule and budget
+* Responsible for execution of the firm’s client value system and assuring that the project is executed in accordance with company policies and standards
+* Serve as primary client contact for one or more clients. May act as a Client Program Manager with business development and marketing responsibilities.
+* Assist with research for technical papers for conferences and journals
+
+**Organizational Development and Continuous Improvement of Policies and Procedures (20%)**
+
+* Mentor associates and assist with training and development to create a learning and growing environment
+* Contribute to organizational training and standards development
+* May assist in the strategic planning for the group
+* May assist with hiring process
+* Completion of Assigned Tasks and Deliverables on Time and on Budget
+
+**Technology, Digital Tools \& AI\-Enabled Efficiency**
+
+* Identify opportunities and lead the strategic use of technology, digital platforms, and AI\-enabled tools to enhance efficiency through workflow automation, reduced manual effort, and improved accuracy in forecasting, documentation, reporting, and quality processes.
+* Support adoption of emerging technologies \- including advanced analytics, data visualization tools, and digital construction management platforms \- to strengthen readiness, quality assurance, and project controls.
+* Collaborate with internal teams to ensure technology solutions align with DLB standards for data security, privacy, and operational integrity.
+* Promote a culture that embraces innovation, continuous improvement, and the strategic use of technology to optimize performance and scalability.
+
+*Performs Other Related Duties as Assigned*
+
+ **Requirements**
+
+**POSITION REQUIREMENTS (ADVANCED LEVEL FOR ALL THE FOLLOWING)**
+
+* Advanced knowledge of fiber optic component, cabling and interconnect products
+* Advanced knowledge in ICT structured cabling design technologies and standards
+* Experience in Revit or other Computer Aided Design Tools
+* Knowledge of MS Office Suite (Excel, Word, Outlook, PowerPoint)
+* Skilled in completing assignments accurately and with attention to detail
+* Ability to leverage AI and emerging technologies to streamline workflows, optimize operational processes, and contribute to company\-wide innovation
+* Ability to follow company and site safety requirements
+* Ability to analyze and prepare documents, reports and correspondence
+* Ability to communicate effectively in both oral and written form (technical and non\-technical information)
+* Ability to communicate effectively directly with clients and at times serve as primary point of client contact
+* Ability to work successfully as a member of a team and independently with moderate supervision
+* Ability to work under pressure and meet close deadlines
+* Organizational skills, with the ability to manage multiple tasks simultaneously
+* Ability to work successfully in a remote environment thru effective communication and organizational skills, self\-motivation, proactiveness and resourcefulness in a distraction free workspace
+* Ability to work in interdepartmental groups in multi\-role efforts
+* Ability to identify and analyze complex problems, evaluate alternatives and implement effective solutions
+* Ability to effectively plan and delegate the work of others
+
+ **PHYSICAL DEMANDS**
+
+
+The following physical demands must be met by the employee to successfully perform the essential functions of this job. Reasonable accommodations may be made to enable individuals with disabilities to perform the essential functions.
+
+  
+
+While performing the duties of this job, the employee is
+
+* Frequently manipulating, moving or grasping small parts, devices or tools
+* Frequently required to remain in a stationary position
+* Frequently moving through office, critical facility and other environments (such as low temperatures, high temperatures and outdoor elements such as precipitation and wind), including tight and confined spaces
+* Frequently descending / ascending stairs and ladders to access equipment
+* On occasion the employee may be required to position self under or over equipment
+* On occasion the employee may move equipment weighing up to 25 pounds
+
+ **TRAVEL / RELOCATION REQUIREMENTS**
+
+* Up to 10%, this may include travel to any or all 50 US states
+* Travel is defined as physically leaving home on behalf of business activities including but not limited to client sites, meetings with other employees, meeting for business development purposes, running errands on behalf of the business, attending industry conferences, etc.
+
+ **EDUCATION / EXPERIENCE REQUIREMENTS**
+
+* Bachelor’s degree in Mechanical Engineering, Electrical Engineering, Computer Science or other related field
+* Registered Communications Distribution Design Certificate preferred
+* Cisco Certified Internetwork Expert (CCIE) Certification preferred
+* Experience with Revit modeling software
+
+
+PLUS
+
+* Minimum of eight years of engineering or related field experience
+* Two or more of those years working on Mission Critical Data Center design projects
+
+ **Benefits**
+
+
+DLB Associates offers a very competitive benefits package; highlights include
+
+* Choice of comprehensive medical plans (including two PPO\-style plans and a HDHP w/ HSA option)
+* Flex spending accounts (FSA)
+* Dental and vision plans
+* Comprehensive medical, dental and vision benefits extended to spouse / domestic partner and dependent children up to age 26
+* 401k with company match and self\-directed brokerage account option
+* PTO including additional paid time off during the last week of the year
+* Company paid life insurance coverage for employees and their eligible dependents
+* Short and long\-term disability, AD\&D coverage
+* Professional development opportunities, tuition reimbursement and professional licensing assistance
+* Paid parental leave after one year of employment
+
+  
+
+DLB Associates is an EEO/Affirmative Action Employer and participates in the E\-Verify program with the Department of Homeland Security. We encourage diversity in our workforce.
+
+  
+
+CO, CA, IL, NY, WA, and Washington DC residents only: In accordance with CO, CA, IL, NY, WA, and Washington DC law, the range provided is DLB's reasonable estimate of the base compensation for this role. The actual amount may differ based on non\-discriminatory factors such as experience, knowledge, skills, abilities, and location. DLB Associates is an EEO/Affirmative Action Employer and participates in the E\-Verify program with the Department of Homeland Security. We encourage diversity in our workforce.
+
+  
+
+Are you ready to challenge yourself and redefine standards in the AEC industry? Apply now and join our award\-winning team!  
+
+
+
+  
+
+**NOTICE TO THIRD PARTY AGENCIES:**
+
+
+DLB does not accept unsolicited resumes from recruiters, employment agencies, or other staffing services. Unsolicited resumes include any resume or hiring document sent to DLB in the absence of a signed Service Agreement where DLB has expressly requested recruitment/staffing services specific to the position at hand. Any unsolicited resumes, including those submitted to hiring managers or other business leaders, will become the property of DLB and DLB will have the right to hire that candidate without reservation – no fee or other compensation will be owed or paid to the recruiter, employment agency, or other staffing service.
+
+ **The pay range for this role is:**  
+
+126,788 \- 162,107\.05 USD per year(Remote (United States))",,https://www.indeed.com/cmp/Dlb-Associates,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/7fbb9fe5ef73bf194c81b051ae4f1018,http://www.dlbassociates.com,We are fully remote. Live anywhere in the US!,201 to 500,$25M to $100M (USD),,,,,,,
+in-14c4a2bbb6c1c741,indeed,https://www.indeed.com/viewjob?jk=14c4a2bbb6c1c741,https://jobs.lever.co/lyrahealth/47ea3d00-c86f-4eaa-998f-fb8233c61988?lever-source=Indeed,Marketing Operations Manager,Lyra Health,"Remote, US",2026-03-27,fulltime,direct_data,yearly,106000.0,146000.0,USD,True,,,,globaldpo@lyrahealth.com,"**About Lyra Health**  
+
+Lyra Health is the leading provider of mental health solutions for employers supporting more than 20 million people globally. The company has delivered 13 million sessions of mental health care, published more than 20 peer\-reviewed studies, and delivered unmatched outcomes in terms of access, clinical effectiveness and cost efficiency. Extensive peer\-reviewed research confirms Lyra’s transformative care model helps people recover twice as fast and results in a 26% annual reduction in overall healthcare claims costs. Lyra is transforming access to life\-changing mental health care through Lyra Empower, the only fully integrated, AI\-powered platform combining the highest\-quality care and technology solutions. **About the Role:**
+Lyra Health is looking for a detail\-oriented and technical Marketing Operations Manager to help us build and scale the engine behind our member and B2B engagement strategies. In this role, you will be the primary architect of our marketing technology stack, ensuring that our outreach is seamless, automated, and impactful. You will sit at the intersection of marketing and technology, transforming strategic goals into high\-performing automated journeys that help our members access the care they need, and bring our capabilities to new customers.
+### **Responsibilities**
+
+
+* MarTech Ownership: Manage the end\-to\-end member\-facing marketing technology stack, including implementation, and ongoing integrations with internal databases. Serve as team SME and technical expert for B2B marketing tech stack, interfacing with growth marketing teams.
+* Campaign Automation: Build, maintain, and monitor all automated campaigns and lifecycle journeys, ensuring high deliverability and operational excellence.
+* Operational Coordination: Partner with IT, product, engineering, and operations teams to ensure all member\-facing operations align with Lyra’s overarching security standards and brand governance.
+* Database Management: Oversee audience segmentation and data hygiene within the marketing automation platform to ensure highly targeted and personalized communications.
+* Performance Monitoring: Establish robust monitoring and alerting systems to identify and resolve any technical glitches or execution errors within automated workflows.
+* Campaign Optimization: Develop and document scalable processes for campaign execution, lead routing, and reporting to increase the efficiency of the broader marketing team.
+### **Qualifications**
+
+
+* 8\+ years of experience in marketing operations, revenue operations, or a technical marketing role.
+* Automation Power User: Expert\-level proficiency in marketing automation platforms such as Braze, Marketo, or Salesforce Marketing Cloud.
+* Technical Proficiency: Strong understanding of data structures, API integrations, and how marketing tools interface with product backends.
+* Analytical Mindset: Exceptional troubleshooting skills with a ""systems thinking"" approach to solving complex operational challenges.
+* Attention to Detail: Uncompromising focus on quality control and testing in a high\-stakes, member\-facing environment.
+### **Preferred Qualifications**
+
+
+* Experience in a HIPAA\-compliant or highly regulated technical environment.
+* Basic knowledge of HTML/CSS for email template troubleshooting.
+* Certification in a major marketing automation platform (e.g., Marketo Certified Expert or Braze Certified Marketer).
+* Experience managing marketing operations for a B2B2C or healthcare\-focused company.
+As a full\-time Marketing Operations Manager, you will be employed by Lyra Health, Inc. The anticipated annual base salary range for this full\-time position is $106,000 to 146,000\. The base range is determined by role and level, and placement within the range will depend on a number of job\-related factors, including but not limited to your skills, qualifications, experience and location. This role may also be eligible for discretionary bonuses.  
+
+  
+
+Annual salary is only one part of an employee’s total compensation package at Lyra. We also offer generous benefits that include:
+* Comprehensive healthcare coverage (including medical, dental, vision, FSA/HSA, life and disability insurances)
+* Lyra for Lyrians; coaching and therapy services
+* Equity in the company through discretionary restricted stock units
+* Competitive time off with pay policies including vacation, sick days, and company holidays
+* Paid parental leave
+* 401K retirement benefits
+* Monthly tech allowance
+* We like to spread joy throughout the year with well\-being perks and activities, surprise swag, regular community celebration…and more!
+
+""We are an Equal Opportunity Employer. We do not discriminate on the basis of race, color, religion, sex (including pregnancy), national origin, age, disability, genetic information or any other category protected by law.  
+
+By applying for this position, you acknowledge that your personal information will be processed as per the Lyra Health Workforce Privacy Notice. Through this application, to the extent permitted by law, we will collect personal information from you including, but not limited to, your name, email address, gender identity, employment information, and phone number for the purposes of recruiting and assessing suitability, aptitude, skills, qualifications, and interests for employment with Lyra. We may also collect information about your race, ethnicity, and sexual orientation, which is considered sensitive personal information under the California Privacy Rights Act (CPRA) and special category data under the UK and EU GDPR. Providing this information is optional and completely voluntary, and if you provide it you consent to Lyra processing it for the purposes as described at the point of collection, for example for diversity and inclusion initiatives. If you are a California resident and would like to limit how we use this information, please use the Limit the Use of My Sensitive Personal Information form. This information will only be retained for as long as needed to fulfill the purposes for which it was collected, as described above. Please note that Lyra does not “sell” or “share” personal information as defined by the CPRA. Outside of the United States, for example in the EU, Switzerland and the UK, you may have the right to request access to, or a copy of, your personal information, including in a portable format; request that we delete your information from our systems; object to or restrict processing of your information; or correct inaccurate or outdated personal information in our systems. These rights may be subject to legal limitations. To exercise your data privacy rights outside of the United States, please contact globaldpo@lyrahealth.com. For more information about how we use and retain your information, please see our Workforce Privacy Notice.""
+
+We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, summarizing interviews, or assessing responses. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us.",,https://www.indeed.com/cmp/Lyra-Health,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/c9cee1312b695477ed8a255806cd6ca1,https://www.lyrahealth.com/,San Francisco Bay Area,"501 to 1,000",$100M to $500M (USD),Lyra is transforming mental health care using technology with a human touch to help people feel emotionally healthy at work and home.,,,,,,
+in-bda4401f9124e17c,indeed,https://www.indeed.com/viewjob?jk=bda4401f9124e17c,https://career4.successfactors.com/career?career%5fns=job%5flisting&company=Hersheys&navBarLevel=JOB%5fSEARCH&rcm%5fsite%5flocale=en%5fUS&career_job_req_id=128137,Senior Analyst OT Exposure,The Hershey Company,"Remote, US",2026-03-27,,,,,,,True,,,,ApplicationHelp@hersheys.com,"Job Location: Remote
+
+
+**Major Duties/Responsibilities:**  
+
+The SENIOR EXPOSURE ANALYST will be primarily responsible for the consistent day to day activities  
+
+of the Hershey OT Security SOC and serving as an elevated technical point of contact to other OT SOC  
+
+analysts. The analyst will engage in evaluating and triaging the daily ticket volume,  
+
+design/develop/implement detection use cases, and engage in tuning activities in collaboration with other  
+
+stakeholders.
+
+  
+
+
+
+The Analyst will escalate critical tickets to their manager with supporting documentation and  
+
+forensics work and participate in Incident Response with other stakeholders. The security analyst must be  
+
+willing to engage with different manufacturing environments while providing excellent information security  
+
+knowledge and balance activities between the IT and OT environments.
+
+  
+
+
+
+The Senior Analyst will also have opportunities to interact with other attack surfaces related projects and  
+
+technologies.
+
+  
+
+
+
+The analyst invests in analyst growth, and also engages with management, peers, and stakeholders to  
+
+ensure the quality of the services. The analyst ensures that services are aligned with overall threat  
+
+management strategies and business objectives.
+
+  
+
+
+**Responsibilities**  
+
+* Assist with building and operation of the next\-generation OT SOC and exposure\-related systems.
+* Collaborate and communicate with stakeholders, peers, and partners. Establish relationships.
+
+
+Provide feedback and support. Assess and recommend mitigations against both exposure and  
+
+industrial threats.  
+
+* Understand and utilize developments in Operational Technology \& Manufacturing, including
+
+
+security practices, not just in the CPG sector. Utilize best practices and frameworks. Investigate  
+
+and recommend appropriate emerging technologies. Participate in intelligence, hunting, detection,  
+
+deception, response, and validation activities with stakeholders while providing intelligence and  
+
+insights back to stakeholders to drive workflows.  
+
+* Develop relationships with analysts for career and business growth and to ensure timely and
+
+
+accurate services  
+
+* Develop and deliver regular metrics and reports to management and stakeholders on the state of
+
+
+the services, including performance and availability.  
+
+* Assess people, process, and technology capabilities.
+  
+
+
+**Requirements**  
+
+* Strong knowledge of threat management technologies.
+* Strong knowledge of cybersecurity principles and practices.
+* Strong knowledge of manufacturing, including manufacturing security practices.
+* Strong knowledge of industrial control protocols and technologies.
+* Experience with attack surface management practices and technologies.
+* Demonstrated ability to lead and mentor a team
+* Excellent communication skills
+* Excellent analytical and problem\-solving skills
+* Ability to work in a fast\-paced, dynamic environment and manage multiple tasks
+* Experience with programming languages such as Python or PowerShell
+* Experience with industrial attack surface platforms such as Dragos.
+* Experience with threat hunting tools such as Splunk or Elastic
+* Experience with data analysis of Splunk, Crowdstrike, or ICS platform records.
+* Experience with automation such as Service Now, or Phantom.
+* Willingness to explore automation activities and safe/responsible AI growth opportunities
+  
+
+
+**Minimum Education and Experience Requirements:**  
+
+**Education:** BS Degree in Cyber Security or other engineering technology with expertise and  
+
+experience in Industrial control systems  
+
+* One or more of the following certifications is preferred: CISSP, Security\+, GSEC,
+
+
+GICSP, or proven attendance at other SANS ICS courses.  
+
+* Minimum of 2 years experience in Food Processing, Confectionery,
+* Pharmaceutical or related industries preferred.
+* Experience with incident response is preferred.
+* Working knowledge of standard industry PLC and SCADA/HMI systems. ·
+* Advanced knowledge of Industrial Control Network architecture, servers,
+* virtualization, data integration \& data historians is essential.
+* **Experience:** 6\-9 years – Work experience evaluated as applicable
+  
+
+
+**Soft Skills:**
+
+
+**The incumbent must possess:**  
+
+* Strong troubleshooting skills.
+* Excellent oral and written communication skills.
+* Innovative and creative problem solving skills.
+* Ability and willingness to work in a team environment and work with limited supervision.
+* Ability, willingness and demonstrated experience in accomplishing project related
+
+
+responsibilities within critical time restraints to meet corporate objectives.  
+
+* Ability to apply personal integrity to drive best solution for the department and the
+
+
+company while providing the customer with a strong performing manufacturing system for  
+
+the manufacture of our confectionary products.  
+
+* Excellent interpersonal skills.
+* Must be open to and comfortable with change.
+* Open to travel (including International) based on incident or assignment need (\>20%).
+
+
+  
+
+\#LI\-AM1  
+
+\#LI\-Remote  
+
+
+
+The Hershey Company is an Equal Opportunity Employer. The policy of The Hershey Company is to extend opportunities to qualified applicants and employees on an equal basis regardless of an individual's race, color, gender, age, national origin, religion, citizenship status, marital status, sexual orientation, gender identity, transgender status, physical or mental disability, protected veteran status, genetic information, pregnancy, or any other categories protected by applicable federal, state or local laws.  
+
+  
+
+The Hershey Company is an Equal Opportunity Employer \- Minority/Female/Disabled/Protected Veterans.
+
+
+
+You may request a reasonable accommodation if you are unable or limited in your ability to use or access our online application process as a result of a disability.  
+
+You can request an accommodation via phone or email.
+
+
+
+To request an accommodation via phone, please call \+1 877\-804\-1794 and leave a voicemail with your contact information. You may also email a request for accommodation to ApplicationHelp@hersheys.com. Please be sure to include “Accommodation Needed” in the subject line. This will ensure that your email is routed to the appropriate contact who will handle your request.",,https://www.indeed.com/cmp/The-Hershey-Company,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/c86182180ca0930772f27080ce2f6e86,https://www.thehersheycompany.com/,,"10,000+",$5B to $10B (USD),"The Hershey Company is a global confectionery leader known for bringing goodness to the world through its chocolate, sweets, mints & others.",,,,,,
+in-9d19f862e927a991,indeed,https://www.indeed.com/viewjob?jk=9d19f862e927a991,https://jobs.gem.com/function-health/am9icG9zdDquSVZJ3wCPI_xAHMyxi7_A,"Ezra - Operations , Member Experience Manager",Ezra,"Remote, US",2026-03-27,fulltime,direct_data,yearly,120000.0,140000.0,USD,True,,,,,"US \- Remote
+Ezra \- Operations
+Remote
+Full\-time
+  
+Company Overview  
+
+Ezra's mission is to detect cancer early for everyone in the world. Our AI\-powered MRI screens for cancer in up to 13 organs, and is available at over 180\+ imaging facilities in 150 cities across the US and abroad.  
+
+We believe in empowering people to make their own health decisions, so we are offering Ezra as a direct\-to\-consumer scan. Our members visit a partner imaging center to get an MRI scan and receive an AI\-powered report from an Ezra Medical Provider.  
+
+As of May 2025, Ezra is part of Function Health, bringing together the most advanced imaging and the most comprehensive blood testing solutions into a single offering.  
+
+Role  
+
+The perfect Member Experience Manager is obsessed with the member experience. Not in a ""I care about customers"" way—in a ""I cannot sleep until I understand exactly why this happened and have permanently fixed it"" way. When something goes wrong for a member, you're already three steps deep into root cause before anyone else has finished reading the feedback.  
+
+In this role, you own NPS end\-to\-end and hold white\-glove accountability for every VIP and influencer interaction. You lead a team, build systems that scale, and have the rare ability to turn insight into action fast. But your real superpower? You make everyone around you care as much as you do. You pull in product, ops, and clinical partners and get them genuinely invested in fixing what's broken—not just aware of it.  
+
+If your standard is ""good enough,"" this isn't your role. If your standard is ""why did we settle for anything less than exceptional""—welcome home.  
+
+Key Responsibilities **NPS Ownership \& Member Satisfaction*** Own Ezra's NPS program end\-to\-end—from data collection and trend analysis to improvement initiatives and outcome measurement
+* Identify systemic patterns, and coordinate cross\-functional initiatives to address root causes
+* Implement recovery strategies, and drive conversion to promoters
+* Monitor member feedback continuously to catch emerging issues before they become systemic problems; implement rapid solutions, measure impact, and iterate
+* Take full ownership of member satisfaction regardless of where friction originates—scan centers, platform, communications, or any other touchpoint
+
+ **VIP \& Influencer Experience*** Own the complete end\-to\-end experience for all VIP members and influencers, from initial coordination through post\-scan follow\-up
+* Deliver white\-glove, concierge\-level service with proactive communication, personalized touchpoints, and creative problem\-solving
+* Design and introduce new touchpoints and experiences that exceed expectations, with a target of 95%\+ promoter rates among VIPs and influencers
+* Maintain detailed, real\-time tracking systems that keep all internal stakeholders continuously informed on VIP and influencer member status
+
+ **Team Leadership \& Performance Management*** Build, coach, and lead a high\-performing member experience team with clear accountability tied to specific performance targets
+* Set and hold the team to measurable standards: 70\+ NPS, 95%\+ VIP promoter rates, and quick response times
+* Develop team members through coaching, feedback, and growth opportunities centered on experience innovation and operational excellence
+
+ **Operational Excellence \& Scalability*** Build and maintain comprehensive SOPs and workflows for all ownership areas, ensuring quality scales with member volume
+* Implement AI automation and process improvements to reduce manual effort and increase throughput without sacrificing service quality
+* Design proactive monitoring systems that surface issues before they impact member satisfaction
+* Balance exceptional service delivery with operational efficiency and gross margin considerations
+
+ **Data\-Driven Improvement*** Monitor feedback patterns across all channels to solve problems before they become systemic
+* Own all improvement initiatives from conception through implementation, success evaluation, and iteration
+* Identify and scope product enhancement requests that measurably improve member experience
+* Maintain real\-time dashboards and tracking systems that provide visibility into member satisfaction and team performance
+* Collaborate with product, operations, and executive teams to embed member insights into organizational decision\-making
+
+  
+
+Qualifications \& Skills **Member\-Centered Mindset*** Obsessive about delivering exceptional experiences—not just meeting expectations but creating memorable, advocacy\-driving moments
+* Skilled at balancing empathy and efficiency: can de\-escalate frustrated members while driving systemic solutions
+* Thinks holistically about the member journey, identifying friction regardless of which team owns the underlying process
+
+ **Data \& Analytical Fluency*** Comfortable working with NPS data, satisfaction metrics, and feedback trends to surface actionable insights
+* Translates analysis into prioritized initiatives with clear success metrics—not just observations
+* Familiarity with AI tools and automation to streamline workflows and scale service quality
+
+ **Operational \& Process Excellence*** Builds systems and infrastructure to scale quality—not headcount—as member volume grows
+* Creates SOPs that teams can execute consistently and improve over time
+* Monitors leading indicators and implements fast, iterative solutions before problems escalate
+
+ **Leadership \& Communication*** Leads teams with clarity, accountability, and a coaching orientation
+* Communicates crisply and proactively with internal stakeholders—keeps the right people informed without being asked
+* Comfortable operating in ambiguity and building structure where little exists
+
+ **Mission Alignment*** Genuinely motivated by Ezra's mission of early detection and preventive health
+* Understands why member trust and satisfaction are foundational to Ezra's l success and long\-term impact
+
+  
+
+Core Experience Requirements* 6\-10 years in customer success, member experience, or a related function with direct ownership of satisfaction metrics
+* Demonstrated experience managing NPS programs or equivalent member feedback systems
+* Track record of building or significantly improving operational processes in a high\-growth environment
+* Experience managing a team
+* Proven ability to use data to drive decisions and communicate results to cross\-functional stakeholders
+
+  
+
+Preferred Background* Experience in healthcare, wellness, or a consumer subscription business
+* Hands\-on experience with AI tools or workflow automation in a service context
+* Background managing VIP, concierge, or high\-touch customer relationships
+* Startup or hypergrowth experience where you've had to build systems from the ground up
+* Familiarity with tools such as Intercom or similar member communication platforms
+
+  
+
+What's in it for you?  
+
+Benefits
+As the Manager of Member Experience, you have the opportunity to be an early employee at Function Health and work with an all\-star team focused on detecting cancer early for everyone in the world. You're also going to have access to benefits such as:  
+
+* Base Salary: $120,000 \- $140,000
+* Stock options
+* Comprehensive health, dental, and vision plans for you and your family
+* Wellness and commuter benefits
+* Competitive vacation policy
+* A culture that emphasizes learning
+* Professional development budget for continued learning
+* Opportunity to directly impact our mission of saving lives through early cancer detection
+
+ **Why You'll Love Working With Us:**  
+
+We value our team at Function and offer a competitive salary and benefits package, flexible working hours, and a dynamic work environment where creativity and innovation are encouraged. If you are a highly motivated and experienced individual who is passionate about using technology to improve people’s lives, we would love to hear from you.  
+
+At Function, we celebrate diversity and are committed to building a diverse and inclusive workforce. As an equal opportunity employer, we do not discriminate on the basis of race, color, gender identity, ancestry, religion, age, sexual orientation, national origin, disability, marital status, Veteran status, or any other occupationally irrelevant criteria.  
+
+Join the Function Health team and become a part of our mission to build a healthier future for all. Discover more about us and how we're changing the face of healthcare at Function Health. ***Important Notice:*** *Legitimate communication from the Function Health team will always come from an email address ending in* *@functionhealth.com**. Function Health will never request personal information such as banking details or payment during the hiring*",,https://www.indeed.com/cmp/Ezra,,,,,,,,,,,,
+in-5eced6969ddd725b,indeed,https://www.indeed.com/viewjob?jk=5eced6969ddd725b,https://resourcepro.applytojob.com/apply/lbLcHzaoRR/Intern-Propellint?source=INDE&~,Intern Propellint,ReSource Pro,"Remote, US",2026-03-27,internship,,hourly,,,USD,True,,,,,"Are you a **strategic thinker with a passion for digital transformation** seeking an internship where you can bridge the gap between complex business requirements and modern technology roadmaps?
+
+  
+
+  
+
+Come Join ReSource Pro!
+
+**Your Role...**
+
+**ReSource Pro** is seeking a **Technology Strategy \& Systems Intern** to join our growing AI and Digital Transformation team. This isn't a ""shadowing"" role—you will be on the front lines of modernization, helping our insurance industry clients bridge the gap between legacy operations and future\-ready technology.
+
+
+We hire the best because our service is only as good as the people delivering it. We’re committed to hiring individuals who engage in our amazing culture and embrace our Core Values: Commitment to Community, Teamwork, Passion for Excellence, Service\-Centric, and Best Self.  
+
+  
+
+**In this role you will:**  
+
+  
+
+**Strategy \& Advisory*** Support assessment of client technology environments and identification of modernization opportunities.
+* Gather and document business and technical requirements.
+* Contribute to development of technology roadmaps, presentations, and client deliverables.
+* Conduct research on emerging technologies and summarize insights for team use.
+
+**Solution Design \& Implementation*** Assist in design, configuration, and implementation of technology solutions.
+* Support system integrations, cloud initiatives, and infrastructure updates.
+* Participate in testing, validation, and basic troubleshooting.
+* Develop and maintain technical and process documentation.
+
+**Technical Development*** Gain hands\-on exposure to cloud platforms (AWS, Azure, GCP) and enterprise systems.
+* Support data, application, and basic automation activities.
+* Assist with database querying, reporting, and data validation.
+* Contribute to team adoption of modern engineering and DevOps practices.
+
+ **What You Need to be Successful...**
+
+* High School diploma or equivalent; Enrolled in or recently graduated from a degree program
+* MS Office \- Word, Outlook, Access, and strong Excel skills
+* Customer\-centric mindset, enjoy providing a service and solving customer problems
+* Strong written and verbal communication skills
+* Team player mentality and commitment to supporting other team members
+* Process\-focused and detail oriented, committed to accurate documentation
+* Technological proficiency – able to learn, utilize, and navigate a variety of external and internal systems
+
+**Your Compensation…**  
+
+Our salary ranges are based on paying competitively for our size and industry, and are one part of the total compensation package that also includes annual bonus eligibility, benefits, and other opportunities at ReSource Pro. Individual pay decisions are based on a number of factors, including qualifications for the role, experience level, skillset, geography, and balancing internal equity relative to other ReSource Pro employees. This is a remote position, and the salary range for most locations for this role is $25\.00 per hour. The salary range may vary based on experience and on the specific geographic location in which the candidate resides. **Your Interview Process…**  
+
+To be considered for this position, please submit your application. If you meet the qualifications for the role, a member of our Talent Acquisition team will be in touch to schedule an interview via zoom.  
+
+The standard interview process includes:
+
+* Behavioral interview with Talent Acquisition
+* Online talent assessment
+* Hiring Manager interview
+* Additional interview steps may be added depending on the position or if further evaluation is needed.
+
+
+  
+
+Disclosure: Candidates are evaluated at each step of the process. As a result, not every candidate will complete all steps in the process.**About ReSource Pro:**
+
+
+Focused exclusively on the insurance industry, ReSource Pro is the trusted partner insurance organizations rely on to optimize performance, streamline operations and process engineering, and drive growth. Serving 2,000\+ carriers, brokers, wholesalers, and MGAs, ReSource Pro is a recognized market leader in insurance workflow optimization, data and technology services, and strategic operating model transformation. Maintaining a 96%\+ client retention rate for over a decade, ReSource Pro is the only firm serving the insurance industry to have earned a spot on the Inc. 5000 list 16 times—placing it among the top 0\.02% of repeat honorees across all sectors in the Inc. list’s 40\+ year history.
+
+
+**Equal Employment Opportunity Policy**
+
+
+ReSource Pro provides equal employment opportunities to all employees and applicants for employment and prohibits discrimination and harassment of any type without regard to race, color, religion, age, sex, national origin, disability status, genetics, protected veteran status, sexual orientation, gender identity or expression, or any other characteristic protected by federal, state or local laws.
+
+
+
+
+lbLcHzaoRR",,https://www.indeed.com/cmp/Resource-Pro-1,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/1c10fd3e7496bdd7d81846c4fd0816f2,https://www.resourcepro.com,"New York, NY","5,001 to 10,000",$100M to $500M (USD),"ReThink your career with ReSource Pro, a global provider of solutions and services to the US insurance industry.",,,,,,
+in-4e823059991bfbe2,indeed,https://www.indeed.com/viewjob?jk=4e823059991bfbe2,https://www.github.careers/jobs/5184/job?utm_source=indeed_integration&iis=Job%20Board&iisn=Indeed&indeed-apply-token=73a2d2b2a8d6d5c0a62696875eaebd669103652d3f0c2cd5445d3e66b1592b0f,Staff Threat Intel Analyst,GitHub,"Remote, US",2026-03-27,fulltime,direct_data,yearly,140400.0,372300.0,USD,True,,,,,"About GitHub: GitHub is the world’s leading platform for agentic software development — powered by Copilot to build, scale, and deliver secure software. Over 180 million developers, including more than 90% of the Fortune 100 companies, use GitHub to collaborate, and more than 77,000 organisations have adopted GitHub Copilot.  
+
+Locations: In this role you can work from Remote, United States  
+
+Overview:
+
+Staff Threat Intelligence Analyst – Threat Intelligence Team
+
+  
+
+
+
+GitHub is changing the way the world builds secure software and we want you to help change the way we secure GitHub. GitHub’s Threat Intelligence team investigates sophisticated threat activity targeting GitHub and our users. We're looking for an experienced threat intelligence analyst to help protect GitHub from advanced cyber threats.
+
+  
+
+In this role you will use data from a variety of open, closed, and internal sources to gain insight into adversary activity and drive intelligence\-informed security countermeasures across GitHub. This role will focus on researching and operationalizing high\-quality threat intelligence, and building new threat actor tracking and detection capabilities. You'll also provide a vital, threat\-informed perspective to many Security\-wide and anti\-abuse initiatives including threat hunting and detection workflows, Red Team operations, and engineering efforts.
+
+  
+
+
+
+This is an opportunity to join a high impact, strongly collaborative team that helps drive secure outcomes for the Open Source Software community and beyond. If you have deep experience conducting technical threat intelligence investigations and are comfortable leading strategic projects to solve complex security problems, we want to hear from you!
+
+  
+
+
+Responsibilities:
+* Develop and maintain subject matter expertise in a portfolio of threats to GitHub, our customers, employees, infrastructure and the wider OSS community
+* Conduct technical investigations into complex threat actor activity targeting GitHub and its users
+* Identify and disrupt platform abuse by advanced threat actors
+* Lead cross\-org strategic projects to better understand and track threats to GitHub and our customers
+* Design, develop, and maintain tools and queries to assist in investigations
+* Provide relevant and concise analysis for stakeholders, including teams within Security, Engineering, and executive leadership
+* Coordinate disruption efforts against sophisticated misuse of the GitHub platform by advanced threat actors
+
+
+Qualifications:
+* 10\+ years experience in security analysis, security research, cyber security, security engineering, or relevant area
+	+ OR Associate's Degree AND 9\+ years experience in security analysis, security research, cyber security, security engineering, or relevant area
+	+ OR Bachelor's Degree AND 8\+ years experience in security analysis, security research, cyber security, security engineering, or relevant area
+	+ OR Master's Degree AND 6\+ years experience in security analysis, security research, cyber security, security engineering, or relevant area
+	+ OR Doctorate AND 4\+ years experience in security analysis, security research, cyber security, security engineering, or relevant area
+	+ OR equivalent experience
+* 5\+ years of technical threat intelligence analysis and investigations experience with a focus on tracking and disrupting advanced persistent adversaries.
+* 2\+ years of experience building tools and automations in collaborative codebases using Python and/or other programming languages.
+* 3\+ years conducting threat investigations in high\-traffic environments (e.g., large web platforms); demonstrated knowledge of attacker infrastructure, attack vector, and tooling trends, plus strong evidence capture and documentation practices?
+
+**Preferred Qualifications:**
+
+* Knowledge of Linux and MacOS systems, git, and GitHub.
+* Proficiency with Azure, KQL, Terraform, and Airflow.
+* Experience leveraging AI workflows, where appropriate, to drive improved security outcomes.
+* An existing network of threat intelligence contacts and a high degree of comfort managing information sharing relationships.
+* Proven track record of collaborating with Security Operations and Engineering teams for host and network based investigation and detections.
+
+
+Compensation Range: The base salary range for this job is USD $140,400\.00 \- USD $372,300\.00 /Yr.  
+
+  
+
+These pay ranges are intended to cover roles based across the United States. An individual's base pay depends on various factors including geographical location and review of experience, knowledge, skills, abilities of the applicant. At GitHub certain roles are eligible for benefits and additional rewards, including annual bonus and stock. These rewards are allocated based on individual impact in role. In addition, certain roles also have the opportunity to earn sales incentives based on revenue or utilization, depending on the terms of the plan and the employee's role. GitHub Leadership Principles:
+**GitHub values**
+
+
+* Customer\-obsessed
+* Ship to learn
+* Growth mindset
+* Own the outcome
+* Better together
+* Diverse and inclusive
+
+
+**Manager fundamentals**
+
+
+* Model
+* Coach
+* Care
+
+
+**Leadership principles**
+
+
+* Create clarity
+* Generate energy
+* Deliver success
+
+
+Who We Are: GitHub is the world’s leading AI\-powered developer platform with 150 million developers and counting. We’re also home to the biggest open\-source community on earth (and 99% of the world’s software has open\-source code in its DNA). Many of the apps and programs you use every day are built on GitHub.  
+
+Our teams are dreamers, doers, and pioneers, leading the way in AI, driving humanitarian efforts around the globe, and even sending open source to Mars (and beyond!). At GitHub, our goal is to create the space you need to do your best work. We’re remote\-first and offer competitive pay, generous learning and growth opportunities, and excellent benefits to support you, wherever you are—because we know that people flourish when they can work on their own terms.  
+
+Join us, and let’s change the world, together.  
+
+EEO Statement: GitHub is made up of people from a wide variety of backgrounds and lifestyles. We embrace diversity and invite applications from people of all walks of life. We don't discriminate against employees or applicants based on gender identity or expression, sexual orientation, race, religion, age, national origin, citizenship, disability, pregnancy status, veteran status, or any other differences. Also, if you have a disability, please let us know if there's any way we can make the interview process better for you; we're happy to accommodate!",,https://www.indeed.com/cmp/Github,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/dab6afa7f42ebfc7bf2388f07b723c58,https://github.com,"San Francisco, California, United States",,,,,,,,,
+in-6328f1bb9a395eb8,indeed,https://www.indeed.com/viewjob?jk=6328f1bb9a395eb8,https://ats.rippling.com/bamboo-health-careers/jobs/52a43d15-dd44-4431-b253-8fa0c9d76d46?jobSite=Indeed,"Sr. Manager, Revenue Operations Systems",Bamboo Health,"Remote, US",2026-03-27,fulltime,,yearly,,,USD,True,,,,,"Bamboo Health is the leader in Real\-Time Care Intelligence™ solutions aimed at improving lives for everyone experiencing physical and behavioral health challenges. We are driven by our mission to empower clients to deliver seamless, high\-quality and cost\-effective care during pivotal moments to improve health outcomes. From coast to coast, Bamboo Health partners with all major retail pharmacy chains, 52 states and territories, 100% of the top 10 best hospitals and more than half of the country’s largest health plans to improve more than 1 billion patient encounters annually. Join us in improving lives during pivotal care moments!
+
+**Summary:**
+
+
+We are looking for a Sr. Manager, Revenue Operations Systems to own the strategy, optimization, and execution of our go\-to\-market (GTM) systems, with Salesforce as the core platform. As manager, you will serve as both a strategic partner and a hands\-on leader. You will drive the GTM systems roadmap while also directly executing Salesforce administration work. This role requires operation at both a strategic and tactical level and the ability to operate in an extremely fast\-paced environment.
+
+
+The Sr. Manager, Revenue Operations Systems will also manage a Salesforce Administrator, providing direction, prioritization, and mentorship while ensuring high\-quality execution across the platform.
+
+ **What You’ll Do**
+
+* Own and evolve the GTM systems roadmap, aligning Salesforce and the broader GTM tech stack with company priorities and revenue goals.
+* Act as a strategic thought partner to RevOps and executive leadership on systems strategy, process optimization, and operational efficiency.
+* Serve as a hands\-on senior Salesforce administrator, directly executing configuration, automation, reporting, and troubleshooting to ensure system reliability and scalability.
+* Lead data quality, governance, and pipeline integrity, improving visibility, forecasting accuracy, and revenue performance.
+* Manage and mentor a Salesforce Administrator, balancing hands\-on execution with effective delegation and prioritization.
+* Partner cross\-functionally with Sales, Marketing, Customer Success, Finance, and Operations to design and optimize end\-to\-end GTM workflows across the revenue lifecycle.
+* Translate business requirements into scalable system solutions, driving standardization, adoption, and accountability across teams.
+* Develop actionable dashboards and reporting to surface insights, trends, and opportunities for growth.
+* Ensure the GTM tech stack (e.g., Salesforce, Gong, ChurnZero, ZoomInfo) is integrated, scalable, and aligned with business processes.
+* Support key corporate initiatives—such as new product launches and partnerships—through systems readiness and process alignment.
+* Stay curious about emerging AI tools and how they can streamline or enhance work within your function.
+
+**What Success Looks Like**
+
+**In 3 months…**
+
+* Build strong relationships across RevOps and GTM teams
+* Develop a deep understanding of current systems, processes, and pain points
+* Begin contributing hands\-on improvements in Salesforce
+* Begin incorporating AI\-supported tools into your day\-to\-day work—whether through analysis, documentation, or task management.
+
+**In 6 months…**
+
+* Deliver a clear and actionable GTM systems roadmap
+* Improve key processes (pipeline management, forecasting, handoffs)
+* Successfully balance hands\-on execution with team leadership
+
+**In 12 months…**
+
+* Establish Salesforce and GTM systems as a trusted, scalable foundation for revenue operations
+* Demonstrate measurable improvements in efficiency, visibility, and revenue outcomes
+* Build a high\-performing Salesforce administration function
+
+**What You Need**
+
+* **8\+ years in Revenue Operations, Sales Operations, Marketing Operations, or similar roles**
+* **Strong hands\-on Salesforce administration experience**
+* **Experience managing or mentoring Salesforce administrators or similar roles**
+* **Proven experience owning or contributing to GTM systems and process strategy**
+* **Strong ability to translate business needs into scalable processes and system solutions**
+* **Experience partnering cross\-functionally with Sales, Marketing, Customer Success, Finance, and leadership**
+* **Track record of improving operational efficiency and driving adoption**
+* **Excellent communication and stakeholder management skills**
+* **Salesforce Admin certification required (advanced certifications a plus)**
+* **Strong experience with Salesforce configuration (flows, reports, dashboards, automation)**
+* **Familiarity with GTM tools such as Gong, ChurnZero/Gainsight, ZoomInfo**
+* **Ability to balance hands\-on work with delegation and prioritization**
+* **Experience working with data models, reporting, and system integrations**
+* **Comfort using or learning AI\-supported tools** (e.g., ChatGPT, CoPilot, or role\-specific tools) to improve daily workflows.
+* **A forward\-thinking, curious mindset** with an openness to experimenting with new technologies.
+* **Strong analytical and problem\-solving skills**, with sound judgment and creativity in designing solutions.
+* Proven ability to thrive in fast\-paced, high\-growth, and rapidly evolving environments.
+* Ability to work effectively in a remote\-first environment, ensuring high\-quality virtual interactions with minimal distractions.
+* The ability to travel periodically for work.
+
+ **What You Get:**
+
+* Join one of the most innovative healthcare technology companies in the country.
+* Have the autonomy to build something with an enthusiastically supportive team.
+* Learn from working at the highest levels and on the most strategic priorities of the company, including from world class investors and advisors.
+* Receive competitive compensation including health, dental, vision and other benefits.
+
+ **Belonging at Bamboo**
+
+ **We Care. \#BambooHealthValuesCare**
+
+  
+
+Every human being has the right to the best possible healthcare. Our Real\-Time Care Intelligence™ solutions enable healthcare professionals to see and treat every individual as a whole person by providing the right information, at the right time – regardless of physical, behavioral or social barriers.
+
+  
+
+We’re a great place to work because we care. We continually seek to learn about our differences and ensure the unique perspectives and contributions of all employees are welcome, valued and celebrated.
+
+  
+
+Our commitment to making a positive impact starts by recognizing and leveraging our differences, building inclusive teams and cultivating a sense of belonging.
+
+ ***Bamboo Health is proud to provide equal employment opportunities to all employees and applicants for employment and prohibits discrimination and harassment of any type without regard to race, color, religion, age, sex, national origin, disability status, genetics, protected veteran status, sexual orientation, gender identity or expression, or any other characteristic protected by federal, state or local laws.***
+
+***This policy applies to all terms and conditions of employment, including recruiting, hiring, placement, promotion, termination, layoff, recall, transfer, leaves of absence, compensation and training.***
+
+  
+
+Bamboo Health GDPR/RODO
+
+  
+
+To protect our applicants from fraudulent recruitment activity, we recommend that all applicants verify the validity of an interview and hiring process by visiting our website www.bamboohealth.com. All valid job postings will be listed on our careers page. Bamboo Health does not conduct interviews via text and will not request sensitive information such as banking details during the application process.
+
+***\#LI\-Remote***",,https://www.indeed.com/cmp/Bamboo-Health,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/a669ba687752fd93302e7ebeda95fb70,https://bamboohealth.com,"Louisville, KY",201 to 500,Decline to state,"Bamboo Health is a scaling healthcare technology company and the leaders in real-time care intelligence. Empowering the Right Decisions, at the Right Time, for the Right Outcomes. ",,,,,,
+in-95658d09b2ea7c65,indeed,https://www.indeed.com/viewjob?jk=95658d09b2ea7c65,https://www.fullpath.com/careers/co/us-remote/E4.86F/associate-customer-success-manager/all/#positions?coref=1.11.p84_5A1A,Associate Customer Success Manager,FullPath,"Remote, US",2026-03-27,,,yearly,,,USD,True,,,,,"Fullpath is a fast growing tech company in the automotive space with hubs across the US and Israel. We are disrupting the multi\-trillion dollar transportation industry with our advanced Customer Data Platform (CDP) . Our work happens in the fast lane as we bring AI\-powered, data\-driven solutions to a quickly evolving industry.
+
+
+Our team at Fullpath is made up of curious and creative individuals who are always looking to achieve the impossible. We are bold, collaborative, and goal driven, and, at our core, we believe every voice has value and can impact our bottom line.
+
+
+If you are a creative, solutions oriented individual who is ready to put your career in drive, Fullpath is the place for you!
+
+
+We’re looking for a driven and detail\-oriented Associate Customer Success Manager to support and scale our Customer Success efforts across enterprise accounts. In this role, you’ll play a key part in delivering exceptional client experiences by supporting campaign execution, managing operational workflows, and partnering cross\-functionally to drive results. You’ll work in a fast\-paced, data\-driven environment where your ability to stay organized, solve problems, and execute with precision directly impacts customer outcomes and business growth. This is an ideal opportunity for someone looking to build a long\-term career in Customer Success while gaining hands\-on experience with high\-impact clients and strategic initiatives.
+
+
+This is a remote position reporting to the Associate Director of Major Accounts.
+
+  
+
+Requirements:
+  
+
+* Experience working with digital advertising campaign management and/or Automotive customers strongly preferred, but not required
+* Strong interest in career development within Customer Success organization
+* High level of competency working with data to drive business focus and decision\-making
+* Ability to build and implement follow\-up processes
+* Independent problem\-solving skills and adaptivity to change
+* Excellent verbal and written communication skills
+* Strong work ethic and high energy levels
+* Legal authorization to work in the United States without the need for employer sponsorship now or in the future.
+* Ability to sit for extended periods and perform extensive computer work, both of which are key aspects of this role.
+* Ability to perform job duties from a home office, when applicable, utilizing necessary technology and maintaining productivity.
+* Regular, reliable attendance and punctuality are essential functions of the job to ensure consistent workflow and communication.
+
+  
+
+What you will be responsible for:
+  
+
+* Assisting the Customer Success team with the creation and execution of custom audience lists and campaigns, including dig ad and email marketing campaigns.
+* Supporting the development and delivery of client\-specific assets and reports, ensuring accuracy and timeliness.
+* Creating, customizing, and managing Dynamic Payments offers and other promotional materials as required.
+* Monthly support of co\-op submission
+* Case creation and management of inbound cases through a queue
+* Providing ongoing operational support for Enterprise accounts
+* Collaborating cross\-functionally with internal teams to ensure client requests and project deliverables are executed efficiently and to a high standard.
+* Supporting strategic initiatives by helping manage project timelines, resources, and communications.
+* Monitoring and maintaining task workflows, escalating issues when needed and ensuring smooth handoffs within the Customer Success organization.
+* Continuously identifying opportunities to improve internal processes, automation, and client service delivery.
+
+  
+
+Why you should join us:  
+
+  
+
+At Fullpath, we’re not just building groundbreaking AI—we’re redefining the dealership experience. As part of our team, you’ll have the opportunity to make a real impact while working alongside passionate, forward\-thinking individuals who love what they do.
+
+* Competitive compensation \& comprehensive benefits—because your well\-being matters
+* Flexible, family\-friendly environment that supports work\-life balance
+* Global team of innovators, collaborators, and go\-getters who challenge and uplift one another
+* Cutting\-edge AI technology that delivers real value and solves complex challenges for our customers
+* Fast\-paced startup culture with endless opportunities for learning, growth, and ownership
+* A culture built on feedback, initiative, and mutual success, where your voice is heard and your potential is nurtured
+
+
+Join us in shaping the future of automotive retail—we’re just getting started.
+
+*Annual base starting salary: $65,000 depending on experience and other qualifications of the successful candidate.*
+
+*Benefits Options: Medical, Dental, Vision, Disability, Life/AD\&D, EAP, 15 vacation days per year to start, 80 hours of sick leave, 12 paid holidays, paid parental leave, \& 401k with company match.*
+
+*In the meantime, you can get to know us a little better by checking out @lifeatfullpath on* *Instagram* *and* *Facebook**.*",,https://www.indeed.com/cmp/Fullpath,,,,,,,,,,,,
+in-98e8746ccc42beac,indeed,https://www.indeed.com/viewjob?jk=98e8746ccc42beac,https://grnh.se/i6kv63ix1us,Senior Voice Network Engineer,Pindrop,"Remote, US",2026-03-27,,direct_data,yearly,100000.0,120000.0,USD,True,,,,,"**Who We Are**
+--------------
+
+
+
+Pindrop is the Real Human \+ Right Human® Identity Trust Platform for the AI era. As AI\-driven fraud and deepfakes erode trust in digital communication, Pindrop delivers continuous identity verification and deepfake detection across voice, video, and digital interactions in real time.
+
+
+
+Enterprises rely on Pindrop to secure billions of high\-risk customer interactions each year, including top U.S. banks, as well as leading insurers and healthcare providers. Powered by models trained on more than 1\.5 billion real\-world interactions annually and protected by 300\+ patents, Pindrop restores trust while reducing fraud, lowering operational costs, and improving customer experience.
+
+
+
+Recognized by TIME as one of 2025's Best Inventions and by Inc. for Best in Business for Innovation, Pindrop is backed by leading investors including Andreessen Horowitz, IVP, and CapitalG.
+
+**Our team** is a group of engineers focused on designing, building, and optimizing real\-time voice solutions that power authentication, fraud prevention, and deepfake detection. We work at the intersection of advanced technology and personal security, architecting and maintaining scalable, secure voice infrastructure across SIP, VoIP, telephony systems, and cloud platforms to ensure high availability and performance. Collaborating closely with product and customer\-facing teams, we deliver seamless voice\-driven experiences, solve complex technical challenges, and continuously enhance our systems through automation, monitoring, and the integration of new technologies while staying ahead of emerging threats in voice security.
+
+
+**What you'll do:**
+-------------------
+
+
+* Architect and implement real\-time voice solutions for authentication, fraud prevention, and deepfake detection products.
+* Integrate and optimize voice network systems—including SIP, VoIP, telephony hardware/software, and cloud\-based voice services—for reliability, scalability, and security.
+* Collaborate closely across engineering, product, and customer\-facing teams to deliver seamless voice\-driven features.
+* Design and maintain robust enterprise and carrier\-grade voice infrastructure supporting high\-security, high\-availability environments.
+* Deliver architectural improvements, optimizing for performance and onboarding new platforms or vendors.
+* Stay at the forefront of emerging threats in voice security and develop strategies to address them.
+* Use workflow automation engines, monitoring, and deployment tools to enhance system resilience and efficiency.
+* Troubleshoot, diagnose, and resolve complex voice and networking technical issues.
+* Contribute to cross\-team technical reviews and best practice dissemination.
+
+**Who you are:**
+----------------
+
+
+* You are resilient in the face of challenges, change, and ambiguity
+* You are optimistic and believe that you can make a problem into a solution
+* You are resourceful, excited to uncover innovative solutions, and teach yourself something new when needed
+* You take accountability, do the things you say you'll do, under\-promise and over\-deliver
+* You are nimble and adaptable when priorities change and continue to see the ""forest through the trees""
+
+**Your skill set:**
+-------------------
+
+
+* Deep understanding of voice and data networking technologies (SIP, VoIP, PBX, IVR, SBC telephony platforms, AWS routing)
+* Experience architecting, implementing, and scaling cloud\-native voice infrastructures on AWS or Google Cloud
+* Skilled at deploying, automating, and monitoring voice platforms for reliability and performance in high\-security environments (Python, Ansible, Terraform, GitHub)
+* Inclusive communicator who collaborates effectively with engineering teams, product managers, and customers
+* Demonstrated ability to provide mentorship, participate in technical reviews, and foster a company\-wide culture of excellence
+* 5\+ years in voice engineering or related fields; advanced degree or industry certifications a plus
+
+**What's in it for you:**
+-------------------------
+
+
+
+As a Pindropper, you join a rapidly growing company making technology more human with the power of voice. You will work alongside some of the best and brightest. We're a passionate group committed to excellence \- but that doesn't stop us from enjoying the journey as a team with chess and poker tournaments, catered lunches and happy hours, wellness programming, and more. Because we take our jobs seriously, we add in time for rest with Unlimited PTO.
+
+
+
+**Within 30 days:**
+-------------------
+
+
+
+You'll ramp up on Pindrop's voice authentication, fraud prevention, and deepfake detection platforms, completing a full product and security overview. You'll build relationships with engineering, product, and customer\-facing teams to understand collaboration workflows, and review existing voice infrastructure—including SIP, VoIP, PBX, IVR, and cloud voice—to assess reliability and the security landscape. You'll also shadow and assist in troubleshooting and resolving live technical issues to learn standard processes and tools.
+
+
+**Within 60 days:**
+-------------------
+
+
+
+You'll drive initial architectural improvements based on your assessment findings, proposing solutions to address identified gaps. You'll lead the integration or enhancement of a voice network component—whether hardware, software, or cloud—with a focus on scalability and security. Additionally, you'll begin contributing to technical reviews, share best practices across engineering teams, and take ownership of platform monitoring and workflow automation tasks to improve system resilience.
+
+
+**Within 90 days:**
+-------------------
+
+
+
+You'll deliver a strategic architectural upgrade, onboard a new voice platform or vendor, or implement a security\-focused feature. You'll proactively address emerging threats in voice security through a technical initiative or collaborative project, and demonstrate measurable impact through improvements in performance, reliability, or customer experience tied to voice solutions.
+
+
+**What we offer:**
+------------------
+
+
+
+As a part of Pindrop, you'll have a direct impact on our growing list of products and the future of security in the voice\-driven economy. We hire great people and take care of them. Here's a snapshot of the benefits we offer:
+
+
+* Competitive compensation package with a base annual salary of **$100,000–$120,000**, along with RSUs (Restricted Stock Units) granted to all employees, ensuring everyone shares in the company's long\-term success.
+* Remote\-first environment \- giving you flexibility and autonomy in how you structure your day.
+* While we work flexibly, we prioritize meaningful in\-person moments through regular team on\-sites, company\-wide events, and intentional gatherings that foster connection, collaboration, and shared success.
+* Unlimited Paid Time Off (PTO)
+* Generous health and welfare plans to choose from \- including one employer\-paid ""employee\-only"" plan!
+* Best\-in\-class Health Savings Account (HSA) employer contribution
+* Low\-cost vision and dental plans for you and your family, providing comprehensive coverage and peace of mind.
+* Paid Parental Leave \- Including birth, adoptive \& foster parents
+* + One year of diaper delivery for your newest addition to the family! It's our way of welcoming new Pindroplets to the family!
+* Recurring monthly phone and internet allowance to help cover essential connectivity costs and support flexible work.
+* Enhanced fertility and GLP\-1 benefits to support family\-building journeys and personalized health needs.
+* Annual Learning \& Development stipend to support your professional growth, skill\-building, certifications, and continued education.
+**Not sure if this is you?**
+----------------------------
+
+
+
+We want a diverse, global team, with a broad range of experience and perspectives. If this job sounds great, but you're not sure if you qualify, apply anyway! We carefully consider every application and will either move forward with you, find another team that might be a better fit, keep in touch for future opportunities, or thank you for your time.
+
+
+### **AI \- A Transformative Force**
+
+
+
+At Pindrop, we view artificial intelligence as a transformative force that, when harnessed responsibly, can unlock unprecedented value for our customers, partners and society and enable and empower us to continue to deliver cutting\-edge technology to combat fraud and unblur the lines between what it means to be human versus machine.
+
+
+
+Pindrop may use AI tools to help prioritize job applications for human review. The AI tool may analyze your work experience and skills to assess fit for the role, but does not consider your name or contact details. Applications with the strongest match to job requirements are prioritized for human review; not all applications may be individually reviewed.
+
+
+### **Pindrop is an Equal Opportunity Employer**
+
+
+
+Here at Pindrop, it is our mission to create and maintain a diverse and inclusive work environment. As an equal opportunity employer, all qualified applicants receive consideration for employment without regard to race, color, age, religion, sex, gender, gender identity or expression, sexual orientation, national origin, genetic information, disability, marital and/or veteran status.",,https://www.indeed.com/cmp/Pindrop,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/019af904a2198cf96a7cf087636bf346,https://www.pindrop.com/,"Atlanta, GA",201 to 500,Decline to state,"Pindrop® solutions are leading the way to the future of voice by establishing the standard for identity, security and trust for every voice interaction.",,,,,,
+in-9aae3fd623ae3e89,indeed,https://www.indeed.com/viewjob?jk=9aae3fd623ae3e89,https://caresource.wd1.myworkdayjobs.com/en-US/CareSource/job/Remote/Medical-Affairs-Operations-Manager_R12403,Medical Affairs Operations Manager,CareSource,"Remote, US",2026-03-27,fulltime,direct_data,yearly,83000.0,132800.0,USD,True,,,,,"**Job Summary:**  
+
+  
+
+The Medical Affairs Operations Manager is responsible for supporting the standardization, management of data, and workflow optimization for the Medical Affairs team. This role will function as a central hub to triage, prioritize, and manage operational workflow challenges, including data reporting standardization and technology implementation.  
+
+  
+
+**Essential Functions:*** Partner with Medical Affairs leaders to enhance productivity and ensure alignment with company objectives.
+* Oversee the long term tracking and trending of high priority items, including automated prior authorization processes, market reviews related to high utilization and/or cost, and process improvement/automation in appeals, clinical policy and quality of care.
+* Manage and report on productivity and performance metrics, including MD and vendor auditing.
+* Develop consistent and standardized reporting across all teams for regular updates to senior leadership.
+* Investigate and analyze issues identified by leaders through data, focusing on state complaints and concerns.
+* Support Key Performance Indicators (KPI) review for potential Quality and Affordability Initiative (QAI) projects.
+* Track project timelines and develop a comprehensive tracker to manage, communicate, and organize all ongoing projects.
+* Facilitate multidisciplinary and cross departmental collaboration for project management and QAI development.
+* Focus on optimization initiatives, including AI applications, workflow enhancements, automated documentation, and standardized data reporting.
+* Lead routine meetings to ensure alignment and progress on projects.
+* Develop tools to improve efficiency and automate tasks to avoid manual data entry.
+* Develop centralized educational sessions for front line MD, Appeal MD, and nursing teams.
+* Gather information for vendor Requests for Proposals (RFPs).
+* Represent Medical Affairs in the implementation and integration of new business initiatives.
+* Perform any other job related duties as requested.
+
+  
+
+**Education and Experience:*** Bachelor's degree in healthcare administration, nursing, or a related field required
+* Master's degree preferred
+* Equivalent years of relevant work experience may be accepted in lieu of required education
+* Five (5\) years project management experience in a healthcare setting required
+
+**Competencies, Knowledge and Skills:*** Skilled in project management, data analysis, and operational workflow optimization
+* Strong analytical skills with the ability to interpret complex data and identify trends
+* Excellent communication and interpersonal skills
+* Proficient in project management tools and data reporting software
+* Ability to work independently and manage multiple projects simultaneously
+
+**Licensure and Certification:*** Current unrestricted license as and Registered Nurse (RN) or Nurse Practitioner (NP) required
+* MCG certification is required or must be obtained within 6 months of hire required
+* Project Management certification preferred
+* Six Sigma or other certification in process improvement preferred
+
+**Working Conditions:*** General office environment; may be required to sit or stand for extended periods of time
+* Up to 15% (occasional) travel based on the needs of the department may be required
+
+**Compensation Range:**
+$83,000\.00 \- $132,800\.00
+CareSource takes into consideration a combination of a candidate’s education, training, and experience as well as the position’s scope and complexity, the discretion and latitude required for the role, and other external and internal data when establishing a salary level. In addition to base compensation, you may qualify for a bonus tied to company and individual performance. We are highly invested in every employee’s total well\-being and offer a substantial and comprehensive total rewards package.**Compensation Type (hourly/salary):**
+Salary**Organization Level Competencies*** Fostering a Collaborative Workplace Culture
+* Cultivate Partnerships
+* Develop Self and Others
+* Drive Execution
+* Influence Others
+* Pursue Personal Excellence
+* Understand the Business
+
+**This job description is not all inclusive. CareSource reserves the right to amend this job description at any time. CareSource is an Equal Opportunity Employer. We are dedicated to fostering an environment of belonging that welcomes and supports individuals of all backgrounds.**
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+\#LI\-JM1",Insurance,https://www.indeed.com/cmp/Caresource,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/6a04359447681d2433b70244fe36be47,https://www.caresource.com,Dayton,"1,001 to 5,000",$5B to $10B (USD),,,,,,,
+in-da9c8a7459069af2,indeed,https://www.indeed.com/viewjob?jk=da9c8a7459069af2,https://beigene.wd5.myworkdayjobs.com/en-US/BeiGene/job/Remote-US/Senior-Manager--R-D-Data-Steward_R33938,"Senior Manager, R&D Data Steward",BeOne Medicines,"Remote, US",2026-03-27,fulltime,direct_data,yearly,141700.0,186700.0,USD,True,,,,accommodationsus@beonemed.com,"BeOne continues to grow at a rapid pace with challenging and exciting opportunities for experienced professionals. When considering candidates, we look for scientific and business professionals who are highly motivated, collaborative, and most importantly, share our passionate interest in fighting cancer.
+As a Senior Manager, Data Steward, you will lead stewardship of critical Pharma R\&D data domains, ensuring data quality, compliance, and usability across the research and development value chain. You will lead / mentor a team of data stewards and partner closely with governance, data product, and business domain leaders to operationalize data standards, resolve data issues, and deliver trusted, governed data products. This role is not only critical to oversee the implementation and management of MDM initiatives while ensuring accurate, consistent, and complete data across the organization for critical master domains (relevant to R\&D), but also central to turning R\&D data into a strategic asset, fueling AI/ML, enabling data\-driven insights, and business outcomes.**Essential Functions of the job:****Data Stewardship Leadership*** Lead the establishment and maintenance of a comprehensive data governance framework that aligns with organizational goals and regulatory requirements.
+* Lead / mentor a team of data stewards assigned to support multiple R\&D domains
+* Define stewardship roles, workflows, and accountability to ensure clear ownership of data entities, business metadata, and processes.
+* Act as an escalation point for complex data issues, ensuring timely resolution and alignment with governance policies.
+
+**Operational Data Stewardship \& Standards*** Operationalize data governance policies, standards, and SOPs in partnership with the governance team.
+* Define, maintain, and curate business metadata (e.g., data definitions, glossary terms, business rules, usage context) within data catalog.
+* Ensure consistency of business metadata across domains to avoid duplication, misinterpretation, or misalignment.
+* Monitor and enforce data quality, completeness, and accuracy across operational systems and data products.
+* Ensure data and metadata are managed in compliance with internal and external standards.
+
+**Data Quality \& Issue Management*** Define and track domain\-specific data quality metrics; coordinate remediation with data engineering and business partners.
+* Maintain metadata\-driven data quality rules to ensure trusted data for downstream consumption.
+* Establish root\-cause analysis and preventive action processes to reduce recurring data issues.
+* Drive continuous improvement of stewardship workflows through automation and AI/GenAI tools (e.g., automated metadata tagging, anomaly detection).
+
+**Cross\-Functional Collaboration*** Serve as a liaison between R\&D, IT, regulatory, and other business units to identify data needs and resolve data\-related issues.
+* Serve as the key stewardship liaison for functional partners (Clinical Ops, Safety, Regulatory, Portfolio, Research).
+* Collaborate with data product teams to ensure domain data and business metadata are curated, contextualized, and analytics\-ready.
+* Partner with governance and enablement leads to align stewardship with enterprise data architecture, data catalog, data quality and data marketplace capabilities.
+
+**Enablement \& Culture*** Build training, guidance, and support materials to enable business users to understand and leverage governed data.
+* Drive awareness and adoption of stewardship and metadata practices through forums, knowledge\-sharing, and communities of practice.
+* Champion a data\-driven culture by highlighting the value of trusted data and contextual business metadata in enabling insights and compliance.
+
+**Metrics \& Value Realization*** Track stewardship performance (e.g., data quality improvement, metadata coverage, issue resolution turnaround, compliance readiness).
+* Report stewardship value delivered such as time saved, reduction of manual rework, and risk avoidance enabled by data governance.
+* Provide transparent reporting to governance councils and leadership on stewardship, adoption, and impact.
+
+**Supervisory Responsibilities:*** Mentor and develop a team of data stewards and analysts to foster progressive data governance practices and a culture of data stewardship.
+* Inspire and guide the team in achieving departmental goals and objectives, encouraging professional growth.
+
+**Computer Skills:*** Microsoft Applications (Outlook, Word, Excel, PowerPoint, Project)
+
+**Qualifications:*** Bachelor’s degree in Life Sciences, Information Systems, Data Management, or related field; advanced degree preferred.
+* 7\+ years of experience in data stewardship, governance, or data management, with strong exposure to Pharma R\&D data.
+* Proven track record of defining governance frameworks and leading cross\-functional teams while mastering critical master data domains relevant to R\&D.
+* Proven ability to manage and mentor data stewardship teams.
+* Deep understanding of Pharma R\&D data domains, regulatory requirements, and data standards.
+* Strong understanding of data management principles, practices, and hands\-on experience with stewardship and metadata platforms (e.g., Informatica CDGC/CDQ for cataloging and business metadata, Collibra, Reltio (MDM), Databricks).
+* Strong problem\-solving and stakeholder management skills with ability to balance scientific, operational, and compliance needs.
+* Excellent written and verbal communication skills; ability to present stewardship and metadata value to leadership.
+* Demonstrated commitment to building a culture of data trust, quality, and contextual understanding.
+
+**Travel:*** Minimal
+
+**BeiGene Global Competencies**
+When we exhibit our values of Patients First, Collaborative Spirit, Bold Ingenuity and Driving Excellence, through our twelve global competencies below, we help get more affordable medicines to more patients around the world.* Fosters Teamwork
+* Provides and Solicits Honest and Actionable Feedback
+* Self\-Awareness
+* Acts Inclusively
+* Demonstrates Initiative
+* Entrepreneurial Mindset
+* Continuous Learning
+* Embraces Change
+* Results\-Oriented
+* Analytical Thinking/Data Analysis
+* Financial Excellence
+* Communicates with Clarity
+
+
+Global Competencies
+When we exhibit our values of Patients First, Driving Excellence, Bold Ingenuity and Collaborative Spirit, through our twelve global competencies below, we help get more affordable medicines to more patients around the world.* Fosters Teamwork
+* Provides and Solicits Honest and Actionable Feedback
+* Self\-Awareness
+* Acts Inclusively
+* Demonstrates Initiative
+* Entrepreneurial Mindset
+* Continuous Learning
+* Embraces Change
+* Results\-Oriented
+* Analytical Thinking/Data Analysis
+* Financial Excellence
+* Communicates with Clarity
+
+
+Salary Range: $141,700\.00 \- $186,700\.00 annually
+BeOne is committed to fair and equitable compensation practices. Actual compensation packages are determined by several factors that are unique to each candidate, including but not limited to job\-related skills, depth of experience, certifications, relevant education or training, and specific work location. Packages may vary by location due to differences in the cost of labor. The recruiter can share more about the specific salary range for a preferred location during the hiring process. Please note that the listed range reflects the base salary or hourly range only. Non\-Commercial roles are eligible to participate in the annual bonus plan, and Commercial roles are eligible to participate in an incentive compensation plan. All Company employees have the opportunity to own shares of BeOne Medicines Ltd. stock because all employees are eligible for discretionary equity awards and to voluntarily participate in the Employee Stock Purchase Plan. The Company has a comprehensive benefits package that includes Medical, Dental, Vision, 401(k), FSA/HSA, Life Insurance, Paid Time Off, and Wellness.
+We are proud to be an equal opportunity employer. BeOne does not discriminate on the basis of race, religion, color, sex, gender identity, sexual orientation, age, disability, national origin, veteran status or any other basis covered by appropriate law. All employment is decided on the basis of qualifications, merit, and business need. In order to ensure reasonable accommodation for individuals protected by Section 503 of the Rehabilitation Act of 1973, the Vietnam Era Veterans’ Readjustment Assistance Act of 1974, Title I of the Americans with Disabilities Act of 1990, and any other applicable federal, state or local laws, applicants who require reasonable accommodation in the job application process may contact accommodationsus@beonemed.com.",,https://www.indeed.com/cmp/Beone-Medicines,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/bf6f9fcdf08201d94d4408bdc438706e,,,"5,001 to 10,000",Decline to state,"Leading Cancer Research Worldwide
+People with cancer deserve hope and better tomorrows. BeOne is advancing a broad and deep pipeline, accelerating development through rigorous science to deliver trans",,,,,,
+in-7e16e30d1cedf5cd,indeed,https://www.indeed.com/viewjob?jk=7e16e30d1cedf5cd,https://generalmotors.wd5.myworkdayjobs.com/en-US/Careers_GM/job/Remote---United-States/Staff-Data-Engineer_JR-202606878,Staff Data Engineer,General Motors (GM),"Remote, US",2026-03-26,fulltime,direct_data,yearly,160200.0,246300.0,USD,True,,,,,"**Job Description**
+
+**The Role**  
+
+As a Staff Data Engineer within the Marketing Applied Sciences organization, you will be responsible for designing and developing high\-quality, well\-managed, and reusable data and analytics products (including AI/ML, Data, and Marketing solutions) for applied analytics solutions and insights. You will design, build, and optimize data engineering pipelines and marketing data products, as well as contribute to AI agents, LLM\-based solutions, and Ad Ops pipelines, while owning and enforcing data and AI standards and ensuring security and compliance.
+
+
+Additionally, the Data Engineer will contribute to building and maintaining LLM\-based AI agents using both platform\-native capabilities and custom agent frameworks, integrating them with enterprise\-scale AI models and data systems. Agents will include wrappers and UI to seamlessly integrate sub agents. You will also be responsible for monitoring, maintaining, and enhancing data and ML pipelines and associated agents. This role will also be responsible for integrating with 3rd party data providers and marketing platforms, APIs, and providing marketing insights. As a Staff Data Engineer you will collaborate closely with product managers, data engineers, data scientists, and other partners to develop state\-of\-the\-art AI and Data Engineering solutions that enable the future of marketing.
+
+
+Success in this role requires a blend of technical aptitude, marketing know\-how, and cross\-functional collaboration. This role is ideal for someone who thrives at the intersection of data engineering, data science, and marketing strategy, and who is eager to shape the future of customer experiences at one of the world’s most iconic automotive brands.
+
+
+**What You’ll Do**
+
+* Define, own, and enforce data and AI/ML standards and industry best practices and dedicate efforts to mentoring and overseeing AI/ML efforts across the Marketing Applied Sciences portfolio
+* Build and maintain scalable data pipelines, services, and AI agents to accelerate and optimize business processes and tooling
+* Identify and implement optimizations that improve the runtime, performance, scalability, stability, and cost efficiency of data platforms, pipelines, and AI/ML agents and workflows
+* Own data stewardship for key marketing datasets, driving data quality, documentation, access controls, and responsible use in partnership with data governance, privacy, and marketing stakeholders.
+* Help design and evolve marketing and Ad Ops data infrastructure, including privacy\-safe environments such as data clean rooms, to enable advanced audience insights, activation, and measurement.
+* Design and implement robust data models, ingestion, and transformation workflows that ensure high\-quality, well\-documented, and discoverable data for analytics and AI use cases.
+* Collaborate with the Engineering community to highlight best practices, implement tactics, and provide feedback to the community
+* Build unit and integration tests, data quality checks, logging and observability, and all industry\-standard best practices to ensure products are production ready
+* Elevate data and system design, diagnostics, and operational excellence to higher standards
+
+**Your Skills \& Abilities (Required Qualifications)**
+
+* Bachelor’s degree in Computer Science, ML Engineering, Data Engineering, Information Systems, Mathematics, or a related technical field.
+* 8\+ years of experience in Software Engineering, Data Engineering, Data Science or related field, building, maintaining and optimizing distributed systems
+* Experience building high performance data and AI solutions
+* Experience in Python and/or other Object\-Oriented programming languages (Java, C\+\+ etc.)
+* Proficiency in SQL and distributed data processing frameworks such as PySpark
+* Proficient with modern data platforms and tools such as Databricks, Airflow, dbt, Snowflake, Kafka, or similar
+* Proficient with cloud architecture systems such as Azure, AWS, GCP, etc.
+* Ability to communicate complex solutions with fellow Engineers and non\-technical business stakeholders alike
+* Demonstrated ability to lead projects that bridge marketing, data science, and technology to drive measurable outcomes
+* Strong understanding of modern data architectures and pipelines, and familiarity with LLMs, AI agents, automation, and related best practices
+* Demonstrated success in collaborating with cross\-functional teams and translating business requirements into scalable data and AI/ML solutions.
+
+**What Can Give You a Competitive Advantage (Preferred Qualifications)**
+
+* Master’s degree in Computer Science, ML Engineering, Data Engineering, Information Systems, Mathematics, or a related technical field.
+* 2\+ years of experience with paid, earned, and owned media or marketing analytics
+
+The salary range for this role is ($160,200 \- $246,300\). The actual base salary a successful candidate will be offered within this range will vary based on factors relevant to the position.
+
+
+Bonus Potential: An incentive pay program offers payouts based on company performance, job level, and individual performance.
+
+
+Benefits: GM offers a variety of health and wellbeing benefit programs. Benefit options include medical, dental, vision, Health Savings Account, Flexible Spending Accounts, retirement savings plan, sickness and accident benefits, life insurance, paid vacation \& holidays, tuition assistance programs, employee assistance program, GM vehicle discounts and more .
+
+
+\&\#xa;\&\#xa;GM does not provide immigration\-related sponsorship for this role. Do not apply for this role if you will need GM immigration sponsorship now or in the future. This includes direct company sponsorship, entry of GM as the immigration employer of record on a government form, and any work authorization requiring a written submission or other immigration support from the company (e.g., H1\-B, OPT, STEM OPT, CPT, TN, J\-1, etc).\&\#xa;\&\#xa;This role is categorized as remote. This means the selected candidate may be based anywhere in the country of work and is not expected to report to a GM worksite unless directed by their manager.\&\#xa;\&\#xa;The selected candidate will be required to travel \<25% for this role.\&\#xa;\&\#xa;
+**About GM**
+
+Our vision is a world with Zero Crashes, Zero Emissions and Zero Congestion and we embrace the responsibility to lead the change that will make our world better, safer and more equitable for all.
+
+
+**Why Join Us**
+
+We believe we all must make a choice every day – individually and collectively – to drive meaningful change through our words, our deeds and our culture. Every day, we want every employee to feel they belong to one General Motors team.
+
+
+**Benefits Overview**
+
+From day one, we're looking out for your well\-being–at work and at home–so you can focus on realizing your ambitions. Learn how GM supports a rewarding career that rewards you personally by visiting **Total Rewards resources** .
+
+
+**Non\-Discrimination and Equal Employment Opportunities (U.S.)**
+
+General Motors is committed to being a workplace that is not only free of unlawful discrimination, but one that genuinely fosters inclusion and belonging. We strongly believe that providing an inclusive workplace creates an environment in which our employees can thrive and develop better products for our customers.
+
+
+All employment decisions are made on a non\-discriminatory basis without regard to sex, race, color, national origin, citizenship status, religion, age, disability, pregnancy or maternity status, sexual orientation, gender identity, status as a veteran or protected veteran, or any other similarly protected status in accordance with federal, state and local laws.
+
+
+We encourage interested candidates to review the key responsibilities and qualifications for each role and apply for any positions that match their skills and capabilities. Applicants in the recruitment process may be required, where applicable, to successfully complete a role\-related assessment(s) and/or a pre\-employment screening prior to beginning employment. To learn more, visit **How we Hire** .
+
+
+**Accommodations**
+
+General Motors offers opportunities to all job seekers including individuals with disabilities. If you need a reasonable accommodation to assist with your job search or application for employment, **email** us or call us at 1\-800\-865\-7580\. In your email, please include a description of the specific accommodation you are requesting as well as the job title and requisition number of the position for which you are applying.",,https://www.indeed.com/cmp/General-Motors-(gm)-1,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/43aab281669429da74130b1a3a309219,http://www.gm.com,"Detroit, MI","10,000+",more than $10B (USD),"We see a future with Zero Crashes, Zero Emissions, Zero Congestion.",,,,,,
+in-2848f3088f32d796,indeed,https://www.indeed.com/viewjob?jk=2848f3088f32d796,https://jobs.lever.co/mechanicalorchard/90a7de50-362d-401c-b14c-3257ff0c539c,Infrastructure Software Engineer,Mechanical Orchard,"Remote, US",2026-03-26,fulltime,,,,,,True,,,,,"**Mechanical Orchard builds Imogen**, a modernization platform for rewriting the most critical and complex business applications—the systems that quietly run the world as we know it—so they can continue operating reliably while adapting to new challenges and opportunities. These are business\-critical systems where reliability, safety, and correctness are paramount.
+
+**Delivery at Mechanical Orchard is where Imogen meets reality**. Delivery teams work directly with customers and system integration partners in real production environments to modernize mainframe systems using Imogen. This work delivers customer outcomes while also shaping how the platform evolves, ensuring Imogen is grounded in real\-world constraints, risks, and opportunities.
+
+Our Delivery team operates in complex, ambiguous environments with high stakes. We balance long\-term modernization outcomes with incremental, production\-ready delivery; validate functional equivalence, performance, and operational readiness; and work closely with partners to enable durable handoff and long\-term ownership. We value strong fundamentals, pragmatic use of AI, and close collaboration across roles and organizations. Our values are simple: **Do the right thing. Do what works. Be kind.**
+### **As an Infrastructure Software Engineer in Delivery at Mechanical Orchard, you will be expected to:**
+
+* Work as part of a small, cross functional XP team installing Imogen into client cloud environments partnering with client infosec, infrastructure, and IT teams.
+* Pair program with other engineers and collaborate closely with other roles such as product managers and designers
+* Work with client infrastructure, security, and network teams to deploy Imogen to their cloud infrastructure
+* Lead and collaborate on technical discovery efforts for existing customer systems cloud infrastructure and adapt Imogen to their public cloud estate
+* Apply and evolve XP engineering practices such as pair programming, test\-driven development, refactoring, continuous integration and continuous delivery
+* Adapt XP practices for working with AI—whether co\-writing code, managing agents and their context, or knowing when to push back and trust your own instincts
+* Help onboard client developers and/or new Mechanical Orchard team members with practices and techniques
+* Continuously learn about relevant emerging technologies or practices and foster the growth of the organization through mentorship, tech talks, and other means
+### **Basic Qualifications**
+
+* As the ideal candidate, you have experience as a software engineer in a professional, team based environment, with exposure or demonstrated passion for XP practices such as pair programming and test driven development
+* Hold a Bachelor’s or Master’s degree in Software/Computer Engineering, or a related field or possess equivalent foundational experience such as completion of a coding bootcamp or similar technical training
+* Strategic thinking, technical skills, attention to detail
+* Ability to learn new software and technologies quickly
+* Strong communication and collaboration skills as well as empathy are essential for working closely with the development team, customers, and others at Mechanical Orchard
+* Comfortable with pair programming, Mechanical Orchard’s default mode of working together
+* Experience or demonstrated passion for cloud infrastructure and related tooling
+### **Preferred Qualifications**
+
+* You are comfortable working with external customers and troubleshooting issues with customer network, infosec, and support teams
+* You are comfortable building and deploying to cloud infrastructure, and have experience in at least one infrastructure as code tool and public cloud provider
+* Experience developing a platform as a service product
+* Experience with some of the following technologies: Infrastructure as code automation tooling like Terraform, Deploying and operating applications on Kubernetes with Helm, Docker and/or Nix for building images and packages, and Building infrastructure scripts and CLI tools using bash, Go or a similar language.
+### **Things to Consider Before Applying**
+
+* This role is client\-facing and partner\-facing; communication, facilitation and collaboration are core parts of the work
+* Much of the work involves legacy mainframe systems, often written in COBOL and JCL
+* Our technology organization has an on\-call rotation essential to operating the systems we deliver
+* Pair programming is a foundational practice and may involve a learning curve
+* Periodic travel is expected
+**Please Note:** The appropriate role level and compensation will be determined at the time of offer, following completion of the full interview process, based on an assessment of the candidate’s qualifications, experience, and demonstrated skills.
+
+Mechanical Orchard, Inc. is an Equal Opportunity Employer and Prohibits Discrimination and Harassment of Any Kind. Mechanical Orchard, Inc. is committed to the principle of equal employment opportunity for all employees and to providing employees with a work environment free of discrimination and harassment. All employment decisions at Mechanical Orchard, Inc. are based on business needs, job requirements and individual qualifications, without regard to race, color, religion or belief, national, social or ethnic origin, sex (including pregnancy), age, physical, mental or sensory disability, HIV Status, sexual orientation, gender identity and/or expression, marital, civil union or domestic partnership status, past or present military service, family medical history or genetic information, family or parental status, or any other status protected by the laws or regulations in the locations where we operate. Mechanical Orchard, Inc. will not tolerate discrimination or harassment based on any of these characteristics. Mechanical Orchard, Inc. encourages applicants of all ages. Mechanical Orchard, Inc. will provide reasonable accommodation to employees who have protected disabilities consistent with local law.
+
+We look forward to reviewing your application. Thanks!",,https://www.indeed.com/cmp/Mechanical-Orchard,,,,,,,,,,,,
+in-2e3f42318646cf38,indeed,https://www.indeed.com/viewjob?jk=2e3f42318646cf38,https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=a25558c8-8041-4960-a9e5-351a32e78a68&ccId=19000101_000001&jobId=561647&source=IN&lang=en_US,PowerBI Visualization Analyst,MID-WEST WHOLESALE HARDWARE INC,"Remote, US",2026-03-26,,,,,,,True,,,,,"**POSITION DESCRIPTION**
+
+**Power BI Data \& Visualization Analyst**
+
+
+Customer Experience \& Business Analytics \| Banner Solutions
+
+ **Job Title:**
+
+  
+
+Power BI Data \& Viz Analyst
+
+ **Reports To:**
+
+  
+
+Director, CX Process Improvement
+
+ **Travel:**
+
+  
+
+\<10%
+
+ **Location:**
+
+  
+
+Hybrid
+
+ **ABOUT BANNER SOLUTIONS \& THE ROLE**
+
+  
+
+Banner Solutions is a premier national wholesale distributor specializing in commercial door hardware, access control systems, and security products (CSI Divisions 8, 10 \& 28\), representing 260\+ manufacturers with a 98%\+ same\-day ship rate. We serve a diverse customer base, including Contract Hardware Dealers, Glass \& Glazing Dealers, Building Material Suppliers, EAC Integrators, Locksmiths, Institutional End Users, e\-tailers, and retailers nationwide.
+
+
+We are relentlessly focused on making our customers' jobs easier, driving continuous investment in technology, process improvement, and data\-driven decision\-making. We seek a Power BI Data \& Visualization Analyst to architect our Power BI reporting ecosystem for our customer experience (CX) strategy, and Customer Success and Service operations. Reporting to the Director of CX Process Improvement, you will transform data from ERP, CRM and other applications into trusted dashboards, scorecards, and analytical models that help leadership differentiate customer experience, grow revenue, reduce customer friction, and allocate resources. High\-impact individual contributor role with a clear path to Senior Analyst or Analytics Lead.
+
+ **ENTERPRISE TECHNOLOGY ENVIRONMENT**
+
+ **BI / Viz**
+
+  
+
+MS Power BI, MS Fabric (Source Code Manager)
+
+ **ERP**
+
+  
+
+Epicor P21
+
+ **CRM**
+
+  
+
+Salesforce
+
+ **Contact Center**
+
+  
+
+Genesys Cloud CX
+
+ **PIM**
+
+  
+
+Akeneo
+
+ **Languages**
+
+  
+
+SQL, Python, DAX, M (Power Query)
+
+ **Data Lake**
+
+  
+
+MS Fabric
+
+ **Productivity**
+
+  
+
+MS 365, Excel (Advanced)
+
+ **Industry**
+
+  
+
+CSI Div. 8, 10 \& 28
+
+ **Version Control**
+
+  
+
+Git (preferred)
+
+ **CORE RESPONSIBILITIES**
+
+**Power BI Development \& Data Visualization**
+
+* Design and maintain production\-grade Power BI reports and dashboards as the single source of truth for sales, CX, Customer Success, and Customer Service.
+* Govern the Power BI semantic model in MS Fabric SCM: row\-level security, incremental refresh, deployment pipelines, and metric consistency organization\-wide.
+* Author advanced DAX measures (time intelligence, semi\-additive, filter context) and Power Query (M) scripts connecting P21, Salesforce, Genesys, Akeneo, MS Fabric.
+* Partner with CX management to audit, rationalize, and maintain all existing operational dashboards; establish a prioritized roadmap for new analytics capabilities.
+  
+
+**Customer Experience (CX) Analytics**
+
+* Build a CX analytics framework measuring key moments of truth: quote response time, order accuracy, on\-time delivery, return rates, contact center resolution, and NPS or other measured sentiment outcomes.
+* Segment Banner’s customer base to identify behavioral patterns, share\-of\-wallet expansion opportunities, and churn risk by segment, product category, DC, and territory.
+* Develop internal dashboards for key CX metrics spanning the full order\-to\-cash business process.
+* Integrate Genesys contact center data with P21 transactional history to quantify service failure costs and surface root\-cause process improvement opportunities.
+  
+
+**Customer Success Analytics — Front\-End (Quoting \& Order Entry)**
+
+* Build descriptive and diagnostic dashboards for quote pipeline health: conversion rates, quote aging, response time, and accuracy by rep, segment, and product category (P21 \& Salesforce).
+* Analyze order entry performance metrics — cycle time, first\-time\-right rates, and error rates by type — to identify process improvement opportunities in partnership with Customer Success management.
+* Develop predictive models to score quote\-to\-order conversion likelihood, forecast order volume by segment and territory, and surface high\-probability opportunities for proactive customer outreach.
+* Create 360° customer\-facing and internal views of each account’s transactional and strategic experience with Banner, combining quote, order, and contact history.
+  
+
+**Customer Service Analytics — Back\-End (Returns \& Replacements)**
+
+* Design and maintain descriptive analytics for returns and replacement workflows: return rate by SKU, product category, customer segment, and reason code; replacement cycle time; and total cost\-of\-returns tracking.
+* Apply diagnostic analytics to identify root causes of return and replacement volume spikes; correlate service failure patterns with customer churn risk and prioritize remediation with Customer Service management.
+* Develop predictive return\-risk scoring models that generate early\-warning signals and trigger proactive outreach before customers escalate, reducing replacement costs and protecting customer relationships.
+* Measure and trend the impact of service recovery actions on downstream customer retention, repeat purchase behavior, and NPS to quantify the ROI of service improvement initiatives.
+  
+
+**AI Tools \& Intelligent Analytics**
+
+* Leverage Microsoft Copilot for Power BI — including natural language Q\&A, AI\-generated report summaries, and anomaly detection — to extend self\-service analytics.
+* Use AI\-assisted development tools (GitHub Copilot, Azure OpenAI, or equivalent) to accelerate DAX, SQL, and Python development; critically evaluate all AI\-generated code and analytical output for accuracy and governance compliance.
+* Ingest, model, and visualize structured outputs from Banner’s quote and order automation platform, turning exception logs and automation performance data into operational dashboards that measure ROI and surface friction points.
+* Apply prompt engineering techniques to direct AI tools in generating draft analyses, summarizing large datasets, and producing narrative interpretations of dashboard findings.
+* Serve as a critical reviewer of AI\-generated analytical outputs — validating model results, identifying data quality artifacts, and ensuring all AI\-assisted insights meet Banner’s accuracy and governance standards before reaching decision\-makers.
+* Stay current on responsible AI principles — bias detection, model explainability, and human\-in\-the\-loop validation — as they apply to customer\-facing scoring models such as churn risk, return risk, and quote conversion.
+  
+
+**SQL, Data Engineering \& Python**
+
+* Write and optimize complex SQL queries against MS Fabric and P21; build reusable parameterized views and stored procedures for scheduled and ad hoc reporting needs.
+* Automate recurring data pipelines in Fabric SCM; proactively identify data quality issues and partner with IT and source system owners to remediate.
+* Use Python (pandas, NumPy, scikit\-learn) for analytics beyond BI tooling: predictive modeling, churn forecasting, return\-risk scoring, trending, and demand pattern analysis.
+* Support new data source onboarding including AI/ML streams from Banner’s quote and order automation initiative.
+  
+
+**Insight Communication \& Analytics Operations**
+
+* Translate complex findings into compelling executive narratives; deliver performance reviews and data\-backed recommendations to leadership across Sales, Ops, Marketing, Finance, Service, and General Management.
+* Champion data literacy: train end users on self\-service Power BI, document metric definitions, and maintain a governed metrics catalog across all business functions.
+  
+
+**QUALIFICATIONS**
+
+ **Required**
+
+* 3\+ years hands\-on Power BI development (production)
+* Advanced DAX: time intelligence, row/filter context
+* Power Query / M for complex ETL transformations
+* Star\-schema data modeling; Power BI Service administration
+* Familiarity with AI\-assisted dev tools (GitHub Copilot, MS Copilot); ability to critically evaluate AI\-generated code and analytical output for accuracy
+* Proficient to advanced SQL (CTEs, window functions, optimization)
+* MS Fabric, Azure Data Lake, or equivalent cloud data lake
+* Python proficiency: pandas, NumPy, matplotlib/seaborn
+* Statistical reasoning: regression, segmentation, cohort, A/B
+* Bachelor’s in Statistics, Math, CS, IS, Economics, or related
+* PL\-300 cert strongly preferred or actively in progress
+* Excellent communication and executive presentation skills
+* Proven ability to manage concurrent projects in fast\-paced environment
+**Page Break** **Preferred Differentiators**
+
+* Wholesale distribution, building products, or B2B experience
+* Epicor P21 ERP data structures and reporting
+* Salesforce CRM integration (SFDC data model, Connector, API)
+* MS Copilot for Power BI, Azure OpenAI, or AI Builder experience
+* Quoting, order management, or returns/RMA analytics
+* CRM\-to\-ERP data flows: quote\-to\-order and order\-to\-cash
+* Genesys Cloud contact center data analytics or experience with equivalent applications
+* AI automation platform data integration
+* Predictive / ML modeling (scikit\-learn, statsmodels)
+* DAX Studio, Tabular Editor, or ALM Toolkit, RLS
+* Git version control for BI and analytics code assets
+* Responsible AI principles: bias detection, explainability, human\-in\-the\-loop validation
+ **Cultural Fit \& Attributes**
+
+* Driven, self\-starter, disciplined, and results\-oriented with a *hunter mentality*.
+* Committed to process excellence, accountability, and continuous improvement.
+* Collaborative team player who leverages internal and external partnerships and best practices to win.
+* Embodies Banner Solutions’ values of *Courtesy, Respect, Quality, Professionalism, and Discipline*.
+* Comfortable taking on end\-to\-end projects from ideation to execution; challenging current biases as appropriate
+
+ **SUCCESS METRICS — FIRST 12 MONTHS**
+
+* 60 days: Audit all Power BI reports and CS/Support dashboards; document data lineage, refresh schedules, quality issues, and stakeholder usage patterns.
+* 90 days: Deliver enhanced Customer Success and Service Performance Dashboards; identify top 3 dashboard optimization priorities with Customer Success / Service and CX management.
+* 6 months: Launch internal Customer Experience Health Scorecard for at\-risk account identification and wallet\-share growth; Quote\-to\-Cash CX Analytics Dashboard with descriptive and diagnostic layers complete.
+
+12 months: Full semantic model governed on MS Fabric; self\-service enablement to reduce ad hoc requests measurably; deliver* 1 predictive model and Customer 360 model draft approaches.
+ **COMPENSATION \& BENEFITS**
+
+ **Competitive Base Salary**
+
+ **✓**
+
+ **Performance Bonus**
+
+ **✓**
+
+ **401(k) \+ Match**
+
+ **✓**
+
+ **Medical / Dental / Vision**
+
+ **✓**
+
+ **Hybrid Flexibility**
+
+ **✓**
+
+ **Paid Time Off**
+
+ **✓**
+
+ *The job description is not an exhaustive listing of all responsibilities and may be revised at any time.*",,https://www.indeed.com/cmp/Mid--west-Wholesale-Hardware-Inc,,,,,,,,,,,,
+li-4390705851,linkedin,https://www.linkedin.com/jobs/view/4390705851,,"Manager, AI Solutions","Arbitration Forums, Inc.",,2026-03-26,,,,,,,False,,,,,,,https://www.linkedin.com/company/arbitration-forums,,,,,,,,,,,,
+li-4389934800,linkedin,https://www.linkedin.com/jobs/view/4389934800,,Investment Operations Senior Specialist (Remote),American Family Insurance,"New York, United States",2026-03-24,,,,,,,True,,,,,,,https://www.linkedin.com/company/american-family-insurance,,,,,,,,,,,,
+li-4389948357,linkedin,https://www.linkedin.com/jobs/view/4389948357,,Investment Operations Senior Specialist (Remote),American Family Insurance,"San Francisco, CA",2026-03-24,,,,,,,True,,,,,,,https://www.linkedin.com/company/american-family-insurance,,,,,,,,,,,,
+li-4389952063,linkedin,https://www.linkedin.com/jobs/view/4389952063,,Investment Operations Senior Specialist (Remote),American Family Insurance,"Chicago, IL",2026-03-24,,,,,,,True,,,,,,,https://www.linkedin.com/company/american-family-insurance,,,,,,,,,,,,
+li-4389942495,linkedin,https://www.linkedin.com/jobs/view/4389942495,,Investment Operations Senior Specialist (Remote),American Family Insurance,"Madison, WI",2026-03-24,,,,,,,True,,,,,,,https://www.linkedin.com/company/american-family-insurance,,,,,,,,,,,,
+li-4391208422,linkedin,https://www.linkedin.com/jobs/view/4391208422,,"Manager, Office of Business Technology (Req#1170)",ePlus inc.,,,,,,,,,False,,,,,,,https://www.linkedin.com/company/eplus-technology,,,,,,,,,,,,
+li-4391388213,linkedin,https://www.linkedin.com/jobs/view/4391388213,,"Associate Manager, QA Strategy & Operations",DoorDash,,,,,,,,,False,,,,,,,https://www.linkedin.com/company/doordash,,,,,,,,,,,,

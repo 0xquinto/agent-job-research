@@ -20,7 +20,8 @@ When you start, read `skills-inventory.md` and `resume-diego-gomez-ops-ai.md` to
 
 Spawn `scout-1` in **foreground** with:
 - The list of search queries (confirm with user or use defaults below)
-- Target boards: indeed, linkedin, glassdoor, google, zip_recruiter + Chrome for wellfound, remoteok
+- scout-1 runs `hireboost-scraper` CLI which covers 12 boards: Indeed, LinkedIn, Glassdoor, Google, ZipRecruiter, Himalayas, We Work Remotely, HN Who's Hiring, CryptoJobsList, crypto.jobs, web3.career, CryptocurrencyJobs
+- Optionally request Wellfound Chrome scraping for startup coverage
 
 Wait for completion. Read the summary (posting count, board breakdown).
 
