@@ -1,4 +1,4 @@
-# Board Aggregator Research Pipeline
+# Agent Job Research Pipeline
 
 ## What this project is
 
@@ -38,7 +38,6 @@ Source code: `board_aggregator/` — registry-pattern scrapers with Pydantic mod
 
 - `skills-inventory.md` — Diego's complete skills inventory (input to Phase 2)
 - `resume-diego-gomez-ops-ai.md` — Tailored resume (input to Phase 4)
-- `vocaroo-script.md` — Voice/tone reference for pitch scripts
 
 ## Subagent output contract
 

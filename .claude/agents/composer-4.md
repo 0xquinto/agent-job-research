@@ -18,7 +18,6 @@ You receive: a company name, role title, and fit score. Use all available resear
 3. `research/phase-3-contacts/[company-slug]/company-context.md` — for company-specific details
 4. `resume-diego-gomez-ops-ai.md` — for positioning and evidence
 5. `skills-inventory.md` — for specific technical evidence
-6. `vocaroo-script.md` — for voice and tone reference
 
 ## Voice guidelines
 
