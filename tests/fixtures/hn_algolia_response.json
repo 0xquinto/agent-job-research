@@ -1,0 +1,126 @@
+{
+  "exhaustive": {
+    "nbHits": true,
+    "typo": true
+  },
+  "exhaustiveNbHits": true,
+  "exhaustiveTypo": true,
+  "hits": [
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "laurieg"
+        },
+        "comment_text": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "We had an interview scheduled at the start of February which you cancelled with 30 minutes notice stating you had filled the position.  Since then, the position has been posted online and posted to HackerNews hiring threads.<p>Perhaps there has been a communication mix up here?"
+        },
+        "story_title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Ask HN: Who is hiring? (March 2026)"
+        }
+      },
+      "_tags": [
+        "comment",
+        "author_laurieg",
+        "story_47219668"
+      ],
+      "author": "laurieg",
+      "comment_text": "We had an interview scheduled at the start of February which you cancelled with 30 minutes notice stating you had filled the position.  Since then, the position has been posted online and posted to HackerNews hiring threads.<p>Perhaps there has been a communication mix up here?",
+      "created_at": "2026-03-25T05:59:37Z",
+      "created_at_i": 1774418377,
+      "objectID": "47513830",
+      "parent_id": 47333421,
+      "story_id": 47219668,
+      "story_title": "Ask HN: Who is hiring? (March 2026)",
+      "updated_at": "2026-03-25T08:31:13Z"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "marchesinlorena"
+        },
+        "comment_text": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Company: Faqta\nLocation: Utrecht, Netherlands (Hybrid Tue/Thu)\nRemote: No (NL-based)\nType: Full-time\nSalary: \u20ac3000\u2013\u20ac3525/month + 8% holiday pay<p>Medior Backend Developer (Node.js / TypeScript)<p>Faqta builds the platform used by thousands of teachers across the Netherlands to prepare lessons, track student progress, and manage classrooms.<p>We're modernizing our backend as we move from a startup architecture toward a more modular, scalable platform.<p>You'll work on systems that process student results, power classroom workflows, and support growing usage across schools.<p>Tech stack:\nNode.js, TypeScript, Express\nMySQL, Redis, BigQuery\nGCP, Kubernetes<p>Small engineering team, high ownership, low ego culture. Engineers drive solutions end-to-end from design to deployment.<p>More details and apply:\n<a href=\"https://vacatures.faqta.nl/vacature-medior-backend-developer\" rel=\"nofollow\">https://vacatures.faqta.nl/vacature-medior-backend-developer</a>"
+        },
+        "story_title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Ask HN: Who is hiring? (March 2026)"
+        }
+      },
+      "_tags": [
+        "comment",
+        "author_marchesinlorena",
+        "story_47219668"
+      ],
+      "author": "marchesinlorena",
+      "children": [
+        47431843
+      ],
+      "comment_text": "Company: Faqta\nLocation: Utrecht, Netherlands (Hybrid Tue/Thu)\nRemote: No (NL-based)\nType: Full-time\nSalary: \u20ac3000\u2013\u20ac3525/month + 8% holiday pay<p>Medior Backend Developer (Node.js / TypeScript)<p>Faqta builds the platform used by thousands of teachers across the Netherlands to prepare lessons, track student progress, and manage classrooms.<p>We're modernizing our backend as we move from a startup architecture toward a more modular, scalable platform.<p>You'll work on systems that process student results, power classroom workflows, and support growing usage across schools.<p>Tech stack:\nNode.js, TypeScript, Express\nMySQL, Redis, BigQuery\nGCP, Kubernetes<p>Small engineering team, high ownership, low ego culture. Engineers drive solutions end-to-end from design to deployment.<p>More details and apply:\n<a href=\"https://vacatures.faqta.nl/vacature-medior-backend-developer\" rel=\"nofollow\">https://vacatures.faqta.nl/vacature-medior-backend-developer</a>",
+      "created_at": "2026-03-16T13:48:17Z",
+      "created_at_i": 1773668897,
+      "objectID": "47398997",
+      "parent_id": 47219668,
+      "story_id": 47219668,
+      "story_title": "Ask HN: Who is hiring? (March 2026)",
+      "updated_at": "2026-03-26T11:23:04Z"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "djsiraz"
+        },
+        "comment_text": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Thank you! Appreciate this. Will let you know how we get on."
+        },
+        "story_title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Ask HN: Who is hiring? (March 2026)"
+        }
+      },
+      "_tags": [
+        "comment",
+        "author_djsiraz",
+        "story_47219668"
+      ],
+      "author": "djsiraz",
+      "comment_text": "Thank you! Appreciate this. Will let you know how we get on.",
+      "created_at": "2026-03-16T06:50:52Z",
+      "created_at_i": 1773643852,
+      "objectID": "47395825",
+      "parent_id": 47375985,
+      "story_id": 47219668,
+      "story_title": "Ask HN: Who is hiring? (March 2026)",
+      "updated_at": "2026-03-16T06:53:50Z"
+    }
+  ],
+  "hitsPerPage": 3,
+  "nbHits": 483,
+  "nbPages": 161,
+  "page": 0,
+  "params": "tags=comment%2Cstory_47219668&hitsPerPage=3&advancedSyntax=true&analyticsTags=backend",
+  "processingTimeMS": 1,
+  "processingTimingsMS": {
+    "_request": {
+      "roundTrip": 16
+    },
+    "total": 1
+  },
+  "query": "",
+  "serverTimeMS": 1
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "_id": {
+      "$oid": "69bd0a8d86d7913525d656c8"
+    },
+    "jobTitle": "Talent Acquisition Specialist",
+    "companyName": "Kleros",
+    "jobLocation": "",
+    "salary": {
+      "unitText": "YEAR",
+      "currency": "USD",
+      "minValue": 30000,
+      "maxValue": 60000
+    },
+    "videoApplicationsEnabled": false,
+    "bossFirstName": "Taieb",
+    "bossLastName": "Chaouch",
+    "companyTwitter": "kleros_io",
+    "companyLogo": "https://img.cryptojobslist.com/job/zx1ttfemm0jwqmma0vvf-1693470344849.png?w=84&h=84&q=75&f=auto",
+    "bossPicture": "https://img.cryptojobslist.com/job/2fd2bacd-9db9-4dbd-8cd5-286f94f01c18.jpg?w=32&h=32&q=75&f=auto",
+    "tags": [
+      "full-time",
+      "non-tech",
+      "web3",
+      "pay-in-crypto",
+      "human-resources",
+      "talent-acquisition",
+      "remote"
+    ],
+    "videoApplicationsRequired": false,
+    "estimatedSalary": null,
+    "category": null,
+    "remote": true,
+    "locationEnhancedObj": null,
+    "locationSchema": null,
+    "logoDarkMode": null,
+    "companySlug": "kleros",
+    "companyVerified": false,
+    "directApplicationsQty": 56,
+    "applicationLinkClicks": 0,
+    "published": true,
+    "publishedAt": "2026-03-20T08:51:25.124Z",
+    "isFeatured": true,
+    "featuredAt": "2026-03-20T08:51:25.097Z",
+    "lastApplicationAt": "2026-03-28T09:06:17.842Z",
+    "filled": false,
+    "seoSlug": "talent-acquisition-specialist-at-kleros",
+    "telegramDiscussionLink": "https://t.me/cryptojobslist/10772",
+    "twitterDiscussionLink": "https://x.com/CryptoJobsList/status/2037453087661580685",
+    "notAJobAd": false,
+    "id": "69bd0a8d86d7913525d656c8",
+    "salaryString": "$30k-60k/year",
+    "timeSinceJobCreation": "1w",
+    "applicationQuantityTitle": "56 direct applications.",
+    "isActive": true
+  }
+]

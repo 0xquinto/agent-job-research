@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!--
+  Real HTML fixture for web3.career job listing page.
+  Source: https://web3.career/remote-jobs (crawled 2026-03-28)
+  Structure confirmed via:
+    1. Chrome accessibility tree (live DOM inspection)
+    2. Working scraper: https://github.com/Charubak/web3-career-bot/blob/main/boards.py
+  Selector that works: soup.select("tr[onclick]")
+-->
+<html>
+<body>
+
+<!-- Parent container: <table> element (maps to accessibility tree ref_272) -->
+<!-- The table has a thead with column labels and a tbody containing job rows -->
+
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>Job Position</th>
+      <th>Company</th>
+      <th>Posted</th>
+      <th>Location</th>
+      <th>Salary</th>
+      <th>Tags</th>
+    </tr>
+  </thead>
+  <tbody class="tbody">
+
+    <!-- JOB CARD 1: Remote job with estimated salary (no real salary shown) -->
+    <!-- URL pattern: /[job-title-slug]-[company-slug]/[numeric-id] -->
+    <tr onclick="tableTurboRowClick(event, '/senior-product-manager-privacy-base/148070')" class="job-row">
+      <td class="job-title-col">
+        <a href="/senior-product-manager-privacy-base/148070">
+          <h2 class="job-title-mobile mb-auto">Senior Product Manager Privacy</h2>
+        </a>
+      </td>
+      <td class="company-col">
+        <a href="/senior-product-manager-privacy-base/148070">
+          <h3>Base</h3>
+        </a>
+      </td>
+      <td class="posted-col">
+        <time>11h</time>
+      </td>
+      <td class="location-col">
+        <a href="/remote-jobs">Remote</a>
+      </td>
+      <td class="salary-col">
+        <p class="salary-estimate">Estimated salary based on similar jobs</p>
+      </td>
+      <td class="tags-col">
+        <a href="/product-manager-jobs" class="badge">product manager</a>
+        <a href="/non-tech-jobs" class="badge">non tech</a>
+        <a href="/senior-jobs" class="badge">senior</a>
+        <a href="/remote-jobs" class="badge">remote</a>
+      </td>
+    </tr>
+
+    <!-- JOB CARD 2: Non-remote job (Warsaw, Poland) with real salary range -->
+    <tr onclick="tableTurboRowClick(event, '/compliance-governance-analyst-100-remote-tetheroperationslimited/148067')" class="job-row">
+      <td class="job-title-col">
+        <a href="/compliance-governance-analyst-100-remote-tetheroperationslimited/148067">
+          <h2 class="job-title-mobile mb-auto">Compliance Governance Analyst 100% remote</h2>
+        </a>
+      </td>
+      <td class="company-col">
+        <a href="/compliance-governance-analyst-100-remote-tetheroperationslimited/148067">
+          <h3>Tether Operations Limited</h3>
+        </a>
+      </td>
+      <td class="posted-col">
+        <time>14h</time>
+      </td>
+      <td class="location-col">
+        <a href="/web3-jobs-warsaw">Warsaw</a>,
+        <a href="/web3-jobs-poland">Poland</a>
+      </td>
+      <td class="salary-col">
+        <p>$76k - $84k</p>
+      </td>
+      <td class="tags-col">
+        <a href="/compliance-jobs" class="badge">compliance</a>
+        <a href="/non-tech-jobs" class="badge">non tech</a>
+        <a href="/remote-jobs" class="badge">remote</a>
+        <a href="/analyst-jobs" class="badge">analyst</a>
+        <a href="/bitcoin-jobs" class="badge">bitcoin</a>
+      </td>
+    </tr>
+
+    <!-- JOB CARD 3: Remote job with explicit high salary range -->
+    <!-- Demonstrates: multi-city location (New York, NY, United States) -->
+    <tr onclick="tableTurboRowClick(event, '/institutional-bd-defi-lending-app-786c0-referment/148059')" class="job-row">
+      <td class="job-title-col">
+        <a href="/institutional-bd-defi-lending-app-786c0-referment/148059">
+          <h2 class="job-title-mobile mb-auto">Institutional BD &#x2013; DeFi Lending App: 786c0</h2>
+        </a>
+      </td>
+      <td class="company-col">
+        <a href="/institutional-bd-defi-lending-app-786c0-referment/148059">
+          <h3>Referment</h3>
+        </a>
+      </td>
+      <td class="posted-col">
+        <!-- No <time> element when relative time not shown -->
+      </td>
+      <td class="location-col">
+        <a href="/web3-jobs-new-york">New York</a>,
+        <a href="/web3-jobs-new-york">NY</a>,
+        <a href="/web3-jobs-united-states">United States</a>
+      </td>
+      <td class="salary-col">
+        <p>$175k - $250k</p>
+      </td>
+      <td class="tags-col">
+        <a href="/business-development-jobs" class="badge">business development</a>
+        <a href="/c-jobs" class="badge">c</a>
+        <a href="/c-plus-plus-jobs" class="badge">c plus plus</a>
+        <a href="/blockchain-jobs" class="badge">blockchain</a>
+        <a href="/crypto-jobs" class="badge">crypto</a>
+      </td>
+    </tr>
+
+    <!-- JOB CARD 4: Remote job with company logo image present -->
+    <!-- Demonstrates: some rows have a company logo <img> in company td -->
+    <tr onclick="tableTurboRowClick(event, '/seo-growth-lead-zigchain/145957')" class="job-row">
+      <td class="job-title-col">
+        <a href="/seo-growth-lead-zigchain/145957">
+          <h2 class="job-title-mobile mb-auto">SEO Growth Lead</h2>
+        </a>
+      </td>
+      <td class="company-col">
+        <img src="/logos/zigchain.png" alt="ZIGCHAIN" class="company-logo">
+        <a href="/seo-growth-lead-zigchain/145957">
+          <h3>ZIGCHAIN</h3>
+        </a>
+      </td>
+      <td class="posted-col">
+        <time>1d</time>
+      </td>
+      <td class="location-col">
+        <a href="/remote-jobs">Remote</a>
+      </td>
+      <td class="salary-col">
+        <p>$18k - $36k</p>
+      </td>
+      <td class="tags-col">
+        <a href="/growth-jobs" class="badge">growth</a>
+        <a href="/lead-jobs" class="badge">lead</a>
+        <a href="/seo-jobs" class="badge">seo</a>
+        <a href="/non-tech-jobs" class="badge">non tech</a>
+        <a href="/remote-jobs" class="badge">remote</a>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+</body>
+</html>

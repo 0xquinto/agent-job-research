@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>CryptoJobs - Latest Web3 Jobs</title>
+        <link>https://crypto.jobs</link>
+        <description>The latest cryptocurrency and Web3 job postings from crypto.jobs</description>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 25 Mar 2026 22:02:47 +0000</lastBuildDate>
+        <atom:link href="https://crypto.jobs/feed/rss" rel="self" type="application/rss+xml" />
+        <image>
+            <url>https://crypto.jobs/images/logos/cryptojobs-og.png</url>
+            <title>CryptoJobs</title>
+            <link>https://crypto.jobs</link>
+        </image>
+
+        <item>
+            <title>GALINA World — CEO / Co-Founder at GALINA world</title>
+            <link>https://crypto.jobs/jobs/galina-world-ceo-co-founder-at-galina-world?utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=job-feed</link>
+            <guid isPermaLink="true">https://crypto.jobs/jobs/galina-world-ceo-co-founder-at-galina-world</guid>
+            <description><![CDATA[
+                <p><strong>Company:</strong> GALINA world</p>
+                <p><strong>Location:</strong> Remote</p>
+                <p><strong>Salary:</strong> GLNA Token Grant 3,400,000 GLNA (3.4% of total supply) &amp; Deferred salary: €3,000/month &amp; market salary: €8,000–€10,000/month on reaching €1M annual revenue</p>
+                <p><strong>Type:</strong> Full Time</p>
+                <p><strong>Skills:</strong> Polygon, ICO, sustainable technology solutions</p>
+                <p>"GALINA World is building Europe's first blockchain-backed clean energy marketplace"</p>
+            ]]></description>
+            <category>Business Development</category>
+            <pubDate>Wed, 25 Mar 2026 22:02:47 +0000</pubDate>
+        </item>
+
+        <item>
+            <title>Co-founder &amp; CEO at Niubi Bank</title>
+            <link>https://crypto.jobs/jobs/co-founder-ceo-at-niubi-bank?utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=job-feed</link>
+            <guid isPermaLink="true">https://crypto.jobs/jobs/co-founder-ceo-at-niubi-bank</guid>
+            <description><![CDATA[
+                <p><strong>Company:</strong> Niubi Bank</p>
+                <p><strong>Location:</strong> Remote</p>
+                <p><strong>Salary:</strong> 180-280K USD a year</p>
+                <p><strong>Type:</strong> Full Time</p>
+                <p><strong>Skills:</strong> Fundraising, strategy, payments, DeFi</p>
+                <p>Leadership responsibilities include seed through Series A fundraising, regulatory strategy across markets</p>
+            ]]></description>
+            <category>Other</category>
+            <pubDate>Tue, 24 Mar 2026 00:00:06 +0000</pubDate>
+        </item>
+
+        <item>
+            <title>Junior Crypto Trader (Remote, Spot Trading) at Token town</title>
+            <link>https://crypto.jobs/jobs/junior-crypto-trader-remote-spot-trading-at-token-town?utm_source=rss&amp;utm_medium=feed&amp;utm_campaign=job-feed</link>
+            <guid isPermaLink="true">https://crypto.jobs/jobs/junior-crypto-trader-remote-spot-trading-at-token-town</guid>
+            <description><![CDATA[
+                <p><strong>Company:</strong> Token town</p>
+                <p><strong>Location:</strong> Remote</p>
+                <p><strong>Salary:</strong> 5000</p>
+                <p><strong>Type:</strong> Part Time</p>
+                <p><strong>Skills:</strong> binance trust</p>
+                <p>"Token Town ecosystem — the world's leading blockchain analytics platform"</p>
+            ]]></description>
+            <category>Sales</category>
+            <pubDate>Thu, 12 Mar 2026 00:00:07 +0000</pubDate>
+        </item>
+
+    </channel>
+</rss>

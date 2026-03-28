@@ -1,0 +1,230 @@
+<!--
+  Real HTML fixture for cryptocurrencyjobs.co job listings
+  Source: https://cryptocurrencyjobs.co/operations/ (crawled 2026-03-28)
+  Method: Chrome accessibility tree inspection + live page structure analysis
+
+  IMPORTANT NOTES FOR PARSER AUTHORS:
+  - The page renders TWO identical <ul> lists of job cards (one static/CSS-only, one JS-enhanced)
+  - The first <ul> is the server-rendered static version (parse this one with requests+BS4)
+  - The second <ul> is the Algolia-powered JS-rendered version (requires Selenium/Playwright)
+  - Both lists have structurally identical <li> items
+  - Featured jobs appear first; non-featured jobs follow
+  - Date strings use relative format: "Today", "1d", "3d", "9w" (no absolute date in HTML)
+  - Salary uses a <span> directly inside the <li> (NOT inside a nested <div>)
+  - Featured badge is a bare <span> text node "Featured" at end of <li>
+  - Tags use a separate <ul> from the location/type <ul>
+  - Company name heading has NO <a> tag when the company has no profile page (rare edge case)
+  - CSS classes are Tailwind utility classes — use tag/structural selectors, NOT class selectors
+-->
+
+<!-- ============================================================
+     OUTER STRUCTURE: jobs list container
+     BeautifulSoup selector: soup.find('ul', class_=lambda c: c and 'jobs' in ' '.join(c))
+     SAFER selector: soup.select('main ul li') — picks up first matching ul
+     ============================================================ -->
+<ul>
+
+  <!-- ============================================================
+       JOB CARD 1: Featured job WITH salary, single location
+       URL pattern: /operations/[company-slug]-[job-title-slug]/
+       ============================================================ -->
+  <li>
+    <!-- Company logo: alt text is "[Company Name] logo" -->
+    <img alt="Ethena Labs logo" src="/startups/assets/logos/ethena-labs.jpg" width="64" height="64">
+
+    <!-- Job title: h2 wrapping an <a> with the job detail URL -->
+    <!-- BeautifulSoup: li.find('h2').find('a') OR li.select_one('h2 a') -->
+    <h2>
+      <a href="/operations/ethena-labs-financial-associate/">Financial Associate</a>
+    </h2>
+
+    <!-- Company name: h3 wrapping an <a> with company profile URL -->
+    <!-- BeautifulSoup: li.find('h3').find('a') OR li.select_one('h3 a') -->
+    <h3>
+      <a href="/startups/ethena-labs/">Ethena Labs</a>
+    </h3>
+
+    <!-- Location(s): each location in its own <li> inside a <ul>
+         Multiple locations = multiple <li> items in this list
+         Location link goes to /remote/ or /[city-slug]/ -->
+    <ul>
+      <li>
+        <h4><a href="/remote/">Remote - Portugal</a></h4>
+      </li>
+    </ul>
+
+    <!-- Department (role category): standalone h4 with link -->
+    <!-- BeautifulSoup: li.find('h4', recursive=False) is NOT reliable due to nested h4s
+         SAFER: find the h4 that contains a link to /operations/ or other category URLs -->
+    <h4>
+      <a href="/operations/">Operations</a>
+    </h4>
+
+    <!-- Employment type(s): each type in its own <li> inside a separate <ul>
+         Values: Full-Time, Part-Time, Contract, Internship, Freelance -->
+    <ul>
+      <li>
+        <h4><a href="/full-time/">Full-Time</a></h4>
+      </li>
+    </ul>
+
+    <!-- Salary: bare <span>, present ONLY when salary is disclosed
+         Format examples: "$110K – $150K", "€50K – €75K", "$120K", "$18K – $30K"
+         ABSENT when no salary listed (not even an empty span)
+         BeautifulSoup: li.find('span') — but only if it doesn't contain "Featured" or a date -->
+    <span>€50K – €75K</span>
+
+    <!-- Tags/keywords: <ul> of <li> items
+         Some tags are plain text (no link), most have links to tag category pages
+         BeautifulSoup: li.find_all('ul')[-1] for the last ul (tags), or check li count -->
+    <ul>
+      <li><span>Accounting</span></li>
+      <li><a href="/defi/">DeFi</a></li>
+      <li><a href="/finance/">Finance</a></li>
+      <li><a href="/non-tech/">Non-Tech</a></li>
+      <li><a href="/web3/">Web3</a></li>
+    </ul>
+
+    <!-- Date posted: relative string at end of card
+         Values: "Today", "1d", "2d", "3d", ... "9w", "11w"
+         NO absolute date in the HTML — relative only
+         BeautifulSoup: li.find_all('span')[-2] if featured, or [-1] if not featured -->
+    <span>Today</span>
+
+    <!-- Featured badge: present ONLY for featured/promoted listings
+         Plain <span> with text "Featured" — no class differentiator
+         BeautifulSoup: check if any span.text == "Featured" -->
+    <span>Featured</span>
+  </li>
+
+  <!-- ============================================================
+       JOB CARD 2: Featured job WITHOUT salary, single location
+       ============================================================ -->
+  <li>
+    <img alt="Legacy logo" src="/startups/assets/logos/legacy.jpg" width="64" height="64">
+
+    <h2>
+      <a href="/operations/legacy-customer-success-lifecycle-operations-manager/">Customer Success &amp; Lifecycle Operations Manager</a>
+    </h2>
+
+    <!-- Edge case: company with no profile page has h3 with NO <a> tag -->
+    <h3>Legacy</h3>
+
+    <ul>
+      <li>
+        <h4><a href="/remote/">Remote</a></h4>
+      </li>
+    </ul>
+
+    <h4>
+      <a href="/operations/">Operations</a>
+    </h4>
+
+    <ul>
+      <li>
+        <h4><a href="/full-time/">Full-Time</a></h4>
+      </li>
+    </ul>
+
+    <!-- NO salary span when salary is not disclosed -->
+
+    <ul>
+      <li><a href="/ai/">AI</a></li>
+      <li><a href="/customer-success/">Customer Success</a></li>
+      <li><a href="/non-tech/">Non-Tech</a></li>
+      <li><a href="/operations-manager/">Operations Manager</a></li>
+      <li><a href="/product/">Product</a></li>
+      <li><a href="/web3/">Web3</a></li>
+    </ul>
+
+    <span>1d</span>
+    <span>Featured</span>
+  </li>
+
+  <!-- ============================================================
+       JOB CARD 3: Non-featured job, multiple locations, Contract+Full-Time
+       ============================================================ -->
+  <li>
+    <img alt="Chainalysis logo" src="/startups/assets/logos/chainalysis.jpg" width="64" height="64">
+
+    <h2>
+      <a href="/operations/chainalysis-senior-recruiter-sales-gtm/">Senior Recruiter, Sales and GTM - (Fixed Term Contract) - 6 months</a>
+    </h2>
+
+    <h3>
+      <a href="/startups/chainalysis/">Chainalysis</a>
+    </h3>
+
+    <!-- Multiple locations: multiple <li> in the location <ul> -->
+    <ul>
+      <li>
+        <h4><a href="/london/">London</a></h4>
+      </li>
+    </ul>
+
+    <h4>
+      <a href="/operations/">Operations</a>
+    </h4>
+
+    <!-- Multiple employment types: multiple <li> in the type <ul> -->
+    <ul>
+      <li>
+        <h4><a href="/contract/">Contract</a></h4>
+      </li>
+      <li>
+        <h4><a href="/full-time/">Full-Time</a></h4>
+      </li>
+    </ul>
+
+    <!-- No salary -->
+
+    <ul>
+      <li><a href="/non-tech/">Non-Tech</a></li>
+      <li><a href="/recruiter/">Recruiter</a></li>
+    </ul>
+
+    <!-- Non-featured: only date span, NO "Featured" span -->
+    <span>3d</span>
+  </li>
+
+  <!-- ============================================================
+       JOB CARD 4: Non-featured job with salary and multiple locations
+       ============================================================ -->
+  <li>
+    <img alt="Paradigm logo" src="/startups/assets/logos/paradigm.jpg" width="64" height="64">
+
+    <h2>
+      <a href="/operations/paradigm-business-operations-analyst/">Business Operations Analyst</a>
+    </h2>
+
+    <h3>
+      <a href="/startups/paradigm/">Paradigm</a>
+    </h3>
+
+    <ul>
+      <li>
+        <h4><a href="/san-francisco-ca/">San Francisco (CA)</a></h4>
+      </li>
+    </ul>
+
+    <h4>
+      <a href="/operations/">Operations</a>
+    </h4>
+
+    <ul>
+      <li>
+        <h4><a href="/full-time/">Full-Time</a></h4>
+      </li>
+    </ul>
+
+    <span>$100K – $180K</span>
+
+    <ul>
+      <li><a href="/business-analyst/">Business Analyst</a></li>
+      <li><a href="/data/">Data</a></li>
+    </ul>
+
+    <span>1d</span>
+  </li>
+
+</ul>
