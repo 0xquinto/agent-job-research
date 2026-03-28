@@ -1,5 +1,5 @@
 [project]
-name = "hireboost-scraper"
+name = "board-aggregator"
 version = "0.1.0"
 description = "Multi-board job scraper CLI for the HireBoost pipeline"
 requires-python = ">=3.12"
@@ -17,10 +17,10 @@ browser = ["playwright>=1.40"]
 dev = ["pytest>=8.0", "pytest-mock>=3.12", "responses>=0.25"]
 
 [project.scripts]
-hireboost-scraper = "hireboost_scraper.cli:main"
+board-aggregator = "board_aggregator.cli:main"
 
 [tool.setuptools.packages.find]
-include = ["hireboost_scraper*"]
+include = ["board_aggregator*"]
 
 [build-system]
 requires = ["setuptools>=68"]

@@ -1,5 +1,5 @@
-from hireboost_scraper.models import JobPosting
-from hireboost_scraper.runner import deduplicate
+from board_aggregator.models import JobPosting
+from board_aggregator.runner import deduplicate
 
 
 def test_deduplicate_by_title_company():

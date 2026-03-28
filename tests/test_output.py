@@ -2,8 +2,8 @@ import csv
 import tempfile
 from pathlib import Path
 
-from hireboost_scraper.models import JobPosting
-from hireboost_scraper.output import write_csv, write_markdown
+from board_aggregator.models import JobPosting
+from board_aggregator.output import write_csv, write_markdown
 
 
 SAMPLE_JOBS = [

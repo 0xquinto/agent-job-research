@@ -2,7 +2,7 @@ from pathlib import Path
 
 import responses
 
-from hireboost_scraper.scrapers.cryptocurrencyjobs import CryptocurrencyJobsScraper
+from board_aggregator.scrapers.cryptocurrencyjobs import CryptocurrencyJobsScraper
 
 
 # Load real HTML fixture

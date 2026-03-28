@@ -1,10 +1,10 @@
 from unittest.mock import patch
 import pandas as pd
 
-from hireboost_scraper.scrapers.jobspy_boards import JobSpyScraper
+from board_aggregator.scrapers.jobspy_boards import JobSpyScraper
 
 
-@patch("hireboost_scraper.scrapers.jobspy_boards.scrape_jobs")
+@patch("board_aggregator.scrapers.jobspy_boards.scrape_jobs")
 def test_jobspy_scraper_wraps_library(mock_scrape):
     mock_scrape.return_value = pd.DataFrame([
         {
@@ -33,7 +33,7 @@ def test_jobspy_scraper_wraps_library(mock_scrape):
     assert jobs[0].salary_min == 150000
 
 
-@patch("hireboost_scraper.scrapers.jobspy_boards.scrape_jobs")
+@patch("board_aggregator.scrapers.jobspy_boards.scrape_jobs")
 def test_jobspy_scraper_handles_exception(mock_scrape):
     mock_scrape.side_effect = Exception("Rate limited")
 

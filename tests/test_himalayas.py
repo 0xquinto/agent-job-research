@@ -1,6 +1,6 @@
 import responses
 
-from hireboost_scraper.scrapers.himalayas import HimalayasScraper
+from board_aggregator.scrapers.himalayas import HimalayasScraper
 from tests.conftest import HIMALAYAS_API_RESPONSE
 
 

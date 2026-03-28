@@ -1,4 +1,4 @@
-# HireBoost Research Pipeline
+# Board Aggregator Research Pipeline
 
 ## What this project is
 
@@ -14,18 +14,18 @@ claude --agent lead-0
 
 Non-descriptive names to prevent Claude from inferring default behaviors:
 - `lead-0` — pipeline orchestrator
-- `scout-1` — Phase 1: job board scraping (hireboost-scraper CLI + Chrome)
+- `scout-1` — Phase 1: job board scraping (board-aggregator CLI + Chrome)
 - `ranker-7` — Phase 2: fit scoring against skills-inventory.md
 - `recon-3` — Phase 3: contact research (Exa + Chrome)
 - `composer-4` — Phase 4: pitch material generation
 
-## hireboost-scraper CLI
+## board-aggregator CLI
 
-Scout-1 calls the `hireboost-scraper` CLI (installed in `.venv/`) which scrapes 13 boards:
+Scout-1 calls the `board-aggregator` CLI (installed in `.venv/`) which scrapes 13 boards:
 - python-jobspy: Indeed, LinkedIn, Glassdoor, Google, ZipRecruiter
 - Custom scrapers: Himalayas, We Work Remotely, HN Who's Hiring, CryptoJobsList, crypto.jobs, web3.career, CryptocurrencyJobs, RemoteOK
 
-Source code: `hireboost_scraper/` — registry-pattern scrapers with Pydantic models, dedup, CSV+MD output.
+Source code: `board_aggregator/` — registry-pattern scrapers with Pydantic models, dedup, CSV+MD output.
 
 ## Directory conventions
 

@@ -1,6 +1,6 @@
 import responses
 
-from hireboost_scraper.scrapers.cryptojobslist import CryptoJobsListScraper
+from board_aggregator.scrapers.cryptojobslist import CryptoJobsListScraper
 
 
 NEXT_DATA_HTML = '''<html><body>

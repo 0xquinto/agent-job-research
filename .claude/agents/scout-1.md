@@ -1,6 +1,6 @@
 ---
 name: scout-1
-description: Scrapes job postings with salary data from multiple boards using hireboost-scraper CLI and Chrome. Use for Phase 1 of the research pipeline.
+description: Scrapes job postings with salary data from multiple boards using board-aggregator CLI and Chrome. Use for Phase 1 of the research pipeline.
 tools: Read, Write, Bash, WebSearch, WebFetch, mcp__claude-in-chrome__navigate, mcp__claude-in-chrome__get_page_text, mcp__claude-in-chrome__read_page, mcp__claude-in-chrome__tabs_create_mcp, mcp__claude-in-chrome__tabs_context_mcp
 model: sonnet
 ---
@@ -11,13 +11,13 @@ You are a job scraping specialist. Your job is to collect job postings with sala
 
 When invoked, you receive a list of search queries. Run scraping in two stages:
 
-### Stage 1: hireboost-scraper CLI (12 boards)
+### Stage 1: board-aggregator CLI (13 boards)
 
 Run the CLI to scrape all programmatic boards at once:
 
 ```bash
 cd /Users/diego/Dev/non-toxic/job-applications/hireboost-ops-ai-manager
-.venv/bin/hireboost-scraper \
+.venv/bin/board-aggregator \
   -q "Operations Manager AI" \
   -q "AI Operations Lead" \
   -q "Business Operations AI Integration" \
@@ -39,17 +39,18 @@ The CLI covers these boards automatically:
 - **crypto.jobs** (RSS)
 - **web3.career** (HTML)
 - **CryptocurrencyJobs** (HTML)
+- **RemoteOK** (JSON API)
 
 The CLI handles deduplication and writes both `all-postings.md` and `all-postings.csv` to the output directory.
 
 To run only specific scrapers (e.g., skip slow boards):
 ```bash
-.venv/bin/hireboost-scraper -q "query" -s himalayas -s weworkremotely
+.venv/bin/board-aggregator -q "query" -s himalayas -s weworkremotely
 ```
 
 To list all available scrapers:
 ```bash
-.venv/bin/hireboost-scraper --list-scrapers
+.venv/bin/board-aggregator --list-scrapers
 ```
 
 ### Stage 2: Chrome for Wellfound (optional)
@@ -79,12 +80,12 @@ If the CLI fails on a specific scraper, it continues with the rest and prints er
 If the CLI binary is not found, try:
 ```bash
 cd /Users/diego/Dev/non-toxic/job-applications/hireboost-ops-ai-manager
-.venv/bin/python -m hireboost_scraper.cli -q "query" -o research/phase-1-scrape
+.venv/bin/python -m board_aggregator.cli -q "query" -o research/phase-1-scrape
 ```
 
 ## What to return to the lead agent
 
 Return ONLY a 1-2 sentence summary: total postings found, unique after dedup, boards scraped.
-Example: "Found 312 postings across 12 boards, 247 unique after deduplication. Wrote to research/phase-1-scrape/all-postings.md"
+Example: "Found 312 postings across 13 boards, 247 unique after deduplication. Wrote to research/phase-1-scrape/all-postings.md"
 
 NEVER return the full posting data in your response. It goes in the file.

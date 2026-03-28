@@ -2,7 +2,7 @@ from pathlib import Path
 
 import responses
 
-from hireboost_scraper.scrapers.web3career import Web3CareerScraper
+from board_aggregator.scrapers.web3career import Web3CareerScraper
 
 
 # Load real HTML fixture

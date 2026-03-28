@@ -2,7 +2,7 @@ from unittest.mock import patch
 
 import feedparser as real_feedparser
 
-from hireboost_scraper.scrapers.crypto_jobs import CryptoJobsScraper
+from board_aggregator.scrapers.crypto_jobs import CryptoJobsScraper
 
 
 SAMPLE_RSS = """<?xml version="1.0" encoding="UTF-8"?>
@@ -50,7 +50,7 @@ PARSED_FEED = real_feedparser.parse(SAMPLE_RSS)
 PARSED_EMPTY_FEED = real_feedparser.parse(EMPTY_RSS)
 
 
-@patch("hireboost_scraper.scrapers.crypto_jobs.feedparser.parse")
+@patch("board_aggregator.scrapers.crypto_jobs.feedparser.parse")
 def test_crypto_jobs_extracts_company_from_description(mock_parse):
     mock_parse.return_value = PARSED_FEED
 
@@ -65,7 +65,7 @@ def test_crypto_jobs_extracts_company_from_description(mock_parse):
     assert jobs[0].is_remote is True
 
 
-@patch("hireboost_scraper.scrapers.crypto_jobs.feedparser.parse")
+@patch("board_aggregator.scrapers.crypto_jobs.feedparser.parse")
 def test_crypto_jobs_uses_guid_not_link(mock_parse):
     """<guid> has clean URL without UTM params."""
     mock_parse.return_value = PARSED_FEED
@@ -77,7 +77,7 @@ def test_crypto_jobs_uses_guid_not_link(mock_parse):
     assert jobs[0].job_url == "https://crypto.jobs/jobs/co-founder-ceo-at-niubi-bank"
 
 
-@patch("hireboost_scraper.scrapers.crypto_jobs.feedparser.parse")
+@patch("board_aggregator.scrapers.crypto_jobs.feedparser.parse")
 def test_crypto_jobs_parses_title_at_pattern(mock_parse):
     mock_parse.return_value = PARSED_FEED
 
@@ -88,7 +88,7 @@ def test_crypto_jobs_parses_title_at_pattern(mock_parse):
     assert jobs[0].title == "Co-founder & CEO"
 
 
-@patch("hireboost_scraper.scrapers.crypto_jobs.feedparser.parse")
+@patch("board_aggregator.scrapers.crypto_jobs.feedparser.parse")
 def test_crypto_jobs_handles_empty_feed(mock_parse):
     mock_parse.return_value = PARSED_EMPTY_FEED
 

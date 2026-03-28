@@ -1,4 +1,4 @@
-from hireboost_scraper.models import JobPosting
+from board_aggregator.models import JobPosting
 
 
 def test_job_posting_minimal():
@@ -56,7 +56,7 @@ def test_job_posting_dedup_key_normalizes():
 
 # --- Task 2: Base class tests ---
 
-from hireboost_scraper.scrapers.base import BaseScraper
+from board_aggregator.scrapers.base import BaseScraper
 
 
 def test_base_scraper_is_abstract():

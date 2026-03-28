@@ -2,7 +2,7 @@ from unittest.mock import patch
 
 import feedparser as real_feedparser
 
-from hireboost_scraper.scrapers.weworkremotely import WeWorkRemotelyScraper
+from board_aggregator.scrapers.weworkremotely import WeWorkRemotelyScraper
 
 
 SAMPLE_RSS = """<?xml version="1.0" encoding="UTF-8"?>
@@ -51,7 +51,7 @@ PARSED_COLON_FEED = real_feedparser.parse(COLON_RSS)
 PARSED_EMPTY_FEED = real_feedparser.parse(EMPTY_RSS)
 
 
-@patch("hireboost_scraper.scrapers.weworkremotely.feedparser.parse")
+@patch("board_aggregator.scrapers.weworkremotely.feedparser.parse")
 def test_wwr_scraper_parses_rss(mock_parse):
     mock_parse.return_value = PARSED_FEED
 
@@ -66,7 +66,7 @@ def test_wwr_scraper_parses_rss(mock_parse):
     assert "weworkremotely.com" in jobs[0].job_url
 
 
-@patch("hireboost_scraper.scrapers.weworkremotely.feedparser.parse")
+@patch("board_aggregator.scrapers.weworkremotely.feedparser.parse")
 def test_wwr_scraper_splits_company_on_first_colon(mock_parse):
     """Company name must split on first colon only (job titles can contain colons)."""
     mock_parse.return_value = PARSED_COLON_FEED
@@ -78,7 +78,7 @@ def test_wwr_scraper_splits_company_on_first_colon(mock_parse):
     assert jobs[0].title == "Senior Engineer: Payments Team"
 
 
-@patch("hireboost_scraper.scrapers.weworkremotely.feedparser.parse")
+@patch("board_aggregator.scrapers.weworkremotely.feedparser.parse")
 def test_wwr_scraper_handles_empty_feed(mock_parse):
     mock_parse.return_value = PARSED_EMPTY_FEED
 

@@ -1,6 +1,6 @@
 import responses
 
-from hireboost_scraper.scrapers.hn_hiring import HNHiringScraper
+from board_aggregator.scrapers.hn_hiring import HNHiringScraper
 
 
 ALGOLIA_THREAD_RESPONSE = {

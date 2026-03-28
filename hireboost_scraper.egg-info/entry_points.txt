@@ -1,2 +1,0 @@
-[console_scripts]
-hireboost-scraper = hireboost_scraper.cli:main

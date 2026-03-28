@@ -1,0 +1,2 @@
+[console_scripts]
+board-aggregator = board_aggregator.cli:main
