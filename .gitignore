@@ -1,0 +1,19 @@
+# Pipeline run outputs (large, regenerable)
+research/runs/
+research/latest
+research/cleanup-report.txt
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Environment
+.venv/
+.env
+
+# OS
+.DS_Store
