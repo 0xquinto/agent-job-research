@@ -66,6 +66,17 @@ Agentic engineer. I design multi-agent systems and pilot AI agents to produce ex
 - A/B testing of agent strategies (pass1_mode variants)
 **Tech:** Python, Foundry (forge), Slither, Solidity (reading/auditing), Claude SDK
 
+### 6. Agent Job Research Pipeline
+**What:** Multi-agent job research pipeline — scrapes, scores, finds contacts, generates pitch materials.
+**Domain:** Agentic engineering / tool orchestration
+**Key results:**
+- 30+ subagents orchestrated across 4-phase pipeline (scrape, rank, recon, compose)
+- board-aggregator CLI wrapping 13 job board scrapers behind unified interface
+- Parallel subagent dispatch with non-deterministic output evaluation
+- Weighted scoring framework for ranking 1,000+ postings
+- Run versioning with timestamped directories and retention policy
+**Tech:** Python, Claude Code, Claude SDK, MCP protocol, Exa, Chrome automation
+
 ---
 
 ## Crypto & Web3 Experience
@@ -105,9 +116,28 @@ Agentic engineer. I design multi-agent systems and pilot AI agents to produce ex
 |-----------|------------|------|
 | MBA (International) | EAE Business School, Barcelona | 2017 |
 | B.S. Industrial Engineering | USMA, Panama | 2014 |
-| Claude in Amazon Bedrock | Anthropic | Mar 2026 |
-| Claude with Google Cloud's Vertex AI | Anthropic | Mar 2026 |
-| Additional Anthropic certifications | Anthropic (via LinkedIn) | 2026 |
+
+### Anthropic Academy Certifications (15/15 courses completed, Mar 2026)
+
+| Certification | Credential ID |
+|--------------|---------------|
+| Claude 101 | 5mtia9gs5w8p |
+| Claude Code in Action | cuxgv7rmg2hn |
+| Building with the Claude API | uipoppci4atx |
+| Introduction to Model Context Protocol | qs37rj6o33xi |
+| Model Context Protocol: Advanced Topics | ztinqmtun7ku |
+| Introduction to Subagents | o6abjjws5udv |
+| Introduction to Agent Skills | — |
+| Introduction to Claude Cowork | ve23ccphyij2 |
+| Claude in Amazon Bedrock | 9qfdnya8kt4n |
+| Claude with Google Cloud's Vertex AI | kiwa2ne3y97h |
+| AI Fluency: Framework & Foundations | iyzigy4c9kxh |
+| AI Fluency for Students | 3ztgx5cmiogu |
+| AI Fluency for Educators | agxdhdd345tk |
+| AI Fluency for Nonprofits | anubjaoehie6 |
+| Teaching the AI Fluency Framework | js4r22ir5dpf |
+
+**Note:** Claude Certified Architect, Foundations is restricted to Anthropic partner organizations.
 
 ## Languages
 
@@ -120,9 +150,9 @@ Agentic engineer. I design multi-agent systems and pilot AI agents to produce ex
 
 | Category | Tools |
 |----------|-------|
-| AI/LLM | Claude, Claude SDK, MCP protocol, GPT, Gemini |
+| AI/LLM | Claude, Claude SDK, Claude Code, MCP protocol, GPT, Gemini |
 | Inference | vLLM, SGLang, Ollama, llmcompressor, MLX |
 | Data | DuckDB, Parquet, pandas, NumPy |
 | Security | Foundry (forge), Slither, Aderyn |
-| Cloud | Fly.io, Cloudflare R2, RunPod, GitHub Actions |
+| Cloud | Fly.io, Cloudflare R2, RunPod, GitHub Actions, AWS (Bedrock), GCP (Vertex AI) |
 | Dev | Docker, Git, uv, Bun, npm |
