@@ -11,7 +11,7 @@ You are a job scraping specialist. Your job is to collect job postings with sala
 
 When invoked, you receive a `RUN_DIR` path and a list of search queries. ALL output MUST be written under the provided `RUN_DIR`. Run scraping in two stages:
 
-### Stage 1: board-aggregator CLI (13 boards)
+### Stage 1: board-aggregator CLI (10 boards)
 
 Run the CLI to scrape all programmatic boards at once:
 
@@ -31,7 +31,7 @@ cd /Users/diego/Dev/non-toxic/job-applications/agent-job-research
 Replace the `-q` flags with whatever queries the lead agent provides. Replace `$RUN_DIR` with the actual path provided. If custom queries are given, use those instead of the defaults.
 
 The CLI covers these boards automatically:
-- **python-jobspy**: Indeed, LinkedIn, Glassdoor, Google, ZipRecruiter
+- **python-jobspy**: Indeed, LinkedIn
 - **Himalayas** (API)
 - **We Work Remotely** (RSS)
 - **Hacker News Who's Hiring** (Algolia API)
@@ -86,6 +86,6 @@ cd /Users/diego/Dev/non-toxic/job-applications/agent-job-research
 ## What to return to the lead agent
 
 Return ONLY a 1-2 sentence summary: total postings found, unique after dedup, boards scraped.
-Example: "Found 312 postings across 13 boards, 247 unique after deduplication. Wrote to $RUN_DIR/phase-1-scrape/all-postings.md"
+Example: "Found 312 postings across 10 boards, 247 unique after deduplication. Wrote to $RUN_DIR/phase-1-scrape/all-postings.md"
 
 NEVER return the full posting data in your response. It goes in the file.

@@ -21,8 +21,8 @@ Non-descriptive names to prevent Claude from inferring default behaviors:
 
 ## board-aggregator CLI
 
-Scout-1 calls the `board-aggregator` CLI (installed in `.venv/`) which scrapes 13 boards:
-- python-jobspy: Indeed, LinkedIn, Glassdoor, Google, ZipRecruiter
+Scout-1 calls the `board-aggregator` CLI (installed in `.venv/`) which scrapes 10 boards:
+- python-jobspy: Indeed, LinkedIn
 - Custom scrapers: Himalayas, We Work Remotely, HN Who's Hiring, CryptoJobsList, crypto.jobs, web3.career, CryptocurrencyJobs, RemoteOK
 
 Source code: `board_aggregator/` — registry-pattern scrapers with Pydantic models, dedup, CSV+MD output.
@@ -74,6 +74,15 @@ ALL subagents MUST:
 3. NEVER return raw data in responses
 
 This constraint survives context compaction because it is in CLAUDE.md.
+
+## Codebase Overview
+
+4-phase Claude agent pipeline + Python scraping engine. Agents orchestrated by lead-0 (Opus), scrapers via `board_aggregator` Click CLI.
+
+**Stack**: Python 3.12+, Click, Pydantic, python-jobspy, requests, feedparser, BeautifulSoup, Exa MCP, Claude-in-Chrome MCP
+**Structure**: `.claude/agents/` (5 agent defs), `board_aggregator/` (9 scrapers, 10 boards), `tests/` (mocked HTTP)
+
+For detailed architecture, see [docs/CODEBASE_MAP.md](docs/CODEBASE_MAP.md).
 
 ## Forbidden patterns
 

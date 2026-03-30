@@ -47,7 +47,7 @@ After all phases complete:
 Spawn `scout-1` in **foreground** with:
 - The `RUN_DIR` (all output goes under `$RUN_DIR/phase-1-scrape/`)
 - The list of search queries (confirm with user or use defaults below)
-- scout-1 runs `board-aggregator` CLI which covers 13 boards: Indeed, LinkedIn, Glassdoor, Google, ZipRecruiter, Himalayas, We Work Remotely, HN Who's Hiring, CryptoJobsList, crypto.jobs, web3.career, CryptocurrencyJobs, RemoteOK
+- scout-1 runs `board-aggregator` CLI which covers 10 boards: Indeed, LinkedIn, Himalayas, We Work Remotely, HN Who's Hiring, CryptoJobsList, crypto.jobs, web3.career, CryptocurrencyJobs, RemoteOK
 - Optionally request Wellfound Chrome scraping for startup coverage
 
 Wait for completion. Read the summary (posting count, board breakdown).
