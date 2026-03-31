@@ -1,5 +1,42 @@
 {
   "version": 1,
-  "generated": "2026-03-30T23:05:41.077570+00:00",
-  "claims": []
+  "generated": "2026-03-31T15:21:00Z",
+  "claims": [
+    {
+      "file": ".claude/CLAUDE.md",
+      "line": 83,
+      "line_pattern": "`.claude/agents/` (5 agent defs)",
+      "claim_value": "5",
+      "unit": "agent defs",
+      "verify_command": "ls .claude/agents/*.md | wc -l | tr -d ' '",
+      "compare": "exact"
+    },
+    {
+      "file": ".claude/CLAUDE.md",
+      "line": 83,
+      "line_pattern": "`board_aggregator/` (9 scrapers, 10 boards)",
+      "claim_value": "9",
+      "unit": "scrapers",
+      "verify_command": "ls board_aggregator/scrapers/*.py | grep -v __init__ | grep -v base | wc -l | tr -d ' '",
+      "compare": "exact"
+    },
+    {
+      "file": "docs/CODEBASE_MAP.md",
+      "line": 180,
+      "line_pattern": "recon-3 | 3: Contacts | Sonnet | Exa Advanced Search, Chrome",
+      "claim_value": "7",
+      "unit": "occurrences",
+      "verify_command": "grep -c 'web_search_advanced_exa' .claude/agents/recon-3.md",
+      "compare": "exact"
+    },
+    {
+      "file": "README.md",
+      "line": 76,
+      "line_pattern": "Python >= 3.12",
+      "claim_value": ">=3.12",
+      "unit": "version",
+      "verify_command": "grep -o '\">=3\\.12\"' pyproject.toml | tr -d '\"'",
+      "compare": "exact"
+    }
+  ]
 }

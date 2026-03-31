@@ -123,6 +123,8 @@ graph TB
 │   ├── test_runner.py             # Dedup logic tests
 │   └── test_*.py                  # Per-scraper tests (mocked HTTP)
 ├── docs/
+│   ├── CODEBASE_MAP.md            # Detailed architecture map (this file)
+│   ├── exa-upgrade-plan.md        # Exa MCP upgrade plan (applied)
 │   └── superpowers/plans/         # Implementation plans (historical)
 ├── research/                      # Pipeline run outputs (gitignored)
 │   ├── runs/                      # Timestamped run directories
@@ -177,7 +179,7 @@ graph TB
 | lead-0 | Orchestrator | Opus | Agent spawning, Read, Write |
 | scout-1 | 1: Scrape | Sonnet | Bash (CLI), Chrome |
 | ranker-7 | 2: Rank | Sonnet | Read, Write (scoring) |
-| recon-3 | 3: Contacts | Sonnet | Exa MCP, Chrome |
+| recon-3 | 3: Contacts | Sonnet | Exa Advanced Search, Chrome |
 | composer-4 | 4: Pitch | Opus | Read, Write (generation) |
 
 ## Data Flow
