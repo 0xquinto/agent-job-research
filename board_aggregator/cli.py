@@ -40,11 +40,17 @@ DEFAULT_OUTPUT = Path("research/phase-1-scrape")
     help="Only include remote jobs. Default: remote-only.",
 )
 @click.option(
+    "-p", "--portals",
+    type=click.Path(exists=True),
+    default=None,
+    help="Path to portals.yml for targeted company scanning.",
+)
+@click.option(
     "--list-scrapers",
     is_flag=True,
     help="List all available scrapers and exit.",
 )
-def main(query, output_dir, scraper, remote_only, list_scrapers):
+def main(query, output_dir, scraper, remote_only, portals, list_scrapers):
     """HireBoost Scraper -- Multi-board job scraper for the HireBoost pipeline."""
     # Import here to trigger registration via module imports
     import board_aggregator.scrapers.jobspy_boards  # noqa: F401
@@ -78,6 +84,7 @@ def main(query, output_dir, scraper, remote_only, list_scrapers):
         output_dir=output_dir,
         is_remote=remote_only,
         scrapers=scraper_filter,
+        portals_path=portals,
     )
 
     click.echo(f"\nDone! {len(jobs)} unique postings written to {output_dir}/")
