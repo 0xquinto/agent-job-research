@@ -113,3 +113,109 @@ def test_fetch_listings_paginates():
 
     # Should have fetched 2 pages (page 1 had after cursor, page 2 did not)
     assert len(posts) == 3
+
+
+@responses.activate
+@patch.dict(os.environ, {"REDDIT_CLIENT_ID": "test-id", "REDDIT_CLIENT_SECRET": "test-secret"})
+def test_scrape_filters_and_parses():
+    listing = {
+        "data": {
+            "after": None,
+            "children": [
+                # Tier 1 hiring post — should be kept
+                {
+                    "data": {
+                        "title": "[Hiring] Backend Engineer | Acme Corp | Remote",
+                        "selftext": "We need a backend engineer. Python, AWS. $140K-$170K. Apply at acme.io/careers",
+                        "author": "acme_hr",
+                        "subreddit": "forhire",
+                        "permalink": "/r/forhire/comments/aaa/hiring_backend/",
+                        "created_utc": 1743897600.0,
+                        "link_flair_text": "Hiring",
+                    }
+                },
+                # [For Hire] post — should be skipped
+                {
+                    "data": {
+                        "title": "[For Hire] Experienced React dev available",
+                        "selftext": "I'm available for contract work.",
+                        "author": "freelancer_joe",
+                        "subreddit": "forhire",
+                        "permalink": "/r/forhire/comments/bbb/for_hire_react/",
+                        "created_utc": 1743897500.0,
+                        "link_flair_text": "For Hire",
+                    }
+                },
+                # AutoModerator — should be skipped
+                {
+                    "data": {
+                        "title": "Weekly discussion thread",
+                        "selftext": "Post your questions here.",
+                        "author": "AutoModerator",
+                        "subreddit": "forhire",
+                        "permalink": "/r/forhire/comments/ccc/weekly/",
+                        "created_utc": 1743897400.0,
+                        "link_flair_text": None,
+                    }
+                },
+                # Tier 2 with hiring signal — should be kept
+                {
+                    "data": {
+                        "title": "We're hiring a data scientist",
+                        "selftext": "Join our ML team at DataCo. Remote friendly.",
+                        "author": "dataco_eng",
+                        "subreddit": "datascience",
+                        "permalink": "/r/datascience/comments/ddd/hiring_ds/",
+                        "created_utc": 1743897300.0,
+                        "link_flair_text": None,
+                    }
+                },
+                # Tier 2 without hiring signal — should be skipped
+                {
+                    "data": {
+                        "title": "Best Python libraries for data viz?",
+                        "selftext": "I'm comparing matplotlib vs plotly.",
+                        "author": "student_anna",
+                        "subreddit": "datascience",
+                        "permalink": "/r/datascience/comments/eee/python_viz/",
+                        "created_utc": 1743897200.0,
+                        "link_flair_text": None,
+                    }
+                },
+                # Deleted post — should be skipped
+                {
+                    "data": {
+                        "title": "[Hiring] Something good",
+                        "selftext": "[deleted]",
+                        "author": None,
+                        "subreddit": "forhire",
+                        "permalink": "/r/forhire/comments/fff/deleted/",
+                        "created_utc": 1743897100.0,
+                        "link_flair_text": "Hiring",
+                    }
+                },
+            ],
+        }
+    }
+
+    responses.add(responses.POST, TOKEN_URL, json=TOKEN_RESPONSE, status=200)
+    responses.add(
+        responses.GET,
+        re.compile(r"https://oauth\.reddit\.com/r/.+/new\.json"),
+        json=listing,
+        status=200,
+    )
+
+    scraper = RedditJobsScraper()
+    jobs = scraper.scrape(["any"])
+
+    assert len(jobs) == 2
+    assert jobs[0].source == "reddit"
+    assert jobs[0].title == "[Hiring] Backend Engineer | Acme Corp | Remote"
+    assert jobs[0].company == "Acme Corp"
+    assert jobs[0].job_url == "https://reddit.com/r/forhire/comments/aaa/hiring_backend/"
+    assert jobs[0].is_remote is True
+    assert jobs[0].salary_min == 140000
+    assert jobs[0].salary_max == 170000
+
+    assert jobs[1].company == "r/datascience"  # fallback — no pipe format in title
