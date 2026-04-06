@@ -96,13 +96,15 @@ graph TB
 │       ├── scout-1.md             # Phase 1 scraper (Sonnet)
 │       ├── ranker-7.md            # Phase 2 scorer (Sonnet)
 │       ├── recon-3.md             # Phase 3 contact finder (Sonnet)
-│       └── composer-4.md          # Phase 4 pitch generator (Opus)
+│       ├── composer-4.md          # Phase 4 pitch generator (Opus)
+│       └── discoverer-6.md       # Company discovery via Exa (Sonnet)
 ├── board_aggregator/              # Python package — job board scraping engine
 │   ├── __init__.py                # Package init, __version__
 │   ├── cli.py                     # Click CLI entrypoint (board-aggregator command)
 │   ├── models.py                  # JobPosting Pydantic model + dedup_key
 │   ├── output.py                  # CSV + Markdown writers
-│   ├── runner.py                  # Orchestrates scrapers, dedup, output
+│   ├── runner.py                  # Orchestrates scrapers + portal scanner, dedup, output
+│   ├── portal_scanner.py          # ATS API clients (Greenhouse, Ashby, Lever)
 │   └── scrapers/
 │       ├── __init__.py            # Registry pattern (@register decorator)
 │       ├── base.py                # BaseScraper ABC
@@ -129,6 +131,7 @@ graph TB
 ├── research/                      # Pipeline run outputs (gitignored)
 │   ├── runs/                      # Timestamped run directories
 │   └── latest -> runs/...         # Symlink to most recent run
+├── portals.yml                    # Targeted company registry (persistent)
 ├── skills-inventory.md            # Diego's skills (input to Phase 2 + 4)
 ├── resume-diego-gomez-ops-ai.md   # Tailored resume (input to Phase 4)
 └── pyproject.toml                 # Python >=3.12, deps, CLI entrypoint
@@ -141,13 +144,20 @@ graph TB
 **Purpose:** Click CLI entrypoint registered as `board-aggregator` script.
 **Entry point:** `main()` (Click command)
 **Key behavior:** Imports all scraper modules inside `main()` to trigger registry, then calls `runner.run_all()`.
-**Options:** `-q/--query` (multiple), `-o/--output-dir`, `-s/--scraper` (filter), `--remote-only/--include-onsite`, `--list-scrapers`
+**Options:** `-q/--query` (multiple), `-o/--output-dir`, `-s/--scraper` (filter), `-p/--portals` (portals.yml), `--remote-only/--include-onsite`, `--list-scrapers`
 
 ### board_aggregator/runner.py
 
-**Purpose:** Orchestrates all scrapers, deduplicates results, writes output.
-**Exports:** `run_all()`, `deduplicate()`
-**Dedup logic:** Key = `(title.lower(), company.lower())`. On collision, keeps the version with higher richness score (salary +3, description +2, date/type +1).
+**Purpose:** Orchestrates board scrapers + portal scanner, deduplicates results, writes output.
+**Exports:** `run_all()`, `collect_from_boards()`, `deduplicate()`
+**Dedup logic:** Key = `(title.strip().lower(), company.strip().lower())`. On collision, keeps the version with higher richness score (salary_min +3, salary_max +3, description +2, date_posted +1, job_type +1).
+
+### board_aggregator/portal_scanner.py
+
+**Purpose:** Fetches job postings from ATS platform public APIs.
+**Exports:** `fetch_greenhouse()`, `fetch_ashby()`, `fetch_lever()`, `scan_portals()`, `filter_by_title()`
+**ATS APIs:** Greenhouse (boards-api), Ashby (posting-api), Lever (postings API). All unauthenticated.
+**Data flow:** Reads `portals.yml` for company list, hits ATS APIs, returns `List[JobPosting]`, updates timestamps in `portals.yml`.
 
 ### board_aggregator/models.py
 
@@ -181,6 +191,7 @@ graph TB
 | ranker-7 | 2: Rank | Sonnet | Read, Write (scoring) |
 | recon-3 | 3: Contacts | Sonnet | Exa Advanced Search, Chrome |
 | composer-4 | 4: Pitch | Opus | Read, Write (generation) |
+| discoverer-6 | Discovery | Sonnet | Exa company search |
 
 ## Data Flow
 
