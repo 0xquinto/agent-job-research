@@ -154,7 +154,9 @@ def fetch_lever(slug: str) -> List[JobPosting]
 
 Salary fields are `None` when absent. No praying — deterministic path or nothing.
 
-Ashby compensation extraction path: `compensation.compensationTiers[0].components[0]` — take the first tier's first salary-type component. Filter for `compensationType == "Salary"` to skip equity/bonus components.
+Note: `JobPosting` defaults `salary_currency` to `"USD"` and `salary_interval` to `"yearly"`. ATS clients must explicitly set these from API data rather than relying on defaults, or set them to `None` when no salary data exists to avoid false positives in richness scoring.
+
+Ashby compensation extraction path: filter `compensationTiers[0].components[]` for `compensationType == "Salary"`, take the first match. Extract `minValue`, `maxValue`, `currencyCode`, and parse `interval` ("1 YEAR" -> "yearly"). If no salary-type component exists, all salary fields are `None`.
 
 ### CLI integration
 
@@ -164,7 +166,17 @@ New flag on `board-aggregator`:
 board-aggregator -q "query1" -q "query2" --portals portals.yml -o $RUN_DIR/phase-1-scrape
 ```
 
-When `--portals` is passed, `runner.py` runs board scrapers first, then `scan_portals()`, feeds all results into one `deduplicate()` call, writes one unified `all-postings.md` and `all-postings.csv`.
+When `--portals` is passed, `runner.py` calls `run_all()` for board scrapers, then `scan_portals()` for ATS portals, concatenates both result lists, feeds into one `deduplicate()` call, applies title filtering, and writes one unified `all-postings.md` and `all-postings.csv`. This requires refactoring `run_all()` to separate collection from output — the current implementation runs scrapers, deduplicates, and writes in one call. The new flow:
+
+```python
+# In runner.py
+board_jobs = collect_from_boards(queries, is_remote, scrapers)  # renamed from run_all internals
+portal_jobs = scan_portals(portals_path) if portals_path else []
+all_jobs = deduplicate(board_jobs + portal_jobs)
+# apply title_filter from portals.yml
+write_csv(all_jobs, output_dir / "all-postings.csv")
+write_markdown(all_jobs, output_dir / "all-postings.md")
+```
 
 ### Title filtering
 
@@ -175,7 +187,7 @@ Portal results are filtered using `title_filter` from `portals.yml`:
 
 ### Deduplication
 
-Uses existing `runner.py` `deduplicate()` with key `(title.lower(), company.lower())`. On collision, keeps the version with higher richness score (salary +3, description +2, date/type +1). Portal results naturally win most collisions due to richer structured data from ATS APIs.
+Uses existing `runner.py` `deduplicate()` with key `(title.strip().lower(), company.strip().lower())`. On collision, keeps the version with higher richness score (salary_min +3, salary_max +3, description +2, date_posted +1, job_type +1 = max 10). Portal results naturally win most collisions due to richer structured data from ATS APIs (Ashby/Lever provide salary, giving +6 over most board scrapers).
 
 No fuzzy title matching. Near-duplicates reaching ranker-7 is acceptable; false-positive dedup (merging different roles) is worse.
 
