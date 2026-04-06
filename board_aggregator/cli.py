@@ -62,6 +62,7 @@ def main(query, output_dir, scraper, remote_only, portals, list_scrapers):
     import board_aggregator.scrapers.web3career  # noqa: F401
     import board_aggregator.scrapers.cryptocurrencyjobs  # noqa: F401
     import board_aggregator.scrapers.remoteok  # noqa: F401
+    import board_aggregator.scrapers.reddit_jobs  # noqa: F401
 
     from board_aggregator.scrapers import SCRAPER_REGISTRY
 
