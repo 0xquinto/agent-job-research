@@ -77,7 +77,52 @@ class RedditJobsScraper(BaseScraper):
         return None
 
     def _fetch_listings(self, token: str) -> list[dict]:
-        return []
+        headers = {
+            "Authorization": f"Bearer {token}",
+            "User-Agent": USER_AGENT,
+        }
+        subs = "+".join(ALL_SUBS)
+        url = LISTING_URL.format(subs=subs)
+
+        all_posts: list[dict] = []
+        after: str | None = None
+
+        for page in range(MAX_PAGES):
+            params: dict[str, str | int] = {"limit": 100, "raw_json": 1}
+            if after:
+                params["after"] = after
+
+            for attempt in range(MAX_RETRIES):
+                try:
+                    resp = http_requests.get(
+                        url, headers=headers, params=params, timeout=30,
+                    )
+                    if resp.status_code == 429:
+                        wait = RETRY_BACKOFF[min(attempt, len(RETRY_BACKOFF) - 1)]
+                        print(f"[reddit] Rate limited, waiting {wait}s (attempt {attempt + 1}/{MAX_RETRIES})")
+                        time.sleep(wait)
+                        continue
+                    if resp.status_code != 200:
+                        print(f"[reddit] Listing returned {resp.status_code}, stopping")
+                        return all_posts
+
+                    data = resp.json().get("data", {})
+                    children = data.get("children", [])
+                    all_posts.extend(child.get("data", {}) for child in children)
+                    after = data.get("after")
+                    break
+                except Exception as e:
+                    wait = RETRY_BACKOFF[min(attempt, len(RETRY_BACKOFF) - 1)]
+                    print(f"[reddit] Fetch error (attempt {attempt + 1}/{MAX_RETRIES}): {e}")
+                    if attempt < MAX_RETRIES - 1:
+                        time.sleep(wait)
+                    else:
+                        return all_posts
+
+            if not after:
+                break
+
+        return all_posts
 
     def _parse_post(self, post: dict) -> JobPosting | None:
         return None
