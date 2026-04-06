@@ -219,3 +219,82 @@ def test_scrape_filters_and_parses():
     assert jobs[0].salary_max == 170000
 
     assert jobs[1].company == "r/datascience"  # fallback — no pipe format in title
+
+
+@patch.dict(os.environ, {}, clear=True)
+def test_scrape_missing_credentials_returns_empty():
+    scraper = RedditJobsScraper()
+    jobs = scraper.scrape(["any"])
+    assert jobs == []
+
+
+@responses.activate
+@patch.dict(os.environ, {"REDDIT_CLIENT_ID": "test-id", "REDDIT_CLIENT_SECRET": "test-secret"})
+def test_fetch_listings_retries_on_429():
+    responses.add(responses.POST, TOKEN_URL, json=TOKEN_RESPONSE, status=200)
+    # First call returns 429, second returns data
+    responses.add(
+        responses.GET,
+        re.compile(r"https://oauth\.reddit\.com/r/.+/new\.json"),
+        json={"error": "rate limited"},
+        status=429,
+    )
+    responses.add(
+        responses.GET,
+        re.compile(r"https://oauth\.reddit\.com/r/.+/new\.json"),
+        json={
+            "data": {
+                "after": None,
+                "children": [
+                    {
+                        "data": {
+                            "title": "[Hiring] Test role",
+                            "selftext": "A job post.",
+                            "author": "poster",
+                            "subreddit": "hiring",
+                            "permalink": "/r/hiring/comments/xyz/test/",
+                            "created_utc": 1743897600.0,
+                            "link_flair_text": "Hiring",
+                        }
+                    }
+                ],
+            }
+        },
+        status=200,
+    )
+
+    scraper = RedditJobsScraper()
+    token = scraper._get_token()
+    posts = scraper._fetch_listings(token)
+
+    assert len(posts) == 1
+    # Should have made 2 GET requests: 1 x 429 + 1 x 200
+    get_calls = [c for c in responses.calls if c.request.method == "GET"]
+    assert len(get_calls) == 2
+
+
+def test_extract_company_pipe_format():
+    scraper = RedditJobsScraper()
+    # "[Hiring] Acme Corp | Backend Dev | Remote" — bracket prefix detected in parts[0],
+    # so the implementation returns parts[1] = "Backend Dev"
+    assert scraper._extract_company("[Hiring] Acme Corp | Backend Dev | Remote", "forhire") == "Backend Dev"
+
+
+def test_extract_company_bracket_format():
+    scraper = RedditJobsScraper()
+    assert scraper._extract_company("Looking for devs [TechStartup]", "webdev") == "TechStartup"
+
+
+def test_extract_company_bold_format():
+    scraper = RedditJobsScraper()
+    assert scraper._extract_company("**MegaCorp** is hiring engineers", "hiring") == "MegaCorp"
+
+
+def test_extract_company_at_format():
+    scraper = RedditJobsScraper()
+    assert scraper._extract_company("Senior engineer at CloudBase", "remotejobs") == "CloudBase"
+
+
+def test_extract_company_fallback():
+    scraper = RedditJobsScraper()
+    assert scraper._extract_company("Need help with my project", "webdev") == "r/webdev"
