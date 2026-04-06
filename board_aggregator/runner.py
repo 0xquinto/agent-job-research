@@ -37,15 +37,12 @@ def _richness(job: JobPosting) -> int:
     return score
 
 
-def run_all(
+def collect_from_boards(
     queries: list[str],
-    output_dir: Path,
     is_remote: bool = True,
     scrapers: list[str] | None = None,
 ) -> list[JobPosting]:
-    """Run all registered scrapers, deduplicate, and write output."""
-    output_dir.mkdir(parents=True, exist_ok=True)
-
+    """Run all registered scrapers, return raw (undeduped) results."""
     all_jobs: list[JobPosting] = []
     available = get_all_scrapers()
 
@@ -61,6 +58,45 @@ def run_all(
         except Exception as e:
             print(f"[runner] {scraper.name} failed: {e}")
 
+    return all_jobs
+
+
+def run_all(
+    queries: list[str],
+    output_dir: Path,
+    is_remote: bool = True,
+    scrapers: list[str] | None = None,
+    portals_path: str | None = None,
+) -> list[JobPosting]:
+    """Run board scrapers + portal scanner, deduplicate, and write output."""
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Stage 1: board scrapers
+    board_jobs = collect_from_boards(queries, is_remote, scrapers)
+    print(f"[runner] Board scrapers: {len(board_jobs)} results")
+
+    # Stage 2: portal scanner (ATS APIs)
+    portal_jobs: list[JobPosting] = []
+    if portals_path:
+        from board_aggregator.portal_scanner import filter_by_title, scan_portals
+
+        import yaml
+
+        portal_jobs = scan_portals(portals_path)
+        print(f"[runner] Portal scanner: {len(portal_jobs)} results")
+
+        # Apply title filter from portals.yml
+        data = yaml.safe_load(Path(portals_path).read_text())
+        title_filter = data.get("title_filter", {})
+        positive = title_filter.get("positive", [])
+        negative = title_filter.get("negative", [])
+        if positive or negative:
+            before = len(portal_jobs)
+            portal_jobs = filter_by_title(portal_jobs, positive, negative)
+            print(f"[runner] Title filter: {before} -> {len(portal_jobs)}")
+
+    # Combine and deduplicate
+    all_jobs = board_jobs + portal_jobs
     print(f"[runner] Total before dedup: {len(all_jobs)}")
     unique_jobs = deduplicate(all_jobs)
     print(f"[runner] Total after dedup: {len(unique_jobs)}")

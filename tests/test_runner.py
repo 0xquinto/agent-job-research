@@ -1,5 +1,7 @@
+from unittest.mock import MagicMock, patch
+
 from board_aggregator.models import JobPosting
-from board_aggregator.runner import deduplicate
+from board_aggregator.runner import collect_from_boards, deduplicate
 
 
 def test_deduplicate_by_title_company():
@@ -39,3 +41,19 @@ def test_deduplicate_keeps_version_with_description():
 
     assert len(result) == 1
     assert result[0].description == "Full description here..."
+
+
+def test_collect_from_boards_returns_raw_jobs():
+    mock_scraper = MagicMock()
+    mock_scraper.name = "test_board"
+    mock_scraper.scrape.return_value = [
+        JobPosting(
+            title="AI Eng", company="TestCo", source="test_board", job_url="http://a"
+        ),
+    ]
+
+    with patch("board_aggregator.runner.get_all_scrapers", return_value=[mock_scraper]):
+        jobs = collect_from_boards(["query"], is_remote=True)
+
+    assert len(jobs) == 1
+    assert jobs[0].title == "AI Eng"
