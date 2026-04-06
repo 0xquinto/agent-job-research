@@ -17,6 +17,7 @@ MAX_RETRIES = 3
 RETRY_BACKOFF = [2, 5, 10]
 
 TIER_1_SUBS = ["forhire", "hiring", "jobbit", "remotejobs"]
+_TIER_1_LOWER = frozenset(TIER_1_SUBS)
 TIER_2_SUBS = [
     "WorkOnline", "webdev", "datascience", "freelance", "remotework",
     "digitalnomad", "Upwork", "freelanceWriters", "copywriting",
@@ -132,7 +133,7 @@ class RedditJobsScraper(BaseScraper):
         flair = post.get("link_flair_text") or ""
 
         # Skip rules
-        if author == "AutoModerator":
+        if author in ("AutoModerator", "[deleted]"):
             return None
         if selftext in ("[removed]", "[deleted]"):
             return None
@@ -140,7 +141,7 @@ class RedditJobsScraper(BaseScraper):
             return None
 
         # Tier 2 filtering: require hiring signal
-        if subreddit.lower() not in {s.lower() for s in TIER_1_SUBS}:
+        if subreddit.lower() not in _TIER_1_LOWER:
             combined = f"{title} {selftext}"
             if not HIRING_SIGNAL.search(combined):
                 return None
