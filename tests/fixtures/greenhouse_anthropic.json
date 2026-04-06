@@ -1,0 +1,30 @@
+{
+  "jobs": [
+    {
+      "id": 5101832008,
+      "title": "Account Executive, Academic Medical Centers",
+      "company_name": "Anthropic",
+      "location": {"name": "New York City, NY; San Francisco, CA"},
+      "absolute_url": "https://job-boards.greenhouse.io/anthropic/jobs/5101832008",
+      "metadata": [
+        {"id": 4036944008, "name": "Location Type", "value": null, "value_type": "single_select"}
+      ],
+      "updated_at": "2026-04-01T10:49:08-04:00",
+      "first_published": "2026-01-30T08:57:16-05:00",
+      "content": "<p>We are looking for an Account Executive...</p>"
+    },
+    {
+      "id": 5200001001,
+      "title": "Senior AI Engineer",
+      "company_name": "Anthropic",
+      "location": {"name": "San Francisco, CA | Remote"},
+      "absolute_url": "https://job-boards.greenhouse.io/anthropic/jobs/5200001001",
+      "metadata": [
+        {"id": 4036944008, "name": "Location Type", "value": "Remote", "value_type": "single_select"}
+      ],
+      "updated_at": "2026-03-15T09:00:00-04:00",
+      "first_published": "2026-03-10T12:00:00-04:00",
+      "content": "<p><strong>About the role:</strong> Build production LLM systems.</p>"
+    }
+  ]
+}

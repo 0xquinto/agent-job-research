@@ -1,0 +1,42 @@
+[
+  {
+    "id": "lever-job-001",
+    "text": "Staff ML Engineer",
+    "categories": {
+      "commitment": "Regular Full Time (Salary)",
+      "department": "Engineering",
+      "location": "San Francisco, CA",
+      "team": "ML Infrastructure",
+      "allLocations": ["San Francisco, CA", "Remote"]
+    },
+    "country": "US",
+    "workplaceType": "hybrid",
+    "createdAt": 1711929600000,
+    "descriptionPlain": "Join our ML infrastructure team to build scalable training pipelines.",
+    "hostedUrl": "https://jobs.lever.co/example/lever-job-001",
+    "applyUrl": "https://jobs.lever.co/example/lever-job-001/apply",
+    "salaryRange": {
+      "min": 200000,
+      "max": 280000,
+      "currency": "USD",
+      "interval": "per year"
+    }
+  },
+  {
+    "id": "lever-job-002",
+    "text": "Product Designer",
+    "categories": {
+      "commitment": "Regular Full Time (Salary)",
+      "department": "Design",
+      "location": "Remote",
+      "team": "Product"
+    },
+    "country": "US",
+    "workplaceType": "remote",
+    "createdAt": 1711843200000,
+    "descriptionPlain": "Design intuitive products for our developer platform.",
+    "hostedUrl": "https://jobs.lever.co/example/lever-job-002",
+    "applyUrl": "https://jobs.lever.co/example/lever-job-002/apply",
+    "salaryRange": null
+  }
+]

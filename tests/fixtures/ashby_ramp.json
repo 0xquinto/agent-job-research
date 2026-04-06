@@ -1,0 +1,59 @@
+{
+  "jobs": [
+    {
+      "id": "63df0ffc-bdc6-40ba-906f-fe03378536b0",
+      "title": "AI Operations Specialist | Agentic Workflows",
+      "department": "Product",
+      "team": "Product Operations",
+      "employmentType": "FullTime",
+      "location": "New York, NY (HQ)",
+      "isListed": true,
+      "isRemote": true,
+      "workplaceType": "Hybrid",
+      "publishedAt": "2026-03-17T20:30:40.304+00:00",
+      "jobUrl": "https://jobs.ashbyhq.com/ramp/63df0ffc-bdc6-40ba-906f-fe03378536b0",
+      "applyUrl": "https://jobs.ashbyhq.com/ramp/63df0ffc-bdc6-40ba-906f-fe03378536b0/application",
+      "descriptionPlain": "We are looking for an AI Operations Specialist to build agentic workflows.",
+      "compensation": {
+        "compensationTierSummary": "$150K - $250K",
+        "compensationTiers": [
+          {
+            "id": "6023bb21-d700-4121-a2dd-4e0b4c6d61b4",
+            "components": [
+              {
+                "id": "equity-1",
+                "compensationType": "EquityCashValue",
+                "interval": "1 YEAR",
+                "currencyCode": "USD",
+                "minValue": null,
+                "maxValue": null
+              },
+              {
+                "id": "salary-1",
+                "compensationType": "Salary",
+                "interval": "1 YEAR",
+                "currencyCode": "USD",
+                "minValue": 150000,
+                "maxValue": 250000
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "unlisted-job-id",
+      "title": "Internal Role",
+      "department": "HR",
+      "isListed": false,
+      "isRemote": false,
+      "workplaceType": "OnSite",
+      "location": "New York, NY",
+      "jobUrl": "https://jobs.ashbyhq.com/ramp/unlisted-job-id",
+      "applyUrl": "https://jobs.ashbyhq.com/ramp/unlisted-job-id/application",
+      "descriptionPlain": "Internal only.",
+      "compensation": null
+    }
+  ],
+  "apiVersion": "1"
+}
