@@ -48,6 +48,8 @@ Spawn `scout-1` in **foreground** with:
 - The `RUN_DIR` (all output goes under `$RUN_DIR/phase-1-scrape/`)
 - The list of search queries (confirm with user or use defaults below)
 - scout-1 runs `board-aggregator` CLI which covers 10 boards: Indeed, LinkedIn, Himalayas, We Work Remotely, HN Who's Hiring, CryptoJobsList, crypto.jobs, web3.career, CryptocurrencyJobs, RemoteOK
+- If `portals.yml` exists in the project root, include `--portals portals.yml` in the board-aggregator command. This triggers ATS portal scanning (Greenhouse, Ashby, Lever) alongside board scraping.
+- scout-1 will also run Exa crawl for non-ATS companies from portals.yml (Stage 2)
 - Optionally request Wellfound Chrome scraping for startup coverage
 
 Wait for completion. Read the summary (posting count, board breakdown).
