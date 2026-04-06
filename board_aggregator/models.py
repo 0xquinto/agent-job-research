@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 
 
 class JobPosting(BaseModel):
@@ -16,6 +16,11 @@ class JobPosting(BaseModel):
     job_type: str | None = None
     description: str | None = None
 
+    @field_validator("title", "company", mode="before")
+    @classmethod
+    def _strip(cls, v: str) -> str:
+        return v.strip() if isinstance(v, str) else v
+
     @property
     def dedup_key(self) -> tuple[str, str]:
-        return (self.title.strip().lower(), self.company.strip().lower())
+        return (self.title.lower(), self.company.lower())

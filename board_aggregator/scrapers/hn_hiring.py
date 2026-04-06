@@ -1,4 +1,5 @@
 import re
+import time
 
 import requests as http_requests
 
@@ -8,6 +9,9 @@ from board_aggregator.scrapers.base import BaseScraper
 
 ALGOLIA_URL = "https://hn.algolia.com/api/v1/search"
 ALGOLIA_DATE_URL = "https://hn.algolia.com/api/v1/search_by_date"
+
+MAX_RETRIES = 3
+RETRY_BACKOFF = [2, 5, 10]  # seconds between retries
 
 
 @register
@@ -35,26 +39,51 @@ class HNHiringScraper(BaseScraper):
 
     def _find_latest_thread(self) -> int | None:
         """Find the most recent 'Who is hiring?' thread using search_by_date."""
-        try:
-            resp = http_requests.get(
-                ALGOLIA_DATE_URL,
-                params={
-                    "tags": "story,author_whoishiring",
-                    "hitsPerPage": 1,
-                },
-                timeout=15,
-            )
-            hits = resp.json().get("hits", [])
-            if hits:
-                return int(hits[0]["objectID"])
-        except Exception as e:
-            print(f"[hn_hiring] Error finding thread: {e}")
+        for attempt in range(MAX_RETRIES):
+            try:
+                resp = http_requests.get(
+                    ALGOLIA_DATE_URL,
+                    params={
+                        "tags": "story,author_whoishiring",
+                        "hitsPerPage": 1,
+                    },
+                    timeout=15,
+                )
+                hits = resp.json().get("hits", [])
+                if hits:
+                    return int(hits[0]["objectID"])
+                # Valid response, no thread — don't retry
+                return None
+            except Exception as e:
+                wait = RETRY_BACKOFF[min(attempt, len(RETRY_BACKOFF) - 1)]
+                print(f"[hn_hiring] Error finding thread (attempt {attempt + 1}/{MAX_RETRIES}): {e}")
+                if attempt < MAX_RETRIES - 1:
+                    print(f"[hn_hiring] Retrying in {wait}s...")
+                    time.sleep(wait)
         return None
 
     def _fetch_comments(self, thread_id: int) -> list[dict]:
         all_comments: list[dict] = []
         page = 0
         while True:
+            hits = self._fetch_comments_page(thread_id, page)
+            if hits is None:
+                # All retries exhausted for this page
+                break
+            if not hits:
+                # Empty page — we've reached the end
+                break
+            all_comments.extend(hits)
+            # Check if there are more pages (Algolia includes nbPages)
+            # We rely on empty hits to stop, but also cap at a sane limit
+            page += 1
+            if page > 20:
+                break
+        return all_comments
+
+    def _fetch_comments_page(self, thread_id: int, page: int) -> list[dict] | None:
+        """Fetch a single page of comments with retry logic. Returns None if all retries fail."""
+        for attempt in range(MAX_RETRIES):
             try:
                 resp = http_requests.get(
                     ALGOLIA_URL,
@@ -67,16 +96,19 @@ class HNHiringScraper(BaseScraper):
                 )
                 data = resp.json()
                 hits = data.get("hits", [])
-                if not hits:
-                    break
-                all_comments.extend(hits)
-                if page >= data.get("nbPages", 1) - 1:
-                    break
-                page += 1
+                if page >= data.get("nbPages", 1):
+                    return []
+                return hits
             except Exception as e:
-                print(f"[hn_hiring] Error fetching comments page {page}: {e}")
-                break
-        return all_comments
+                wait = RETRY_BACKOFF[min(attempt, len(RETRY_BACKOFF) - 1)]
+                print(
+                    f"[hn_hiring] Error fetching comments page {page} "
+                    f"(attempt {attempt + 1}/{MAX_RETRIES}): {e}"
+                )
+                if attempt < MAX_RETRIES - 1:
+                    print(f"[hn_hiring] Retrying in {wait}s...")
+                    time.sleep(wait)
+        return None
 
     def _parse_comment(self, text: str, comment: dict) -> JobPosting | None:
         if not text or len(text) < 20:
@@ -125,9 +157,9 @@ class HNHiringScraper(BaseScraper):
         text = (
             text.replace("&#x2F;", "/")
             .replace("&#x27;", "'")
-            .replace("&amp;", "&")
             .replace("&lt;", "<")
             .replace("&gt;", ">")
             .replace("&quot;", '"')
+            .replace("&amp;", "&")
         )
         return text.strip()
