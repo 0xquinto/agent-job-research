@@ -2,31 +2,7 @@
 
 Agent pipeline that scrapes 10+ job boards, scores postings against your skills, finds hiring managers, and drafts personalized pitches. Anti-mass-apply.
 
-## Two ways to use this
-
-### Just the scraper
-
-Install the multi-board job scraper CLI:
-
-```bash
-pip install board-aggregator
-```
-
-```bash
-board-aggregator -q "AI engineer" -q "ML ops" -o ./results
-```
-
-This scrapes Indeed, LinkedIn, Himalayas, We Work Remotely, HN Who's Hiring, CryptoJobsList, crypto.jobs, web3.career, CryptocurrencyJobs, RemoteOK, and Reddit — deduplicates results, and writes CSV + Markdown output.
-
-To also scan specific companies via their ATS (Greenhouse, Ashby, Lever), pass a `portals.yml`:
-
-```bash
-board-aggregator -q "AI engineer" -o ./results --portals portals.yml
-```
-
-### Full pipeline
-
-Clone the repo and run the guided setup:
+## Setup
 
 ```bash
 git clone https://github.com/0xQuinto/agent-job-research.git
