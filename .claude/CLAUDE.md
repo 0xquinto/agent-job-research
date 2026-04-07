@@ -2,7 +2,7 @@
 
 ## What this project is
 
-A 4-phase job research pipeline that scrapes job postings, scores them against Diego's skills, finds hiring managers, and generates personalized pitch materials. Anti-mass-apply: quality over quantity.
+A 4-phase job research pipeline that scrapes job postings, scores them against the user's skills, finds hiring managers, and generates personalized pitch materials. Anti-mass-apply: quality over quantity.
 
 ## Running the pipeline
 
@@ -64,7 +64,7 @@ research/
 
 ## Key input files
 
-- `skills-inventory.md` — Diego's complete skills inventory (input to Phase 2)
+- `skills-inventory.md` — The user's complete skills inventory (input to Phase 2)
 - `resume.md` — Tailored resume (input to Phase 4)
 
 ## Subagent output contract

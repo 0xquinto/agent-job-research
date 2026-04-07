@@ -16,20 +16,15 @@ When invoked, you receive a `RUN_DIR` path and a list of search queries. ALL out
 Run the CLI to scrape all programmatic boards and ATS portals at once:
 
 ```bash
-cd /Users/diego/Dev/non-toxic/job-applications/agent-job-research
+cd "$(git rev-parse --show-toplevel)"
 .venv/bin/board-aggregator \
-  -q "Operations Manager AI" \
-  -q "AI Operations Lead" \
-  -q "Business Operations AI Integration" \
-  -q "AI Process Automation Manager" \
-  -q "Technical Operations Manager" \
-  -q "AI Agent Developer" \
-  -q "Developer Relations" \
+  -q "query one from lead agent" \
+  -q "query two from lead agent" \
   --portals portals.yml \
   -o $RUN_DIR/phase-1-scrape
 ```
 
-Replace the `-q` flags with whatever queries the lead agent provides. Replace `$RUN_DIR` with the actual path provided. If custom queries are given, use those instead of the defaults.
+Replace the `-q` flags with the exact queries the lead agent provides. Replace `$RUN_DIR` with the actual path provided.
 
 The `--portals` flag triggers ATS portal scanning (Greenhouse, Ashby, Lever APIs) for companies listed in `portals.yml`. Results are deduplicated with board scraper results and written to a unified output. Only include `--portals` if `portals.yml` exists.
 
@@ -112,7 +107,7 @@ If the CLI fails on a specific scraper, it continues with the rest and prints er
 
 If the CLI binary is not found, try:
 ```bash
-cd /Users/diego/Dev/non-toxic/job-applications/agent-job-research
+cd "$(git rev-parse --show-toplevel)"
 .venv/bin/python -m board_aggregator.cli -q "query" -o $RUN_DIR/phase-1-scrape
 ```
 

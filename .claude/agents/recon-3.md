@@ -145,7 +145,7 @@ Write contact data to `$RUN_DIR/phase-3-contacts/[company-slug]/contacts.md`:
   - [Date]: [Post/share summary — for conversation starters]
   - [Date]: [Post/share summary]
   - [Date]: [Post/share summary]
-- Shared interests with Diego: [any overlap]
+- Shared interests with the user: [any overlap from skills-inventory.md]
 - Recommended channel: [LinkedIn DM / X DM / email]
 
 ## Alternative Contacts

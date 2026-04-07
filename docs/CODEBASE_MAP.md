@@ -288,7 +288,7 @@ graph TB
 | `composer-4` | Phase 4 — Pitch | Opus | Read, Write, Glob | Background (one per company) |
 | `discoverer-6` | Pre-pipeline discovery | Sonnet | Read, Write, Exa company research, WebFetch | Independent — not spawned by lead-0 |
 
-**`discoverer-6` role:** Standalone agent for expanding `portals.yml` with new companies matching Diego's ICP. Run manually before the pipeline. Searches Exa by vertical, detects ATS platform from careers URL patterns, scores ICP fit 1-10, appends entries scoring ≥ `config.icp_min_score`. Never modifies `last_scanned`, `last_had_openings`, or `active` — those are scout-1's fields.
+**`discoverer-6` role:** Standalone agent for expanding `portals.yml` with new companies matching the user's ICP. Run manually before the pipeline. Searches Exa by vertical, detects ATS platform from careers URL patterns, scores ICP fit 1-10, appends entries scoring ≥ `config.icp_min_score`. Never modifies `last_scanned`, `last_had_openings`, or `active` — those are scout-1's fields.
 
 ---
 
