@@ -84,13 +84,10 @@ def test_write_env_file_skips_existing(tmp_path):
     assert env_path.read_text() == "EXISTING=value\n"
 
 
-def test_validate_install_success(tmp_path):
-    """validate_install should return True when import works."""
+def test_validate_install_success():
+    """validate_install should return True using the current interpreter."""
     from setup_wizard import validate_install
 
-    # Use the real venv — board_aggregator is installed in dev
-    venv_pip = Path(__file__).resolve().parent.parent / ".venv" / "bin" / "python"
-    if not venv_pip.exists():
-        pytest.skip(".venv not set up")
-
-    assert validate_install(venv_pip) is True
+    # sys.executable is the Python running this test suite — board_aggregator
+    # is installed in that environment, so this always runs without skipping.
+    assert validate_install(Path(sys.executable)) is True
