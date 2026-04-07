@@ -20,7 +20,7 @@ TIER_2_SUBS = [
     "WorkOnline", "webdev", "datascience", "freelance", "remotework",
     "digitalnomad", "Upwork", "freelanceWriters", "copywriting",
     "graphic_design", "learnprogramming", "VirtualAssistants",
-    "socialmedia", "marketing", "CustomerSuccess", "careerguidance",
+    "socialmedia", "marketing", "CustomerSuccess",
 ]
 ALL_SUBS = TIER_1_SUBS + TIER_2_SUBS
 
