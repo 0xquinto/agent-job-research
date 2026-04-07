@@ -15,6 +15,9 @@ build/
 .venv/
 .env
 
+# Context sync (generated)
+.context-sync-*
+
 # OS
 .DS_Store
 
