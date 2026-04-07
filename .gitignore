@@ -20,3 +20,9 @@ build/
 
 # Git worktrees
 .worktrees/
+
+# Personal data (use templates/ to create your own)
+skills-inventory.md
+resume.md
+resume-*.md
+portals.yml
