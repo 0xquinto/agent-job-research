@@ -25,7 +25,7 @@ TIER_2_SUBS = [
 ALL_SUBS = TIER_1_SUBS + TIER_2_SUBS
 
 HIRING_SIGNAL = re.compile(
-    r"\b(hiring|position|role|looking for|we.re hiring|job opening|apply)\b",
+    r"\b(hiring|we.re hiring|job opening|open position|apply now|apply here|apply at)\b",
     re.IGNORECASE,
 )
 
