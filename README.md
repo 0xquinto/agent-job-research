@@ -18,6 +18,12 @@ board-aggregator -q "AI engineer" -q "ML ops" -o ./results
 
 This scrapes Indeed, LinkedIn, Himalayas, We Work Remotely, HN Who's Hiring, CryptoJobsList, crypto.jobs, web3.career, CryptocurrencyJobs, RemoteOK, and Reddit — deduplicates results, and writes CSV + Markdown output.
 
+To also scan specific companies via their ATS (Greenhouse, Ashby, Lever), pass a `portals.yml`:
+
+```bash
+board-aggregator -q "AI engineer" -o ./results --portals portals.yml
+```
+
 ### Full pipeline
 
 Clone the repo and run the guided setup:
@@ -45,13 +51,15 @@ claude --agent lead-0
 ## How the pipeline works
 
 ```
-Phase 1 — Scrape       scout-1 runs board-aggregator CLI across 10+ boards
+Phase 1 — Scrape       scout-1 runs board-aggregator CLI across 11 boards
 Phase 2 — Rank         ranker-7 scores each posting against your skills inventory
-Phase 3 — Research     recon-3 finds hiring managers via Exa + Chrome
-Phase 4 — Pitch        composer-4 generates video scripts + DM drafts
+Phase 3 — Research     recon-3 finds hiring managers via Exa + Chrome (parallel per company)
+Phase 4 — Pitch        composer-4 generates video scripts + DM drafts (parallel per company)
 ```
 
-The pipeline orchestrator (`lead-0`) runs each phase sequentially, spawning specialized subagents. Phases 3-4 run in parallel per company.
+The pipeline orchestrator (`lead-0`) runs phases sequentially. Within Phases 3 and 4, one subagent spawns per company in parallel.
+
+**Optional pre-step:** Run `discoverer-6` to find companies matching your target profile and populate `portals.yml` for targeted ATS scanning in Phase 1.
 
 Each run writes to a timestamped directory under `research/runs/`. The most recent run is symlinked at `research/latest/`.
 
@@ -74,8 +82,8 @@ graph TB
 
     Lead -->|foreground| Scout
     Lead -->|foreground| Ranker
-    Lead -->|background| Recon
-    Lead -->|background| Composer
+    Lead -->|"background ×N companies"| Recon
+    Lead -->|"background ×N companies"| Composer
     Scout --> CLI
     CLI --> Scrapers
 ```

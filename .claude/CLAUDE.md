@@ -18,12 +18,13 @@ Non-descriptive names to prevent Claude from inferring default behaviors:
 - `ranker-7` — Phase 2: fit scoring against skills-inventory.md
 - `recon-3` — Phase 3: contact research (Exa + Chrome)
 - `composer-4` — Phase 4: pitch material generation
+- `discoverer-6` — standalone company discovery via Exa (populates portals.yml, not part of main pipeline)
 
 ## board-aggregator CLI
 
-Scout-1 calls the `board-aggregator` CLI (installed in `.venv/`) which scrapes 10 boards:
+Scout-1 calls the `board-aggregator` CLI (installed in `.venv/`) which scrapes 11 boards:
 - python-jobspy: Indeed, LinkedIn
-- Custom scrapers: Himalayas, We Work Remotely, HN Who's Hiring, CryptoJobsList, crypto.jobs, web3.career, CryptocurrencyJobs, RemoteOK
+- Custom scrapers: Himalayas, We Work Remotely, HN Who's Hiring, CryptoJobsList, crypto.jobs, web3.career, CryptocurrencyJobs, RemoteOK, Reddit
 
 Source code: `board_aggregator/` — registry-pattern scrapers with Pydantic models, dedup, CSV+MD output.
 
@@ -80,7 +81,7 @@ This constraint survives context compaction because it is in CLAUDE.md.
 4-phase Claude agent pipeline + Python scraping engine. Agents orchestrated by lead-0 (Opus), scrapers via `board_aggregator` Click CLI.
 
 **Stack**: Python 3.12+, Click, Pydantic, python-jobspy, requests, feedparser, BeautifulSoup, Exa MCP, Claude-in-Chrome MCP
-**Structure**: `.claude/agents/` (5 agent defs), `board_aggregator/` (9 scrapers, 10 boards), `tests/` (mocked HTTP)
+**Structure**: `.claude/agents/` (6 agent defs), `board_aggregator/` (10 scrapers, 11 boards), `tests/` (mocked HTTP)
 
 For detailed architecture, see [docs/CODEBASE_MAP.md](docs/CODEBASE_MAP.md).
 
