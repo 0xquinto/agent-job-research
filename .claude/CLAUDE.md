@@ -65,7 +65,7 @@ research/
 ## Key input files
 
 - `skills-inventory.md` — Diego's complete skills inventory (input to Phase 2)
-- `resume-diego-gomez-ops-ai.md` — Tailored resume (input to Phase 4)
+- `resume.md` — Tailored resume (input to Phase 4)
 
 ## Subagent output contract
 

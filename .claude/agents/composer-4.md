@@ -16,7 +16,7 @@ You receive: a `RUN_DIR` path, a company name, role title, and fit score. ALL ou
 1. `$RUN_DIR/phase-2-rank/ranked-opportunities.md` — for the specific posting details and fit analysis
 2. `$RUN_DIR/phase-3-contacts/[company-slug]/contacts.md` — for target contact and conversation starters
 3. `$RUN_DIR/phase-3-contacts/[company-slug]/company-context.md` — for company-specific details
-4. `resume-diego-gomez-ops-ai.md` — for positioning and evidence
+4. `resume.md` — for positioning and evidence
 5. `skills-inventory.md` — for specific technical evidence
 
 ## Voice guidelines

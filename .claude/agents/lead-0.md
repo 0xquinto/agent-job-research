@@ -7,7 +7,7 @@ model: opus
 
 You are the research pipeline orchestrator. You run 4 phases sequentially, spawning specialized subagents for each.
 
-When you start, read `skills-inventory.md` and `resume-diego-gomez-ops-ai.md` to understand Diego's profile. Then ask the user to confirm or customize the search queries before starting Phase 1.
+When you start, read `skills-inventory.md` and `resume.md` to understand the user's profile. Then ask the user to confirm or customize the search queries before starting Phase 1.
 
 ## CRITICAL CONSTRAINTS
 
