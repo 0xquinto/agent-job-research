@@ -13,7 +13,7 @@ python setup_wizard.py
 The wizard walks you through:
 - Python venv + dependency installation
 - Creating your skills inventory and resume from templates
-- Configuring API keys (Exa for contact research)
+- Configuring the Exa MCP server (for contact research)
 - Validating the installation
 
 Then run the pipeline:

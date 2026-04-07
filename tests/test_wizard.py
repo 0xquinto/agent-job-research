@@ -64,24 +64,28 @@ def test_copy_template_skips_existing(tmp_path):
     assert dest.read_text() == "# My custom content\n"
 
 
-def test_write_env_file_creates(tmp_path):
-    """write_env_file should write the key to a .env file."""
-    from setup_wizard import write_env_file
+def test_exa_mcp_exists_detects_server():
+    """exa_mcp_exists returns True when 'exa:' appears in mcp list output."""
+    from setup_wizard import exa_mcp_exists
 
-    env_path = tmp_path / ".env"
-    write_env_file(env_path, exa_key="test-key-123")
-    content = env_path.read_text()
-    assert "EXA_API_KEY=test-key-123" in content
+    fake_output = "exa: https://mcp.exa.ai/mcp?exaApiKey=xxx (HTTP) - Connected\n"
+    with patch("setup_wizard.subprocess.run") as mock_run:
+        mock_run.return_value = subprocess.CompletedProcess(
+            args=[], returncode=0, stdout=fake_output, stderr=""
+        )
+        assert exa_mcp_exists() is True
 
 
-def test_write_env_file_skips_existing(tmp_path):
-    """write_env_file should not overwrite an existing .env."""
-    from setup_wizard import write_env_file
+def test_exa_mcp_exists_returns_false_when_missing():
+    """exa_mcp_exists returns False when no exa server is listed."""
+    from setup_wizard import exa_mcp_exists
 
-    env_path = tmp_path / ".env"
-    env_path.write_text("EXISTING=value\n")
-    write_env_file(env_path, exa_key="new-key")
-    assert env_path.read_text() == "EXISTING=value\n"
+    fake_output = "slither: /usr/local/bin/slither-mcp - Connected\n"
+    with patch("setup_wizard.subprocess.run") as mock_run:
+        mock_run.return_value = subprocess.CompletedProcess(
+            args=[], returncode=0, stdout=fake_output, stderr=""
+        )
+        assert exa_mcp_exists() is False
 
 
 def test_validate_install_success():

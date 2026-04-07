@@ -35,10 +35,10 @@ def check_prerequisites():
     check_python_version()
 
     if check_command_exists("claude"):
-        print("  Claude CLI ✓")
+        print("  Claude Code ✓")
     else:
-        print("  Claude CLI not found — install from https://claude.ai/download")
-        print("  (The scraper works without it, but the pipeline requires it)")
+        print("ERROR: Claude Code is required — install from https://claude.ai/download")
+        sys.exit(1)
 
     if check_command_exists("git"):
         print("  git ✓")
@@ -57,16 +57,17 @@ def copy_template(src: Path, dest: Path) -> bool:
     return True
 
 
-def write_env_file(env_path: Path, exa_key: str = "") -> None:
-    """Write .env file with API keys. Skips if file exists."""
-    if env_path.exists():
-        print("  .env already exists — skipping")
-        return
-    env_path.write_text(
-        f"# API keys for agent-job-research pipeline\n"
-        f"EXA_API_KEY={exa_key}\n"
-    )
-    print("  Created .env")
+EXA_TOOLS = ",".join([
+    "web_search_exa",
+    "get_code_context_exa",
+    "crawling_exa",
+    "company_research_exa",
+    "linkedin_search_exa",
+    "deep_researcher_start",
+    "deep_researcher_check",
+    "people_search_exa",
+    "web_search_advanced_exa",
+])
 
 
 def setup_venv():
@@ -122,18 +123,42 @@ def setup_templates():
             print(f"    - {f}")
 
 
-def setup_env():
-    """Prompt for API keys and write .env."""
-    print("\n=== Step 4: API keys ===\n")
-    env_path = ROOT / ".env"
-    if env_path.exists():
-        print("  .env already exists — skipping")
+def exa_mcp_exists() -> bool:
+    """Return True if an 'exa' MCP server is already configured."""
+    result = subprocess.run(
+        ["claude", "mcp", "list"],
+        capture_output=True,
+        text=True,
+    )
+    for line in result.stdout.splitlines():
+        if line.strip().startswith("exa:"):
+            return True
+    return False
+
+
+def setup_exa_mcp():
+    """Configure Exa MCP server via claude mcp add."""
+    print("\n=== Step 4: Exa MCP server ===\n")
+
+    if exa_mcp_exists():
+        print("  Exa MCP server already configured ✓")
         return
 
     print("  Exa API key is required for Phase 3 (contact research).")
     print("  Get one at https://exa.ai")
     exa_key = input("  Exa API key (Enter to skip): ").strip()
-    write_env_file(env_path, exa_key=exa_key)
+
+    if not exa_key:
+        print("  Skipped — you can add it later with:")
+        print("    claude mcp add --transport http exa <url>")
+        return
+
+    url = f"https://mcp.exa.ai/mcp?exaApiKey={exa_key}&tools={EXA_TOOLS}"
+    subprocess.run(
+        ["claude", "mcp", "add", "--transport", "http", "exa", url],
+        check=True,
+    )
+    print("  Exa MCP server added ✓")
 
 
 def validate_install(python_path: Path | None = None) -> bool:
@@ -197,7 +222,7 @@ def main():
     check_prerequisites()
     setup_venv()
     setup_templates()
-    setup_env()
+    setup_exa_mcp()
 
     python = ROOT / ".venv" / "bin" / "python"
     if not validate_install(python):
