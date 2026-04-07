@@ -21,6 +21,9 @@ build/
 # OS
 .DS_Store
 
+# Superpowers (local plans/specs)
+docs/superpowers/
+
 # Git worktrees
 .worktrees/
 
