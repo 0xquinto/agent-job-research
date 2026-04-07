@@ -1,44 +1,10 @@
-import os
 import re
-from unittest.mock import patch
 
 import responses
 
 from board_aggregator.scrapers.reddit_jobs import RedditJobsScraper
 
-TOKEN_URL = "https://www.reddit.com/api/v1/access_token"
-
-TOKEN_RESPONSE = {
-    "access_token": "fake-token-abc123",
-    "token_type": "bearer",
-    "expires_in": 86400,
-    "scope": "*",
-}
-
-
-@responses.activate
-@patch.dict(os.environ, {"REDDIT_CLIENT_ID": "test-id", "REDDIT_CLIENT_SECRET": "test-secret"})
-def test_get_token_returns_bearer_token():
-    responses.add(
-        responses.POST,
-        TOKEN_URL,
-        json=TOKEN_RESPONSE,
-        status=200,
-    )
-
-    scraper = RedditJobsScraper()
-    token = scraper._get_token()
-
-    assert token == "fake-token-abc123"
-    assert responses.calls[0].request.headers["User-Agent"] == "board-aggregator/1.0 (job-research-pipeline)"
-
-
-@patch.dict(os.environ, {}, clear=True)
-def test_get_token_missing_credentials_returns_none():
-    scraper = RedditJobsScraper()
-    token = scraper._get_token()
-    assert token is None
-
+LISTING_URL_PATTERN = re.compile(r"https://www\.reddit\.com/r/.+/new\.json")
 
 LISTING_RESPONSE_PAGE_1 = {
     "data": {
@@ -91,32 +57,17 @@ LISTING_RESPONSE_PAGE_2 = {
 
 
 @responses.activate
-@patch.dict(os.environ, {"REDDIT_CLIENT_ID": "test-id", "REDDIT_CLIENT_SECRET": "test-secret"})
 def test_fetch_listings_paginates():
-    responses.add(responses.POST, TOKEN_URL, json=TOKEN_RESPONSE, status=200)
-    responses.add(
-        responses.GET,
-        re.compile(r"https://oauth\.reddit\.com/r/.+/new\.json"),
-        json=LISTING_RESPONSE_PAGE_1,
-        status=200,
-    )
-    responses.add(
-        responses.GET,
-        re.compile(r"https://oauth\.reddit\.com/r/.+/new\.json"),
-        json=LISTING_RESPONSE_PAGE_2,
-        status=200,
-    )
+    responses.add(responses.GET, LISTING_URL_PATTERN, json=LISTING_RESPONSE_PAGE_1, status=200)
+    responses.add(responses.GET, LISTING_URL_PATTERN, json=LISTING_RESPONSE_PAGE_2, status=200)
 
     scraper = RedditJobsScraper()
-    token = scraper._get_token()
-    posts = scraper._fetch_listings(token)
+    posts = scraper._fetch_listings()
 
-    # Should have fetched 2 pages (page 1 had after cursor, page 2 did not)
     assert len(posts) == 3
 
 
 @responses.activate
-@patch.dict(os.environ, {"REDDIT_CLIENT_ID": "test-id", "REDDIT_CLIENT_SECRET": "test-secret"})
 def test_scrape_filters_and_parses():
     listing = {
         "data": {
@@ -198,13 +149,7 @@ def test_scrape_filters_and_parses():
         }
     }
 
-    responses.add(responses.POST, TOKEN_URL, json=TOKEN_RESPONSE, status=200)
-    responses.add(
-        responses.GET,
-        re.compile(r"https://oauth\.reddit\.com/r/.+/new\.json"),
-        json=listing,
-        status=200,
-    )
+    responses.add(responses.GET, LISTING_URL_PATTERN, json=listing, status=200)
 
     scraper = RedditJobsScraper()
     jobs = scraper.scrape(["any"])
@@ -221,27 +166,21 @@ def test_scrape_filters_and_parses():
     assert jobs[1].company == "r/datascience"  # fallback — no pipe format in title
 
 
-@patch.dict(os.environ, {}, clear=True)
-def test_scrape_missing_credentials_returns_empty():
+@responses.activate
+def test_scrape_returns_empty_on_error():
+    responses.add(responses.GET, LISTING_URL_PATTERN, json={"error": "forbidden"}, status=403)
+
     scraper = RedditJobsScraper()
     jobs = scraper.scrape(["any"])
     assert jobs == []
 
 
 @responses.activate
-@patch.dict(os.environ, {"REDDIT_CLIENT_ID": "test-id", "REDDIT_CLIENT_SECRET": "test-secret"})
 def test_fetch_listings_retries_on_429():
-    responses.add(responses.POST, TOKEN_URL, json=TOKEN_RESPONSE, status=200)
-    # First call returns 429, second returns data
+    responses.add(responses.GET, LISTING_URL_PATTERN, json={"error": "rate limited"}, status=429)
     responses.add(
         responses.GET,
-        re.compile(r"https://oauth\.reddit\.com/r/.+/new\.json"),
-        json={"error": "rate limited"},
-        status=429,
-    )
-    responses.add(
-        responses.GET,
-        re.compile(r"https://oauth\.reddit\.com/r/.+/new\.json"),
+        LISTING_URL_PATTERN,
         json={
             "data": {
                 "after": None,
@@ -264,19 +203,15 @@ def test_fetch_listings_retries_on_429():
     )
 
     scraper = RedditJobsScraper()
-    token = scraper._get_token()
-    posts = scraper._fetch_listings(token)
+    posts = scraper._fetch_listings()
 
     assert len(posts) == 1
-    # Should have made 2 GET requests: 1 x 429 + 1 x 200
-    get_calls = [c for c in responses.calls if c.request.method == "GET"]
-    assert len(get_calls) == 2
+    assert len(responses.calls) == 2
 
 
 def test_extract_company_pipe_format():
     scraper = RedditJobsScraper()
-    # "[Hiring] Acme Corp | Backend Dev | Remote" — bracket prefix detected in parts[0],
-    # so the implementation returns parts[1] = "Backend Dev"
+    # Bracket prefix detected in parts[0], returns parts[1]
     assert scraper._extract_company("[Hiring] Acme Corp | Backend Dev | Remote", "forhire") == "Backend Dev"
 
 
