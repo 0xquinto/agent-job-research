@@ -1,77 +1,105 @@
-# Agent Job Research Pipeline
+# agent-job-research
 
-A 4-phase job research pipeline that scrapes job postings, scores them against a candidate's skills inventory, finds hiring managers, and generates personalized pitch materials. Quality over quantity -- anti-mass-apply.
+Agent pipeline that scrapes 10+ job boards, scores postings against your skills, finds hiring managers, and drafts personalized pitches. Anti-mass-apply.
 
-## Quick Start
+## Two ways to use this
+
+### Just the scraper
+
+Install the multi-board job scraper CLI:
 
 ```bash
-# Install dependencies
-pip install -e ".[dev]"
+pip install board-aggregator
+```
 
-# Run the full pipeline
+```bash
+board-aggregator -q "AI engineer" -q "ML ops" -o ./results
+```
+
+This scrapes Indeed, LinkedIn, Himalayas, We Work Remotely, HN Who's Hiring, CryptoJobsList, crypto.jobs, web3.career, CryptocurrencyJobs, RemoteOK, and Reddit — deduplicates results, and writes CSV + Markdown output.
+
+### Full pipeline
+
+Clone the repo and run the guided setup:
+
+```bash
+git clone https://github.com/0xQuinto/agent-job-research.git
+cd agent-job-research
+python setup_wizard.py
+```
+
+The wizard walks you through:
+- Python venv + dependency installation
+- Creating your skills inventory and resume from templates
+- Configuring API keys (Exa for contact research)
+- Validating the installation
+
+Then run the pipeline:
+
+```bash
 claude --agent lead-0
 ```
 
-## How It Works
+**Requires:** Python 3.12+, [Claude Code](https://claude.ai/download), git
 
-The pipeline runs as a Claude Code agent team, orchestrated by `lead-0`:
+## How the pipeline works
 
-| Phase | Agent | What it does |
-|-------|-------|-------------|
-| 1 | scout-1 | Scrapes 10 job boards via `board-aggregator` CLI |
-| 2 | ranker-7 | Scores postings against `skills-inventory.md` (salary, skills match, experience, growth, remote fit) |
-| 3 | recon-3 | Finds hiring managers via Exa + Chrome (parallel per company) |
-| 4 | composer-4 | Generates 30-40s video scripts + DM drafts (parallel per company) |
+```
+Phase 1 — Scrape       scout-1 runs board-aggregator CLI across 10+ boards
+Phase 2 — Rank         ranker-7 scores each posting against your skills inventory
+Phase 3 — Research     recon-3 finds hiring managers via Exa + Chrome
+Phase 4 — Pitch        composer-4 generates video scripts + DM drafts
+```
 
-## board-aggregator CLI
+The pipeline orchestrator (`lead-0`) runs each phase sequentially, spawning specialized subagents. Phases 3-4 run in parallel per company.
 
-The scraping engine is a standalone Python CLI:
+Each run writes to a timestamped directory under `research/runs/`. The most recent run is symlinked at `research/latest/`.
+
+## Architecture
+
+```mermaid
+graph TB
+    subgraph Pipeline["Claude Agent Pipeline"]
+        Lead[lead-0<br/>Orchestrator]
+        Scout[scout-1<br/>Scrape]
+        Ranker[ranker-7<br/>Rank]
+        Recon[recon-3<br/>Contacts]
+        Composer[composer-4<br/>Pitch]
+    end
+
+    subgraph Scraper["board-aggregator CLI"]
+        CLI[Click CLI]
+        Scrapers["10 scrapers"]
+    end
+
+    Lead -->|foreground| Scout
+    Lead -->|foreground| Ranker
+    Lead -->|background| Recon
+    Lead -->|background| Composer
+    Scout --> CLI
+    CLI --> Scrapers
+```
+
+## Adding a scraper
+
+1. Create `board_aggregator/scrapers/your_board.py`
+2. Subclass `BaseScraper` and implement `scrape()`
+3. Decorate with `@register`
+4. Import in `board_aggregator/cli.py`
+5. Add a test with a fixture in `tests/`
+
+See `board_aggregator/scrapers/remoteok.py` for a minimal example.
+
+## Development
 
 ```bash
-# Scrape all 10 boards
-.venv/bin/board-aggregator -q "AI Operations Lead" -o output_dir
-
-# Scrape specific boards only
-.venv/bin/board-aggregator -q "query" -s himalayas -s remoteok
-
-# List available scrapers
-.venv/bin/board-aggregator --list-scrapers
-```
-
-**Boards covered:**
-- python-jobspy: Indeed, LinkedIn
-- Custom scrapers: Himalayas, We Work Remotely, HN Who's Hiring, CryptoJobsList, crypto.jobs, web3.career, CryptocurrencyJobs, RemoteOK
-
-## Project Structure
-
-```
-.claude/agents/          # Agent definitions (lead-0, scout-1, ranker-7, recon-3, composer-4)
-board_aggregator/        # Python package -- job board scraping engine
-  scrapers/              # 9 scraper classes (registry pattern)
-  cli.py                 # Click CLI entrypoint
-  runner.py              # Orchestration + dedup
-  models.py              # JobPosting Pydantic model
-  output.py              # CSV + Markdown writers
-tests/                   # Per-scraper tests with mocked HTTP + real fixtures
-research/runs/           # Pipeline output (gitignored, timestamped per run)
-skills-inventory.md      # Candidate skills inventory (input to Phase 2+4)
-resume-*.md              # Tailored resume (input to Phase 4)
-docs/CODEBASE_MAP.md     # Detailed architecture map
-```
-
-## Run Versioning
-
-Each pipeline run writes to `research/runs/<timestamp>/` with phase subdirectories. The `research/latest` symlink always points to the most recent run. Last 5 runs are retained.
-
-## Tests
-
-```bash
+git clone https://github.com/0xQuinto/agent-job-research.git
+cd agent-job-research
+python -m venv .venv
+.venv/bin/pip install -e ".[dev]"
 .venv/bin/pytest
 ```
 
-Tests use mocked HTTP responses with real HTML/JSON fixtures captured from live sites.
+## License
 
-## Requirements
-
-- Python >= 3.12
-- Claude Code CLI with Exa MCP and Claude-in-Chrome MCP configured
+MIT — see [LICENSE](LICENSE).
