@@ -1,5 +1,6 @@
 import subprocess
 import sys
+from pathlib import Path
 from unittest.mock import patch
 
 import pytest
@@ -81,3 +82,15 @@ def test_write_env_file_skips_existing(tmp_path):
     env_path.write_text("EXISTING=value\n")
     write_env_file(env_path, exa_key="new-key")
     assert env_path.read_text() == "EXISTING=value\n"
+
+
+def test_validate_install_success(tmp_path):
+    """validate_install should return True when import works."""
+    from setup_wizard import validate_install
+
+    # Use the real venv — board_aggregator is installed in dev
+    venv_pip = Path(__file__).resolve().parent.parent / ".venv" / "bin" / "python"
+    if not venv_pip.exists():
+        pytest.skip(".venv not set up")
+
+    assert validate_install(venv_pip) is True

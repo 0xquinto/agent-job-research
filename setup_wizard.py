@@ -134,3 +134,78 @@ def setup_env():
     print("  Get one at https://exa.ai")
     exa_key = input("  Exa API key (Enter to skip): ").strip()
     write_env_file(env_path, exa_key=exa_key)
+
+
+def validate_install(python_path: Path | None = None) -> bool:
+    """Run smoke tests to verify the installation works."""
+    print("\n=== Step 5: Validating installation ===\n")
+    python = str(python_path) if python_path else str(ROOT / ".venv" / "bin" / "python")
+
+    # Test import
+    result = subprocess.run(
+        [python, "-c", "from board_aggregator import __version__; print(__version__)"],
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        print("  FAIL: could not import board_aggregator")
+        print(f"  {result.stderr.strip()}")
+        return False
+    print(f"  board_aggregator {result.stdout.strip()} ✓")
+
+    # Test CLI
+    board_agg = Path(python).parent / "board-aggregator"
+    result = subprocess.run(
+        [str(board_agg), "--list-scrapers"],
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        print("  FAIL: board-aggregator CLI not working")
+        return False
+    scraper_count = len([l for l in result.stdout.strip().split("\n") if l.strip().startswith("-")])
+    print(f"  board-aggregator CLI ({scraper_count} scrapers) ✓")
+
+    return True
+
+
+def print_next_steps():
+    """Print what the user should do next."""
+    print("\n" + "=" * 50)
+    print("Setup complete!")
+    print("=" * 50)
+    print()
+    print("Next steps:")
+    print()
+    print("  1. Edit your skills inventory:")
+    print("     skills-inventory.md")
+    print()
+    print("  2. Edit your resume:")
+    print("     resume.md")
+    print()
+    print("  3. Run the pipeline:")
+    print("     claude --agent lead-0")
+    print()
+
+
+def main():
+    """Run the full setup wizard."""
+    print("=" * 50)
+    print("agent-job-research — Setup Wizard")
+    print("=" * 50)
+
+    check_prerequisites()
+    setup_venv()
+    setup_templates()
+    setup_env()
+
+    python = ROOT / ".venv" / "bin" / "python"
+    if not validate_install(python):
+        print("\nSetup had errors. Please check the messages above.")
+        sys.exit(1)
+
+    print_next_steps()
+
+
+if __name__ == "__main__":
+    main()
