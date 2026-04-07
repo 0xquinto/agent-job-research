@@ -34,3 +34,50 @@ def test_check_command_exists_missing():
     from setup_wizard import check_command_exists
 
     assert check_command_exists("definitely_not_a_real_command_xyz") is False
+
+
+def test_copy_template_creates_file(tmp_path):
+    """copy_template should copy a source file to dest if dest doesn't exist."""
+    from setup_wizard import copy_template
+
+    src = tmp_path / "template.md"
+    src.write_text("# Template\n")
+    dest = tmp_path / "output.md"
+
+    result = copy_template(src, dest)
+    assert result is True
+    assert dest.read_text() == "# Template\n"
+
+
+def test_copy_template_skips_existing(tmp_path):
+    """copy_template should not overwrite an existing file."""
+    from setup_wizard import copy_template
+
+    src = tmp_path / "template.md"
+    src.write_text("# Template\n")
+    dest = tmp_path / "output.md"
+    dest.write_text("# My custom content\n")
+
+    result = copy_template(src, dest)
+    assert result is False
+    assert dest.read_text() == "# My custom content\n"
+
+
+def test_write_env_file_creates(tmp_path):
+    """write_env_file should write the key to a .env file."""
+    from setup_wizard import write_env_file
+
+    env_path = tmp_path / ".env"
+    write_env_file(env_path, exa_key="test-key-123")
+    content = env_path.read_text()
+    assert "EXA_API_KEY=test-key-123" in content
+
+
+def test_write_env_file_skips_existing(tmp_path):
+    """write_env_file should not overwrite an existing .env."""
+    from setup_wizard import write_env_file
+
+    env_path = tmp_path / ".env"
+    env_path.write_text("EXISTING=value\n")
+    write_env_file(env_path, exa_key="new-key")
+    assert env_path.read_text() == "EXISTING=value\n"
