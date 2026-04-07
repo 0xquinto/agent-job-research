@@ -2,6 +2,12 @@
 
 Agent pipeline that scrapes 10+ job boards, scores postings against your skills, finds hiring managers, and drafts personalized pitches. Anti-mass-apply.
 
+## Prerequisites
+
+1. **Python 3.12+** — [python.org/downloads](https://www.python.org/downloads/)
+2. **Claude Code** — [claude.ai/download](https://claude.ai/download)
+3. **git** — [git-scm.com](https://git-scm.com/)
+
 ## Setup
 
 ```bash
@@ -10,19 +16,13 @@ cd agent-job-research
 python setup_wizard.py
 ```
 
-The wizard walks you through:
-- Python venv + dependency installation
-- Creating your skills inventory and resume from templates
-- Configuring the Exa MCP server (for contact research)
-- Validating the installation
+The wizard handles everything else: venv creation, dependency installation, profile templates (skills inventory + resume), Exa MCP server configuration, and validation.
 
 Then run the pipeline:
 
 ```bash
 claude --agent lead-0
 ```
-
-**Requires:** Python 3.12+, [Claude Code](https://claude.ai/download), git
 
 ## How the pipeline works
 
