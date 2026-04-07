@@ -3,6 +3,20 @@ name = "board-aggregator"
 version = "0.1.0"
 description = "Multi-board job scraper CLI for the HireBoost pipeline"
 requires-python = ">=3.12"
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "Diego Gomez", email = "diego.gomez210@gmail.com" },
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
+]
 dependencies = [
     "click>=8.1",
     "requests>=2.31",
@@ -19,6 +33,11 @@ dev = ["pytest>=8.0", "pytest-mock>=3.12", "responses>=0.25"]
 
 [project.scripts]
 board-aggregator = "board_aggregator.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/0xQuinto/agent-job-research"
+Repository = "https://github.com/0xQuinto/agent-job-research"
+Issues = "https://github.com/0xQuinto/agent-job-research/issues"
 
 [tool.setuptools.packages.find]
 include = ["board_aggregator*"]
