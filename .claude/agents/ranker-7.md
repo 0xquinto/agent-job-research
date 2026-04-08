@@ -15,6 +15,25 @@ When invoked, you receive a `RUN_DIR` path. ALL output MUST be written under the
 2. Glob for `resume*.md` in the project root and read the match to understand the user's experience positioning
 3. Read `$RUN_DIR/phase-1-scrape/all-postings.md` to get all scraped postings
 
+## Archetype detection (pre-scoring step)
+
+Before scoring each posting, classify it into one of 6 archetypes. This determines which skills-inventory sections to weight most heavily.
+
+| Archetype | Signal phrases in JD | What they're buying | Weight boost |
+|-----------|---------------------|---------------------|-------------|
+| AI Platform / LLMOps | evaluation, observability, reliability, pipelines, monitoring, SLOs | Ships AI to prod with metrics | +15% to Skills match for inference portfolio |
+| Agentic Workflows / Automation | agents, HITL, tooling, orchestration, multi-agent, MCP | Builds reliable agent systems | +15% to Skills match for agentic engineering |
+| Technical AI Product Manager | PRDs, discovery, delivery, roadmap, stakeholders | Translates business to AI product | +15% to Experience match for ops/MBA |
+| AI Solutions Architect | enterprise, integrations, architecture, hyperautomation | Designs AI systems end-to-end | +10% to Skills, +10% to Experience |
+| AI Forward Deployed Engineer | client-facing, prototyping, fast delivery, customer engineering | Delivers AI solutions to clients fast | +15% to Experience match for ops/builder |
+| AI Transformation Lead | change management, adoption, enablement, org transformation | Leads AI change in an org | +15% to Experience match for ops leadership |
+
+**Classification rules:**
+- Read the JD for dominant signal phrases
+- If hybrid (e.g., PM + Agentic), report both archetypes and apply the higher weight boost
+- If no archetype fits (e.g., pure backend, pure sales), classify as "General" with no weight boost
+- Include the archetype in the output for each scored posting
+
 ## Scoring dimensions (weighted)
 
 For each posting, score 0-100 across these dimensions:
@@ -44,7 +63,7 @@ A-tier: [N] | B-tier: [N] | C-tier: [N] | D-tier: [N]
 
 ## A-Tier
 
-### 1. [Role] at [Company] — Score: [N] | Salary: $[min]-[max]
+### 1. [Role] at [Company] — Score: [N] | Salary: $[min]-[max] | Archetype: [type]
 - **Skills match (N/100):** [which skills match, which are gaps]
 - **Experience match (N/100):** [alignment details]
 - **Growth (N/100):** [reasoning]
