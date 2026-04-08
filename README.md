@@ -2,27 +2,21 @@
 
 Agent pipeline that scrapes 10+ job boards, scores postings against your skills, finds hiring managers, and drafts personalized pitches. Anti-mass-apply.
 
-## Prerequisites
-
-1. **Python 3.12+** — [python.org/downloads](https://www.python.org/downloads/)
-2. **Claude Code** — [claude.ai/download](https://claude.ai/download)
-3. **git** — [git-scm.com](https://git-scm.com/)
-
-## Setup
+## Quick Start
 
 ```bash
 git clone https://github.com/0xQuinto/agent-job-research.git
 cd agent-job-research
-python setup_wizard.py
-```
-
-The wizard handles everything else: venv creation, dependency installation, profile templates (skills inventory + resume), Exa MCP server configuration, and validation.
-
-Then run the pipeline:
-
-```bash
 claude --agent lead-0
 ```
+
+That's it. On first run, `lead-0` detects missing setup and walks you through everything:
+- Installing prerequisites (Python 3.12+, git, Homebrew)
+- Setting up the virtual environment and dependencies
+- Configuring Exa MCP for contact research
+- Building your skills inventory and resume from your existing materials (CV, portfolio, GitHub, LinkedIn)
+
+**Manual alternative:** `python setup_wizard.py` handles venv + deps + Exa MCP without the profile builder.
 
 ## How the pipeline works
 
@@ -45,10 +39,12 @@ Each run writes to a timestamped directory under `research/runs/`. The most rece
 graph TB
     subgraph Pipeline["Claude Agent Pipeline"]
         Lead[lead-0<br/>Orchestrator]
+        Primer[primer-8<br/>Onboarding]
         Scout[scout-1<br/>Scrape]
         Ranker[ranker-7<br/>Rank]
         Recon[recon-3<br/>Contacts]
         Composer[composer-4<br/>Pitch]
+        Discoverer[discoverer-6<br/>Discovery]
     end
 
     subgraph Scraper["board-aggregator CLI"]
@@ -56,10 +52,12 @@ graph TB
         Scrapers["10 scrapers"]
     end
 
+    Lead -->|"foreground (if needed)"| Primer
     Lead -->|foreground| Scout
     Lead -->|foreground| Ranker
     Lead -->|"background ×N companies"| Recon
     Lead -->|"background ×N companies"| Composer
+    Lead -->|"foreground (optional)"| Discoverer
     Scout --> CLI
     CLI --> Scrapers
 ```
