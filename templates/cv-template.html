@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="{{LANG}}">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @font-face {
+      font-family: 'Space Grotesk';
+      src: url('./fonts/SpaceGrotesk-Bold.woff2') format('woff2');
+      font-weight: 700;
+    }
+    @font-face {
+      font-family: 'DM Sans';
+      src: url('./fonts/DMSans-Regular.woff2') format('woff2');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'DM Sans';
+      src: url('./fonts/DMSans-Medium.woff2') format('woff2');
+      font-weight: 500;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      font-size: 11px;
+      line-height: 1.5;
+      color: #1a1a2e;
+      width: {{PAGE_WIDTH}};
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 16px;
+      border-bottom: 2px solid;
+      border-image: linear-gradient(to right, hsl(187,74%,32%), hsl(270,70%,45%)) 1;
+      padding-bottom: 12px;
+    }
+
+    .header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+
+    .header .contact {
+      font-size: 10px;
+      color: #555;
+    }
+
+    .header .contact a {
+      color: hsl(187, 74%, 32%);
+      text-decoration: none;
+    }
+
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: hsl(187, 74%, 32%);
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 3px;
+      margin: 14px 0 8px;
+    }
+
+    .summary { margin-bottom: 12px; }
+
+    .competencies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .competency-tag {
+      background: hsl(187, 74%, 95%);
+      color: hsl(187, 74%, 25%);
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 500;
+    }
+
+    .experience-entry { margin-bottom: 10px; }
+
+    .experience-entry .company-name {
+      color: hsl(270, 70%, 45%);
+      font-weight: 500;
+    }
+
+    .experience-entry .role-line {
+      font-weight: 500;
+      font-size: 11px;
+    }
+
+    .experience-entry .date-line {
+      font-size: 10px;
+      color: #777;
+    }
+
+    .experience-entry ul {
+      margin-left: 16px;
+      margin-top: 4px;
+    }
+
+    .experience-entry li {
+      margin-bottom: 2px;
+      font-size: 10.5px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 4px 12px;
+      font-size: 10.5px;
+    }
+
+    .skills-grid .label {
+      font-weight: 500;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>{{NAME}}</h1>
+    <div class="contact">
+      {{EMAIL}} | {{LOCATION}} |
+      <a href="{{LINKEDIN_URL}}">{{LINKEDIN_DISPLAY}}</a> |
+      <a href="{{PORTFOLIO_URL}}">{{PORTFOLIO_DISPLAY}}</a>
+    </div>
+  </div>
+
+  <h2>{{SECTION_SUMMARY}}</h2>
+  <div class="summary">{{SUMMARY_TEXT}}</div>
+
+  <h2>Core Competencies</h2>
+  <div class="competencies">{{COMPETENCIES}}</div>
+
+  <h2>Work Experience</h2>
+  {{EXPERIENCE}}
+
+  <h2>Projects</h2>
+  {{PROJECTS}}
+
+  <h2>Education</h2>
+  {{EDUCATION}}
+
+  <h2>Certifications</h2>
+  {{CERTIFICATIONS}}
+
+  <h2>Technical Skills</h2>
+  <div class="skills-grid">{{SKILLS}}</div>
+</body>
+</html>
