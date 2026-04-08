@@ -15,9 +15,10 @@ claude --agent lead-0
 Non-descriptive names to prevent Claude from inferring default behaviors:
 - `lead-0` — pipeline orchestrator
 - `scout-1` — Phase 1: job board scraping (board-aggregator CLI + Chrome)
-- `ranker-7` — Phase 2: fit scoring against skills-inventory.md
-- `recon-3` — Phase 3: contact research (Exa + Chrome)
-- `composer-4` — Phase 4: pitch material generation
+- `applier-2` — application form answer generator (on-demand, human-in-the-loop)
+- `ranker-7` — Phase 2: fit scoring with archetype detection against skills-inventory.md
+- `recon-3` — Phase 3: contact + company research (Exa + Chrome)
+- `composer-4` — Phase 4: pitch materials + STAR+R story accumulation
 - `discoverer-6` — company discovery via Exa (populates portals.yml, spawnable by lead-0)
 - `primer-8` — onboarding: prerequisites, Exa MCP, profile building (spawned by lead-0 when readiness check fails)
 
@@ -62,11 +63,15 @@ research/
 - `research/runs/$RUN_ID/phase-3-contacts/[company-slug]/` — Contact profiles + company context (created by recon-3)
 - `research/runs/$RUN_ID/phase-4-pitch/[company-slug]/` — Video scripts + DM drafts + outreach status (created by composer-4)
 - `research/latest/` — Symlink to most recent run (updated by lead-0)
+- `research/applications.md` — Persistent application tracker (mutable, lives outside runs)
+- `research/interview-prep/story-bank.md` — Persistent STAR+R story bank (append-only across runs)
 
 ## Key input files
 
 - `skills-inventory.md` — The user's complete skills inventory (input to Phase 2)
 - `resume.md` — Tailored resume (input to Phase 4)
+- `negotiation-playbook.md` — Salary negotiation scenario templates (input to applier-2, composer-4)
+- `templates/states.yml` — Application status definitions (input to scripts/tracker.py)
 
 ## Subagent output contract
 
@@ -82,7 +87,7 @@ This constraint survives context compaction because it is in CLAUDE.md.
 4-phase Claude agent pipeline + Python scraping engine. Agents orchestrated by lead-0 (Opus), scrapers via `board_aggregator` Click CLI.
 
 **Stack**: Python 3.12+, Click, Pydantic, python-jobspy, requests, feedparser, BeautifulSoup, Exa MCP, Claude-in-Chrome MCP
-**Structure**: `.claude/agents/` (7 agent defs), `board_aggregator/` (10 scrapers, 11 boards), `tests/` (mocked HTTP)
+**Structure**: `.claude/agents/` (8 agent defs), `board_aggregator/` (10 scrapers, 11 boards), `tests/` (mocked HTTP)
 
 For detailed architecture, see [docs/CODEBASE_MAP.md](docs/CODEBASE_MAP.md).
 

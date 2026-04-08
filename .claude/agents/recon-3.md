@@ -158,22 +158,32 @@ Write company context to `$RUN_DIR/phase-3-contacts/[company-slug]/company-conte
 ```
 # Company Context: [Company Name]
 
-## Overview
-[2-3 sentences about what they do]
+## Basics
+- **Founded:** [year]
+- **Stage:** [Seed / Series A-F / Public / Acquired]
+- **Latest funding:** $[amount] ([round], [date]) — [lead investor]
+- **Headcount:** ~[N] employees ([growth trend])
+- **HQ:** [location]
 
-## Recent News
-- [Date]: [News item]
+## Tech Stack & Engineering Culture
+- [Known languages, frameworks, infrastructure from job postings, blog posts, GitHub]
+- [Engineering blog URL if exists]
+- [Open source presence]
+
+## Recent News (last 90 days)
+- [Date]: [News item — product launches, leadership changes, funding]
 - [Date]: [News item]
 
 ## Culture Signals
-[Key observations from careers page, blog, social media]
+- [Glassdoor/Blind sentiment if findable]
+- [Employee public posts about culture]
+- [Red flags: layoffs, controversies, Glassdoor trends]
 
-## Tech Stack
-[Technologies mentioned in job postings or engineering blog]
-
-## Team Size & Growth
-[What you found about company size, hiring velocity]
+## Why This Matters for Outreach
+[1-2 sentences: how to reference company context in DMs/video pitch]
 ```
+
+Search for company context information using Exa company research and web search. Prioritize: funding stage, recent news, and culture signals. Don't spend more than 2-3 search calls on this — it's supplementary to the contacts research.
 
 ## What to return to the lead agent
 
