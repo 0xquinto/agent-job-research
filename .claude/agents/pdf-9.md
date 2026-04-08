@@ -36,6 +36,29 @@ You receive: a company name, role title, and job URL. Generate a tailored CV as 
 - **Projects:** Reorder by relevance to this specific role. Lead with the project that best demonstrates what they're hiring for.
 - **Skills grid:** Prioritize skills mentioned in JD
 
+### Step 3a: Section boundary rules (NON-NEGOTIABLE)
+
+Work Experience and Projects are STRICTLY SEPARATE sections. Never cross-contaminate.
+
+**Work Experience contains ONLY paid employment roles from the resume:**
+- ParagonsDAO — Operations & Content Lead (2023-2025)
+- Any other employment listed in the resume
+
+**Projects contains ONLY personal/independent projects:**
+- Inference Engineering Portfolio
+- Anthropic Performance Take-Home
+- Autoresearch Trading
+- RSS MCP Server (@0xquinto/rss-mcp)
+- Limit Break AMM Security Audit
+- Agent Job Research Pipeline
+
+**Rules:**
+- NEVER add project accomplishments as bullets under a Work Experience entry
+- NEVER attribute personal project results (e.g., "9 concurrent agents", "271 tests", "F to A scoring") to ParagonsDAO or any employer
+- NEVER create fake employment entries from personal projects (e.g., "Freelance Security Auditor")
+- If a project is relevant to the JD, promote it within the Projects section — do NOT move it into Work Experience
+- ParagonsDAO bullets must only describe work actually done at ParagonsDAO: operations, content, tournaments, vendor coordination, community management
+
 ### Step 4: Keyword injection ethics
 - ONLY reformulate real experience with JD vocabulary
 - NEVER invent skills, projects, or metrics
