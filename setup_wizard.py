@@ -59,14 +59,9 @@ def copy_template(src: Path, dest: Path) -> bool:
 
 EXA_TOOLS = ",".join([
     "web_search_exa",
+    "web_search_advanced_exa",
     "get_code_context_exa",
     "crawling_exa",
-    "company_research_exa",
-    "linkedin_search_exa",
-    "deep_researcher_start",
-    "deep_researcher_check",
-    "people_search_exa",
-    "web_search_advanced_exa",
 ])
 
 
