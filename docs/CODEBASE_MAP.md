@@ -108,7 +108,8 @@ graph TB
 │       ├── ranker-7.md            # Phase 2 scorer (Sonnet)
 │       ├── recon-3.md             # Phase 3 contact finder (Sonnet)
 │       ├── composer-4.md          # Phase 4 pitch generator (Opus)
-│       └── discoverer-6.md        # Standalone company discovery via Exa (Sonnet)
+│       ├── discoverer-6.md        # Company discovery via Exa (Sonnet)
+│       └── primer-8.md            # Onboarding & readiness check (Sonnet)
 ├── .github/
 │   └── workflows/
 │       ├── test.yml               # CI: pytest on Python 3.12 + 3.13 (push/PR to main)
@@ -286,9 +287,12 @@ graph TB
 | `ranker-7` | Phase 2 — Rank | Sonnet | Read, Write, Grep, Glob | Foreground |
 | `recon-3` | Phase 3 — Contacts | Sonnet | Read, Write, WebSearch, Exa advanced search, Chrome | Background (one per company) |
 | `composer-4` | Phase 4 — Pitch | Opus | Read, Write, Glob | Background (one per company) |
-| `discoverer-6` | Pre-pipeline discovery | Sonnet | Read, Write, Exa company research, WebFetch | Independent — not spawned by lead-0 |
+| `discoverer-6` | Company discovery | Sonnet | Read, Write, Exa company research, WebFetch | Spawnable by lead-0; run before pipeline to expand portals.yml |
+| `primer-8` | Onboarding | Sonnet | Read, Write, Bash, Exa MCP setup | Spawned by lead-0 on readiness check failure |
 
-**`discoverer-6` role:** Standalone agent for expanding `portals.yml` with new companies matching the user's ICP. Run manually before the pipeline. Searches Exa by vertical, detects ATS platform from careers URL patterns, scores ICP fit 1-10, appends entries scoring ≥ `config.icp_min_score`. Never modifies `last_scanned`, `last_had_openings`, or `active` — those are scout-1's fields.
+**`discoverer-6` role:** Expands `portals.yml` with new companies matching the user's ICP. Spawnable by lead-0 or run manually before the pipeline. Searches Exa by vertical, detects ATS platform from careers URL patterns, scores ICP fit 1-10, appends entries scoring ≥ `config.icp_min_score`. Never modifies `last_scanned`, `last_had_openings`, or `active` — those are scout-1's fields.
+
+**`primer-8` role:** Onboarding agent spawned by lead-0 when readiness check fails. Handles prerequisites (Homebrew, Python 3.12+, git), Exa MCP configuration, project permissions, and profile building (skills-inventory.md + resume.md). Guides user through setup steps and validates the installation before returning control to lead-0.
 
 ---
 
