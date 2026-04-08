@@ -101,7 +101,8 @@ graph TB
 .
 ├── .claude/
 │   ├── CLAUDE.md                  # Project instructions (survives context compaction)
-│   ├── settings.local.json        # Pre-approved permissions for background agents
+│   ├── settings.json               # Committed baseline permissions (ships with repo)
+│   ├── settings.local.json        # User-local permission overrides
 │   └── agents/
 │       ├── lead-0.md              # Pipeline orchestrator (Opus)
 │       ├── scout-1.md             # Phase 1 scraper (Sonnet)
@@ -109,7 +110,7 @@ graph TB
 │       ├── recon-3.md             # Phase 3 contact finder (Sonnet)
 │       ├── composer-4.md          # Phase 4 pitch generator (Opus)
 │       ├── discoverer-6.md        # Company discovery via Exa (Sonnet)
-│       └── primer-8.md            # Onboarding & readiness check (Sonnet)
+│       └── primer-8.md            # Onboarding agent (Opus)
 ├── .github/
 │   └── workflows/
 │       ├── test.yml               # CI: pytest on Python 3.12 + 3.13 (push/PR to main)
@@ -288,7 +289,7 @@ graph TB
 | `recon-3` | Phase 3 — Contacts | Sonnet | Read, Write, WebSearch, Exa advanced search, Chrome | Background (one per company) |
 | `composer-4` | Phase 4 — Pitch | Opus | Read, Write, Glob | Background (one per company) |
 | `discoverer-6` | Company discovery | Sonnet | Read, Write, Exa company research, WebFetch | Spawnable by lead-0; run before pipeline to expand portals.yml |
-| `primer-8` | Onboarding | Sonnet | Read, Write, Bash, Exa MCP setup | Spawned by lead-0 on readiness check failure |
+| `primer-8` | Onboarding | Opus | Read, Write, Edit, Glob, Grep, Bash, WebFetch, WebSearch | Spawned by lead-0 on readiness check failure |
 
 **`discoverer-6` role:** Expands `portals.yml` with new companies matching the user's ICP. Spawnable by lead-0 or run manually before the pipeline. Searches Exa by vertical, detects ATS platform from careers URL patterns, scores ICP fit 1-10, appends entries scoring ≥ `config.icp_min_score`. Never modifies `last_scanned`, `last_had_openings`, or `active` — those are scout-1's fields.
 
