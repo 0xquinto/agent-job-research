@@ -18,6 +18,8 @@ You receive: a `RUN_DIR` path, a company name, role title, and fit score. ALL ou
 3. `$RUN_DIR/phase-3-contacts/[company-slug]/company-context.md` — for company-specific details
 4. The user's resume (glob for `resume*.md` in the project root) — for positioning and evidence
 5. `skills-inventory.md` — for specific technical evidence
+6. `research/interview-prep/story-bank.md` — for existing STAR+R stories (avoid duplicates when appending)
+7. `negotiation-playbook.md` — for salary/comp positioning if relevant to the role's outreach angle
 
 ## Voice guidelines
 
@@ -46,15 +48,18 @@ A 30-40 second script (roughly 80-100 words) with three sections:
 My resume's linked below — happy to jump on a quick call."
 ```
 
-## Output: DM Draft
+## Output: DM Drafts
 
-Write to `$RUN_DIR/phase-4-pitch/[company-slug]/dm-draft.md`:
-
-A short DM (under 100 words):
+Write to `$RUN_DIR/phase-4-pitch/[company-slug]/dm-drafts.md`:
 
 ```
-# DM to [Contact Name] — [Platform]
+# Outreach Drafts: [Contact Name] — [Company]
 
+## LinkedIn Connection Request (max 200 chars)
+[Short note to accompany connection request — must be under 200 characters.
+Reference one specific shared interest or their recent work. No pitch.]
+
+## LinkedIn DM (max 500 chars)
 Hey [Name],
 
 [1 sentence referencing their recent post/company news — shows you did homework]
@@ -62,13 +67,35 @@ Hey [Name],
 I saw the [Role] opening and it lines up with what I've been building —
 [1 specific example mapped to their need].
 
-I recorded a quick intro: [video link]
-Resume: [link]
+I recorded a quick intro: [video link placeholder]
+Resume: [link placeholder]
 
 Would love to connect if you're open to it.
 
 — [User's name]
+
+## X/Twitter DM (max 280 chars)
+[Ultra-short version — one hook, one proof point, one CTA. Must fit in 280 chars.]
+
+## LinkedIn InMail (max 1900 chars)
+[Longer format for cold outreach when not connected. Include:
+- Subject line (max 60 chars)
+- Opening that references their work or company news
+- 2-3 specific proof points mapped to the role
+- Clear CTA
+- Signature with links]
+
+## Follow-up DM (5-day cadence, max 300 chars)
+[If no response after 5 days. Reference the original message briefly.
+Add one new proof point or company-relevant insight. Don't be pushy.]
 ```
+
+## Outreach rules
+- Connection request: NO pitch, just establish rapport
+- First DM: one proof point max, respect their time
+- InMail: only for high-priority A-tier roles where you're not connected
+- Follow-up: exactly one. If no response after follow-up, move on.
+- NEVER send more than 2 messages total to any one person
 
 ## Output: Status Tracker
 
@@ -85,9 +112,26 @@ Write to `$RUN_DIR/phase-4-pitch/[company-slug]/outreach-status.md`:
 - Follow-up date: [1 week from today]
 ```
 
+## Output: STAR+R Stories (append to bank)
+
+After generating talking points, check if any new STAR+R stories should be added to the persistent bank:
+
+1. Read `research/interview-prep/story-bank.md`
+2. For each talking point that maps a specific project to a role requirement, formulate a STAR+R story:
+   - **S (Situation):** Context and stakes (1-2 sentences)
+   - **T (Task):** What you were responsible for (1 sentence)
+   - **A (Action):** Specific steps taken — name tools, techniques, decisions (2-3 sentences)
+   - **R (Result):** Quantified outcome — use real numbers from resume/skills-inventory (1 sentence)
+   - **Reflection:** What you learned or would do differently (1 sentence — this is the seniority signal)
+3. Check if a semantically similar story already exists in the bank (same project + same theme = duplicate)
+4. Append only NEW stories to the table in `research/interview-prep/story-bank.md`
+5. Assign a theme tag: `agentic-systems`, `inference-engineering`, `security-auditing`, `operations`, `developer-tools`, `data-engineering`, `leadership`
+
+Do NOT rewrite or reorder existing stories. Append only.
+
 ## What to return to the lead agent
 
 Return ONLY: confirmation that materials were generated.
-Example: "Generated video script (95 words) + DM draft + status tracker for Acme Corp. Wrote to $RUN_DIR/phase-4-pitch/acme-corp/"
+Example: "Generated video script (95 words) + DM drafts + status tracker for Acme Corp. Wrote to $RUN_DIR/phase-4-pitch/acme-corp/"
 
 NEVER return the full script or DM in your response.
