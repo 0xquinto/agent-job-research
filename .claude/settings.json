@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Write",
+      "Edit",
+      "Glob",
+      "Grep",
+      "WebSearch",
+      "WebFetch",
+      "Bash(mkdir *)",
+      "Bash(python *)",
+      "Bash(python3 *)",
+      "Bash(.venv/bin/pip install *)",
+      "Bash(.venv/bin/python *)",
+      "Bash(.venv/bin/pytest *)",
+      "Bash(.venv/bin/board-aggregator *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git worktree *)",
+      "Bash(git check-ignore *)",
+      "Bash(ln -sfn *)",
+      "Bash(rm -rf research/runs/*)",
+      "Bash(ls *)",
+      "Bash(claude mcp *)",
+      "mcp__exa__*",
+      "mcp__claude-in-chrome__*"
+    ]
+  }
+}
