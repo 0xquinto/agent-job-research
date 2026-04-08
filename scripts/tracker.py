@@ -10,6 +10,7 @@ Usage:
 """
 
 import argparse
+import json
 import re
 import shutil
 import sys
@@ -24,6 +25,25 @@ STATES_PATH = PROJECT_ROOT / "templates" / "states.yml"
 
 HEADER = "| # | Date | Company | Role | Score | Status | Archetype | URL | Notes |"
 SEPARATOR = "|---|------|---------|------|-------|--------|-----------|-----|-------|"
+
+# Known ATS URL patterns → company name extraction
+ATS_PATTERNS = [
+    (r"job-boards\.greenhouse\.io/([^/]+)/", None),  # greenhouse: slug is company
+    (r"boards-api\.greenhouse\.io/v1/boards/([^/]+)/", None),
+    (r"jobs\.ashbyhq\.com/([^/]+)/", None),  # ashby: slug is company
+    (r"jobs\.lever\.co/([^/]+)/", None),  # lever: slug is company
+]
+
+
+def company_from_url(url: str) -> str | None:
+    """Extract company name from ATS job URL. Returns None if unrecognized."""
+    for pattern, _ in ATS_PATTERNS:
+        m = re.search(pattern, url)
+        if m:
+            slug = m.group(1)
+            # Title-case the slug (e.g., "anthropic" → "Anthropic")
+            return slug.replace("-", " ").title()
+    return None
 
 
 def load_states() -> dict:
@@ -111,12 +131,22 @@ def fuzzy_role_match(a: str, b: str) -> bool:
     return len(words_a & words_b) >= 2
 
 
-def find_duplicate(rows: list[dict], company: str, role: str) -> int | None:
-    """Find index of existing row matching company + role. Returns None if no match."""
+def find_duplicate(rows: list[dict], company: str, role: str, url: str = "") -> int | None:
+    """Find index of existing row matching company + role.
+
+    Falls back to URL matching when company is 'Unknown' (either side) so that
+    re-importing a run with resolved company names can overwrite the old entry.
+    Returns None if no match found.
+    """
     comp_norm = re.sub(r"[^a-z0-9]", "", company.lower())
     for i, row in enumerate(rows):
         row_comp = re.sub(r"[^a-z0-9]", "", row["company"].lower())
-        if comp_norm == row_comp and fuzzy_role_match(role, row["role"]):
+        role_match = fuzzy_role_match(role, row["role"])
+        # Standard match: same company + similar role
+        if comp_norm == row_comp and role_match:
+            return i
+        # Fallback: if either side has Unknown, match on URL instead
+        if url and row.get("url") == url and (comp_norm == "unknown" or row_comp == "unknown"):
             return i
     return None
 
@@ -131,8 +161,12 @@ def add_entry(
     notes: str = "",
     status: str = "evaluated",
 ) -> list[dict]:
-    """Add or update an entry. If duplicate found with lower score, update in place."""
-    dup_idx = find_duplicate(rows, company, role)
+    """Add or update an entry. If duplicate found with lower score, update in place.
+
+    Always updates when the existing entry has company='Unknown' and the new entry
+    has a resolved name, even if the score is equal.
+    """
+    dup_idx = find_duplicate(rows, company, role, url=url)
     next_num = str(max((int(r["num"]) for r in rows if r["num"].isdigit()), default=0) + 1)
     entry = {
         "num": next_num,
@@ -148,7 +182,11 @@ def add_entry(
     if dup_idx is not None:
         existing = rows[dup_idx]
         try:
-            if float(score) > float(existing["score"]):
+            existing_score = float(existing["score"])
+            new_score = float(score)
+            # Always overwrite when resolving an Unknown company, even at equal score
+            resolving_unknown = existing["company"] == "Unknown" and company != "Unknown"
+            if new_score > existing_score or resolving_unknown:
                 entry["num"] = existing["num"]  # keep original number
                 rows[dup_idx] = entry
         except ValueError:
@@ -171,11 +209,18 @@ def dedup(rows: list[dict], states: dict) -> list[dict]:
             ):
                 key = existing_key
                 break
+            # Also match by URL when one side is Unknown
+            if (
+                existing_key[0] == "unknown" or comp_norm == "unknown"
+            ) and row.get("url") and result[idx].get("url") == row["url"]:
+                key = existing_key
+                break
         if key is not None:
             existing = result[seen[key]]
-            # keep higher score
+            # keep higher score; also prefer resolved company name over Unknown
             try:
-                if float(row["score"]) > float(existing["score"]):
+                resolving_unknown = existing["company"] == "Unknown" and row["company"] != "Unknown"
+                if float(row["score"]) > float(existing["score"]) or resolving_unknown:
                     row["num"] = existing["num"]
                     # promote to more advanced status
                     if status_order(row["status"], states) < status_order(
@@ -196,6 +241,34 @@ def dedup(rows: list[dict], states: dict) -> list[dict]:
             seen[new_key] = len(result)
             result.append(row)
     return result
+
+
+def _resolve_company(company: str, url: str, run_dir: Path) -> str:
+    """Resolve 'Unknown' company name using URL patterns and run metadata."""
+    if company != "Unknown":
+        return company
+
+    # Try extracting from ATS URL
+    if url:
+        extracted = company_from_url(url)
+        if extracted:
+            return extracted
+
+    # Try reading from run meta.json
+    meta_path = run_dir / "meta.json"
+    if meta_path.exists():
+        try:
+            meta = json.loads(meta_path.read_text())
+            portals = meta.get("portals", [])
+            if len(portals) == 1:
+                # Single-portal run — extract company name from portal string
+                # e.g., "anthropic (greenhouse)" → "Anthropic"
+                name = portals[0].split("(")[0].strip()
+                return name.title()
+        except (json.JSONDecodeError, KeyError):
+            pass
+
+    return company
 
 
 def import_run(run_dir: Path, states: dict) -> list[dict]:
@@ -238,6 +311,9 @@ def import_run(run_dir: Path, states: dict) -> list[dict]:
                 )
                 if url_match:
                     url = url_match.group(1)
+
+                # Resolve unknown company from URL or run metadata
+                company = _resolve_company(company, url, run_dir)
 
                 rows = add_entry(
                     rows,
