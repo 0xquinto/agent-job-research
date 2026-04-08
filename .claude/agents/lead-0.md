@@ -113,7 +113,17 @@ For EACH top company, spawn a `composer-4` in **background** with:
 
 Spawn all in parallel. Wait for all to complete.
 
-## Phase 5: Summary
+## Phase 5: Track
+
+After all Phase 3 and Phase 4 agents complete, import results into the persistent application tracker:
+
+```bash
+.venv/bin/python scripts/tracker.py import-run $RUN_DIR
+```
+
+This imports all A-tier and B-tier entries from the current run into `research/applications.md`. If entries already exist from previous runs, the tracker deduplicates by company+role and keeps the higher score while promoting the most advanced status.
+
+## Phase 6: Summary
 
 After all phases complete:
 
