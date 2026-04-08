@@ -16,11 +16,12 @@ Non-descriptive names to prevent Claude from inferring default behaviors:
 - `lead-0` — pipeline orchestrator
 - `scout-1` — Phase 1: job board scraping (board-aggregator CLI + Chrome)
 - `applier-2` — application form answer generator (on-demand, human-in-the-loop)
-- `ranker-7` — Phase 2: fit scoring with archetype detection against skills-inventory.md
 - `recon-3` — Phase 3: contact + company research (Exa + Chrome)
 - `composer-4` — Phase 4: pitch materials + STAR+R story accumulation
 - `discoverer-6` — company discovery via Exa (populates portals.yml, spawnable by lead-0)
+- `ranker-7` — Phase 2: fit scoring with archetype detection against skills-inventory.md
 - `primer-8` — onboarding: prerequisites, Exa MCP, profile building (spawned by lead-0 when readiness check fails)
+- `pdf-9` — tailored ATS PDF CV generation (on-demand, keyword injection + bullet reordering)
 
 ## board-aggregator CLI
 
@@ -72,6 +73,7 @@ research/
 - `resume.md` — Tailored resume (input to Phase 4)
 - `negotiation-playbook.md` — Salary negotiation scenario templates (input to applier-2, composer-4)
 - `templates/states.yml` — Application status definitions (input to scripts/tracker.py)
+- `templates/cv-template.html` — ATS PDF HTML template (input to pdf-9)
 
 ## Subagent output contract
 
@@ -87,7 +89,7 @@ This constraint survives context compaction because it is in CLAUDE.md.
 4-phase Claude agent pipeline + Python scraping engine. Agents orchestrated by lead-0 (Opus), scrapers via `board_aggregator` Click CLI.
 
 **Stack**: Python 3.12+, Click, Pydantic, python-jobspy, requests, feedparser, BeautifulSoup, Exa MCP, Claude-in-Chrome MCP
-**Structure**: `.claude/agents/` (8 agent defs), `board_aggregator/` (10 scrapers, 11 boards), `tests/` (mocked HTTP)
+**Structure**: `.claude/agents/` (9 agent defs), `board_aggregator/` (10 scrapers, 11 boards), `tests/` (mocked HTTP), `scripts/` (tracker.py, generate-pdf.mjs)
 
 For detailed architecture, see [docs/CODEBASE_MAP.md](docs/CODEBASE_MAP.md).
 
