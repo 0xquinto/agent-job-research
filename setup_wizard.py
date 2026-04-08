@@ -62,6 +62,7 @@ EXA_TOOLS = ",".join([
     "web_search_advanced_exa",
     "get_code_context_exa",
     "crawling_exa",
+    "people_search_exa",
 ])
 
 

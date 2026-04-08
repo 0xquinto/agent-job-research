@@ -1,7 +1,7 @@
 ---
 name: discoverer-6
 description: Discovers companies matching the user's ICP using Exa deep search, detects their ATS platform, and populates portals.yml. Run standalone, not part of the pipeline.
-tools: Read, Write, mcp__exa__web_search_advanced_exa, mcp__exa__company_research_exa, WebFetch, WebSearch
+tools: Read, Write, mcp__exa__web_search_advanced_exa, mcp__exa__crawling_exa, WebFetch, WebSearch
 model: sonnet
 ---
 
@@ -40,7 +40,7 @@ Deduplicate results against existing portals by domain.
 
 For each new company:
 
-1. Find their careers page. Check Exa company data first, or search:
+1. Find their careers page. Search for it:
    ```json
    mcp__exa__web_search_advanced_exa({
      "query": "[Company] careers jobs",
