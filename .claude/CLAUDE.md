@@ -18,7 +18,8 @@ Non-descriptive names to prevent Claude from inferring default behaviors:
 - `ranker-7` — Phase 2: fit scoring against skills-inventory.md
 - `recon-3` — Phase 3: contact research (Exa + Chrome)
 - `composer-4` — Phase 4: pitch material generation
-- `discoverer-6` — standalone company discovery via Exa (populates portals.yml, not part of main pipeline)
+- `discoverer-6` — company discovery via Exa (populates portals.yml, spawnable by lead-0)
+- `primer-8` — onboarding: prerequisites, Exa MCP, profile building (spawned by lead-0 when readiness check fails)
 
 ## board-aggregator CLI
 
@@ -81,7 +82,7 @@ This constraint survives context compaction because it is in CLAUDE.md.
 4-phase Claude agent pipeline + Python scraping engine. Agents orchestrated by lead-0 (Opus), scrapers via `board_aggregator` Click CLI.
 
 **Stack**: Python 3.12+, Click, Pydantic, python-jobspy, requests, feedparser, BeautifulSoup, Exa MCP, Claude-in-Chrome MCP
-**Structure**: `.claude/agents/` (6 agent defs), `board_aggregator/` (10 scrapers, 11 boards), `tests/` (mocked HTTP)
+**Structure**: `.claude/agents/` (7 agent defs), `board_aggregator/` (10 scrapers, 11 boards), `tests/` (mocked HTTP)
 
 For detailed architecture, see [docs/CODEBASE_MAP.md](docs/CODEBASE_MAP.md).
 
