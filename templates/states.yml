@@ -1,0 +1,63 @@
+# Application status definitions
+# Used by scripts/tracker.py for normalization and ordering
+
+statuses:
+  evaluated:
+    label: "Evaluated"
+    description: "Pipeline scored this role, pending decision to apply"
+    order: 1
+    aliases: ["scored", "ranked", "reviewed"]
+
+  applying:
+    label: "Applying"
+    description: "Application in progress (form partially filled)"
+    order: 2
+    aliases: ["drafting", "in-progress"]
+
+  applied:
+    label: "Applied"
+    description: "Application submitted"
+    order: 3
+    aliases: ["submitted", "sent"]
+
+  responded:
+    label: "Responded"
+    description: "Company has acknowledged or responded"
+    order: 4
+    aliases: ["acknowledged", "received"]
+
+  interview:
+    label: "Interview"
+    description: "Active interview process"
+    order: 5
+    aliases: ["screening", "phone-screen", "onsite", "final-round"]
+
+  offer:
+    label: "Offer"
+    description: "Offer received"
+    order: 6
+    aliases: ["offered"]
+
+  accepted:
+    label: "Accepted"
+    description: "Offer accepted"
+    order: 7
+    aliases: []
+
+  rejected:
+    label: "Rejected"
+    description: "Rejected by company at any stage"
+    order: 10
+    aliases: ["declined-by-company", "no"]
+
+  withdrawn:
+    label: "Withdrawn"
+    description: "Candidate withdrew from process"
+    order: 11
+    aliases: ["passed", "declined"]
+
+  skip:
+    label: "SKIP"
+    description: "Evaluated but decided not to apply"
+    order: 0
+    aliases: ["skipped", "no-apply", "pass"]
