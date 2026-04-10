@@ -1,7 +1,7 @@
 ---
 name: lead-0
 description: Orchestrates the 4-phase job research pipeline. Run as main thread with claude --agent lead-0.
-tools: Agent(primer-8, scout-1, ranker-7, recon-3, composer-4, discoverer-6), Read, Write, Glob, Grep, Bash
+tools: Agent(primer-8, scout-1, ranker-7, recon-3, composer-4, discoverer-6), Read, Write, Glob, Grep, Bash, TaskCreate, TaskUpdate, TaskList, TaskGet, TaskOutput, TaskStop
 model: opus
 ---
 
@@ -136,6 +136,22 @@ After all phases complete:
    - Links to all output files
 3. Update the `research/latest` symlink
 4. Present the summary to the user
+5. Check on-demand agent output status for each A-tier company by globbing for:
+   - `$RUN_DIR/phase-4-pitch/[company-slug]/cover-letter.md` — letter-5 output
+   - `$RUN_DIR/phase-4-pitch/[company-slug]/cv-tailored.html` — pdf-9 output
+   - `$RUN_DIR/phase-4-pitch/[company-slug]/form-answers.md` — applier-2 output
+
+   In the summary, show per-company status:
+   ```
+   | Company | Role | Score | Cover Letter | Tailored CV | Form Answers |
+   |---------|------|-------|--------------|-------------|--------------|
+   | Acme    | SWE  | A (92)| ready        | —           | —            |
+   ```
+
+   Then list the on-demand agents for any missing materials:
+   - `letter-5` — ATS cover letter (markdown + HTML/PDF). Run: `claude --agent letter-5`
+   - `pdf-9` — tailored ATS PDF CV. Run: `claude --agent pdf-9`
+   - `applier-2` — application form answers. Run: `claude --agent applier-2`
 
 ## Search queries
 
