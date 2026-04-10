@@ -23,6 +23,7 @@ Non-descriptive names to prevent Claude from inferring default behaviors:
 - `primer-8` — onboarding: prerequisites, Exa MCP, profile building (spawned by lead-0 when readiness check fails)
 - `letter-5` — ATS cover letter generation (on-demand, keyword injection + SOAR proof points)
 - `pdf-9` — tailored ATS PDF CV generation (on-demand, keyword injection + bullet reordering)
+- `filler-10` — Chrome ATS form filler (on-demand, human-in-the-loop, never auto-submits)
 
 ## board-aggregator CLI
 

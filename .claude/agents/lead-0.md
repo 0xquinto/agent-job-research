@@ -140,18 +140,20 @@ After all phases complete:
    - `$RUN_DIR/phase-4-pitch/[company-slug]/cover-letter.md` — letter-5 output
    - `$RUN_DIR/phase-4-pitch/[company-slug]/cv-tailored.html` — pdf-9 output
    - `$RUN_DIR/phase-4-pitch/[company-slug]/form-answers.md` — applier-2 output
+   - `$RUN_DIR/phase-4-pitch/[company-slug]/submission-log.md` — filler-10 output
 
    In the summary, show per-company status:
    ```
-   | Company | Role | Score | Cover Letter | Tailored CV | Form Answers |
-   |---------|------|-------|--------------|-------------|--------------|
-   | Acme    | SWE  | A (92)| ready        | —           | —            |
+   | Company | Role | Score | Cover Letter | Tailored CV | Form Answers | Submitted |
+   |---------|------|-------|--------------|-------------|--------------|-----------|
+   | Acme    | SWE  | A (92)| ready        | —           | —            | —         |
    ```
 
    Then list the on-demand agents for any missing materials:
    - `letter-5` — ATS cover letter (markdown + HTML/PDF). Run: `claude --agent letter-5`
    - `pdf-9` — tailored ATS PDF CV. Run: `claude --agent pdf-9`
    - `applier-2` — application form answers. Run: `claude --agent applier-2`
+   - `filler-10` — Chrome form filler + file uploads (human-in-the-loop). Run: `claude --agent filler-10`
 
 ## Search queries
 

@@ -113,7 +113,8 @@ graph TB
 │       ├── primer-8.md            # Onboarding agent (Opus)
 │       ├── applier-2.md           # Application form answer generator (Sonnet)
 │       ├── letter-5.md            # ATS cover letter generation (Opus, on-demand)
-│       └── pdf-9.md               # ATS PDF CV generation (Sonnet)
+│       ├── pdf-9.md               # ATS PDF CV generation (Sonnet)
+│       └── filler-10.md           # Chrome ATS form filler (Opus, on-demand, human-in-the-loop)
 ├── .github/
 │   └── workflows/
 │       ├── test.yml               # CI: pytest on Python 3.12 + 3.13 (push/PR to main)
@@ -310,6 +311,7 @@ graph TB
 | `applier-2` | Application forms | Sonnet | Read, Write, Glob, Grep | On-demand, human-in-the-loop |
 | `letter-5` | ATS cover letter | Opus | Read, Write, Glob, Grep | On-demand, keyword injection + SOAR proof points |
 | `pdf-9` | ATS PDF generation | Sonnet | Read, Write, Glob, Grep | On-demand, keyword injection + bullet reordering |
+| `filler-10` | ATS form filler | Opus | Read, Write, Glob, Grep, Chrome MCP | On-demand, human-in-the-loop, never auto-submits |
 
 **`discoverer-6` role:** Expands `portals.yml` with new companies matching the user's ICP. Spawnable by lead-0 or run manually before the pipeline. Searches Exa by vertical, detects ATS platform from careers URL patterns, scores ICP fit 1-10, appends entries scoring ≥ `config.icp_min_score`. Never modifies `last_scanned`, `last_had_openings`, or `active` — those are scout-1's fields.
 
