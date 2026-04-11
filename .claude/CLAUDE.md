@@ -23,7 +23,7 @@ Non-descriptive names to prevent Claude from inferring default behaviors:
 - `primer-8` — onboarding: prerequisites, Exa MCP, profile building (spawned by lead-0 when readiness check fails)
 - `letter-5` — ATS cover letter generation (on-demand, keyword injection + SOAR proof points)
 - `pdf-9` — tailored ATS PDF CV generation (on-demand, keyword injection + bullet reordering)
-- `filler-10` — hybrid ATS submitter: API-first for Greenhouse/Lever/Ashby, browser fallback for Workday/others (on-demand, human-in-the-loop)
+- `filler-10` — hybrid ATS submitter: API-first for Lever/Ashby, browser automation for Greenhouse/Workday/others (on-demand, human-in-the-loop)
 
 ## board-aggregator CLI
 
@@ -91,7 +91,7 @@ This constraint survives context compaction because it is in CLAUDE.md.
 4-phase Claude agent pipeline + Python scraping engine. Agents orchestrated by lead-0 (Opus), scrapers via `board_aggregator` Click CLI.
 
 **Stack**: Python 3.12+, Click, Pydantic, python-jobspy, requests, feedparser, BeautifulSoup, Exa MCP, Claude-in-Chrome MCP
-**Structure**: `.claude/agents/` (9 agent defs), `board_aggregator/` (10 scrapers, 11 boards), `tests/` (mocked HTTP), `scripts/` (tracker.py, generate-pdf.mjs, normalize-ats.mjs), `dashboard/` (Go TUI)
+**Structure**: `.claude/agents/` (11 agent defs), `board_aggregator/` (10 scrapers, 11 boards), `tests/` (mocked HTTP), `scripts/` (tracker.py, generate-pdf.mjs, normalize-ats.mjs), `dashboard/` (Go TUI)
 
 For detailed architecture, see [docs/CODEBASE_MAP.md](docs/CODEBASE_MAP.md).
 

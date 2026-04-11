@@ -33,6 +33,17 @@ The pipeline orchestrator (`lead-0`) runs phases sequentially. Within Phases 3 a
 
 Each run writes to a timestamped directory under `research/runs/`. The most recent run is symlinked at `research/latest/`.
 
+**On-demand agents (outside the pipeline):**
+- `applier-2` — generates copy-paste answers for application forms (human-in-the-loop)
+- `letter-5` — ATS cover letter generation (keyword injection + SOAR proof points)
+- `pdf-9` — tailored ATS PDF CV generation (keyword injection + bullet reordering)
+- `filler-10` — hybrid ATS submitter: API-first for Lever/Ashby, browser automation for Greenhouse/Workday/others (human-in-the-loop)
+
+**Utilities:**
+- `scripts/tracker.py` — application status tracker CLI (add, update, import-run, dedup, show)
+- `dashboard/` — Go TUI for browsing applications (Bubble Tea + Lipgloss)
+- `scripts/generate-pdf.mjs` — Playwright-based ATS PDF renderer
+
 ## Architecture
 
 ```mermaid
@@ -45,6 +56,10 @@ graph TB
         Recon[recon-3<br/>Contacts]
         Composer[composer-4<br/>Pitch]
         Discoverer[discoverer-6<br/>Discovery]
+        Applier[applier-2<br/>Forms]
+        Letter[letter-5<br/>Cover Letter]
+        PDF[pdf-9<br/>ATS PDF]
+        Filler[filler-10<br/>ATS Submit]
     end
 
     subgraph Scraper["board-aggregator CLI"]
@@ -58,6 +73,8 @@ graph TB
     Lead -->|"background ×N companies"| Recon
     Lead -->|"background ×N companies"| Composer
     Lead -->|"foreground (optional)"| Discoverer
+    Lead -.->|on-demand| Applier
+    Lead -.->|on-demand| PDF
     Scout --> CLI
     CLI --> Scrapers
 ```
