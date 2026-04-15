@@ -75,6 +75,122 @@ After all phases complete:
 - Update `meta.json` with `completed_at` and phase statistics
 - Update the `research/latest` symlink to point to the current run directory. Use a scout-1 agent with Bash: `ln -sfn runs/$RUN_ID research/latest`
 
+## Phase 1 Preflight
+
+Before spawning scout-1, you MUST show the user exactly what will be scraped and accept a free-form reply to scope the run. This is the only place the user has control over per-run scope; do not skip it.
+
+### Step 1: Build the scraper list
+
+The pipeline has 10 registered scrapers. Use this list verbatim in the preview:
+
+| Name | Description |
+|---|---|
+| `jobspy` | Indeed + LinkedIn |
+| `himalayas` | remote-first board (API) |
+| `weworkremotely` | We Work Remotely (RSS) |
+| `hn_hiring` | HN "Who's Hiring" monthly thread (Algolia API) |
+| `cryptojobslist` | CryptoJobsList (Next.js JSON) |
+| `crypto_jobs` | crypto.jobs (RSS) |
+| `web3career` | web3.career (HTML) |
+| `cryptocurrencyjobs` | CryptocurrencyJobs (HTML) |
+| `remoteok` | RemoteOK (JSON API) |
+| `reddit` | 19 job-related subreddits (multireddit JSON) |
+
+### Step 2: Read active portal companies
+
+If `portals.yml` exists at the project root, read it and collect every entry where `active: true`. Capture: `name`, `slug`, `ats` (or "exa-crawl" if `ats: null`), `icp_fit_score`.
+
+If `portals.yml` does not exist OR has zero `active: true` entries, skip the portals section of the preview.
+
+### Step 3: Render the preview
+
+Print this format to the user (verbatim — no embellishment):
+
+```
+Phase 1 will scrape the following.
+Reply 'go' to run everything as shown, or describe what to skip/keep
+(e.g. "skip reddit and crypto boards, only companies with icp >= 8").
+
+Scrapers (10):
+  • jobspy             — Indeed + LinkedIn
+  • himalayas          — remote-first board
+  • weworkremotely     — RSS
+  • hn_hiring          — HN Who's Hiring monthly
+  • cryptojobslist     — crypto roles
+  • crypto_jobs        — crypto.jobs RSS
+  • web3career         — web3.career
+  • cryptocurrencyjobs — HTML
+  • remoteok           — RemoteOK JSON
+  • reddit             — 19 job-related subreddits
+
+Portal companies (N active):
+  • Anthropic         (greenhouse) icp:10
+  • Ramp              (ashby)      icp:8
+  • Cohere            (ashby)      icp:9
+  ...   (full list — no truncation)
+
+> 
+```
+
+If `portals.yml` is missing or has no active entries, omit the "Portal companies" block entirely.
+
+### Step 4: Parse the user's reply
+
+You are an Opus model — natural-language parsing is your native mode. The reply may:
+
+- Be `go`, `yes`, `run it`, or empty → keep everything as previewed
+- Name scrapers to drop ("skip reddit and the crypto boards") → drop matches
+- Filter portals by score ("only companies with icp_fit_score >= 8") → keep only those
+- Name companies to drop or keep ("skip Ramp and Cohere", "only Anthropic and Mistral")
+- Combine multiple instructions in one reply
+
+When matching scraper names, accept partial matches (e.g. "crypto boards" matches `cryptojobslist`, `crypto_jobs`, `cryptocurrencyjobs`). When matching company names, match against `name` field case-insensitively.
+
+If the reply is ambiguous or self-contradictory, ask ONE follow-up clarifying question, then act on the response. Do not multi-turn negotiate.
+
+If the reply names a scraper that doesn't exist (e.g. "skip foobar"), tell the user "'foobar' is not in the scraper list" and ask them to retry.
+
+### Step 5: Compute effective subsets
+
+Produce two lists:
+- `effective_scrapers`: subset of the 10 scraper names
+- `effective_companies`: subset of the active portal entries (full objects with all fields)
+
+Edge cases:
+- User filters out everything (zero scrapers AND zero companies) → ask "This will produce no results. Confirm or revise?" If confirmed, abort the pipeline with a clear message.
+- User filters portals to zero but keeps scrapers → OK, proceed without `--portals`
+- `portals.yml` was missing → `effective_companies` is always empty, no subset file written
+
+### Step 6: Write the subset file
+
+If `effective_companies` is non-empty, write `$RUN_DIR/phase-1-scrape/portals-subset.yml`. Format mirrors `portals.yml`: same `config` block, same `title_filter` block, but `companies` contains only the entries in `effective_companies`. Create the parent directory first if needed:
+
+```bash
+mkdir -p $RUN_DIR/phase-1-scrape
+```
+
+If `effective_companies` is empty, do not write `portals-subset.yml` and do not include `--portals` in the scout-1 invocation.
+
+### Step 7: Update meta.json
+
+Append a `phase_1` block to `$RUN_DIR/meta.json` BEFORE spawning scout-1 (so the user's intent is preserved even if scout-1 fails):
+
+```json
+{
+  "run_id": "...",
+  "started_at": "...",
+  "queries": ["..."],
+  "phase_1": {
+    "selected_scrapers": ["jobspy", "himalayas", ...],
+    "selected_companies": ["anthropic", "ramp", ...],
+    "user_filter_reply": "skip reddit, only icp >= 8"
+  },
+  "phases": {}
+}
+```
+
+`selected_companies` contains the `slug` field of each kept company (not the full object).
+
 ## Phase 1: Scrape
 
 Spawn `scout-1` in **foreground** with:
