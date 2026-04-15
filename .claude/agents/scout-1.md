@@ -57,7 +57,7 @@ To list all available scrapers:
 
 ### Stage 2: Exa crawl for non-ATS portals
 
-After Stage 1 completes, read `portals.yml` and find companies where:
+After Stage 1 completes, read the **portals subset file** at `$RUN_DIR/phase-1-scrape/portals-subset.yml` (the same file passed to `--portals` in Stage 1). Find companies where:
 - `ats` is null (no known ATS platform)
 - `active` is true
 - `last_scanned` is null or older than `scan_interval_days` from config
@@ -65,7 +65,7 @@ After Stage 1 completes, read `portals.yml` and find companies where:
 For each matching company:
 1. Call `mcp__exa__crawling_exa` on the company's `careers_url`
 2. Parse the crawl results for job listings (look for role titles + URLs)
-3. Filter by `title_filter` from portals.yml (positive keywords must match, negative must not)
+3. Filter by `title_filter` from the subset file (positive keywords must match, negative must not)
 4. Append matching jobs to `$RUN_DIR/phase-1-scrape/all-postings.md` using the same format:
 
 ```
@@ -78,11 +78,15 @@ For each matching company:
 ---
 ```
 
-5. Update `last_scanned` in portals.yml to today's date
-6. If roles were found, update `last_had_openings` to today's date
-7. If `last_had_openings` is older than `disable_after_days`, set `active: false`
+5. Update `last_scanned` in the **canonical `portals.yml`** (project root, NOT the subset file) to today's date — look up the company by `slug`
+6. If roles were found, update `last_had_openings` in the canonical `portals.yml` to today's date
+7. If `last_had_openings` is older than `disable_after_days`, set `active: false` in the canonical `portals.yml`
+
+The subset file is read-only and transient — never write to it. All persistent mutations target `portals.yml` at the project root.
 
 Update the header counts in `all-postings.md` after appending.
+
+If the subset file does not exist (preflight produced no portal companies), skip Stage 2 entirely.
 
 ### Stage 3: Chrome for Wellfound (optional)
 
