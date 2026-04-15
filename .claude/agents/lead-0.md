@@ -193,13 +193,30 @@ Append a `phase_1` block to `$RUN_DIR/meta.json` BEFORE spawning scout-1 (so the
 
 ## Phase 1: Scrape
 
-Spawn `scout-1` in **foreground** with:
-- The `RUN_DIR` (all output goes under `$RUN_DIR/phase-1-scrape/`)
-- The list of search queries (confirm with user or use defaults below)
-- scout-1 runs `board-aggregator` CLI which covers 11 boards: Indeed, LinkedIn, Himalayas, We Work Remotely, HN Who's Hiring, CryptoJobsList, crypto.jobs, web3.career, CryptocurrencyJobs, RemoteOK, Reddit
-- If `portals.yml` exists in the project root, include `--portals portals.yml` in the board-aggregator command. This triggers ATS portal scanning (Greenhouse, Ashby, Lever) alongside board scraping.
-- scout-1 will also run Exa crawl for non-ATS companies from portals.yml (Stage 2)
-- Optionally request Wellfound Chrome scraping for startup coverage
+Spawn `scout-1` in **foreground** with a fully-formed `board-aggregator` invocation derived from the preflight outputs.
+
+Build the bash command:
+
+```bash
+cd "$(git rev-parse --show-toplevel)"
+.venv/bin/board-aggregator \
+  -q "<query 1>" -q "<query 2>" ... \
+  -s <effective_scraper_1> -s <effective_scraper_2> ... \
+  [--portals $RUN_DIR/phase-1-scrape/portals-subset.yml] \
+  -o $RUN_DIR/phase-1-scrape
+```
+
+Rules:
+- Always emit `-s` flags explicitly — one per scraper in `effective_scrapers`. Never rely on the CLI default. This makes the run reproducible from `meta.json`.
+- Include `--portals $RUN_DIR/phase-1-scrape/portals-subset.yml` only if you wrote the subset file in Preflight Step 6. Omit otherwise.
+- Pass the queries the user confirmed earlier.
+
+The scout-1 prompt MUST include:
+- `RUN_DIR`
+- The exact bash command above (resolved, no placeholders)
+- An instruction to run Stage 2 (Exa crawl) only if the subset file exists
+
+scout-1 will also run Wellfound Chrome scraping for startup coverage if you explicitly request it in the prompt.
 
 Wait for completion. Read the summary (posting count, board breakdown).
 
