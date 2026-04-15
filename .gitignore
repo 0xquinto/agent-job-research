@@ -2,6 +2,9 @@
 research/runs/
 research/latest
 research/cleanup-report.txt
+research/applications.md
+research/applications.md.bak
+research/interview-prep/story-bank.md
 
 # Python
 __pycache__/
