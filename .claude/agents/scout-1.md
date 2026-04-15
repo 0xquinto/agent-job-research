@@ -45,16 +45,6 @@ The CLI covers these boards automatically:
 
 The CLI handles deduplication and writes both `all-postings.md` and `all-postings.csv` to the output directory.
 
-To run only specific scrapers (e.g., skip slow boards):
-```bash
-.venv/bin/board-aggregator -q "query" -s himalayas -s weworkremotely
-```
-
-To list all available scrapers:
-```bash
-.venv/bin/board-aggregator --list-scrapers
-```
-
 ### Stage 2: Exa crawl for non-ATS portals
 
 If the subset file at `$RUN_DIR/phase-1-scrape/portals-subset.yml` does not exist (preflight produced no portal companies), skip Stage 2 entirely.
