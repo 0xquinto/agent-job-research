@@ -38,7 +38,19 @@ Only run if lead-0 reports: exa mcp check failed.
 4. Run: `claude mcp add --transport http exa "https://mcp.exa.ai/mcp?exaApiKey=USER_KEY&tools=web_search_exa,web_search_advanced_exa,get_code_context_exa,crawling_exa,people_search_exa"` (replace USER_KEY with the key they pasted)
 5. Validate: run `claude mcp list` and confirm output contains `exa`
 
-## Stage 3: Project permissions
+## Stage 3: Node.js + Playwright (for PDF rendering)
+
+Only run if lead-0 reports: node-pdf check failed.
+
+1. Explain to the user: "pdf-9 renders your tailored CV to PDF using Playwright (headless Chromium). This needs Node.js 20+ and a one-time Chromium download (~150MB)."
+2. Check `node --version`. If missing or major < 20, ask to install:
+   - macOS: `brew install node`
+   - Linux: `curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt install -y nodejs`
+3. Install npm dependencies: `npm install` (reads `package.json` — installs playwright)
+4. Install the Chromium browser Playwright needs: `npx playwright install chromium`
+5. Validate: `node --version` shows >= 20 and `ls node_modules/playwright/package.json` succeeds
+
+## Stage 4: Project permissions
 
 Only run if lead-0 reports: settings.json check failed.
 
@@ -55,13 +67,14 @@ Write `.claude/settings.json` with baseline permissions:
       "Bash(git add *)", "Bash(git commit *)", "Bash(git worktree *)",
       "Bash(git check-ignore *)", "Bash(ln -sfn *)",
       "Bash(rm -rf research/runs/*)", "Bash(ls *)", "Bash(claude mcp *)",
+      "Bash(node *)", "Bash(npm *)", "Bash(npx *)",
       "mcp__exa__*", "mcp__claude-in-chrome__*"
     ]
   }
 }
 ```
 
-## Stage 4: Profile building
+## Stage 5: Profile building
 
 Only run if lead-0 reports: skills-inventory or resume check failed.
 

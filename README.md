@@ -11,8 +11,9 @@ claude --agent lead-0
 ```
 
 That's it. On first run, `lead-0` detects missing setup and walks you through everything:
-- Installing prerequisites (Python 3.12+, git, Homebrew)
+- Installing prerequisites (Python 3.12+, git, Homebrew, Node.js 20+)
 - Setting up the virtual environment and dependencies
+- Installing Playwright + Chromium for CV PDF rendering
 - Configuring Exa MCP for contact research
 - Building your skills inventory and resume from your existing materials (CV, portfolio, GitHub, LinkedIn)
 

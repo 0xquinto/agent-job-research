@@ -26,6 +26,7 @@ Before anything else, validate that the environment is ready. Run these checks:
 4. **Skills inventory**: Read `skills-inventory.md`. Fail if file is missing or first line is `# Your Name -- Skills Inventory`.
 5. **Resume**: Glob for `resume*.md` in project root. Fail if no match or first line of the match is `# Your Name`.
 6. **Exa MCP**: Run `claude mcp list`. Fail if output does not contain a line starting with `exa:`.
+7. **Node.js + Playwright** (needed by pdf-9 to render the CV PDF): Run `node --version`. Fail if missing or major version < 20. Then check `node_modules/playwright/package.json` exists. Fail if missing.
 
 **If all checks pass:** Continue to query generation and Phase 1.
 
@@ -39,6 +40,7 @@ The following readiness checks failed:
 - skills-inventory: [missing / template-only]
 - resume: [missing / template-only]
 - exa-mcp: [not configured]
+- node-pdf: [node missing / version too low / playwright not installed]
 
 Only fix the items listed above. Skip everything else.
 ```
