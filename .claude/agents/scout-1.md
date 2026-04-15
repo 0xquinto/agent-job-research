@@ -57,7 +57,9 @@ To list all available scrapers:
 
 ### Stage 2: Exa crawl for non-ATS portals
 
-After Stage 1 completes, read the **portals subset file** at `$RUN_DIR/phase-1-scrape/portals-subset.yml` (the same file passed to `--portals` in Stage 1). Find companies where:
+If the subset file at `$RUN_DIR/phase-1-scrape/portals-subset.yml` does not exist (preflight produced no portal companies), skip Stage 2 entirely.
+
+Otherwise, after Stage 1 completes, read the **portals subset file** (the same file passed to `--portals` in Stage 1). Find companies where:
 - `ats` is null (no known ATS platform)
 - `active` is true
 - `last_scanned` is null or older than `scan_interval_days` from config
@@ -85,8 +87,6 @@ For each matching company:
 The subset file is read-only and transient — never write to it. All persistent mutations target `portals.yml` at the project root.
 
 Update the header counts in `all-postings.md` after appending.
-
-If the subset file does not exist (preflight produced no portal companies), skip Stage 2 entirely.
 
 ### Stage 3: Chrome for Wellfound (optional)
 
