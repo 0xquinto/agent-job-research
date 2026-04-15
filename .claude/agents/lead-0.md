@@ -64,6 +64,7 @@ Before starting any phase, you MUST set up the run directory:
      "phases": {}
    }
    ```
+   The `phase_1` block (with `selected_scrapers`, `selected_companies`, `user_filter_reply`) is added later by the Phase 1 Preflight step. See that section for the schema.
 4. **Prune old runs:** List directories in `research/runs/`, sort by name, delete all but the 5 most recent (keep current + 4 previous). Use a scout-1 agent with Bash for deletion if needed.
 5. **Pass RUN_DIR to EVERY subagent prompt.** Include this line at the top of every subagent prompt:
    ```
