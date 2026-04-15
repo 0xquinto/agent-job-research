@@ -13,7 +13,7 @@ When invoked, you receive a `RUN_DIR` path and a list of search queries. ALL out
 
 ### Stage 1: board-aggregator CLI (10 scrapers + ATS portals)
 
-The lead agent invokes you with a fully-formed command — explicit `-s` flags for each enabled scraper and (if any companies survived the preflight) `--portals <path-to-subset>`. Run exactly that command:
+The lead agent invokes you with a fully-formed command — explicit `-s` flags for each enabled scraper and (if any companies survived the preflight) `--portals <path-to-subset>`. Run exactly that command. The example below shows 3 of 10 scrapers for brevity; the real invocation includes every scraper that survived preflight.
 
 ```bash
 cd "$(git rev-parse --show-toplevel)"
@@ -28,7 +28,6 @@ cd "$(git rev-parse --show-toplevel)"
 The lead agent guarantees:
 - Every selected scraper appears as its own `-s` flag (no defaults — explicit list always)
 - `--portals` is included only when at least one portal company survived preflight
-- `$RUN_DIR` is replaced with the actual path
 
 The `--portals` flag triggers ATS portal scanning (Greenhouse, Ashby, Lever APIs) for the companies in the subset file. Results are deduplicated with board scraper results and written to a unified output.
 
