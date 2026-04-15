@@ -98,7 +98,7 @@ The pipeline has 10 registered scrapers. Use this list verbatim in the preview:
 
 ### Step 2: Read active portal companies
 
-If `portals.yml` exists at the project root, read it and collect every entry where `active: true`. Capture: `name`, `slug`, `ats` (or "exa-crawl" if `ats: null`), `icp_fit_score`.
+If `portals.yml` exists at the project root, read it and collect every entry where `active: true`. For the preview display, capture: `name`, `slug`, `ats` (or "exa-crawl" if `ats: null`), `icp_fit_score`. For the subset file (Step 6), you must preserve EVERY field of each kept entry — `careers_url` in particular is required by scout-1 Stage 2 for non-ATS company crawls.
 
 If `portals.yml` does not exist OR has zero `active: true` entries, skip the portals section of the preview.
 
