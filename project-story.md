@@ -1,5 +1,5 @@
 ---
-name: "agent-job-research"
+name: "dossier"
 oneLiner: "A 4-phase Claude agent pipeline that scrapes 11 job boards, scores postings against your skills, finds hiring managers, and drafts personalized pitches — anti-mass-apply by design."
 domain: "Developer tooling / Job search automation"
 ---
@@ -13,7 +13,7 @@ domain: "Developer tooling / Job search automation"
 ## Arc
 
 ### Beginning
-The project started on March 26, 2026 with application materials, a research agent pipeline spec, and profile update guides for LinkedIn, X, and GitHub. Within two days, the core scraping engine (`hireboost-scraper`, later renamed `board-aggregator`) shipped as a CLI v0.1.0 covering 8 job boards, and all 5 initial subagent definitions were committed alongside CLAUDE.md.
+The project started on March 26, 2026 with application materials, a research agent pipeline spec, and profile update guides for LinkedIn, X, and GitHub. Within two days, the core scraping engine `board-aggregator` shipped as a CLI v0.1.0 covering 8 job boards, and all 5 initial subagent definitions were committed alongside CLAUDE.md.
 
 ### Middle
 The week of March 28–31 was a consolidation and expansion phase: the scraper package was renamed to `board_aggregator`, a RemoteOK scraper added, run versioning introduced (timestamped `research/runs/$RUN_ID/` directories), and a skills inventory was refactored around an "agentic engineer" framing. On April 6 — the most commit-dense day — the project gained the Reddit scraper (19 subreddits, two-tier signal filtering), a full ATS portal scanner (Greenhouse, Ashby, Lever), the `discoverer-6` company-discovery agent, a setup wizard, CI/CD workflows, and packaging for PyPI. On April 7 all personal references were stripped from agent definitions, making the pipeline generic and shareable.

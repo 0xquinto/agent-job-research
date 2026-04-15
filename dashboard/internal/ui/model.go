@@ -4,7 +4,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/0xQuinto/agent-job-research/dashboard/internal/data"
+	"github.com/0xQuinto/dossier/dashboard/internal/data"
 	tea "github.com/charmbracelet/bubbletea"
 )
 

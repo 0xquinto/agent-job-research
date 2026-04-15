@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Guided setup wizard for the agent-job-research pipeline.
+"""Guided setup wizard for the dossier pipeline.
 
 Run: python setup_wizard.py
 
@@ -212,7 +212,7 @@ def print_next_steps():
 def main():
     """Run the full setup wizard."""
     print("=" * 50)
-    print("agent-job-research — Setup Wizard")
+    print("dossier — Setup Wizard")
     print("=" * 50)
 
     check_prerequisites()

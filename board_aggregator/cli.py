@@ -51,7 +51,7 @@ DEFAULT_OUTPUT = Path("research/phase-1-scrape")
     help="List all available scrapers and exit.",
 )
 def main(query, output_dir, scraper, remote_only, portals, list_scrapers):
-    """HireBoost Scraper -- Multi-board job scraper for the HireBoost pipeline."""
+    """dossier Scraper -- Multi-board job scraper for the dossier pipeline."""
     # Import here to trigger registration via module imports
     import board_aggregator.scrapers.jobspy_boards  # noqa: F401
     import board_aggregator.scrapers.himalayas  # noqa: F401

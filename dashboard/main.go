@@ -5,8 +5,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/0xQuinto/agent-job-research/dashboard/internal/data"
-	"github.com/0xQuinto/agent-job-research/dashboard/internal/ui"
+	"github.com/0xQuinto/dossier/dashboard/internal/data"
+	"github.com/0xQuinto/dossier/dashboard/internal/ui"
 	tea "github.com/charmbracelet/bubbletea"
 )
 

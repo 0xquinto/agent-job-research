@@ -1,4 +1,4 @@
-module github.com/0xQuinto/agent-job-research/dashboard
+module github.com/0xQuinto/dossier/dashboard
 
 go 1.26.2
 

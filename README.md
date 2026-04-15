@@ -1,12 +1,12 @@
-# agent-job-research
+# dossier
 
 Agent pipeline that scrapes 10+ job boards, scores postings against your skills, finds hiring managers, and drafts personalized pitches. Anti-mass-apply.
 
 ## Quick Start
 
 ```bash
-git clone https://github.com/0xQuinto/agent-job-research.git
-cd agent-job-research
+git clone https://github.com/0xQuinto/dossier.git
+cd dossier
 claude --agent lead-0
 ```
 
@@ -93,8 +93,8 @@ See `board_aggregator/scrapers/remoteok.py` for a minimal example.
 ## Development
 
 ```bash
-git clone https://github.com/0xQuinto/agent-job-research.git
-cd agent-job-research
+git clone https://github.com/0xQuinto/dossier.git
+cd dossier
 python -m venv .venv
 .venv/bin/pip install -e ".[dev]"
 .venv/bin/pytest
