@@ -27,6 +27,7 @@ Before anything else, validate that the environment is ready. Run these checks:
 5. **Resume**: Glob for `resume*.md` in project root. Fail if no match or first line of the match is `# Your Name`.
 6. **Exa MCP**: Run `claude mcp list`. Fail if output does not contain a line starting with `exa:`.
 7. **Node.js + Playwright** (needed by pdf-9 to render the CV PDF): Run `node --version`. Fail if missing or major version < 20. Then check `node_modules/playwright/package.json` exists. Fail if missing.
+8. **portals.yml** (optional): Check if `portals.yml` exists in project root. This is a SOFT check — its absence does not block the pipeline (scout-1 will simply skip ATS portal scanning). Report as failed only so primer-8 can offer to bootstrap it from `templates/portals.example.yml`.
 
 **If all checks pass:** Continue to query generation and Phase 1.
 
@@ -41,11 +42,12 @@ The following readiness checks failed:
 - resume: [missing / template-only]
 - exa-mcp: [not configured]
 - node-pdf: [node missing / version too low / playwright not installed]
+- portals: [missing — optional, offer to bootstrap from template]
 
 Only fix the items listed above. Skip everything else.
 ```
 
-After primer-8 returns, re-run ALL checks. If any still fail, tell the user what's still missing and stop.
+After primer-8 returns, re-run ALL checks. If any HARD checks (1-7) still fail, tell the user what's still missing and stop. If only the SOFT check (portals.yml) is still missing, continue — the user declined to bootstrap it.
 
 ## Run Versioning
 

@@ -1,0 +1,36 @@
+config:
+  scan_interval_days: 7
+  disable_after_days: 30
+  max_discovery_calls: 10
+  icp_min_score: 6
+
+title_filter:
+  positive: ["AI", "Operations", "Agent", "Automation", "DevRel", "ML", "LLM", "Platform"]
+  negative: ["Junior", "Intern", "PHP", "Java", ".NET"]
+
+companies:
+  - name: "Anthropic"
+    domain: "anthropic.com"
+    ats: "greenhouse"          # greenhouse | ashby | lever | null (null = use Exa crawl)
+    slug: "anthropic"           # ATS board slug (job-boards.greenhouse.io/<slug>, jobs.ashbyhq.com/<slug>, etc.)
+    careers_url: null           # required when ats: null — used by scout-1 Stage 2 Exa crawl
+    icp_fit_score: 10
+    icp_fit_reasoning: "AI lab, agent infrastructure, model deployment"
+    source: "manual"            # manual | exa-discovery | <other-tag>
+    discovered_at: "2026-04-15"
+    last_scanned: null          # mutated by scout-1
+    last_had_openings: null     # mutated by scout-1
+    active: true                # mutated by scout-1 (set false after disable_after_days with no openings)
+
+  - name: "Example Non-ATS Company"
+    domain: "example.com"
+    ats: null
+    slug: null
+    careers_url: "https://example.com/careers"
+    icp_fit_score: 7
+    icp_fit_reasoning: "Why this company matches the user ICP"
+    source: "manual"
+    discovered_at: "2026-04-15"
+    last_scanned: null
+    last_had_openings: null
+    active: true
