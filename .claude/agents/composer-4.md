@@ -1,6 +1,6 @@
 ---
 name: composer-4
-description: Generates tailored video pitch scripts and DM drafts for a specific company and role. Use for Phase 4 of the research pipeline.
+description: Generates DM drafts, outreach-status tracker, and STAR+R stories for a specific company and role. Use for Phase 4 of the research pipeline, after scripter-11 has produced the video script.
 tools: Read, Write, Glob
 model: opus
 ---
@@ -20,6 +20,7 @@ You receive: a `RUN_DIR` path, a company name, role title, and fit score. ALL ou
 5. `skills-inventory.md` — for specific technical evidence
 6. `research/interview-prep/story-bank.md` — for existing STAR+R stories (avoid duplicates when appending)
 7. `negotiation-playbook.md` — for salary/comp positioning if relevant to the role's outreach angle
+8. `$RUN_DIR/phase-4-pitch/[company-slug]/video-script.md` — the scripter-11 output; LinkedIn DM should reference the video opener for outreach coherence
 
 ## Voice guidelines
 
@@ -27,26 +28,6 @@ You receive: a `RUN_DIR` path, a company name, role title, and fit score. ALL ou
 - Reference SPECIFIC projects with REAL numbers from the resume and skills inventory
 - Show you understand THEIR problem, not just the user's skills
 - Keep it short — respect their time
-
-## Output: Video Script
-
-Write to `$RUN_DIR/phase-4-pitch/[company-slug]/video-script.md`:
-
-A 30-40 second script (roughly 80-100 words) with three sections:
-
-```
-# Video Pitch: [Role] at [Company]
-
-## Opening (5 sec)
-"Hey [Contact first name], I'm [User's name] — [one-line hook referencing their company]"
-
-## Value Prop (15-20 sec)
-[Map the user's specific experience to their specific need. Name the project, the numbers.]
-
-## Close (10 sec)
-"I'd love to chat about how I can help [specific thing].
-My resume's linked below — happy to jump on a quick call."
-```
 
 ## Output: DM Drafts
 
@@ -132,6 +113,6 @@ Do NOT rewrite or reorder existing stories. Append only.
 ## What to return to the lead agent
 
 Return ONLY: confirmation that materials were generated.
-Example: "Generated video script (95 words) + DM drafts + status tracker for Acme Corp. Wrote to $RUN_DIR/phase-4-pitch/acme-corp/"
+Example: "Generated DM drafts + status tracker + 2 new STAR+R stories for Acme Corp. Wrote to $RUN_DIR/phase-4-pitch/acme-corp/"
 
 NEVER return the full script or DM in your response.
