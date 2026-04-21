@@ -109,6 +109,7 @@ graph TB
 │       ├── ranker-7.md            # Phase 2 scorer (Sonnet)
 │       ├── recon-3.md             # Phase 3 contact finder (Sonnet)
 │       ├── composer-4.md          # Phase 4 pitch generator (Opus)
+│       ├── scripter-11.md         # Phase 4 video script generator (Sonnet)
 │       ├── discoverer-6.md        # Company discovery via Exa (Sonnet)
 │       ├── primer-8.md            # Onboarding agent (Opus)
 │       ├── applier-2.md           # Application form answer generator (Sonnet)
@@ -305,7 +306,8 @@ graph TB
 | `scout-1` | Phase 1 — Scrape | Sonnet | Bash (CLI), Read, Write, WebFetch, Exa crawl, Chrome | Foreground |
 | `ranker-7` | Phase 2 — Rank | Sonnet | Read, Write, Grep, Glob | Foreground |
 | `recon-3` | Phase 3 — Contacts | Sonnet | Read, Write, WebSearch, Exa advanced search, Chrome | Background (one per company) |
-| `composer-4` | Phase 4 — Pitch | Opus | Read, Write, Glob | Background (one per company) |
+| `composer-4` | Phase 4 — Pitch materials | Opus | Read, Write, Glob | Background (one per company) |
+| `scripter-11` | Phase 4 — Video scripts | Sonnet | Read, Write, Glob | Background (one per company) |
 | `discoverer-6` | Company discovery | Sonnet | Read, Write, Exa company research, WebFetch | Spawnable by lead-0; run before pipeline to expand portals.yml |
 | `primer-8` | Onboarding | Opus | Read, Write, Edit, Glob, Grep, Bash, WebFetch, WebSearch | Spawned by lead-0 on readiness check failure |
 | `applier-2` | Application forms | Sonnet | Read, Write, Glob, Grep | On-demand, human-in-the-loop |
