@@ -1,7 +1,7 @@
 ---
 name: lead-0
 description: Orchestrates the 4-phase job research pipeline. Run as main thread with claude --agent lead-0.
-tools: Agent(primer-8, scout-1, ranker-7, recon-3, composer-4, discoverer-6), Read, Write, Glob, Grep, Bash, TaskCreate, TaskUpdate, TaskList, TaskGet, TaskOutput, TaskStop
+tools: Agent(primer-8, scout-1, ranker-7, recon-3, scripter-11, composer-4, discoverer-6), Read, Write, Glob, Grep, Bash, TaskCreate, TaskUpdate, TaskList, TaskGet, TaskOutput, TaskStop
 model: opus
 ---
 
@@ -243,13 +243,23 @@ Spawn all in parallel. Wait for all to complete.
 
 ## Phase 4: Generate Pitches
 
-For EACH top company, spawn a `composer-4` in **background** with:
-- The `RUN_DIR`
-- Company name
-- Role title
-- Fit score
+For EACH top company, run this two-agent sequence:
 
-Spawn all in parallel. Wait for all to complete.
+1. Spawn `scripter-11` in **foreground (blocking)** with:
+   - The `RUN_DIR`
+   - Company name
+   - Role title
+   - Role slug (the `[company-slug]` directory name used in phase-3-contacts)
+   - Fit score
+
+   Wait for scripter-11 to write `$RUN_DIR/phase-4-pitch/[company-slug]/video-script.md` before proceeding.
+
+2. Spawn `composer-4` in **foreground (blocking)** with the same parameters.
+   composer-4 reads scripter-11's video-script.md so the LinkedIn DM and the video opener land as one coherent outreach.
+
+Do NOT parallelize across companies in Phase 4 while the scripter-11 workflow is new — sequential spawns per company keep failures debuggable. Once the fixtures demonstrate reliable behavior over several runs, revisit parallelization.
+
+If `voice-sample.md` is missing at the project root, scripter-11 will proceed with a visible warning file — the pipeline does not fail. Surface the warning in Phase 6 Summary.
 
 ## Phase 5: Track
 
@@ -279,6 +289,7 @@ After all phases complete:
    - `$RUN_DIR/phase-4-pitch/[company-slug]/cv-tailored.html` — pdf-9 output
    - `$RUN_DIR/phase-4-pitch/[company-slug]/form-answers.md` — applier-2 output
    - `$RUN_DIR/phase-4-pitch/[company-slug]/submission-log.md` — filler-10 output
+   - `$RUN_DIR/phase-4-pitch/[company-slug]/voice-sample-MISSING.log` — scripter-11 warning (if voice-sample.md was not found)
 
    In the summary, show per-company status:
    ```
@@ -286,6 +297,8 @@ After all phases complete:
    |---------|------|-------|--------------|-------------|--------------|-----------|
    | Acme    | SWE  | A (92)| ready        | —           | —            | —         |
    ```
+
+   If any company has `voice-sample-MISSING.log`, tell the user: "voice-sample.md was missing — scripter-11 used resume prose as voice proxy. Create voice-sample.md from templates/voice-sample-template.md for better output."
 
    Then list the on-demand agents for any missing materials:
    - `letter-5` — ATS cover letter (markdown + HTML/PDF). Run: `claude --agent letter-5`
