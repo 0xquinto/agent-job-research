@@ -4,8 +4,14 @@ Archetype under test: seniority-signal / positioning / one-confident-opinion. Se
 
 ## video-script.md
 
-### Length
-- Word count in `[150, 220]`.
+### Length (spoken body only)
+- Spoken-body word count (Hook + Proof + Ask) in `[150, 220]`. Exclude metadata and the Intentionally Ignored section.
+- Verify with:
+  ```bash
+  sed -n '/^## Hook/,/^---$/p' tests/scripter-11/fixtures/mock-lead-role/phase-4-pitch/ai-platform-lead/video-script.md \
+    | grep -vE '^##|^---$|^\*\*|^$' \
+    | wc -w
+  ```
 
 ### Single-promise constraint
 Proof section must contain exactly ONE named project or platform-shipped artifact. Multi-promise scripts (two or three comma-separated capabilities) must be flagged by Seth Godin in critiques and trimmed in v2.

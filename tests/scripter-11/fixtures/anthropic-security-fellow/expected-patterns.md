@@ -4,9 +4,16 @@ After running scripter-11 against this fixture, verify the following.
 
 ## video-script.md (v2 — deliverable)
 
-### Length
-- Word count must be in `[150, 220]` inclusive.
-- Verify with: `wc -w tests/scripter-11/fixtures/anthropic-security-fellow/phase-4-pitch/ai-security-fellow/video-script.md`
+### Length (spoken body only)
+- Word count of the SPOKEN body (Hook + Proof + Ask, excluding metadata and the Intentionally Ignored section) must be in `[150, 220]` inclusive.
+- The spoken body is the content between `## Hook` and the `---` separator that precedes `## Intentionally Ignored Critiques`.
+- Verify with:
+  ```bash
+  sed -n '/^## Hook/,/^---$/p' tests/scripter-11/fixtures/anthropic-security-fellow/phase-4-pitch/ai-security-fellow/video-script.md \
+    | grep -vE '^##|^---$|^\*\*|^$' \
+    | wc -w
+  ```
+- A naive `wc -w` on the full file WILL exceed 220 because of headings, the `**Target length:**` line, and the Intentionally Ignored block. Those are not spoken content.
 
 ### Forbidden opener phrases
 The Hook section must NOT start with any of:
@@ -71,7 +78,12 @@ For each advisor that has critiques (not "NO ISSUE"), at least one bullet must c
 
 - File exists
 - Has the same section headings as v2 but without the "Intentionally Ignored" block
-- Word count also in `[150, 220]`
+- Spoken-body word count also in `[150, 220]`, measured with:
+  ```bash
+  sed -n '/^## Hook/,$p' tests/scripter-11/fixtures/anthropic-security-fellow/phase-4-pitch/ai-security-fellow/video-script-v1.md \
+    | grep -vE '^##|^\*\*|^$' \
+    | wc -w
+  ```
 
 ## Baseline comparison
 

@@ -4,8 +4,14 @@ Archetype under test: IC / conversational / dev-community. Ali Abdaal + Patrick 
 
 ## video-script.md
 
-### Length
-- Word count in `[150, 220]`.
+### Length (spoken body only)
+- Spoken-body word count (Hook + Proof + Ask) in `[150, 220]`. Exclude metadata and the Intentionally Ignored section.
+- Verify with:
+  ```bash
+  sed -n '/^## Hook/,/^---$/p' tests/scripter-11/fixtures/mock-dev-rel-ic/phase-4-pitch/dev-rel-ic/video-script.md \
+    | grep -vE '^##|^---$|^\*\*|^$' \
+    | wc -w
+  ```
 
 ### Required conversational markers
 At least ONE of these must appear in Hook or Ask:
