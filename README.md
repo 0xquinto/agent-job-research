@@ -1,6 +1,6 @@
 # dossier
 
-Agent pipeline that scrapes 10+ job boards, scores postings against your skills, finds hiring managers, and drafts personalized pitches. Anti-mass-apply.
+Agent pipeline that scrapes 13 job boards, scores postings against your skills, finds hiring managers, and drafts personalized pitches. Anti-mass-apply.
 
 ## Quick Start
 
@@ -22,10 +22,10 @@ That's it. On first run, `lead-0` detects missing setup and walks you through ev
 ## How the pipeline works
 
 ```
-Phase 1 — Scrape       scout-1 runs board-aggregator CLI across 11 boards
+Phase 1 — Scrape       scout-1 runs board-aggregator CLI across 13 boards
 Phase 2 — Rank         ranker-7 scores each posting against your skills inventory
 Phase 3 — Research     recon-3 finds hiring managers via Exa + Chrome (parallel per company)
-Phase 4 — Pitch        composer-4 generates video scripts + DM drafts (parallel per company)
+Phase 4 — Pitch        scripter-11 drafts the video pitch, then composer-4 produces DM drafts + STAR+R stories (parallel per company)
 ```
 
 The pipeline orchestrator (`lead-0`) runs phases sequentially. Within Phases 3 and 4, one subagent spawns per company in parallel.
@@ -55,7 +55,8 @@ graph TB
         Scout[scout-1<br/>Scrape]
         Ranker[ranker-7<br/>Rank]
         Recon[recon-3<br/>Contacts]
-        Composer[composer-4<br/>Pitch]
+        Scripter[scripter-11<br/>Video Script]
+        Composer[composer-4<br/>DMs + Stories]
         Discoverer[discoverer-6<br/>Discovery]
         Applier[applier-2<br/>Forms]
         Letter[letter-5<br/>Cover Letter]
@@ -65,13 +66,14 @@ graph TB
 
     subgraph Scraper["board-aggregator CLI"]
         CLI[Click CLI]
-        Scrapers["10 scrapers"]
+        Scrapers["13 scrapers"]
     end
 
     Lead -->|"foreground (if needed)"| Primer
     Lead -->|foreground| Scout
     Lead -->|foreground| Ranker
     Lead -->|"background ×N companies"| Recon
+    Lead -->|"background ×N companies"| Scripter
     Lead -->|"background ×N companies"| Composer
     Lead -->|"foreground (optional)"| Discoverer
     Lead -.->|on-demand| Applier
