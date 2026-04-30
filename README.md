@@ -1,6 +1,6 @@
 # dossier
 
-Agent pipeline that scrapes 13 job boards, scores postings against your skills, finds hiring managers, and drafts personalized pitches. Anti-mass-apply.
+Agent pipeline that scrapes 13 job boards plus your ICP companies' ATS portals (Greenhouse / Ashby / Lever), scores postings against your skills, finds hiring managers, and drafts personalized pitches. Anti-mass-apply.
 
 ## Quick Start
 
@@ -22,7 +22,7 @@ That's it. On first run, `lead-0` detects missing setup and walks you through ev
 ## How the pipeline works
 
 ```
-Phase 1 — Scrape       scout-1 runs board-aggregator CLI across 13 boards
+Phase 1 — Scrape       scout-1 runs board-aggregator CLI across 13 boards + ATS portal scan of your ICP companies
 Phase 2 — Rank         ranker-7 scores each posting against your skills inventory
 Phase 3 — Research     recon-3 finds hiring managers via Exa + Chrome (parallel per company)
 Phase 4 — Pitch        scripter-11 drafts the video pitch, then composer-4 produces DM drafts + STAR+R stories (parallel per company)
@@ -30,7 +30,11 @@ Phase 4 — Pitch        scripter-11 drafts the video pitch, then composer-4 pro
 
 The pipeline orchestrator (`lead-0`) runs phases sequentially. Within Phases 3 and 4, one subagent spawns per company in parallel.
 
-**Optional pre-step:** Run `discoverer-6` to find companies matching your target profile and populate `portals.yml` for targeted ATS scanning in Phase 1.
+**Two scrape sources, one merged feed:**
+- **Generic boards** — 13 public boards (Indeed, LinkedIn, RemoteOK, Himalayas, HN, crypto/web3 boards, …) — wide net, noisy.
+- **Per-company ATS portals** — direct hits to Greenhouse / Ashby / Lever public APIs for the companies in `portals.yml` — narrow, high-signal. No auth needed. Scout-1 marks portals inactive after 30 days with no openings; `discoverer-6` adds new ones.
+
+**Optional pre-step:** Run `discoverer-6` to find companies matching your ICP and populate `portals.yml` so Phase 1 will scan their ATSes directly.
 
 Each run writes to a timestamped directory under `research/runs/`. The most recent run is symlinked at `research/latest/`.
 
@@ -66,7 +70,9 @@ graph TB
 
     subgraph Scraper["board-aggregator CLI"]
         CLI[Click CLI]
-        Scrapers["13 scrapers"]
+        Scrapers["13 scrapers<br/>(generic boards)"]
+        PortalScanner["portal_scanner<br/>Greenhouse / Ashby / Lever"]
+        PortalsYml[("portals.yml<br/>ICP companies")]
     end
 
     Lead -->|"foreground (if needed)"| Primer
@@ -78,8 +84,11 @@ graph TB
     Lead -->|"foreground (optional)"| Discoverer
     Lead -.->|on-demand| Applier
     Lead -.->|on-demand| PDF
+    Discoverer -->|writes| PortalsYml
     Scout --> CLI
     CLI --> Scrapers
+    CLI --> PortalScanner
+    PortalScanner --> PortalsYml
 ```
 
 ## Adding a scraper
